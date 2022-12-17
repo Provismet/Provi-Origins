@@ -1,0 +1,12 @@
+{
+    "name": "Death's Vice",
+    "description": "Gain access to a resource called Death's Vice that drains slowly over time.",
+    "type": "origins:resource",
+    "min": 0,
+    "max": 1200,
+    "start_value": 600,
+    "hud_render": {
+        "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+        "bar_index": 5
+    }
+}

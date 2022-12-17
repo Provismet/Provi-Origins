@@ -1,0 +1,31 @@
+{
+	"powers": [
+		"origins:aquatic",
+		"origins:like_water",
+		"origins:swim_speed",
+		"origins:aqua_affinity",
+		"decaykraken:amphibious",
+		"decaykraken:deaths_vice",
+		"decaykraken:deaths_vice_passive_drain_and_gain",
+		"decaykraken:deaths_vice_recharge_rate",
+		"decaykraken:deaths_vice_recharge_resource",
+		"decaykraken:deaths_vice_gain_on_kill",
+		"decaykraken:deaths_vice_reset_on_death",
+		"decaykraken:soulsand_spreading",
+        "decaykraken:wither_hit",
+		"decaykraken:wither_particles",
+		"decaykraken:propulsion",
+		"decaykraken:soul_steal",
+		"decaykraken:water_glow",
+		"decaykraken:deaths_vice_low_value_penalty",
+		"decaykraken:deaths_vice_empty",
+		"origins:fragile",
+		"decaykraken:pescatarian",
+		"decaykraken:drop_ink_on_death"
+	],
+	"icon": "minecraft:nether_star",
+	"impact": 3,
+	"name": "Embodiment of Decay",
+	"description": "Slaying the Wither threefold has enhanced your connection to death, granting you access to new skills and an immunity to freshwater.",
+    "unchoosable": true
+}

@@ -1,0 +1,19 @@
+{
+    "name": "Death Vision",
+    "description": "Suffer from darkness when Death's Vice reaches zero.",
+    "type": "origins:stacking_status_effect",
+    "min_stacks": -1,
+    "max_stacks": 1,
+    "duration_per_stack": 90,
+    "effect": {
+        "effect": "minecraft:darkness",
+        "is_ambient": true,
+        "show_particles": false
+    },
+    "condition": {
+        "type": "origins:resource",
+        "resource": "decaykraken:deaths_vice",
+        "comparison": "==",
+        "compare_to": 0
+    }
+}

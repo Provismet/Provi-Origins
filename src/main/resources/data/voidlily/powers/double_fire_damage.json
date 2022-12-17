@@ -1,0 +1,12 @@
+{
+    "name": "Highly Flammable",
+    "description": "You take double damage from fire and lava.",
+    "type": "origins:modify_damage_taken",
+    "damage_condition": {
+        "type": "origins:fire"
+    },
+    "modifier": {
+        "operation": "multiply_base_additive",
+        "value": 1
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "item.decaykraken.kraken_soul_lantern": "Kraken's Soul Lantern",
+    "death.attack.freshwater": "%1$s ran out of salt",
+    "death.attack.freshwater.player": "%1$s lost too much salt whilst fighting $2%s",
+    "death.attack.freshwater.item": "%1$s lost too much salt trying to deal with $2%s's $3%s"
+}

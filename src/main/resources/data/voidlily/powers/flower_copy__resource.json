@@ -1,0 +1,21 @@
+{
+    "hidden": true,
+    "type": "origins:resource",
+    "min": 0,
+    "max": 14,
+    "start_value": 0,
+    "min_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:play_sound",
+                "sound": "minecraft:entity.illusioner.prepare_mirror",
+                "pitch": 2
+            },
+            {
+                "type": "origins:emit_game_event",
+                "event": "minecraft:equip"
+            }
+        ]
+    }
+}

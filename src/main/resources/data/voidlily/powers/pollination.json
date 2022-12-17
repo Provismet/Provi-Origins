@@ -1,0 +1,35 @@
+{
+    "name": "Pollination",
+    "description": "Nearby bees pollinate you, granting saturation and blinding you in the process.",
+    "type": "origins:action_over_time",
+    "interval": 10,
+    "entity_action": {
+        "type": "origins:area_of_effect",
+        "radius": 3,
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:entity_type",
+                "entity_type": "minecraft:bee"
+            }
+        },
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:apply_effect",
+                "effects": [
+                    {
+                        "effect": "minecraft:saturation",
+                        "duration": 310,
+                        "is_ambient": true
+                    },
+                    {
+                        "effect": "minecraft:blindness",
+                        "duration": 40,
+                        "is_ambient": true
+                    }
+                ]
+            }
+        }
+    }
+}

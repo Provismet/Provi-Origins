@@ -1,0 +1,10 @@
+{
+    "name": "Unfortunate Otherworld",
+    "description": "Your hunger depletes 50% faster than others.",
+    "type": "origins:modify_exhaustion",
+    "modifier": {
+        "name": "Increased Exhaustion",
+        "operation": "multiply_base_additive",
+        "value": 0.5
+    }
+}

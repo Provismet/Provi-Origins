@@ -1,0 +1,13 @@
+{
+    "name": "Abyssal Collapse",
+    "description": "The fabric of the Nether disagrees with you, preventing you from breathing whilst there.",
+    "type": "proviorigins:prevent_breathing",
+    "damage_source": {
+        "name": "badDimension",
+        "bypasses_armor": true
+    },
+    "condition": {
+        "type": "origins:dimension",
+        "dimension": "the_nether"
+    }
+}

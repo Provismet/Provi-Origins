@@ -1,0 +1,32 @@
+{
+    "hidden": true,
+    "type": "origins:action_when_damage_taken",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:spawn_particles",
+                "particle": {
+                    "type": "minecraft:block",
+                    "params": "minecraft:nether_portal"
+                },
+                "count": 24,
+                "speed": 5.0
+            },
+            {
+                "type": "origins:spawn_particles",
+                "particle": {
+                    "type": "minecraft:block",
+                    "params": "minecraft:quartz_block"
+                },
+                "count": 8,
+                "speed": 5.0
+            }
+        ]
+    },
+    "condition": {
+        "type": "origins:relative_health",
+        "comparison": "<=",
+        "compare_to": 0.0
+    }
+}

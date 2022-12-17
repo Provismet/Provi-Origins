@@ -1,0 +1,22 @@
+{
+    "name": "Bioluminescence",
+    "description": "Gain a glow when submerged in water.",
+    "type": "origins:self_glow",
+    "condition": {
+        "type": "origins:submerged_in",
+        "fluid": "minecraft:water"
+    },
+    "bientity_condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:can_see"
+            },
+            {
+                "type": "origins:distance",
+                "comparison": "<=",
+                "compare_to": 50
+            }
+        ]
+    }
+}

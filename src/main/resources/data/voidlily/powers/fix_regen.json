@@ -1,0 +1,43 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+
+    "no_regen": {
+        "type": "origins:disable_regen"
+    },
+    
+    "heal_when_full": {
+        "type": "origins:action_over_time",
+        "interval": 50,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:heal",
+                    "amount": 1
+                },
+                {
+                    "type": "origins:exhaust",
+                    "amount": 10
+                }
+            ]
+
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:food_level",
+                    "comparison": ">=",
+                    "compare_to": 15
+                },
+                {
+                    "type": "origins:relative_health",
+                    "comparison": "<",
+                    "compare_to": 1
+                }
+            ]
+
+        }
+    }
+}

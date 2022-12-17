@@ -1,0 +1,20 @@
+{
+    "name": "Soul Capture",
+    "description": "Killing an undead mob whilst standing on coarse dirt will convert it into soul sand.",
+    "type": "origins:self_action_on_kill",
+    "entity_action": {
+        "type": "origins:execute_command",
+        "command": "setblock ~ ~-1 ~ minecraft:soul_sand"
+    },
+    "condition": {
+        "type": "origins:on_block",
+        "block_condition": {
+            "type": "origins:block",
+            "block": "minecraft:coarse_dirt"
+        }
+    },
+    "target_condition": {
+        "type": "origins:entity_group",
+        "group": "undead"
+    }
+}

@@ -1,0 +1,30 @@
+{
+	"powers": [
+		"origins:aquatic",
+		"origins:like_water",
+		"origins:swim_speed",
+		"origins:aqua_affinity",
+		"decaykraken:amphibious",
+		"decaykraken:deaths_vice",
+		"decaykraken:deaths_vice_passive_drain_and_gain",
+		"decaykraken:deaths_vice_recharge_rate",
+		"decaykraken:deaths_vice_recharge_resource",
+		"decaykraken:deaths_vice_gain_on_kill",
+		"decaykraken:deaths_vice_reset_on_death",
+		"decaykraken:soulsand_spreading",
+		"decaykraken:wither_toggle",
+		"decaykraken:propulsion",
+		"decaykraken:water_glow",
+		"decaykraken:deaths_vice_low_value_penalty",
+		"decaykraken:deaths_vice_empty",
+		"origins:fragile",
+		"decaykraken:water_sensitive",
+		"decaykraken:pescatarian",
+		"decaykraken:drop_ink_on_death",
+		"decaykraken:wither_evolve"
+	],
+	"icon": "minecraft:wither_skeleton_skull",
+	"impact": 3,
+	"name": "Kraken of Decay",
+	"description": "A vagrant kraken strays from death, still grasping onto its remnant power."
+}

@@ -1,0 +1,131 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    "passive": {
+        "type": "origins:stacking_status_effect",
+        "min_stacks": -1,
+        "max_stacks": 1,
+        "duration_per_stack": 100,
+        "effect": {
+            "effect": "minecraft:saturation",
+            "show_particles": false,
+            "is_ambient": true
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "voidlily:flower_copy__resource",
+            "comparison": "==",
+            "compare_to": 3
+        }
+    },
+    "particles": {
+        "type": "origins:particle",
+        "particle": {
+            "type": "minecraft:dust",
+            "params": "0.878 0.647 0.427 1"
+        },
+        "frequency": 4,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "voidlily:flower_copy__resource",
+            "comparison": "==",
+            "compare_to": 3
+        }
+    },
+    "consume": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "voidlily:flower_copy__resource",
+                    "change": 3,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "voidlily:flower_copy_blueorchid_dandelion_hud",
+                    "change": 30,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:equipped_item_action",
+                    "equipment_slot": "mainhand",
+                    "action": {
+                        "type": "origins:consume",
+                        "amount": 1
+                    }
+                },
+                {
+                    "type": "origins:swing_hand"
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.illusioner.prepare_mirror",
+                    "pitch": 2
+                },
+                {
+                    "type": "origins:emit_game_event",
+                    "event": "minecraft:equip"
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:equipped_item",
+            "equipment_slot": "mainhand",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "tag": "voidlily:grants_saturation"
+                }
+            }
+        }
+    },
+    "tooltip": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "voidlily:grants_saturation"
+            }
+        },
+        "text": {
+            "translate": "tooltip.voidlily.grants_saturation"
+        }
+    },
+    "hud": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 30,
+        "start_value": 30,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "voidlily:textures/gui/resources.png",
+            "bar_index": 3,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "voidlily:flower_copy__resource",
+                "comparison": "==",
+                "compare_to": 3
+            }
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "voidlily:flower_copy__resource",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "voidlily:flower_copy_blueorchid_dandelion_hud",
+                    "change": 30,
+                    "operation": "set"
+                }
+            ]
+        }
+    }
+}

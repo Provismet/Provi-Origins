@@ -1,0 +1,24 @@
+{
+    "hidden": true,
+    "type": "origins:action_when_damage_taken",
+    "entity_action": {
+        "type": "origins:if_else",
+        "if_action": {
+            "type": "origins:execute_command",
+            "command": "summon minecraft:item ~ ~ ~ {Item:{id:\"minecraft:glow_ink_sac\",Count:1b}}"
+        },
+        "else_action": {
+            "type": "origins:execute_command",
+            "command": "summon minecraft:item ~ ~ ~ {Item:{id:\"minecraft:ink_sac\",Count:1b}}"
+        },
+        "condition": {
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:water"
+        }
+    },
+    "condition": {
+        "type": "origins:relative_health",
+        "comparison": "<=",
+        "compare_to": 0.0
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "name": "Pescatarian",
+    "description": "You can only eat fish.",
+    "type": "origins:prevent_item_use",
+    "item_condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "tag": "minecraft:fishes"
+                },
+                "inverted": true
+            },
+            {
+                "type": "origins:food"
+            }
+        ]
+    }
+}

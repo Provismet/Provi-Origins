@@ -1,0 +1,8 @@
+{
+    "name": "Pure Calcium",
+    "description": "You cannot eat food except for milk.",
+    "type": "origins:prevent_item_use",
+    "item_condition": {
+        "type": "origins:food"
+    }
+}

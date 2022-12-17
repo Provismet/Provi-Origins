@@ -1,0 +1,8 @@
+{
+    "values": [
+        "minecraft:bedrock",
+        "minecraft:crying_obsidian",
+        "minecraft:respawn_anchor",
+        "#minecraft:portals"
+    ]
+}

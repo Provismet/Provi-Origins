@@ -1,0 +1,8 @@
+{
+    "values": [
+        "#minecraft:is_end",
+        "#minecraft:is_nether",
+        "minecraft:the_void",
+        "minecraft:mushroom_fields"
+    ]
+}
