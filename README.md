@@ -1,9 +1,12 @@
-# Fabric Example Mod
+# Provi's Origins
 
-## Setup
+## General
+A small collection of origins that have been custom made for myself and close friends. Packaged as a mod to incorporate custom assets and features.
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+## Origins
+- Lily of the Void
+- Kraken of Decay
 
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+## Additional Powers
+- Prevent Breathing
+- Prevent Potion Cloud (disables splash potion effects)
