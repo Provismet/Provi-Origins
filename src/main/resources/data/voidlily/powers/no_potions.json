@@ -1,23 +1,15 @@
 {
     "name": "Irregular Chemistry",
-    "description": "You cannot drink or throw any kind of potion.",
+    "description": "You are unaffected by potions.",
     "type": "origins:multiple",
 
     "cannot_use_potions": {
         "type": "origins:prevent_item_use",
         "item_condition": {
             "type": "origins:ingredient",
-            "ingredient": [
-                {
-                    "item": "minecraft:potion"
-                },
-                {
-                    "item": "minecraft:splash_potion"
-                },
-                {
-                    "item": "minecraft:lingering_potion"
-                }
-            ]
+            "ingredient": {
+                "item": "minecraft:potion"
+            }
         }
     },
 
