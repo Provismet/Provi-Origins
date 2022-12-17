@@ -9,7 +9,7 @@
     "Provismet"
   ],
 
-  "license": "CC0-1.0",
+  "license": "Apache-2.0",
   "icon": "assets/provi_custom_origins/icon.png",
 
   "environment": "*",
