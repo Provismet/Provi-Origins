@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "provi_custom_origins",
+  "id": "provi-origins",
   "version": "${version}",
 
   "name": "Provi's Origins",
@@ -27,6 +27,7 @@
     "fabric": "*",
     "minecraft": "~1.19",
     "java": ">=17",
-    "origins": ">=1.6.2"
+    "origins": ">=1.7.1",
+    "extrade-origins-addon": "*"
   }
 }

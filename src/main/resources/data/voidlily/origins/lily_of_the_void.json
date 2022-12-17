@@ -28,7 +28,8 @@
 		"origins:fragile",
 		"voidlily:exhaust_more",
 		"voidlily:composter_death",
-		"voidlily:death_particles"
+		"voidlily:death_particles",
+		"extrade:fungifloral"
 	],
 	"icon": "minecraft:chorus_fruit",
 	"impact": 3,
