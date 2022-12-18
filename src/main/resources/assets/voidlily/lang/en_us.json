@@ -1,5 +1,6 @@
 {
     "effect.voidlily.void_poison": "Void Corruption",
+    
     "death.attack.voidPoison": "%1$s was corrupted by the void",
     "death.attack.voidPoison.player": "%1$s succumbed to the void whilst fighting %2$s",
     "death.attack.voidPoison.item": "%1$s succumbed to the void whilst fighting %2$s using %3$s",
@@ -9,6 +10,7 @@
     "death.attack.compost": "%1$s was composted",
     "death.attack.compost.player": "%1$s was composted by %2$s",
     "death.attack.compost.item": "%1$s was composted by %2$s using %3$s",
+
     "tooltip.voidlily.grants_armour": "Consume to gain armor.",
     "tooltip.voidlily.grants_blindness": "Consume to inflict blindness on struck entities.",
     "tooltip.voidlily.grants_corruption": "Consume to enhance your latent poison with the void.",
