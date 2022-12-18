@@ -1,6 +1,4 @@
-package com.provismet.personalOrigins.voidlily;
-
-import com.provismet.personalOrigins.ProviOriginsMain;
+package com.provismet.personalOrigins.originClasses.voidlily;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -18,6 +16,6 @@ public class VoidPoison extends StatusEffect {
 
     @Override
     public void applyUpdateEffect (LivingEntity entity, int amplifier) {
-        entity.damage(ProviOriginsMain.VOID_POISON, 1.5f + (0.5f * amplifier));
+        entity.damage(VoidLily.VOID_POISON, 1.5f + (0.5f * amplifier));
     }
 }
