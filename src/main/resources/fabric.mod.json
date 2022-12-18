@@ -27,7 +27,10 @@
     "fabric": "*",
     "minecraft": "~1.19",
     "java": ">=17",
-    "origins": ">=1.7.1",
+    "origins": ">=1.7.1"
+  },
+
+  "recommends": {
     "extrade-origins-addon": "*"
   }
 }
