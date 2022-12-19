@@ -120,6 +120,20 @@
             {
                 "action": {
                     "type": "origins:change_resource",
+                    "resource": "voidlily:flower_copy_waterbreathing_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "voidlily:flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 9
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
                     "resource": "voidlily:flower_copy_cactus_rose_berry_hud",
                     "change": -1,
                     "operation": "add"

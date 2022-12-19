@@ -25,5 +25,6 @@
     "tooltip.voidlily.grants_thorns": "Consume to gain thorns, damaging attackers.",
     "tooltip.voidlily.grants_weakness": "Consume to inflict weakness on struck entities.",
     "tooltip.voidlily.grants_wither": "Consume to inflict wither on struck entities.",
+    "tooltip.voidlily.grants_water_breathing": "Consume to gain oxygen.",
     "tooltip.voidlily.no_potions": "You are unaffected by potions."
 }
