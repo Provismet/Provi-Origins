@@ -10,12 +10,16 @@ import net.minecraft.entity.LivingEntity;
  * Prevents the user from being affected by a potion cloud from splash or lingering potions.
  * Relies on the associated mixin.
  */
+@SuppressWarnings("rawtypes")
 public class PreventPotionCloud extends Power {
     public PreventPotionCloud (PowerType<?> type, LivingEntity entity) {
         super(type, entity);
     }
 
     public static PowerFactory createPowerFactory () {
-        return new PowerFactory<>(Powers.identifier("prevent_potion_cloud"), new SerializableData(), data -> (type, player) -> new PreventPotionCloud(type, player)).allowCondition();
+        return new PowerFactory<>(Powers.identifier("prevent_potion_cloud"),
+            new SerializableData(),
+            data -> (type, player) -> new PreventPotionCloud(type, player))
+            .allowCondition();
     }
 }
