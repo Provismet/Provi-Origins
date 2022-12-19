@@ -1,9 +1,11 @@
 package com.provismet.personalOrigins.powers;
 
+import com.provismet.personalOrigins.ProviOriginsMain;
+
 import net.minecraft.util.Identifier;
 
 public class Powers {
-    public static final String NAMESPACE = "proviorigins";
+    public static final String NAMESPACE = ProviOriginsMain.modid;
 
     // There are no "simple" powers in this mod, they would go here otherwise.
 
