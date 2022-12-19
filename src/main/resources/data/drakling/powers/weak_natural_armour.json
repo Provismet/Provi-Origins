@@ -1,0 +1,11 @@
+{
+    "name": "Molten Metal",
+    "description": "Your newfound strength allows you to wear stronger armour, but your bodily heat loosens the material and makes it weaker than normal.",
+    "type": "origins:attribute",
+    "modifier": {
+        "name": "Molten Metal",
+        "attribute": "minecraft:generic.armor",
+        "value": -0.25,
+        "operation": "multiply_base"
+    }
+}
