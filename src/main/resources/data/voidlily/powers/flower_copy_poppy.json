@@ -1,6 +1,7 @@
 {
     "hidden": true,
     "type": "origins:multiple",
+
     "passive": {
         "type": "origins:night_vision",
         "condition": {
@@ -10,6 +11,7 @@
             "compare_to": 6
         }
     },
+    
     "particles": {
         "type": "origins:particle",
         "particle": {
@@ -24,6 +26,7 @@
             "compare_to": 6
         }
     },
+
     "consume": {
         "type": "origins:active_self",
         "entity_action": {
@@ -74,6 +77,7 @@
             }
         }
     },
+
     "tooltip": {
         "type": "origins:tooltip",
         "item_condition": {
@@ -86,6 +90,7 @@
             "translate": "tooltip.voidlily.grants_night_vision"
         }
     },
+    
     "hud": {
         "type": "origins:resource",
         "min": 0,

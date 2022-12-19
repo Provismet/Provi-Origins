@@ -1,6 +1,7 @@
 {
     "hidden": true,
     "type": "origins:multiple",
+
     "passive": {
         "type": "origins:stacking_status_effect",
         "min_stacks": -1,
@@ -32,6 +33,7 @@
             "compare_to": 3
         }
     },
+
     "consume": {
         "type": "origins:active_self",
         "entity_action": {
@@ -82,6 +84,7 @@
             }
         }
     },
+
     "tooltip": {
         "type": "origins:tooltip",
         "item_condition": {
@@ -94,6 +97,7 @@
             "translate": "tooltip.voidlily.grants_saturation"
         }
     },
+    
     "hud": {
         "type": "origins:resource",
         "min": 0,

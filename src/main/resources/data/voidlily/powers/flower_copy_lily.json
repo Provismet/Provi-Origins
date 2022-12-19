@@ -2,6 +2,7 @@
     "name": "Flora Mimicry",
     "description": "You may gain mimicry of any compatible plant held in your main hand, consuming the plant in the process. Mimicries grant buffs and last for a duration, until death, or until overridden by another mimicry.",
     "type": "origins:multiple",
+
     "passive": {
         "type": "origins:target_action_on_hit",
         "entity_action": {
@@ -18,6 +19,7 @@
             "compare_to": 13
         }
     },
+
     "particles": {
         "type": "origins:particle",
         "particle": {
@@ -32,6 +34,7 @@
             "compare_to": 13
         }
     },
+
     "particles2": {
         "type": "origins:particle",
         "particle": {
@@ -46,6 +49,7 @@
             "compare_to": 13
         }
     },
+
     "consume": {
         "type": "origins:active_self",
         "entity_action": {
@@ -97,6 +101,7 @@
             }
         }
     },
+
     "tooltip": {
         "type": "origins:tooltip",
         "item_condition": {
@@ -109,6 +114,7 @@
             "translate": "tooltip.voidlily.grants_corruption"
         }
     },
+    
     "hud": {
         "type": "origins:resource",
         "min": 0,

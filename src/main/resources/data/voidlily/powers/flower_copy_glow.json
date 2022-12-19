@@ -1,6 +1,7 @@
 {
     "hidden": true,
     "type": "origins:multiple",
+
     "passive": {
         "type": "origins:self_glow",
         "condition": {
@@ -10,6 +11,7 @@
             "compare_to": 11
         }
     },
+
     "consume": {
         "type": "origins:active_self",
         "entity_action": {
@@ -60,6 +62,7 @@
             }
         }
     },
+
     "tooltip": {
         "type": "origins:tooltip",
         "item_condition": {
@@ -72,6 +75,7 @@
             "translate": "tooltip.voidlily.grants_glow"
         }
     },
+    
     "hud": {
         "type": "origins:resource",
         "min": 0,

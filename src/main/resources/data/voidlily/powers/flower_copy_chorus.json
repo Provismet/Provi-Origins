@@ -1,6 +1,7 @@
 {
     "hidden": true,
     "type": "origins:multiple",
+
     "consume": {
         "type": "origins:active_self",
         "entity_action": {
@@ -149,6 +150,7 @@
             }
         }
     },
+    
     "tooltip": {
         "type": "origins:tooltip",
         "item_condition": {

@@ -1,6 +1,7 @@
 {
     "hidden": true,
     "type": "origins:multiple",
+
     "passive": {
         "type": "origins:conditioned_attribute",
         "modifier": {
@@ -16,6 +17,7 @@
             "compare_to": 14
         }
     },
+
     "particles": {
         "type": "origins:particle",
         "particle": {
@@ -30,6 +32,7 @@
             "compare_to": 14
         }
     },
+
     "consume": {
         "type": "origins:active_self",
         "entity_action": {
@@ -80,6 +83,7 @@
             }
         }
     },
+
     "tooltip": {
         "type": "origins:tooltip",
         "item_condition": {
@@ -92,6 +96,7 @@
             "translate": "tooltip.voidlily.grants_armour"
         }
     },
+    
     "hud": {
         "type": "origins:resource",
         "min": 0,

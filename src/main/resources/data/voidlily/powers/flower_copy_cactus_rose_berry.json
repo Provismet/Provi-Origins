@@ -1,6 +1,7 @@
 {
     "hidden": true,
     "type": "origins:multiple",
+
     "passive": {
         "type": "origins:attacker_action_when_hit",
         "entity_action": {
@@ -30,6 +31,7 @@
             "compare_to": 10
         }
     },
+
     "particles": {
         "type": "origins:particle",
         "particle": {
@@ -44,6 +46,7 @@
             "compare_to": 10
         }
     },
+
     "particles2": {
         "type": "origins:particle",
         "particle": {
@@ -58,6 +61,7 @@
             "compare_to": 10
         }
     },
+
     "consume": {
         "type": "origins:active_self",
         "entity_action": {
@@ -109,6 +113,7 @@
             }
         }
     },
+
     "tooltip": {
         "type": "origins:tooltip",
         "item_condition": {
@@ -121,6 +126,7 @@
             "translate": "tooltip.voidlily.grants_thorns"
         }
     },
+    
     "hud": {
         "type": "origins:resource",
         "min": 0,
