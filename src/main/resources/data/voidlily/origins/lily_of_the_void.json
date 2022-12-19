@@ -23,6 +23,7 @@
 		"voidlily:pollination",
 		"voidlily:nether_air",
 		"voidlily:no_potions",
+		"voidlily:no_splash_potions",
 		"voidlily:no_food",
 		"voidlily:double_fire_damage",
 		"voidlily:fix_regen",

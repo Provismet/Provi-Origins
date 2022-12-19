@@ -1,0 +1,27 @@
+{
+    "hidden": true,
+    "description": "Unaffected by splash potions.",
+    "type": "origins:multiple",
+
+    "unaffected_by_splash": {
+        "type": "proviorigins:prevent_potion_cloud"
+    },
+
+    "tooltip": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": [
+                {
+                    "item": "minecraft:splash_potion"
+                },
+                {
+                    "item": "minecraft:lingering_potion"
+                }
+            ]
+        },
+        "text": {
+            "translate": "tooltip.voidlily.no_potions"
+        }
+    }
+}
