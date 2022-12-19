@@ -6,7 +6,9 @@
   "mixins": [
     "PreventBreathingMixin$LivingEntityAccessor",
     "PreventBreathingMixin$PreventBreathingLivingEntity",
-    "PreventPotionCloudMixin"
+    "PreventPotionCloudMixin",
+    "AdjustPassengerHeightMixin$EntityAccessor",
+    "AdjustPassengerHeightMixin$AdjustPassengerHeightEntity"
   ],
   "client": [
     
