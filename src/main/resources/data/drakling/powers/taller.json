@@ -1,0 +1,31 @@
+{
+    "name": "Large Body",
+    "description": "You have grown and are now 3 blocks tall.",
+    "type": "origins:action_on_callback",
+    "entity_action_gained": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "scale set 1.5"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scale persist set true"
+            }
+        ]
+    },
+    "entity_action_lost": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "scale reset"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scale persist set false"
+            }
+        ]
+    }
+}

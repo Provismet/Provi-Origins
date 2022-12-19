@@ -1,0 +1,79 @@
+{
+    "name": "Mountable",
+    "description": "Your increased size and power allows lighter players to ride you. This holds your strength, preventing you from breaking or using blocks.",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Players less than or equal to standard height may ride you if they have no passengers."
+        },
+        {
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "[SNEAK] to force dismount."
+        }
+    ],
+    "type": "origins:multiple",
+
+    "force_mount": {
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+            "type": "origins:invert",
+            "action": {
+                "type": "origins:mount"
+            }
+        },
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:entity_type",
+                "entity_type": "minecraft:zombie"
+            }
+        }
+    },
+
+    "mount": {
+        "type": "origins:action_on_being_used",
+        "bientity_action": {
+            "type": "origins:mount"
+        }
+    },
+    
+    "end_ride": {
+        "type": "origins:active_self",
+        "key": "key.sneak",
+        "entity_action": {
+            "type": "origins:passenger_action",
+            "action": {
+                "type": "origins:dismount"
+            }
+        }
+    },
+
+    "cannot_use_passenger": {
+        "type": "origins:prevent_entity_use",
+        "bientity_condition": {
+            "type": "origins:invert",
+            "condition": {
+                "type": "origins:riding_recursive"
+            }
+        }
+    },
+
+    "cannot_hurt_passenger": {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "operation": "set_total",
+            "value": 0
+        },
+        "bientity_condition": {
+            "type": "origins:invert",
+            "condition": {
+                "type": "origins:riding_recursive"
+            }
+        }
+    },
+
+    "adjust_passenger": {
+        "type": "proviorigins:passenger_height",
+        "offset": 0.75
+    }
+}

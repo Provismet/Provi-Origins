@@ -1,0 +1,43 @@
+{
+    "name": "Perfected Wings",
+    "description": "You have natural Elytra wings, now perfected you can fly freely and boost yourself in the air.",
+    "type": "origins:multiple",
+    "elytra": {
+        "type": "origins:elytra_flight",
+        "render_elytra": true,
+        "texture_location": "minecraft:textures/block/obsidian.png"
+    },
+    "boost": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.ender_dragon.flap"
+                },
+                {
+                    "type": "origins:emit_game_event",
+                    "event": "minecraft:flap"
+                },
+                {
+                    "type": "origins:spawn_particles",
+                    "particle": "minecraft:explosion",
+                    "count": 6
+                },
+                {
+                    "type": "origins:add_velocity",
+                    "space": "local",
+                    "z": 2.0
+                }
+            ]
+        },
+        "cooldown": 150,
+        "hud_render": {
+            "bar_index": 4
+        },
+        "condition": {
+            "type": "origins:fall_flying"
+        }
+    }
+}

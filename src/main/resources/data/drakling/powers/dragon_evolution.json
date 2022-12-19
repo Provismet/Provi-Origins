@@ -1,0 +1,330 @@
+{
+    "name": "Becoming Complete",
+    "description": "Wear a dragon head to begin your evolution.",
+    "type": "origins:multiple",
+
+    "tooltip": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:dragon_head"
+            }
+        },
+        "text": "Wear the flesh of your ancestor and gain their strength."
+    },
+
+    "evolution_bar": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 30,
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "tellraw @p {\"text\": \"Drakling \", \"extra\": [{\"selector\": \"@s\", \"color\": \"red\"}, {\"text\": \" has evolved into a Drake.\"}]}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "origin set @s origins:origin drakling:drake"
+                }
+            ]
+        },
+        "hud_render": {
+            "should_render": false
+        }
+    },
+
+    "trigger": {
+        "type": "origins:action_over_time",
+        "condition": {
+            "type": "origins:equipped_item",
+            "equipment_slot": "head",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "item": "minecraft:dragon_head"
+                }
+            }
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "drakling:dragon_evolution_evolution_bar",
+                    "change": 1,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "action": {
+                                "type": "origins:nothing"
+                            },
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "head",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:dragon_head"
+                                    }
+                                },
+                                "inverted": true
+                            }
+                        },
+                        {
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:trigger_cooldown",
+                                        "power": "drakling:dragon_evolution_evolution_bar"
+                                    },
+                                    {
+                                        "type": "origins:modify_inventory",
+                                        "slot": "armor.head",
+                                        "item_action": {
+                                            "type": "origins:modify",
+                                            "modifier": "drakling:apply_curses"
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:apply_effect",
+                                        "effects": [
+                                            {
+                                                "effect": "minecraft:resistance",
+                                                "duration": 800,
+                                                "amplifier": 6,
+                                                "show_particles": false,
+                                                "show_icon": false
+                                            },
+                                            {
+                                                "effect": "minecraft:slowness",
+                                                "duration": 600,
+                                                "amplifier": 6,
+                                                "show_particles": false,
+                                                "show_icon": false
+                                            },
+                                            {
+                                                "effect": "minecraft:blindness",
+                                                "duration": 600,
+                                                "show_particles": false,
+                                                "show_icon": false
+                                            },
+                                            {
+                                                "effect": "minecraft:mining_fatigue",
+                                                "duration": 600,
+                                                "amplifier": 6,
+                                                "show_particles": false,
+                                                "show_icon": false
+                                            },
+                                            {
+                                                "effect": "minecraft:weakness",
+                                                "duration": 600,
+                                                "amplifier": 6,
+                                                "show_particles": false,
+                                                "show_icon": false
+                                            },
+                                            {
+                                                "effect": "minecraft:regeneration",
+                                                "duration": 800,
+                                                "amplifier": 6,
+                                                "show_particles": false,
+                                                "show_icon": false
+                                            },
+                                            {
+                                                "effect": "minecraft:levitation",
+                                                "duration": 600,
+                                                "show_particles": false,
+                                                "show_icon": false
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "drakling:dragon_evolution_evolution_bar",
+                                "comparison": "==",
+                                "compare_to": 1
+                            }
+                        },
+                        {
+                            "action": {
+                                "type": "origins:revoke_power",
+                                "power": "drakling:short_flight",
+                                "source": "drakling:drakling"
+                            },
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "drakling:dragon_evolution_evolution_bar",
+                                "comparison": "==",
+                                "compare_to": 2
+                            }
+                        },
+                        {
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:play_sound",
+                                        "sound": "minecraft:item.totem.use"
+                                    },
+                                    {
+                                        "type": "origins:spawn_particles",
+                                        "particle": "minecraft:totem_of_undying",
+                                        "count": 50,
+                                        "force": true
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "title @s title {\"text\":\"You shall be reborn...\", \"bold\":true, \"color\":\"red\"}"
+                                    }
+                                ]
+                            },
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "drakling:dragon_evolution_evolution_bar",
+                                "comparison": "==",
+                                "compare_to": 5
+                            }
+                        },
+                        {
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:play_sound",
+                                        "sound": "minecraft:item.totem.use"
+                                    },
+                                    {
+                                        "type": "origins:spawn_particles",
+                                        "particle": "minecraft:totem_of_undying",
+                                        "count": 50,
+                                        "force": true
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "title @s title {\"text\":\"Our bones...\", \"bold\":true, \"color\":\"red\"}"
+                                    }
+                                ]
+                            },
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "drakling:dragon_evolution_evolution_bar",
+                                "comparison": "==",
+                                "compare_to": 10
+                            }
+                        },
+                        {
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:play_sound",
+                                        "sound": "minecraft:item.totem.use"
+                                    },
+                                    {
+                                        "type": "origins:spawn_particles",
+                                        "particle": "minecraft:totem_of_undying",
+                                        "count": 50,
+                                        "force": true
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "title @s title {\"text\":\"Our flesh...\", \"bold\":true, \"color\":\"red\"}"
+                                    }
+                                ]
+                            },
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "drakling:dragon_evolution_evolution_bar",
+                                "comparison": "==",
+                                "compare_to": 15
+                            }
+                        },
+                        {
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:play_sound",
+                                        "sound": "minecraft:item.totem.use"
+                                    },
+                                    {
+                                        "type": "origins:spawn_particles",
+                                        "particle": "minecraft:totem_of_undying",
+                                        "count": 50,
+                                        "force": true
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "title @s title {\"text\":\"They are melding onto you.\", \"bold\":true, \"color\":\"red\"}"
+                                    }
+                                ]
+                            },
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "drakling:dragon_evolution_evolution_bar",
+                                "comparison": "==",
+                                "compare_to": 20
+                            }
+                        },
+                        {
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:play_sound",
+                                        "sound": "minecraft:item.totem.use"
+                                    },
+                                    {
+                                        "type": "origins:spawn_particles",
+                                        "particle": "minecraft:totem_of_undying",
+                                        "count": 50,
+                                        "force": true
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "title @s title {\"text\":\"Now take our power...\", \"bold\":true, \"color\":\"red\"}"
+                                    }
+                                ]
+                            },
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "drakling:dragon_evolution_evolution_bar",
+                                "comparison": "==",
+                                "compare_to": 25
+                            }
+                        },
+                        {
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:play_sound",
+                                        "sound": "minecraft:entity.ender_dragon.death"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "title @s title {\"text\":\"AND FLY.\", \"bold\":true, \"color\":\"red\"}"
+                                    }
+                                ]
+                            },
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "drakling:dragon_evolution_evolution_bar",
+                                "comparison": "==",
+                                "compare_to": 28
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

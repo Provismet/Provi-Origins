@@ -1,0 +1,9 @@
+{
+    "name": "Poor Swimmer",
+    "description": "You swim very slowly.",
+    "type": "origins:modify_swim_speed",
+    "modifier": {
+        "operation": "multiply_base",
+        "value": -0.5
+    }
+}

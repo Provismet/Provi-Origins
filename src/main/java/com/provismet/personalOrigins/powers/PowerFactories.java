@@ -8,6 +8,7 @@ public class PowerFactories {
     public static void register () {
         register(PreventBreathing.createPowerFactory());
         register(PreventPotionCloud.createPowerFactory());
+        register(AdjustPassengerHeight.createPowerFactory());
     }
 
     private static void register (PowerFactory<?> powerFactory) {
