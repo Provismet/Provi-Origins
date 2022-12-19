@@ -8,12 +8,18 @@ import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 
+@SuppressWarnings("rawtypes")
 public class PreventBreathing extends Power {
-    private final DamageSource damageSource;
+    private static final String DAMAGE_SOURCE = "damage_source";
+    private static final String RESPECT_BREATHING = "respect_water_breathing";
 
-    public PreventBreathing (PowerType<?> type, LivingEntity entity, DamageSource damageSource) {
+    private final DamageSource damageSource;
+    public final boolean respectWaterBreathing;
+
+    public PreventBreathing (PowerType<?> type, LivingEntity entity, DamageSource damageSource, boolean respectWaterBreathing) {
         super(type, entity);
         this.damageSource = damageSource;
+        this.respectWaterBreathing = respectWaterBreathing;
     }
 
     public DamageSource getDamageSource () {
@@ -22,7 +28,10 @@ public class PreventBreathing extends Power {
 
     public static PowerFactory createPowerFactory () {
         return new PowerFactory<>(Powers.identifier("prevent_breathing"),
-            new SerializableData().add("damage_source", SerializableDataTypes.DAMAGE_SOURCE),
-            data -> (type, player) -> new PreventBreathing(type, player, ((DamageSource)data.get("damage_source")))).allowCondition();
+            new SerializableData()
+            .add(DAMAGE_SOURCE, SerializableDataTypes.DAMAGE_SOURCE)
+            .add(RESPECT_BREATHING, SerializableDataTypes.BOOLEAN, true),
+            data -> (type, player) -> new PreventBreathing(type, player, ((DamageSource)data.get(DAMAGE_SOURCE)), data.getBoolean(RESPECT_BREATHING)))
+            .allowCondition();
     }
 }

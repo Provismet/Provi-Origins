@@ -14,6 +14,7 @@ import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.world.World;
 
@@ -32,16 +33,29 @@ public final class PreventBreathingMixin {
         protected PreventBreathingLivingEntity (EntityType<?> entityType, World world) {
             super(entityType, world);
         }
+
+        private void applyAir (DamageSource source) {
+            this.setAir(((LivingEntityAccessor)this).invokeNextAirUnderwater(this.getAir()) - ((LivingEntityAccessor)this).invokeNextAirOnLand(0));
+            if (this.getAir() <= -20) {
+                this.setAir(0);
+
+                this.damage(source, 2.0f);
+            }
+        }
         
         @Inject(at=@At("TAIL"), method="tick")
         private void tick (CallbackInfo info) {
-            List<PreventBreathing> noBreathes = PowerHolderComponent.getPowers((LivingEntity)(Object)this, PreventBreathing.class);
-            if (!noBreathes.isEmpty() && !((LivingEntity)(Object)this).hasStatusEffect(StatusEffects.WATER_BREATHING)) {
-                this.setAir(((LivingEntityAccessor)this).invokeNextAirUnderwater(this.getAir()) - ((LivingEntityAccessor)this).invokeNextAirOnLand(0));
-                if (this.getAir() <= -20) {
-                    this.setAir(0);
-
-                    this.damage(noBreathes.get(0).getDamageSource(), 2.0f);
+            LivingEntity living = (LivingEntity)(Object)this;
+            List<PreventBreathing> noBreathes = PowerHolderComponent.getPowers(living, PreventBreathing.class);
+            if (!noBreathes.isEmpty()) {
+                if (!living.hasStatusEffect(StatusEffects.WATER_BREATHING)) applyAir(noBreathes.get(0).getDamageSource());
+                else {
+                    for (PreventBreathing powerInstance : noBreathes) {
+                        if (!powerInstance.respectWaterBreathing) {
+                            applyAir(powerInstance.getDamageSource());
+                            break;
+                        }
+                    }
                 }
             }
         }
