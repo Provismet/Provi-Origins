@@ -8,7 +8,8 @@
     "PreventBreathingMixin$PreventBreathingLivingEntity",
     "PreventPotionCloudMixin",
     "AdjustPassengerHeightMixin$EntityAccessor",
-    "AdjustPassengerHeightMixin$AdjustPassengerHeightEntity"
+    "AdjustPassengerHeightMixin$AdjustPassengerHeightEntity",
+    "ActionOnDetectGameEventMixin"
   ],
   "client": [
     

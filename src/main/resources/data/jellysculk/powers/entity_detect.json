@@ -24,130 +24,34 @@
     },
 
     "detection": {
-        "type": "origins:action_over_time",
-        "entity_action": {
-            "type": "origins:area_of_effect",
-            "radius": 100,
-            "bientity_action": {
-                "type": "origins:target_action",
-                "action": {
-                    "type": "origins:execute_command",
-                    "command": "scoreboard players set @s jellysculk_counter 0"
-                }
-            },
-            "bientity_condition": {
-                "type": "origins:and",
-                "conditions": [
-                    {
-                        "type": "origins:owner",
-                        "inverted": true
-                    },
-                    {
-                        "type": "origins:target_condition",
-                        "condition": {
-                            "type": "origins:sneaking"
-                        },
-                        "inverted": true
-                    },
-                    {
-                        "type": "origins:target_condition",
-                        "condition": {
-                            "type": "origins:in_tag",
-                            "tag": "jellysculk:bypass_detection_check"
-                        },
-                        "inverted": true
-                    },
-                    {
-                        "type": "origins:target_condition",
-                        "condition": {
-                            "type": "origins:fall_distance",
-                            "comparison": "==",
-                            "compare_to": 0
-                        }
-                    },
-                    {
-                        "type": "origins:target_condition",
-                        "condition": {
-                            "type": "origins:on_block",
-                            "block_condition": {
-                                "type": "origins:or",
-                                "conditions": [
-                                    {
-                                        "type": "origins:in_tag",
-                                        "tag": "minecraft:dampens_vibrations"
-                                    },
-                                    {
-                                        "type": "origins:material",
-                                        "material": "air"
-                                    }
-                                ]
-                            }
-                        },
-                        "inverted": true
-                    },
-                    {
-                        "type": "origins:target_condition",
-                        "condition": {
-                            "type": "origins:in_block",
-                            "block_condition": {
-                                "type": "origins:in_tag",
-                                "tag": "minecraft:dampens_vibrations"
-                            }
-                        },
-                        "inverted": true
-                    },
-                    {
-                        "type": "origins:or",
-                        "conditions": [
-                            {
-                                "type": "origins:target_condition",
-                                "condition": {
-                                    "type": "origins:moving"
-                                }
-                            },
-                            {
-                                "type": "origins:target_condition",
-                                "condition": {
-                                    "type": "origins:using_item"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "type": "origins:or",
-                        "conditions": [
-                            {
-                                "type": "origins:distance",
-                                "comparison": "<=",
-                                "compare_to": 16
-                            },
-                            {
-                                "type": "origins:and",
-                                "conditions": [
-                                    {
-                                        "type": "origins:distance",
-                                        "comparison": "<=",
-                                        "compare_to": 80
-                                    },
-                                    {
-                                        "type": "origins:target_condition",
-                                        "condition": {
-                                            "type": "origins:block_in_radius",
-                                            "radius": 9,
-                                            "shape": "sphere",
-                                            "block_condition": {
-                                                "type": "origins:block_state",
-                                                "property": "sculk_sensor_phase",
-                                                "enum": "active"
-                                            }
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+        "type": "proviorigins:action_on_detect_game_event",
+        "range": 32,
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:execute_command",
+                "command": "scoreboard players set @s jellysculk_counter 0"
             }
+        },
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:undirected",
+                    "condition": {
+                        "type": "origins:owner"
+                    },
+                    "inverted": true
+                },
+                {
+                    "type": "origins:actor_condition",
+                    "condition": {
+                        "type": "origins:in_tag",
+                        "tag": "jellysculk:bypass_detection_check"
+                    },
+                    "inverted": true
+                }
+            ]
         }
     },
 
@@ -170,19 +74,7 @@
     "scoreboard_vision": {
         "type": "origins:entity_glow",
         "entity_condition": {
-            "type": "origins:or",
-            "conditions": [
-                {
-                    "type": "origins:scoreboard",
-                    "objective": "jellysculk_counter",
-                    "comparison": ">=",
-                    "compare_to": 0
-                },
-                {
-                    "type": "origins:in_tag",
-                    "tag": "jellysculk:always_detect"
-                }
-            ]
+            "type": "origins:living"
         },
         "bientity_condition": {
             "type": "origins:owner",
@@ -196,8 +88,12 @@
             "type": "origins:and",
             "conditions": [
                 {
-                    "type": "origins:command",
-                    "command": "execute unless score @s jellysculk_counter matches 0.."
+                    "type": "origins:living"
+                },
+                {
+                    "type": "origins:power",
+                    "power": "jellysculk:is_detected",
+                    "inverted": true
                 },
                 {
                     "type": "origins:in_tag",
