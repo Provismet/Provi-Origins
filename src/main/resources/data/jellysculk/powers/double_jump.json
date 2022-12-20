@@ -1,0 +1,63 @@
+{
+    "name": "Floaty Body",
+    "description": "You can double jump.",
+    "type": "origins:multiple",
+
+    "jump_cooldown": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1
+    },
+
+    "double_jump": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.jump"
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "proviorigins:double_jump",
+                    "height": 0.5
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "jellysculk:double_jump_jump_cooldown",
+                    "change": 1,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:set_fall_distance",
+                    "fall_distance": 0
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "jellysculk:double_jump_jump_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:fall_distance",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    
+    "reset_cooldown_on_landing": {
+        "type": "origins:action_on_land",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "jellysculk:double_jump_jump_cooldown",
+            "change": 0,
+            "operation": "set"
+        }
+    }
+}

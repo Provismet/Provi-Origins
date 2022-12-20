@@ -1,0 +1,30 @@
+{
+    "name": "Slow Descent",
+    "description": "Sneaking in the air slows your descent.",
+    "type": "origins:multiple",
+
+    "slow_falling": {
+        "type": "origins:modify_falling",
+        "velocity": 0.01,
+        "take_fall_damage": false,
+        "condition": {
+            "type": "origins:sneaking"
+        }
+    },
+
+    "cancel_momentum": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.sneak"
+        },
+        "entity_action": {
+            "type": "origins:add_velocity",
+            "set": true
+        },
+        "condition": {
+            "type": "origins:fall_distance",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    }
+}

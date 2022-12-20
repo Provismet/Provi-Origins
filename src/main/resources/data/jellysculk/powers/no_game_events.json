@@ -1,0 +1,22 @@
+{
+    "name": "Silent Steps",
+    "description": "Most of your actions do not produce vibrations.",
+    "type": "origins:prevent_game_event",
+    "events": [
+        "minecraft:step",
+        "minecraft:swim",
+        "minecraft:hit_ground",
+        "minecraft:block_change",
+        "minecraft:splash",
+        "minecraft:projectile_shoot",
+        "minecraft:eat",
+        "minecraft:equip",
+        "minecraft:shear",
+        "minecraft:entity_place",
+        "minecraft:fluid_place",
+        "minecraft:block_destroy",
+        "minecraft:fluid_pickup",
+        "minecraft:container_close",
+        "minecraft:container_open"
+    ]
+}

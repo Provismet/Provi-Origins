@@ -1,0 +1,22 @@
+{
+    "name": "Away From Home",
+    "description": "You are afflicted with darkness when not standing on sculk.",
+    "type": "origins:stacking_status_effect",
+    "effect": {
+        "effect": "minecraft:darkness",
+        "is_ambient": true,
+        "show_particles": false,
+        "show_icon": false
+    },
+    "min_stacks": -10,
+    "max_stacks": 5,
+    "duration_per_stack": 20,
+    "condition": {
+        "type": "origins:on_block",
+        "block_condition": {
+            "type": "origins:in_tag",
+            "tag": "jellysculk:sculk"
+        },
+        "inverted": true
+    }
+}

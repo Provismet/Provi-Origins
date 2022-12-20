@@ -1,0 +1,35 @@
+{
+    "name": "Harvestable",
+    "description": "You take triple damage from hoes.",
+    "type": "origins:modify_damage_taken",
+    "damage_condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:name",
+                "name": "player"
+            },
+            {
+                "type": "origins:projectile",
+                "inverted": true
+            }
+        ]
+    },
+    "bientity_condition": {
+        "type": "origins:actor_condition",
+        "condition": {
+            "type": "origins:equipped_item",
+            "equipment_slot": "mainhand",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "tag": "jellysculk:hoes"
+                }
+            }
+        }
+    },
+    "modifier": {
+        "operation": "multiply_base_multiplicative",
+        "value": 2
+    }
+}

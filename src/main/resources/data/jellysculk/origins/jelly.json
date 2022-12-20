@@ -1,0 +1,20 @@
+{
+    "powers": [
+        "jellysculk:entity_detect",
+        "jellysculk:scoreboard_manager",
+        "jellysculk:no_game_events",
+        "jellysculk:spread_sculk",
+        "jellysculk:create_sensor",
+        "jellysculk:break_sculk_fast",
+        "jellysculk:double_jump",
+        "jellysculk:slow_fall",
+        "jellysculk:buffs_on_sculk",
+        "jellysculk:these_hoes_aint_shit",
+        "jellysculk:debuffs_off_sculk",
+        "extrade:fungifloral"
+    ],
+    "icon": "minecraft:sculk_sensor",
+    "impact": 3,
+    "name": "Jelly Sculk",
+    "description": "A jellyfish sculk creature."
+}

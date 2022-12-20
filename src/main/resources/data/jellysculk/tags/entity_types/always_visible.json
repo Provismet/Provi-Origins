@@ -1,0 +1,15 @@
+{
+    "values": [
+        "#jellysculk:boats",
+        "#jellysculk:minecarts",
+        "#jellysculk:projectiles",
+        "#jellysculk:decoration_entities",
+        "minecraft:item",
+        "minecraft:experience_orb",
+        "minecraft:fishing_bobber",
+        "minecraft:tnt",
+        "minecraft:falling_block",
+        "minecraft:lightning_bolt",
+        "minecraft:marker"
+    ]
+}
