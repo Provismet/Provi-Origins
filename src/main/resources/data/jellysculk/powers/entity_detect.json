@@ -1,7 +1,13 @@
 {
     "name": "Vibratory Sight",
-    "description": "You see entities around you through their vibrations.",
+    "description": "You see entities around you through their vibrations. Sculk Sensors and Shriekers can also extend their signals to you, revealing entities they detect.",
     "type": "origins:multiple",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Team members and tamed animals are always visible."
+        }
+    ],
 
     "tamed_sight": {
         "type": "origins:entity_glow",
@@ -14,7 +20,7 @@
                 {
                     "type": "origins:distance",
                     "comparison": "<=",
-                    "compare_to": 48
+                    "compare_to": 112
                 }
             ]
         },
@@ -24,7 +30,7 @@
     },
 
     "detection": {
-        "type": "proviorigins:action_on_detect_game_event",
+        "type": "proviorigins:action_on_detect_vibration",
         "range": 32,
         "bientity_action": {
             "type": "origins:actor_action",
@@ -77,8 +83,18 @@
             "type": "origins:living"
         },
         "bientity_condition": {
-            "type": "origins:owner",
-            "inverted": true
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:owner",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:distance",
+                    "comparison": "<=",
+                    "compare_to": 112
+                }
+            ]
         }
     },
 
@@ -113,6 +129,10 @@
                     "type": "origins:distance",
                     "comparison": ">=",
                     "compare_to": "0.1"
+                },
+                {
+                    "type": "proviorigins:teammate",
+                    "inverted": true
                 }
             ]
         }

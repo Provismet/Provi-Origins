@@ -3,6 +3,8 @@ package com.provismet.personalOrigins.powers;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
+import com.provismet.personalOrigins.extras.NoDelayVibrationListener;
+
 import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerType;
@@ -25,20 +27,22 @@ import net.minecraft.world.event.listener.GameEventListener;
 import net.minecraft.world.event.listener.VibrationListener;
 
 @SuppressWarnings("rawtypes")
-public class ActionOnDetectGameEvent extends Power implements VibrationListener.Callback {
+public class ActionOnDetectVibration extends Power implements VibrationListener.Callback {
     private final int range;
+    private final TagKey<GameEvent> acceptedEvents;
     private final Consumer<Pair<Entity, Entity>> bientityAction;
     private final Predicate<Pair<Entity, Entity>> bientityCondition;
     
     public final EntityGameEventHandler<VibrationListener> eventHandler;
 
-    public ActionOnDetectGameEvent(PowerType<?> type, LivingEntity entity, int range, Consumer<Pair<Entity, Entity>> bientityAction, Predicate<Pair<Entity,Entity>> bientityCondition) {
+    public ActionOnDetectVibration(PowerType<?> type, LivingEntity entity, int range, TagKey<GameEvent> acceptedEvents, Consumer<Pair<Entity, Entity>> bientityAction, Predicate<Pair<Entity,Entity>> bientityCondition) {
         super(type, entity);
         this.range = range;
+        this.acceptedEvents = acceptedEvents;
         this.bientityAction = bientityAction;
         this.bientityCondition = bientityCondition;
 
-        this.eventHandler = new EntityGameEventHandler<VibrationListener>(new VibrationListener(new EntityPositionSource(this.entity, 0), this.range, this, null, 0, 0));
+        this.eventHandler = new EntityGameEventHandler<VibrationListener>(new NoDelayVibrationListener(new EntityPositionSource(this.entity, 0), this.range, this, null, 0, 0));
         this.setTicking();
     }
 
@@ -50,15 +54,12 @@ public class ActionOnDetectGameEvent extends Power implements VibrationListener.
 
     public void tick () {
         World world = this.entity.world;
-        if (world instanceof ServerWorld) {
-            ServerWorld sWorld = (ServerWorld)world;
-            this.eventHandler.getListener().tick(sWorld);
-        }
+        this.eventHandler.getListener().tick(world);
     }
 
     @Override
     public TagKey<GameEvent> getTag () {
-        return GameEventTags.WARDEN_CAN_LISTEN;
+        return this.acceptedEvents;
     }
 
     @Override
@@ -81,13 +82,15 @@ public class ActionOnDetectGameEvent extends Power implements VibrationListener.
     }
 
     public static PowerFactory createPowerFactory () {
-        return new PowerFactory<>(Powers.identifier("action_on_detect_game_event"),
+        return new PowerFactory<>(Powers.identifier("action_on_detect_vibration"),
             new SerializableData()
             .add("range", SerializableDataTypes.INT)
+            .add("game_event_tag", SerializableDataTypes.GAME_EVENT_TAG, GameEventTags.WARDEN_CAN_LISTEN)
             .add(Powers.BIENTITY_ACTION, ApoliDataTypes.BIENTITY_ACTION)
             .add(Powers.BIENTITY_CONDITION, ApoliDataTypes.BIENTITY_CONDITION, null),
-            data -> (type, player) -> new ActionOnDetectGameEvent(type, player,
+            data -> (type, player) -> new ActionOnDetectVibration(type, player,
                 data.getInt("range"),
+                data.get("game_event_tag"),
                 data.get(Powers.BIENTITY_ACTION),
                 data.get(Powers.BIENTITY_CONDITION)))
             .allowCondition();
