@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.provismet.personalOrigins.actions.ActionFactories;
+import com.provismet.personalOrigins.conditions.bientity.BiEntityConditionFactories;
 import com.provismet.personalOrigins.originClasses.decaykraken.DecayKraken;
+import com.provismet.personalOrigins.originClasses.jellysculk.JellySculk;
 import com.provismet.personalOrigins.originClasses.voidlily.VoidLily;
 import com.provismet.personalOrigins.powers.PowerFactories;
 
@@ -25,8 +27,10 @@ public class ProviOriginsMain implements ModInitializer {
 
         DecayKraken.register();
         VoidLily.register();
+        JellySculk.register();
 
         PowerFactories.register();
         ActionFactories.register();
+        BiEntityConditionFactories.register();
     }
 }
