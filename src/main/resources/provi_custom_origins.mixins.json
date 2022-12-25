@@ -12,7 +12,7 @@
     "ActionOnDetectGameEventMixin"
   ],
   "client": [
-    
+    "EmissiveMixin"
   ],
   "injectors": {
     "defaultRequire": 1
