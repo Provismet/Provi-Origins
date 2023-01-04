@@ -3,151 +3,76 @@
     "type": "origins:multiple",
 
     "consume": {
-        "type": "origins:active_self",
+        "type": "proviorigins:active_item",
         "entity_action": {
             "type": "origins:and",
             "actions": [
-                {
-                    "type": "origins:swing_hand"
-                },
-                {
-                    "type": "origins:play_sound",
-                    "sound": "minecraft:entity.illusioner.prepare_mirror",
-                    "pitch": 2
-                },
                 {
                     "type": "origins:emit_game_event",
                     "event": "minecraft:equip"
                 },
                 {
-                    "type": "origins:raycast",
+                    "type": "proviorigins:raycast_teleport",
                     "distance": 80,
+                    "destination": "on_top",
                     "shape_type": "collider",
                     "fluid_handling": "none",
-                    "entity": false,
-                    "before_action": {
-                        "type": "origins:execute_command",
-                        "command": "tag @s add voidlily_teleport"
-                    },
-                    "block_action": {
-                        "type": "origins:if_else",
-                        "if_action": {
-                            "type": "origins:and",
-                            "actions": [
-                                {
-                                    "type": "origins:execute_command",
-                                    "command": "teleport @p[tag=voidlily_teleport] ~ ~0.5 ~"
-                                },
-                                {
-                                    "type": "origins:execute_command",
-                                    "command": "tag @p[tag=voidlily_teleport] add voidlily_success_teleport"
-                                }
-                            ]
-                        },
-                        "condition": {
-                            "type": "origins:and",
-                            "conditions": [
-                                {
-                                    "type": "origins:offset",
-                                    "y": 1,
-                                    "condition": {
-                                        "type": "origins:and",
-                                        "conditions": [
-                                            {
-                                                "type": "origins:movement_blocking",
-                                                "inverted": true
-                                            },
-                                            {
-                                                "type": "origins:fluid",
-                                                "fluid_condition": {
-                                                    "type": "origins:empty"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                },
-                                {
-                                    "type": "origins:offset",
-                                    "y": 2,
-                                    "condition": {
-                                        "type": "origins:and",
-                                        "conditions": [
-                                            {
-                                                "type": "origins:movement_blocking",
-                                                "inverted": true
-                                            },
-                                            {
-                                                "type": "origins:fluid",
-                                                "fluid_condition": {
-                                                    "type": "origins:empty"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    "hit_action": {
+                    "success_action": {
                         "type": "origins:and",
                         "actions": [
                             {
-                                "type": "origins:execute_command",
-                                "command": "tag @s remove voidlily_teleport"
+                                "type": "origins:spawn_particles",
+                                "particle": "minecraft:portal",
+                                "count": 32,
+                                "speed": 0.0
+                            },
+                            {
+                                "type": "origins:play_sound",
+                                "sound": "minecraft:entity.enderman.teleport"
                             },
                             {
                                 "type": "origins:if_else",
-                                "if_action": {
-                                    "type": "origins:and",
-                                    "actions": [
-                                        {
-                                            "type": "origins:spawn_particles",
-                                            "particle": "minecraft:portal",
-                                            "count": 32,
-                                            "speed": 0.0
-                                        },
-                                        {
-                                            "type": "origins:play_sound",
-                                            "sound": "minecraft:entity.enderman.teleport"
-                                        },
-                                        {
-                                            "type": "origins:equipped_item_action",
-                                            "equipment_slot": "mainhand",
-                                            "action": {
-                                                "type": "origins:consume",
-                                                "amount": 1
-                                            }
-                                        },
-                                        {
-                                            "type": "origins:execute_command",
-                                            "command":"tag @s remove voidlily_success_teleport"
-                                        }
-                                    ]
-                                },
                                 "condition": {
-                                    "type": "origins:nbt",
-                                    "nbt": "{Tags: ['voidlily_success_teleport']}"
+                                    "type": "origins:equipped_item",
+                                    "equipment_slot": "mainhand",
+                                    "item_condition": {
+                                        "type": "origins:ingredient",
+                                        "ingredient": {
+                                            "tag": "voidlily:grants_teleport"
+                                        }
+                                    }
+                                },
+                                "if_action": {
+                                    "type": "origins:equipped_item_action",
+                                    "equipment_slot": "mainhand",
+                                    "action": {
+                                        "type": "origins:consume",
+                                        "amount": 1
+                                    }
+                                },
+                                "else_action": {
+                                    "type": "origins:equipped_item_action",
+                                    "equipment_slot": "offhand",
+                                    "action": {
+                                        "type": "origins:consume",
+                                        "amount": 1
+                                    }
                                 }
                             }
                         ]
-                    },
-                    "miss_action": {
-                        "type": "origins:execute_command",
-                        "command": "tag @s remove voidlily_teleport"
                     }
                 }
             ]
-            
         },
-        "condition": {
-            "type": "origins:equipped_item",
-            "equipment_slot": "mainhand",
-            "item_condition": {
-                "type": "origins:ingredient",
-                "ingredient": {
-                    "tag": "voidlily:grants_teleport"
-                }
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "voidlily:grants_teleport"
             }
+        },
+        "consume_condition": {
+            "type": "origins:constant",
+            "value": false
         }
     },
     

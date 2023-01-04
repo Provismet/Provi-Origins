@@ -34,7 +34,7 @@
     },
 
     "consume": {
-        "type": "origins:active_self",
+        "type": "proviorigins:active_item",
         "entity_action": {
             "type": "origins:and",
             "actions": [
@@ -51,17 +51,6 @@
                     "operation": "set"
                 },
                 {
-                    "type": "origins:equipped_item_action",
-                    "equipment_slot": "mainhand",
-                    "action": {
-                        "type": "origins:consume",
-                        "amount": 1
-                    }
-                },
-                {
-                    "type": "origins:swing_hand"
-                },
-                {
                     "type": "origins:play_sound",
                     "sound": "minecraft:entity.illusioner.prepare_mirror",
                     "pitch": 2
@@ -72,14 +61,10 @@
                 }
             ]
         },
-        "condition": {
-            "type": "origins:equipped_item",
-            "equipment_slot": "mainhand",
-            "item_condition": {
-                "type": "origins:ingredient",
-                "ingredient": {
-                    "tag": "voidlily:grants_armour"
-                }
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "voidlily:grants_armour"
             }
         }
     },
