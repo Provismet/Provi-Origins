@@ -11,6 +11,7 @@ public class PowerFactories {
         register(AdjustPassengerHeight.createPowerFactory());
         register(ActionOnDetectVibration.createPowerFactory());
         register(Emissive.createPowerFactory());
+        register(ActiveItemPower.createPowerFactory());
     }
 
     private static void register (PowerFactory<?> powerFactory) {
