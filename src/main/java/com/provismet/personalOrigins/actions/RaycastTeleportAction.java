@@ -59,7 +59,6 @@ public class RaycastTeleportAction {
                 if (isValid(upByOne, allowWater, allowLava) && isValid(upByTwo, allowWater, allowLava)) {
                     entity.setPosition(blockHit.getBlockPos().getX(), blockHit.getBlockPos().getY() + 1, blockHit.getBlockPos().getZ());
                     if (successAction != null) successAction.accept(entity);
-                    ProviOriginsMain.LOGGER.info(blockHit.getBlockPos().toShortString());
                 }
                 else if (failureAction != null) failureAction.accept(entity);
             }
