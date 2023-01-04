@@ -19,7 +19,7 @@
             "actions": [
                 {
                     "type": "proviorigins:double_jump",
-                    "height": 0.5
+                    "height": 0.75
                 },
                 {
                     "type": "origins:change_resource",
