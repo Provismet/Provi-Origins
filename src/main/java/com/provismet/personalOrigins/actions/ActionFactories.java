@@ -7,7 +7,8 @@ import net.minecraft.util.registry.Registry;
 
 public class ActionFactories {
     public static void register () {
-        register(DoubleJumpAction.getFactory());
+        register(DoubleJumpAction.createActionFactory());
+        register(RaycastTeleportAction.createActionFactory());
     }
 
     private static void register (ActionFactory<Entity> actionFactory) {
