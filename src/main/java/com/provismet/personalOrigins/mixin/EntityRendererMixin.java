@@ -16,7 +16,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.BlockPos;
 
 @Mixin(EntityRenderer.class)
-public abstract class EmissiveMixin {
+public abstract class EntityRendererMixin {
+    // Emissive Power
     @Inject(at=@At("HEAD"), method="getBlockLight", cancellable=true)
     public void makeEmissive (Entity entity, BlockPos pos, CallbackInfoReturnable<Integer> cir) {
         if (entity instanceof LivingEntity) {

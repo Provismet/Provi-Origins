@@ -7,8 +7,10 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.provismet.personalOrigins.powers.PreventBreathingPower;
+import com.provismet.personalOrigins.powers.PreventPotionCloudPower;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.minecraft.entity.Entity;
@@ -18,7 +20,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.world.World;
 
-public final class PreventBreathingMixin {
+public final class LivingEntityMixin {
     @Mixin(LivingEntity.class)
     public interface LivingEntityAccessor {
         @Invoker("getNextAirOnLand")
@@ -29,11 +31,12 @@ public final class PreventBreathingMixin {
     }
 
     @Mixin(LivingEntity.class)
-    public static abstract class PreventBreathingLivingEntity extends Entity {
-        protected PreventBreathingLivingEntity (EntityType<?> entityType, World world) {
-            super(entityType, world);
+    public static abstract class LivingEntityMixins extends Entity {
+        protected LivingEntityMixins(EntityType<?> type, World world) {
+            super(type, world);
         }
 
+        // Prevent Breathing Power
         private void applyAir (DamageSource source) {
             this.setAir(((LivingEntityAccessor)this).invokeNextAirUnderwater(this.getAir()) - ((LivingEntityAccessor)this).invokeNextAirOnLand(0));
             if (this.getAir() <= -20) {
@@ -58,6 +61,13 @@ public final class PreventBreathingMixin {
                     }
                 }
             }
+        }
+        
+        // Prevent Potion Cloud Power
+        @Inject(at=@At("RETURN"), method="isAffectedBySplashPotions", cancellable=true)
+        private void canBeSplashed (CallbackInfoReturnable<Boolean> cir) {
+            List<PreventPotionCloudPower> noPots = PowerHolderComponent.getPowers((LivingEntity)(Object)this, PreventPotionCloudPower.class);
+            cir.setReturnValue(noPots.isEmpty());
         }
     }
 }

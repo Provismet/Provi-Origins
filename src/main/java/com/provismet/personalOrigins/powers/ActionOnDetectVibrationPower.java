@@ -47,7 +47,7 @@ public class ActionOnDetectVibrationPower extends Power implements VibrationList
     }
 
     private boolean shouldExecuteFor (Entity other) {
-        if (other == this.entity) return false;
+        if (other == this.entity || other == null) return false;
         else if (this.bientityCondition == null) return true;
         return this.bientityCondition.test(new Pair<>(other, this.entity));
     }

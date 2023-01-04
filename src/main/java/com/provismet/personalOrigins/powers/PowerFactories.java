@@ -12,6 +12,7 @@ public class PowerFactories {
         register(ActionOnDetectVibrationPower.createPowerFactory());
         register(EmissivePower.createPowerFactory());
         register(ActiveItemPower.createPowerFactory());
+        register(OccludeVibrationsPower.createPowerFactory());
     }
 
     private static void register (PowerFactory<?> powerFactory) {

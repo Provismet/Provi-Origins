@@ -4,15 +4,13 @@
   "package": "com.provismet.personalOrigins.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "PreventBreathingMixin$LivingEntityAccessor",
-    "PreventBreathingMixin$PreventBreathingLivingEntity",
-    "PreventPotionCloudMixin",
-    "AdjustPassengerHeightMixin$EntityAccessor",
-    "AdjustPassengerHeightMixin$AdjustPassengerHeightEntity",
-    "ActionOnDetectGameEventMixin"
+    "EntityMixin$EntityAccessor",
+    "EntityMixin$EntityMixins",
+    "LivingEntityMixin$LivingEntityAccessor",
+    "LivingEntityMixin$LivingEntityMixins"
   ],
   "client": [
-    "EmissiveMixin"
+    "EntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
