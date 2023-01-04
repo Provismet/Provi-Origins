@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.provismet.personalOrigins.powers.PreventPotionCloud;
+import com.provismet.personalOrigins.powers.PreventPotionCloudPower;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.minecraft.entity.Entity;
@@ -23,7 +23,7 @@ public abstract class PreventPotionCloudMixin extends Entity {
 
     @Inject(at=@At("RETURN"), method="isAffectedBySplashPotions", cancellable=true)
     private void canBeSplashed (CallbackInfoReturnable<Boolean> cir) {
-        List<PreventPotionCloud> noPots = PowerHolderComponent.getPowers((LivingEntity)(Object)this, PreventPotionCloud.class);
+        List<PreventPotionCloudPower> noPots = PowerHolderComponent.getPowers((LivingEntity)(Object)this, PreventPotionCloudPower.class);
         cir.setReturnValue(noPots.isEmpty());
     }
 }

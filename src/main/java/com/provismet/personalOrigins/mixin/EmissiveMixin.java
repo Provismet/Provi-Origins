@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.provismet.personalOrigins.powers.Emissive;
+import com.provismet.personalOrigins.powers.EmissivePower;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.minecraft.client.render.entity.EntityRenderer;
@@ -21,10 +21,10 @@ public abstract class EmissiveMixin {
     public void makeEmissive (Entity entity, BlockPos pos, CallbackInfoReturnable<Integer> cir) {
         if (entity instanceof LivingEntity) {
             LivingEntity living = (LivingEntity)entity;
-            List<Emissive> emissives = PowerHolderComponent.getPowers(living, Emissive.class);
+            List<EmissivePower> emissives = PowerHolderComponent.getPowers(living, EmissivePower.class);
             if (!emissives.isEmpty()) {
                 int max = emissives.get(0).light;
-                for (Emissive p : emissives) {
+                for (EmissivePower p : emissives) {
                     if (p.light > max) max = p.light;
                 }
                 cir.setReturnValue(max);

@@ -8,7 +8,7 @@ import net.minecraft.util.registry.Registry;
 
 public class BiEntityConditionFactories {
     public static void register () {
-        register(teammate.getFactory());
+        register(TeammateCondition.getFactory());
     }
 
     private static void register (ConditionFactory<Pair<Entity,Entity>> conditionFactory) {

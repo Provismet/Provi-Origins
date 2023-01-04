@@ -8,10 +8,10 @@ import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.LivingEntity;
 
 @SuppressWarnings("rawtypes")
-public class AdjustPassengerHeight extends Power {
+public class AdjustPassengerHeightPower extends Power {
     public final Double offset;
 
-    public AdjustPassengerHeight(PowerType<?> type, LivingEntity entity, Double offset) {
+    public AdjustPassengerHeightPower(PowerType<?> type, LivingEntity entity, Double offset) {
         super(type, entity);
         this.offset = offset;
     }
@@ -20,7 +20,7 @@ public class AdjustPassengerHeight extends Power {
         return new PowerFactory<>(Powers.identifier("passenger_height"),
             new SerializableData()
             .add("offset", SerializableDataTypes.DOUBLE),
-            data -> (type, player) -> new AdjustPassengerHeight(type, player, data.getDouble("offset")))
+            data -> (type, player) -> new AdjustPassengerHeightPower(type, player, data.getDouble("offset")))
             .allowCondition();
     }
 }

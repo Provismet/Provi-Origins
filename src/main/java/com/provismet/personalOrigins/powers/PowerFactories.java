@@ -6,11 +6,11 @@ import net.minecraft.util.registry.Registry;
 
 public class PowerFactories {
     public static void register () {
-        register(PreventBreathing.createPowerFactory());
-        register(PreventPotionCloud.createPowerFactory());
-        register(AdjustPassengerHeight.createPowerFactory());
-        register(ActionOnDetectVibration.createPowerFactory());
-        register(Emissive.createPowerFactory());
+        register(PreventBreathingPower.createPowerFactory());
+        register(PreventPotionCloudPower.createPowerFactory());
+        register(AdjustPassengerHeightPower.createPowerFactory());
+        register(ActionOnDetectVibrationPower.createPowerFactory());
+        register(EmissivePower.createPowerFactory());
         register(ActiveItemPower.createPowerFactory());
     }
 

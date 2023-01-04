@@ -8,12 +8,12 @@ import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.LivingEntity;
 
 @SuppressWarnings("rawtypes")
-public class Emissive extends Power {
+public class EmissivePower extends Power {
     public static final String LIGHT = "light";
 
     public final int light;
 
-    public Emissive(PowerType<?> type, LivingEntity entity, int light) {
+    public EmissivePower(PowerType<?> type, LivingEntity entity, int light) {
         super(type, entity);
         this.light = light;
     }
@@ -22,7 +22,7 @@ public class Emissive extends Power {
         return new PowerFactory<>(Powers.identifier("emissive"),
         new SerializableData()
         .add(LIGHT, SerializableDataTypes.INT),
-        data -> (type, player) -> new Emissive(type, player, data.getInt(LIGHT)))
+        data -> (type, player) -> new EmissivePower(type, player, data.getInt(LIGHT)))
         .allowCondition();
     }
 }

@@ -9,14 +9,14 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 
 @SuppressWarnings("rawtypes")
-public class PreventBreathing extends Power {
+public class PreventBreathingPower extends Power {
     private static final String DAMAGE_SOURCE = "damage_source";
     private static final String RESPECT_BREATHING = "respect_water_breathing";
 
     private final DamageSource damageSource;
     public final boolean respectWaterBreathing;
 
-    public PreventBreathing (PowerType<?> type, LivingEntity entity, DamageSource damageSource, boolean respectWaterBreathing) {
+    public PreventBreathingPower (PowerType<?> type, LivingEntity entity, DamageSource damageSource, boolean respectWaterBreathing) {
         super(type, entity);
         this.damageSource = damageSource;
         this.respectWaterBreathing = respectWaterBreathing;
@@ -31,7 +31,7 @@ public class PreventBreathing extends Power {
             new SerializableData()
             .add(DAMAGE_SOURCE, SerializableDataTypes.DAMAGE_SOURCE)
             .add(RESPECT_BREATHING, SerializableDataTypes.BOOLEAN, true),
-            data -> (type, player) -> new PreventBreathing(type, player, ((DamageSource)data.get(DAMAGE_SOURCE)), data.getBoolean(RESPECT_BREATHING)))
+            data -> (type, player) -> new PreventBreathingPower(type, player, ((DamageSource)data.get(DAMAGE_SOURCE)), data.getBoolean(RESPECT_BREATHING)))
             .allowCondition();
     }
 }

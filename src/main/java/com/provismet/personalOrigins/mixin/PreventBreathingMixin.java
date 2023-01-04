@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.provismet.personalOrigins.powers.PreventBreathing;
+import com.provismet.personalOrigins.powers.PreventBreathingPower;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.minecraft.entity.Entity;
@@ -46,11 +46,11 @@ public final class PreventBreathingMixin {
         @Inject(at=@At("TAIL"), method="tick")
         private void tick (CallbackInfo info) {
             LivingEntity living = (LivingEntity)(Object)this;
-            List<PreventBreathing> noBreathes = PowerHolderComponent.getPowers(living, PreventBreathing.class);
+            List<PreventBreathingPower> noBreathes = PowerHolderComponent.getPowers(living, PreventBreathingPower.class);
             if (!noBreathes.isEmpty()) {
                 if (!living.hasStatusEffect(StatusEffects.WATER_BREATHING)) applyAir(noBreathes.get(0).getDamageSource());
                 else {
-                    for (PreventBreathing powerInstance : noBreathes) {
+                    for (PreventBreathingPower powerInstance : noBreathes) {
                         if (!powerInstance.respectWaterBreathing) {
                             applyAir(powerInstance.getDamageSource());
                             break;

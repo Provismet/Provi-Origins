@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.scoreboard.AbstractTeam;
 import net.minecraft.util.Pair;
 
-public class teammate {
+public class TeammateCondition {
     public static boolean condition (SerializableData.Instance data, Pair<Entity,Entity> pair) {
         AbstractTeam actorTeam = pair.getLeft().getScoreboardTeam();
         AbstractTeam targetTeam = pair.getRight().getScoreboardTeam();
@@ -18,6 +18,6 @@ public class teammate {
     }
 
     public static ConditionFactory<Pair<Entity,Entity>> getFactory () {
-        return new ConditionFactory<>(ProviOriginsMain.identifier("teammate"), new SerializableData(), teammate::condition);
+        return new ConditionFactory<>(ProviOriginsMain.identifier("teammate"), new SerializableData(), TeammateCondition::condition);
     }
 }

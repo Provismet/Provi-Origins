@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.provismet.personalOrigins.powers.AdjustPassengerHeight;
+import com.provismet.personalOrigins.powers.AdjustPassengerHeightPower;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.minecraft.entity.Entity;
@@ -28,7 +28,7 @@ public final class AdjustPassengerHeightMixin {
         private void adjustHeight (CallbackInfoReturnable<Double> cir) {
             if ((Object)this instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity)(Object)this;
-                List<AdjustPassengerHeight> powers = PowerHolderComponent.getPowers(living, AdjustPassengerHeight.class);
+                List<AdjustPassengerHeightPower> powers = PowerHolderComponent.getPowers(living, AdjustPassengerHeightPower.class);
 
                 if (!powers.isEmpty()) {
                     Double offset = powers.get(0).offset;

@@ -27,7 +27,7 @@ import net.minecraft.world.event.listener.GameEventListener;
 import net.minecraft.world.event.listener.VibrationListener;
 
 @SuppressWarnings("rawtypes")
-public class ActionOnDetectVibration extends Power implements VibrationListener.Callback {
+public class ActionOnDetectVibrationPower extends Power implements VibrationListener.Callback {
     private final int range;
     private final TagKey<GameEvent> acceptedEvents;
     private final Consumer<Pair<Entity, Entity>> bientityAction;
@@ -35,7 +35,7 @@ public class ActionOnDetectVibration extends Power implements VibrationListener.
     
     public final EntityGameEventHandler<VibrationListener> eventHandler;
 
-    public ActionOnDetectVibration(PowerType<?> type, LivingEntity entity, int range, TagKey<GameEvent> acceptedEvents, Consumer<Pair<Entity, Entity>> bientityAction, Predicate<Pair<Entity,Entity>> bientityCondition) {
+    public ActionOnDetectVibrationPower(PowerType<?> type, LivingEntity entity, int range, TagKey<GameEvent> acceptedEvents, Consumer<Pair<Entity, Entity>> bientityAction, Predicate<Pair<Entity,Entity>> bientityCondition) {
         super(type, entity);
         this.range = range;
         this.acceptedEvents = acceptedEvents;
@@ -88,7 +88,7 @@ public class ActionOnDetectVibration extends Power implements VibrationListener.
             .add("game_event_tag", SerializableDataTypes.GAME_EVENT_TAG, GameEventTags.WARDEN_CAN_LISTEN)
             .add(Powers.BIENTITY_ACTION, ApoliDataTypes.BIENTITY_ACTION)
             .add(Powers.BIENTITY_CONDITION, ApoliDataTypes.BIENTITY_CONDITION, null),
-            data -> (type, player) -> new ActionOnDetectVibration(type, player,
+            data -> (type, player) -> new ActionOnDetectVibrationPower(type, player,
                 data.getInt("range"),
                 data.get("game_event_tag"),
                 data.get(Powers.BIENTITY_ACTION),

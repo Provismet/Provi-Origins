@@ -11,15 +11,15 @@ import net.minecraft.entity.LivingEntity;
  * Relies on the associated mixin.
  */
 @SuppressWarnings("rawtypes")
-public class PreventPotionCloud extends Power {
-    public PreventPotionCloud (PowerType<?> type, LivingEntity entity) {
+public class PreventPotionCloudPower extends Power {
+    public PreventPotionCloudPower (PowerType<?> type, LivingEntity entity) {
         super(type, entity);
     }
 
     public static PowerFactory createPowerFactory () {
         return new PowerFactory<>(Powers.identifier("prevent_potion_cloud"),
             new SerializableData(),
-            data -> (type, player) -> new PreventPotionCloud(type, player))
+            data -> (type, player) -> new PreventPotionCloudPower(type, player))
             .allowCondition();
     }
 }
