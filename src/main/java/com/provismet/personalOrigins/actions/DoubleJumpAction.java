@@ -10,7 +10,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.Vec3d;
 
 public class DoubleJumpAction {
-    public static void action(SerializableData.Instance data, Entity entity) {
+    public static void action (SerializableData.Instance data, Entity entity) {
         if (entity instanceof LivingEntity) {
             LivingEntity living = (LivingEntity)entity;
             Vec3d currentVelocity = living.getVelocity();
@@ -19,7 +19,7 @@ public class DoubleJumpAction {
         }
     }
 
-    public static ActionFactory<Entity> getFactory() {
+    public static ActionFactory<Entity> createActionFactory () {
         return new ActionFactory<>(ProviOriginsMain.identifier("double_jump"),
             new SerializableData()
             .add("height", SerializableDataTypes.DOUBLE, Double.valueOf(2)),
