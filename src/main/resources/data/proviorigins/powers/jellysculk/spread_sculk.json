@@ -1,0 +1,66 @@
+{
+    "name": "Spreading Your Domain",
+    "description": "You can spend experience points to spread sculk to any sculk replaceable block.",
+    "type": "origins:multiple",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "[USE] with an empty hand while sneaking to active."
+        }
+    ],
+
+    "spread_sculk": {
+        "type": "origins:action_on_block_use",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "proviorigins:jellysculk/spread_sculk_timer"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "experience add @s -2 points"
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:block.sculk.spread"
+                }
+            ]
+        },
+        "block_action": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:set_block",
+                "block": "minecraft:sculk"
+            }
+        },
+        "hands": ["main_hand"],
+        "block_condition": {
+            "type": "origins:in_tag",
+            "tag": "minecraft:sculk_replaceable"
+        },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:xp_points",
+                    "comparison": ">=",
+                    "compare_to": 2
+                }
+            ]
+        }
+    },
+
+    "timer": {
+        "type": "origins:cooldown",
+        "cooldown": 30
+    }
+}

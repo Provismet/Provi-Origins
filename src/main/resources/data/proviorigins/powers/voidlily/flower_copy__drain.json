@@ -1,0 +1,206 @@
+{
+    "hidden": true,
+    "type": "origins:action_over_time",
+    "interval": 20,
+    "entity_action": {
+        "type": "origins:if_else_list",
+        "actions": [
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_allium_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_azurebluet_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 2
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_blueorchid_dandelion_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 3
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_cornflower_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 4
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_oxeye_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 5
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_poppy_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 6
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_tulips_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 7
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_wither_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 8
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_waterbreathing_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 9
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_cactus_rose_berry_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 10
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_glow_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 11
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_sugarcane_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 12
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_lily_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 13
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_wood_hud",
+                    "change": -1,
+                    "operation": "add"
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "comparison": "==",
+                    "compare_to": 14
+                }
+            }
+        ]
+    }
+}

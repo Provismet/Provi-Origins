@@ -1,0 +1,114 @@
+{
+    "name": "Water Sensitive",
+    "description": "Sources of freshwater are harmful to you and will drain Death's Vice over time before damaging your health.",
+    "type": "origins:multiple",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Freshwater is any Overworld body of water outside of an ocean or beach biome."
+        },
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/star.png",
+            "text": "Water Protection enchantments will delay this effect."
+        }
+    ],
+
+    "fresh_damage": {
+        "type": "origins:damage_over_time",
+        "damage": 3,
+        "damage_source": {
+            "name": "freshwater",
+            "bypasses_armor": true,
+            "unblockable": true
+        },
+        "onset_delay": 30,
+        "protection_enchantment": "origins:water_protection",
+        "protection_effectiveness": 0.4,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:biome",
+                    "condition": {
+                        "type": "origins:in_tag",
+                        "tag": "proviorigins:has_saltwater",
+                        "inverted": true
+                    }
+                },
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+    
+        }
+    },
+
+    "warning_overlay": {
+        "type": "origins:overlay",
+        "texture": "minecraft:textures/misc/nausea.png",
+        "strength": 0.6,
+        "red": 0.3,
+        "green": 0.7,
+        "blue": 0.3,
+        "draw_mode": "nausea",
+        "draw_phase": "below_hud",
+        "condition": {
+            "type": "origins:power_active",
+            "power": "proviorigins:decaykraken/water_sensitive_fresh_damage"
+        }
+    },
+
+    "deaths_vice_defence": {
+        "type": "origins:modify_damage_taken",
+        "self_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:decaykraken/deaths_vice",
+                    "change": -171,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "entity.squid.hurt",
+                    "volume": 0.7,
+                    "pitch": 0.65
+                },
+                {
+                    "type": "origins:emit_game_event",
+                    "event": "minecraft:splash"
+                }
+            ]
+        },
+        "damage_condition": {
+            "type": "origins:name",
+            "name": "freshwater"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "proviorigins:decaykraken/water_sensitive_fresh_damage"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:decaykraken/deaths_vice",
+                    "comparison": ">=",
+                    "compare_to": 171
+                }
+            ]
+        },
+        "modifier": {
+            "name": "Protected by DV.",
+            "operation": "set_total",
+            "value": 0
+        }
+    }
+}

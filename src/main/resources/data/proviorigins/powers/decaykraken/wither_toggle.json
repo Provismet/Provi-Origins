@@ -1,0 +1,81 @@
+{
+    "name": "Touch of Decay",
+    "description": "Consume Deaths Vice to inflict Wither II onto struck targets.",
+    "type": "origins:multiple",
+    
+    "toggle": {
+        "type": "origins:toggle",
+        "active_by_default": false,
+        "retain_state": false,
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:decaykraken/deaths_vice",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    
+    "wither_hit": {
+        "type": "origins:action_on_hit",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:apply_effect",
+                        "effect": {
+                            "effect": "minecraft:wither",
+                            "duration": 70,
+                            "amplifier": 1
+                        }
+                    }
+                },
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "proviorigins:decaykraken/deaths_vice",
+                        "change": -25,
+                        "operation": "add"
+                    }
+                }
+            ]
+        },
+        "bientity_condition": {
+            "type": "origins:actor_condition",
+            "condition": {
+                "type": "origins:power_active",
+                "power": "proviorigins:decaykraken/wither_toggle_toggle"
+            }
+        }
+    },
+    
+    "visual_overlay": {
+        "type": "origins:overlay",
+        "texture": "minecraft:textures/misc/nausea.png",
+        "strength": 0.8,
+        "red": 0.7,
+        "green": 0.3,
+        "blue": 0.3,
+        "draw_mode": "nausea",
+        "draw_phase": "below_hud",
+        "condition": {
+            "type": "origins:power_active",
+            "power": "proviorigins:decaykraken/wither_toggle_toggle"
+        }
+    },
+    
+    "particles": {
+        "type": "origins:particle",
+        "particle": "minecraft:sculk_soul",
+        "frequency": 8,
+        "condition": {
+            "type": "origins:power_active",
+            "power": "proviorigins:decaykraken/wither_toggle_toggle"
+        }
+    }
+}

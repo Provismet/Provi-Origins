@@ -10,16 +10,16 @@
   ],
 
   "license": "Apache-2.0",
-  "icon": "assets/provi_custom_origins/icon.png",
+  "icon": "assets/proviorigins/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.provismet.personalOrigins.ProviOriginsMain"
+      "com.provismet.proviorigins.ProviOriginsMain"
     ]
   },
   "mixins": [
-    "provi_custom_origins.mixins.json"
+    "proviorigins.mixins.json"
   ],
 
   "depends": {

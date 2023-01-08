@@ -1,0 +1,54 @@
+{
+    "name": "Broken Wings",
+    "description": "You have natural Elytra wings, but your wings are imperfect, allowing flight only in short bursts.",
+    "type": "origins:multiple",
+
+    "flight_bar": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 45,
+        "start_value": 45,
+        "hud_render": {
+            "bar_index": 4
+        }
+    },
+
+    "flight_drain": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:if_else",
+            "if_action": {
+                "type": "origins:change_resource",
+                "resource": "proviorigins:drakling/short_flight_flight_bar",
+                "change": -1,
+                "operation": "add"
+            },
+            "else_action": {
+                "type": "origins:change_resource",
+                "resource": "proviorigins:drakling/short_flight_flight_bar",
+                "change": 1,
+                "operation": "add"
+            },
+            "condition": {
+                "type": "origins:fall_flying"
+            }
+        }
+    },
+
+    "elytra": {
+        "type": "origins:elytra_flight",
+        "render_elytra": true,
+        "texture_location": "minecraft:textures/block/obsidian.png"
+    },
+    
+    "locked_elytra": {
+        "type": "origins:prevent_elytra_flight",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:drakling/short_flight_flight_bar",
+            "compare_to": 0,
+            "comparison": "=="
+        }
+    }
+}

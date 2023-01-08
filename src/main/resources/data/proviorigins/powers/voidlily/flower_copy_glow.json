@@ -1,0 +1,98 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+
+    "passive": {
+        "type": "origins:self_glow",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:voidlily/flower_copy__resource",
+            "comparison": "==",
+            "compare_to": 11
+        }
+    },
+
+    "consume": {
+        "type": "proviorigins:active_item",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "change": 11,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_glow_hud",
+                    "change": 600,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.illusioner.prepare_mirror",
+                    "pitch": 2
+                },
+                {
+                    "type": "origins:emit_game_event",
+                    "event": "minecraft:equip"
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:voidlily/grants_glow"
+            }
+        }
+    },
+
+    "tooltip": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:voidlily/grants_glow"
+            }
+        },
+        "text": {
+            "translate": "tooltip.voidlily.grants_glow"
+        }
+    },
+    
+    "hud": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 600,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "proviorigins:textures/gui/voidlily_resources.png",
+            "bar_index": 11,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "proviorigins:voidlily/flower_copy__resource",
+                "comparison": "==",
+                "compare_to": 11
+            }
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_glow_hud",
+                    "change": 600,
+                    "operation": "set"
+                }
+            ]
+        }
+    }
+}

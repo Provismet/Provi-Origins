@@ -1,6 +1,6 @@
 {
-    "replace": false,
     "values": [
+        "minecraft:soul_lantern",
         "proviorigins:kraken_soul_lantern"
     ]
 }

@@ -1,0 +1,141 @@
+{
+    "name": "Vibratory Sight",
+    "description": "You see entities around you through their vibrations. Sculk Sensors and Shriekers can also extend their signals to you, revealing entities they detect.",
+    "type": "origins:multiple",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Team members and tamed animals are always visible."
+        }
+    ],
+
+    "tamed_sight": {
+        "type": "origins:entity_glow",
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:owner"
+                },
+                {
+                    "type": "origins:distance",
+                    "comparison": "<=",
+                    "compare_to": 112
+                }
+            ]
+        },
+        "use_teams": false,
+        "red": 0.0,
+        "blue": 0.0
+    },
+
+    "detection": {
+        "type": "proviorigins:action_on_detect_vibration",
+        "range": 32,
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:execute_command",
+                "command": "scoreboard players set @s jellysculk_counter 0"
+            }
+        },
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:undirected",
+                    "condition": {
+                        "type": "origins:owner"
+                    },
+                    "inverted": true
+                },
+                {
+                    "type": "origins:actor_condition",
+                    "condition": {
+                        "type": "origins:in_tag",
+                        "tag": "proviorigins:jellysculk/bypass_detection_check"
+                    },
+                    "inverted": true
+                }
+            ]
+        }
+    },
+
+    "on_hit": {
+        "type": "origins:target_action_on_hit",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "scoreboard players set @s jellysculk_counter 0"
+        }
+    },
+
+    "when_hit": {
+        "type": "origins:attacker_action_when_hit",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "scoreboard players set @s jellysculk_counter 0"
+        }
+    },
+
+    "scoreboard_vision": {
+        "type": "origins:entity_glow",
+        "entity_condition": {
+            "type": "origins:living"
+        },
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:owner",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:distance",
+                    "comparison": "<=",
+                    "compare_to": 112
+                }
+            ]
+        }
+    },
+
+    "cannot_see_others": {
+        "type": "origins:prevent_entity_render",
+        "entity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:living"
+                },
+                {
+                    "type": "origins:power",
+                    "power": "proviorigins:jellysculk/is_detected",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:in_tag",
+                    "tag": "proviorigins:jellysculk/bypass_detection_check",
+                    "inverted": true
+                }
+            ]
+        },
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:owner",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:distance",
+                    "comparison": ">=",
+                    "compare_to": "0.1"
+                },
+                {
+                    "type": "proviorigins:teammate",
+                    "inverted": true
+                }
+            ]
+        }
+    }
+}

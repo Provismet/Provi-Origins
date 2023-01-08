@@ -1,0 +1,18 @@
+{
+    "powers": [
+        "proviorigins:drakling/short_flight",
+        "origins:fire_immunity",
+        "proviorigins:drakling/chain_crafting",
+        "origins:light_armor",
+        "origins:carnivore",
+        "origins:more_exhaustion",
+        "proviorigins:drakling/slow_swim",
+        "proviorigins:drakling/enderdragon_mandatory",
+        "proviorigins:drakling/dragon_evolution",
+        "extrade:beastly"
+    ],
+    "icon": "minecraft:dragon_egg",
+    "impact": 2,
+    "name": "Drakling",
+    "description": "An emergent dragon, immature and yet brimming with potential."
+}

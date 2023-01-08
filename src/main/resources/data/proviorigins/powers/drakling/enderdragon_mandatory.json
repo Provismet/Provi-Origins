@@ -1,0 +1,27 @@
+{
+    "name": "Draconic Pull",
+    "description": "The Ender Dragon beckons for you. Your flight stamina decreases rapidly when attempting to flee the dragon.",
+    "type": "origins:action_over_time",
+    "interval": 20,
+    "entity_action": {
+        "type": "origins:change_resource",
+        "resource": "proviorigins:drakling/short_flight_flight_bar",
+        "change": -11,
+        "operation": "add"
+    },
+    "condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:dimension",
+                "dimension": "minecraft:the_end"
+            },
+            {
+                "type": "origins:command",
+                "command": "execute if entity @e[type=minecraft:ender_dragon,distance=128..]",
+                "comparison": ">=",
+                "compare_to": 1
+            }
+        ]
+    }
+}

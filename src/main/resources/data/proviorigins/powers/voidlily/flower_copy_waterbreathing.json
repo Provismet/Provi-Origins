@@ -1,0 +1,122 @@
+{
+    "name": "Flora Mimicry",
+    "description": "You may gain mimicry of any compatible plant held in your main hand, consuming the plant in the process. Mimicries grant buffs and last for a duration, until death, or until overridden by another mimicry.",
+    "type": "origins:multiple",
+
+    "passive": {
+        "type": "origins:stacking_status_effect",
+        "min_stacks": -1,
+        "max_stacks": 1,
+        "duration_per_stack": 100,
+        "effect": {
+            "effect": "minecraft:water_breathing",
+            "show_particles": false,
+            "is_ambient": true
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:voidlily/flower_copy__resource",
+            "comparison": "==",
+            "compare_to": 9
+        }
+    },
+
+    "particles": {
+        "type": "origins:particle",
+        "particle": {
+            "type": "minecraft:dust",
+            "params": "0.965 0.965 0.965 1"
+        },
+        "frequency": 8,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:voidlily/flower_copy__resource",
+            "comparison": "==",
+            "compare_to": 9
+        }
+    },
+
+    "consume": {
+        "type": "proviorigins:active_item",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "change": 9,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_waterbreathing_hud",
+                    "change": 300,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.illusioner.prepare_mirror",
+                    "pitch": 2
+                },
+                {
+                    "type": "origins:emit_game_event",
+                    "event": "minecraft:equip"
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:voidlily/grants_water_breathing"
+            }
+        }
+    },
+
+    "tooltip": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:voidlily/grants_water_breathing"
+            }
+        },
+        "text": {
+            "translate": "tooltip.voidlily.grants_water_breathing"
+        }
+    },
+    
+    "hud": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 15,
+        "start_value": 15,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "proviorigins:textures/gui/voidlily_resources.png",
+            "bar_index": 9,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "proviorigins:voidlily/flower_copy__resource",
+                "comparison": "==",
+                "compare_to": 9
+            }
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy__resource",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:voidlily/flower_copy_waterbreathing_hud",
+                    "change": 15,
+                    "operation": "set"
+                }
+            ]
+        }
+    }
+}
