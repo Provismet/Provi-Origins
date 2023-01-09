@@ -25,7 +25,7 @@
 	],
 	"icon": "minecraft:nether_star",
 	"impact": 3,
-	"name": "Embodiment of Decay",
-	"description": "Slaying the Wither threefold has enhanced your connection to death, granting you access to new skills and an immunity to freshwater.",
+	"name": "power.proviorigins.decaykraken.evolved.name",
+	"description": "power.proviorigins.decaykraken.evolved.description",
     "unchoosable": true
 }

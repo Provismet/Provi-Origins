@@ -1,16 +1,15 @@
 {
-    "name": "Longing Embrace",
-    "description": "Regain Death's Vice when within 5 blocks of any soul- block or when holding a soul lantern in your hand. This bonus is increased in the Nether and further increased in Soul Sand Valleys.",
+    "name": "power.proviorigins.decaykraken.deaths_vice_recharge.name",
+    "description": "power.proviorigins.decaykraken.deaths_vice_recharge.desc",
     "type": "origins:multiple",
     "badges": [
         {
-            "type": "origins:tooltip",
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "For quality of life purposes, you may craft Soul Lanterns into a unique version that cannot be placed but grants the same held effects."
+            "text": "power.proviorigins.decaykraken.deaths_vice_recharge.badge"
         },
         {
             "type": "origins:crafting_recipe",
-            "sprite": "minecraft:textures/item/soul_lantern.png",
+            "sprite": "origins:textures/gui/badge/recipe.png",
             "recipe": {
                 "id": "proviorigins:decaykraken/qol_lantern_example",
                 "type": "minecraft:crafting_shapeless",

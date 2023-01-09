@@ -1,7 +1,8 @@
 {
-    "name": "Born A Lily",
-    "description": "You have natural mimicry of lilies, inflicting poison upon struck entities whilst no other mimicry is active.\nAt any time you may forgo your current mimicry and return to this default state.",
+    "name": "power.proviorigins.voidlily.floral_reset.name",
+    "description": "power.proviorigins.voidlily.floral_reset.desc",
     "type": "origins:multiple",
+
     "passive": {
         "type": "origins:target_action_on_hit",
         "entity_action": {
@@ -18,14 +19,10 @@
             "compare_to": 0
         }
     },
+
     "consume": {
         "type": "origins:active_self",
-        "cooldown": 20,
-        "hud_render": {
-            "should_render": true,
-            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
-            "bar_index": 9
-        },
+        "cooldown": 10,
         "entity_action": {
             "type": "origins:and",
             "actions": [
@@ -44,6 +41,7 @@
             "key": "key.origins.secondary_active"
         }
     },
+
     "hud": {
         "type": "origins:resource",
         "min": 0,

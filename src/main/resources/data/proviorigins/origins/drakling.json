@@ -13,6 +13,6 @@
     ],
     "icon": "minecraft:dragon_egg",
     "impact": 2,
-    "name": "Drakling",
-    "description": "An emergent dragon, immature and yet brimming with potential."
+    "name": "power.proviorigins.drakling.name",
+    "description": "power.proviorigins.drakling.description"
 }

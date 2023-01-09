@@ -1,12 +1,11 @@
 {
-    "name": "Vibratory Sight",
-    "description": "You see entities around you through their vibrations. Sculk Sensors and Shriekers can also extend their signals to you, revealing entities they detect.",
+    "name": "power.proviorigins.jellysculk.entity_detect.name",
+    "description": "power.proviorigins.jellysculk.entity_detect.desc",
     "type": "origins:multiple",
     "badges": [
         {
-            "type": "origins:tooltip",
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "Team members and tamed animals are always visible."
+            "text": "power.proviorigins.jellysculk.entity_detect.badge"
         }
     ],
 

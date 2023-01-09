@@ -1,6 +1,6 @@
 {
-    "name": "Amphibious",
-    "description": "You can breathe in both air and water.",
+    "name": "power.proviorigins.decaykraken.amphibious.name",
+    "description": "power.proviorigins.decaykraken.amphibious.desc",
     "type": "origins:stacking_status_effect",
     "min_stacks": -1,
     "max_stacks": 1,

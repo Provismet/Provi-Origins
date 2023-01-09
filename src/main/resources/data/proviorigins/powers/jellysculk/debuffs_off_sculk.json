@@ -1,6 +1,6 @@
 {
-    "name": "Away From Home",
-    "description": "You are afflicted with darkness when not standing on sculk.",
+    "name": "power.proviorigins.jellysculk.debuffs_off_sculk.name",
+    "description": "power.proviorigins.jellysculk.debuffs_off_sculk.desc",
     "type": "origins:stacking_status_effect",
     "effect": {
         "effect": "minecraft:darkness",

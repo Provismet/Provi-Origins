@@ -1,6 +1,6 @@
 {
-    "name": "Forge Master",
-    "description": "You can craft chainmail armour.",
+    "name": "power.proviorigins.drakling.chain_crafting.name",
+    "description": "power.proviorigins.drakling.chain_crafting.desc",
     "type": "origins:multiple",
 
     "head": {

@@ -1,6 +1,6 @@
 {
-    "name": "Irregular Chemistry",
-    "description": "You are unaffected by potions and cannot drink them.",
+    "name": "power.proviorigins.voidlily.no_potions.name",
+    "description": "power.proviorigins.voidlily.no_potions.desc",
     "type": "origins:prevent_item_use",
     "item_condition": {
         "type": "origins:ingredient",

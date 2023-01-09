@@ -1,6 +1,6 @@
 {
-    "name": "Large Body",
-    "description": "You have grown and are now 3 blocks tall.",
+    "name": "power.proviorigins.drakling.taller.name",
+    "description": "power.proviorigins.drakling.taller.desc",
     "type": "origins:action_on_callback",
     "entity_action_gained": {
         "type": "origins:and",

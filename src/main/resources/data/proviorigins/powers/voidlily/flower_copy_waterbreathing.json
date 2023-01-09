@@ -1,6 +1,5 @@
 {
-    "name": "Flora Mimicry",
-    "description": "You may gain mimicry of any compatible plant held in your main hand, consuming the plant in the process. Mimicries grant buffs and last for a duration, until death, or until overridden by another mimicry.",
+    "hidden": true,
     "type": "origins:multiple",
 
     "passive": {
@@ -81,7 +80,7 @@
             }
         },
         "text": {
-            "translate": "tooltip.voidlily.grants_water_breathing"
+            "translate": "tooltip.proviorigins.voidlily.grants_water_breathing"
         }
     },
     

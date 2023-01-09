@@ -1,6 +1,6 @@
 {
-    "name": "Embodying Decay",
-    "description": "Your withering touch has been enhanced and is now permanently active at a greatly reduced cost.",
+    "name": "power.proviorigins.decaykraken.wither_hit.name",
+    "description": "power.proviorigins.decaykraken.wither_hit.desc",
     "type": "origins:action_on_hit",
     "bientity_action": {
         "type": "origins:and",

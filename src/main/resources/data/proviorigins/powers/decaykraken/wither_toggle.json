@@ -1,6 +1,6 @@
 {
-    "name": "Touch of Decay",
-    "description": "Consume Deaths Vice to inflict Wither II onto struck targets.",
+    "name": "power.proviorigins.decaykraken.wither_toggle.name",
+    "description": "power.proviorigins.decaykraken.wither_toggle.desc",
     "type": "origins:multiple",
     
     "toggle": {

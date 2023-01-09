@@ -1,6 +1,6 @@
 {
-    "name": "Floaty Body",
-    "description": "You can double jump.",
+    "name": "power.proviorigins.jellysculk.double_jump.name",
+    "description": "power.proviorigins.jellysculk.double_jump.desc",
     "type": "origins:multiple",
 
     "jump_cooldown": {

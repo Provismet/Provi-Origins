@@ -1,6 +1,6 @@
 {
-    "name": "Broken Wings",
-    "description": "You have natural Elytra wings, but your wings are imperfect, allowing flight only in short bursts.",
+    "name": "power.proviorigins.drakling.short_flight.name",
+    "description": "power.proviorigins.drakling.short_flight.desc",
     "type": "origins:multiple",
 
     "flight_bar": {

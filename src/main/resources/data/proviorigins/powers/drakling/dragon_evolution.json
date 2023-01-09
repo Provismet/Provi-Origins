@@ -1,6 +1,6 @@
 {
-    "name": "Becoming Complete",
-    "description": "Wear a dragon head to begin your evolution.",
+    "name": "power.proviorigins.drakling.dragon_evolution.name",
+    "description": "power.proviorigins.drakling.dragon_evolution.desc",
     "type": "origins:multiple",
 
     "tooltip": {
@@ -11,7 +11,7 @@
                 "item": "minecraft:dragon_head"
             }
         },
-        "text": "Wear the flesh of your ancestors and gain their strength."
+        "text": "power.proviorigins.drakling.dragon_head"
     },
 
     "evolution_bar": {

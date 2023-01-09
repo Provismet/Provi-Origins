@@ -1,15 +1,14 @@
 {
-    "name": "Mountable",
-    "description": "Your increased size and power allows lighter players to ride you. This holds your strength, preventing you from breaking or using blocks.",
+    "name": "power.proviorigins.drakling.ridable.name",
+    "description": "power.proviorigins.drakling.ridable.desc",
     "badges": [
         {
-            "type": "origins:tooltip",
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "Players less than or equal to standard height may ride you if they have no passengers."
+            "text": "power.proviorigins.drakling.ridable.badge.1"
         },
         {
             "sprite": "origins:textures/gui/badge/active.png",
-            "text": "[SNEAK] to force dismount."
+            "text": "power.proviorigins.drakling.ridable.badge.2"
         }
     ],
     "type": "origins:multiple",

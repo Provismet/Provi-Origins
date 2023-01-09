@@ -25,6 +25,6 @@
 	],
 	"icon": "minecraft:wither_skeleton_skull",
 	"impact": 3,
-	"name": "Kraken of Decay",
-	"description": "A vagrant kraken strays from death, still grasping onto its remnant power."
+	"name": "power.proviorigins.decaykraken.name",
+	"description": "power.proviorigins.decaykraken.description"
 }

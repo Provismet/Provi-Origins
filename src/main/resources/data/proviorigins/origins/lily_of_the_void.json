@@ -35,6 +35,6 @@
 	],
 	"icon": "minecraft:chorus_fruit",
 	"impact": 3,
-	"name": "Lily of The Void",
-	"description": "Grown from a Void Flower rooted on the skybox, you are connected both to nature and to oblivion."
+	"name": "power.proviorigins.voidlily.name",
+	"description": "power.proviorigins.voidlily.description"
 }

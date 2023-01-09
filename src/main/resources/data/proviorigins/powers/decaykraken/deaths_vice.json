@@ -1,6 +1,6 @@
 {
-    "name": "Death's Vice",
-    "description": "Gain access to a resource called Death's Vice that drains slowly over time.",
+    "name": "power.proviorigins.decaykraken.deaths_vice.name",
+    "description": "power.proviorigins.decaykraken.deaths_vice.desc",
     "type": "origins:resource",
     "min": 0,
     "max": 1200,

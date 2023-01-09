@@ -1,6 +1,6 @@
 {
-    "name": "Abyssal Collapse",
-    "description": "The fabric of the Nether disagrees with you, preventing you from breathing whilst there.",
+    "name": "power.proviorigins.voidlily.nether_air.name",
+    "description": "power.proviorigins.voidlily.nether_air.desc",
     "type": "proviorigins:prevent_breathing",
     "damage_source": {
         "name": "badDimension",

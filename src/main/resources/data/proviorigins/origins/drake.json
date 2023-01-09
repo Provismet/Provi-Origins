@@ -15,6 +15,6 @@
     "icon": "minecraft:dragon_head",
     "impact": 2,
     "unchoosable": true,
-    "name": "Drake",
-    "description": "The head of your predecessor has enhanced your growth, you alone soar as the ruler of these skies."
+    "name": "power.proviorigins.drakling.evolved.name",
+    "description": "power.proviorigins.drakling.evolved.description"
 }

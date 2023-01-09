@@ -1,6 +1,6 @@
 {
-    "name": "Pollination",
-    "description": "Nearby bees pollinate you, granting saturation and blinding you in the process.",
+    "name": "power.proviorigins.voidlily.pollination.name",
+    "description": "power.proviorigins.voidlily.pollination.desc",
     "type": "origins:action_over_time",
     "interval": 10,
     "entity_action": {

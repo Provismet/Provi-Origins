@@ -1,17 +1,15 @@
 {
-    "name": "Water Sensitive",
-    "description": "Sources of freshwater are harmful to you and will drain Death's Vice over time before damaging your health.",
+    "name": "power.proviorigins.decaykraken.water_sensitive.name",
+    "description": "power.proviorigins.decaykraken.water_sensitive.desc",
     "type": "origins:multiple",
     "badges": [
         {
-            "type": "origins:tooltip",
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "Freshwater is any Overworld body of water outside of an ocean or beach biome."
+            "text": "power.proviorigins.decaykraken.water_sensitive.badge.1"
         },
         {
-            "type": "origins:tooltip",
             "sprite": "origins:textures/gui/badge/star.png",
-            "text": "Water Protection enchantments will delay this effect."
+            "text": "power.proviorigins.decaykraken.water_sensitive.badge.2"
         }
     ],
 

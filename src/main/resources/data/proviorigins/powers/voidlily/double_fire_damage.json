@@ -1,6 +1,6 @@
 {
-    "name": "Highly Flammable",
-    "description": "You take double damage from fire and lava.",
+    "name": "power.proviorigins.voidlily.double_fire_damage.name",
+    "description": "power.proviorigins.voidlily.double_fire_damage.desc",
     "type": "origins:modify_damage_taken",
     "damage_condition": {
         "type": "origins:fire"

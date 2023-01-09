@@ -14,6 +14,6 @@
     ],
     "icon": "minecraft:sculk_sensor",
     "impact": 3,
-    "name": "Jelly Sculk",
-    "description": "A jellyfish sculk creature."
+    "name": "power.proviorigins.jellysculk.name",
+    "description": "power.proviorigins.jellysculk.description"
 }

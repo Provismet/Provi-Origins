@@ -1,6 +1,6 @@
 {
-    "name": "Silent Steps",
-    "description": "None of your actions emit vibrations.",
+    "name": "power.proviorigins.jellysculk.no_game_events.name",
+    "description": "power.proviorigins.jellysculk.no_game_events.desc",
     "type": "origins:multiple",
 
     "prevent_most": {

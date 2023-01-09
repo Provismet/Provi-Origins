@@ -1,6 +1,6 @@
 {
-    "name": "Three Black Hearts",
-    "description": "Kill three Withers within 3 minutes of each other to evolve, granting immunity to freshwater and new uses for Death's Vice.",
+    "name": "power.proviorigins.decaykraken.wither_evolve.name",
+    "description": "power.proviorigins.decaykraken.wither_evolve.desc",
     "type": "origins:multiple",
     "counter1": {
         "type": "origins:cooldown",

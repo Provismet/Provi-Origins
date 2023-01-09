@@ -1,6 +1,6 @@
 {
-    "name": "Poor Swimmer",
-    "description": "You swim very slowly.",
+    "name": "power.proviorigins.drakling.slow_swim.name",
+    "description": "power.proviorigins.drakling.slow_swim.desc",
     "type": "origins:modify_swim_speed",
     "modifier": {
         "operation": "multiply_base",

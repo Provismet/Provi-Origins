@@ -1,6 +1,6 @@
 {
-    "name": "Bioluminescence",
-    "description": "Gain a glow when submerged in water.",
+    "name": "power.proviorigins.decaykraken.water_glow.name",
+    "description": "power.proviorigins.decaykraken.water_glow.desc",
     "type": "proviorigins:emissive",
     "light": 15,
     "condition": {

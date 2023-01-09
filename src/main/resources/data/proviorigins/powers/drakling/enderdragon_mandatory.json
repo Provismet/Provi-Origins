@@ -1,6 +1,6 @@
 {
-    "name": "Draconic Pull",
-    "description": "The Ender Dragon beckons for you. Your flight stamina decreases rapidly when attempting to flee the dragon.",
+    "name": "power.proviorigins.drakling.enderdragon_mandatory.name",
+    "description": "power.proviorigins.drakling.enderdragon_mandatory.desc",
     "type": "origins:action_over_time",
     "interval": 20,
     "entity_action": {

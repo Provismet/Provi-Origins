@@ -1,6 +1,6 @@
 {
-    "name": "Grow Upon The Skybox",
-    "description": "Gain strength, speed, air, and saturation when in The End or within 4 blocks of Bedrock, Crying Obsidian, or a portal.",
+    "name": "power.proviorigins.voidlily.void_growth.name",
+    "description": "power.proviorigins.voidlily.void_growth.desc",
     "type": "origins:multiple",
     "growth": {
         "type": "origins:stacking_status_effect",

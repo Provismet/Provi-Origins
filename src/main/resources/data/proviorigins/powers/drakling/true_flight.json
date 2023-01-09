@@ -1,6 +1,6 @@
 {
-    "name": "Perfected Wings",
-    "description": "You have natural Elytra wings, now perfected you can fly freely and boost yourself in the air.",
+    "name": "power.proviorigins.drakling.true_flight.name",
+    "description": "power.proviorigins.drakling.true_flight.desc",
     "type": "origins:multiple",
     "elytra": {
         "type": "origins:elytra_flight",

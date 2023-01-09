@@ -1,6 +1,6 @@
 {
-    "name": "Slow Descent",
-    "description": "Sneaking in the air slows your descent.",
+    "name": "power.proviorigins.jellysculk.slow_fall.name",
+    "description": "power.proviorigins.jellysculk.slow_fall.desc",
     "type": "origins:multiple",
 
     "slow_falling": {

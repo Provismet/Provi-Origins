@@ -1,6 +1,6 @@
 {
-    "name": "Unfortunate Otherworld",
-    "description": "Your hunger depletes 50% faster than others.",
+    "name": "power.proviorigins.voidlily.exhaust_more.name",
+    "description": "power.proviorigins.voidlily.exhaust_more.desc",
     "type": "origins:modify_exhaustion",
     "modifier": {
         "name": "Increased Exhaustion",
