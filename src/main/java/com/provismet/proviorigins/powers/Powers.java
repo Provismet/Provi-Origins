@@ -17,6 +17,7 @@ public class Powers {
     public static final String KEY = "key";
     public static final String COOLDOWN = "cooldown";
     public static final String HUD_RENDER = "hud_render";
+    public static final String RESOURCE = "resource";
 
     // There are no "simple" powers in this mod, they would go here otherwise.
 

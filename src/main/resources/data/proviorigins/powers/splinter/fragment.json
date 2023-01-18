@@ -1,0 +1,41 @@
+{
+    "name": "power.proviorigins.splinter.fragment.name",
+    "description": "power.proviorigins.splinter.fragment.name",
+    "type": "origins:active_self",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "power.proviorigins.splinter.fragment.badge"
+        }
+    ],
+    "key": {
+        "key": "key.origins.primary_active"
+    },
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "proviorigins:summon_clone",
+                "bientity_action": {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:grant_power",
+                        "power": "proviorigins:splinter/distortion",
+                        "source": "proviorigins:splinter/fragment"
+                    }
+                }
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "proviorigins:splinter/concentration",
+                "change": -1
+            }
+        ]
+    },
+    "condition": {
+        "type": "origins:resource",
+        "resource": "proviorigins:splinter/concentration",
+        "comparison": ">=",
+        "compare_to": 1
+    }
+}

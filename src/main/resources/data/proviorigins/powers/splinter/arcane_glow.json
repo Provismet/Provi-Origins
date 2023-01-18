@@ -1,0 +1,27 @@
+{
+    "name": "power.splinter.arcane_glow.name",
+    "description": "power.splinter.arcane_glow.desc",
+    "type": "origins:multiple",
+
+    "mid_emit": {
+        "type": "proviorigins:emissive",
+        "light": 7,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:splinter/mana",
+            "comparison": ">=",
+            "compare_to": 40
+        }
+    },
+
+    "high_emit": {
+        "type": "proviorigins:emissive",
+        "light": 15,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:splinter/mana",
+            "comparison": ">=",
+            "compare_to": 80
+        }
+    }
+}

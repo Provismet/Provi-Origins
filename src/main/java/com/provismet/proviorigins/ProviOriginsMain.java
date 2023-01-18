@@ -7,6 +7,7 @@ import com.provismet.proviorigins.actions.ActionFactories;
 import com.provismet.proviorigins.conditions.bientity.BiEntityConditionFactories;
 import com.provismet.proviorigins.originTypes.decaykraken.DecayKraken;
 import com.provismet.proviorigins.originTypes.jellysculk.JellySculk;
+import com.provismet.proviorigins.originTypes.splinter.Splinter;
 import com.provismet.proviorigins.originTypes.voidlily.VoidLily;
 import com.provismet.proviorigins.powers.PowerFactories;
 
@@ -28,6 +29,7 @@ public class ProviOriginsMain implements ModInitializer {
         DecayKraken.register();
         VoidLily.register();
         JellySculk.register();
+        Splinter.register();
 
         PowerFactories.register();
         ActionFactories.register();

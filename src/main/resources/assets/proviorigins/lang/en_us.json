@@ -143,5 +143,19 @@
     "power.proviorigins.jellysculk.slow_fall.desc": "Sneaking in the air slows your descent.",
     "power.proviorigins.jellysculk.spread_sculk.name": "Spreading Your Domain",
     "power.proviorigins.jellysculk.spread_sculk.desc": "You can spend experience points to spread sculk to any sculk replaceable block.",
-    "power.proviorigins.jellysculk.spread_sculk.badge": "[USE] with an empty hand while sneaking to activate."
+    "power.proviorigins.jellysculk.spread_sculk.badge": "[USE] with an empty hand while sneaking to activate.",
+
+    "power.proviorigins.splinter.name": "Splinter",
+    "power.proviorigins.splinter.description": "A fragile warrior, but a master of deception and fragmentation. The Splinter uses summoned clones of themself and trickery to survive.",
+    "power.splinter.arcane_glow.name": "Mana Glow",
+    "power.splinter.arcane_glow.desc": "You glow based on the amount of mana you currently have.",
+    "power.splinter.brittle.name": "Brittle Body",
+    "power.splinter.brittle.desc": "You have only 5 hearts.",
+    "power.proviorigins.splinter.fragment.name": "Fragment",
+    "power.proviorigins.splinter.fragment.desc": "Summon a clone of yourself at your current location.\nCosts 1 concentration.",
+    "power.proviorigins.splinter.fragment.badge": "Clones inherit your equipment and will fight for you.\nPress [USE] on a clone to 'sit' them like an animal.",
+    "power.proviorigins.splinter.resources.name": "Arcane Energy",
+    "power.proviorigins.splinter.resources.desc": "You have access to a mana resource with which to cast spells and concentration to summon clones.",
+    "power.proviorigins.splinter.distortion.name": "Distort Their Perception",
+    "power.proviorigins.splinter.distortion.desc": "Blind enemies within a 16 block radius and create mirror images of yourself and your clones."
 }

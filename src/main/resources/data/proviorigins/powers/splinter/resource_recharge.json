@@ -1,0 +1,25 @@
+{
+    "name": "power.proviorigins.splinter.resources.name",
+    "description": "power.proviorigins.splinter.resources.desc",
+    "type": "origins:multiple",
+
+    "recharge_mana": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "proviorigins:splinter/mana",
+            "change": 1
+        }
+    },
+
+    "recharge_concentration": {
+        "type": "origins:action_over_time",
+        "interval": 600,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "proviorigins:splinter/concentration",
+            "change": 1
+        }
+    }
+}

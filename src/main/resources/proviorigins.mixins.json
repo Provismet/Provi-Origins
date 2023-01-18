@@ -7,10 +7,15 @@
     "EntityMixin$EntityAccessor",
     "EntityMixin$EntityMixins",
     "LivingEntityMixin$LivingEntityAccessor",
-    "LivingEntityMixin$LivingEntityMixins"
+    "LivingEntityMixin$LivingEntityMixins",
+    "MobEntityAccessor"
   ],
   "client": [
-    "EntityRendererMixin"
+    "EntityRendererMixin",
+    "MobEntityRendererMixin",
+    "PlayerEntityRendererMixin",
+    "EntityRenderDispatcherMixin",
+    "LivingEntityRendererAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -16,6 +16,9 @@
   "entrypoints": {
     "main": [
       "com.provismet.proviorigins.ProviOriginsMain"
+    ],
+    "client": [
+      "com.provismet.proviorigins.ProviOriginsClient"
     ]
   },
   "mixins": [

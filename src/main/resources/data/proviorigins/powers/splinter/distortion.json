@@ -1,0 +1,110 @@
+{
+    "name": "power.proviorigins.splinter.distortion.name",
+    "description": "power.proviorigins.splinter.distortion.desc",
+    "type": "origins:multiple",
+
+    "internal_cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 160
+    },
+
+    "activate_skill": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 16,
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:blindness",
+                                "duration": 160
+                            }
+                        }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "proviorigins:teammate",
+                                "inverted": true
+                            },
+                            {
+                                "type": "origins:owner",
+                                "inverted": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "proviorigins:splinter/distortion_internal_cooldown"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:splinter/mana",
+                    "change": -40
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 32,
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:trigger_cooldown",
+                            "power": "proviorigins:splinter/distortion_internal_cooldown"
+                        }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:owner"
+                            },
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:entity_type",
+                                    "entity_type": "proviorigins:player_clone"
+                                }
+                            },
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:power",
+                                    "power": "proviorigins:splinter/distortion"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:splinter/mana",
+            "comparison": ">=",
+            "compare_to": 40
+        }
+    },
+
+    "illusion_spread": {
+        "type": "proviorigins:illusioner_mirror",
+        "distance": 0.0125,
+        "resource": "proviorigins:splinter/distortion_internal_cooldown",
+        "layers": 2,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:splinter/distortion_internal_cooldown",
+            "comparison": ">=",
+            "compare_to": 1
+        }
+    }
+}

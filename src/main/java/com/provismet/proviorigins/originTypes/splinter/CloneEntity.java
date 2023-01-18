@@ -1,0 +1,411 @@
+package com.provismet.proviorigins.originTypes.splinter;
+
+import java.util.EnumSet;
+import java.util.Optional;
+import java.util.UUID;
+
+import org.jetbrains.annotations.Nullable;
+
+import com.provismet.proviorigins.ProviOriginsMain;
+import com.provismet.proviorigins.mixin.MobEntityAccessor;
+
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityData;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.Tameable;
+import net.minecraft.entity.ai.RangedAttackMob;
+import net.minecraft.entity.ai.goal.BowAttackGoal;
+import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.entity.ai.goal.RevengeGoal;
+import net.minecraft.entity.ai.goal.SwimGoal;
+import net.minecraft.entity.ai.goal.TrackTargetGoal;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
+import net.minecraft.entity.projectile.ProjectileUtil;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.scoreboard.Team;
+import net.minecraft.server.ServerConfigHandler;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
+import net.minecraft.world.World;
+
+/*
+ * Clones are "tamed" entities that are summoned by a player, as much as is possible, they have the same appearance of the original player.
+ * They are hostile because otherwise I have to implement my own version of BowAttackGoal.
+ */
+public class CloneEntity extends HostileEntity implements Tameable, RangedAttackMob {
+    private boolean canSit;
+    private boolean followOwner;
+    private boolean canAttack;
+
+    private final MeleeAttackGoal MELEE_ATTACK = new MeleeAttackGoal(this, 1.35, false);
+    private final BowAttackGoal<CloneEntity> RANGED_ATTACK = new BowAttackGoal<CloneEntity>(this, 1.35, 20, 32f); // TODO: pose the arms
+
+    private static final TrackedData<Optional<UUID>> OWNER_UUID = DataTracker.registerData(CloneEntity.class, TrackedDataHandlerRegistry.OPTIONAL_UUID);
+    private static final TrackedData<Boolean> SITTING = DataTracker.registerData(CloneEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+
+    public CloneEntity (EntityType<? extends CloneEntity> entityType, World world) {
+        super(entityType, world);
+        this.updateWeaponGoals();
+        this.experiencePoints = 0;
+    }
+    
+    @Override
+    public EntityData initialize (ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData, NbtCompound entityNbt) {
+        EntityData data = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+        this.updateWeaponGoals();
+        this.setCanPickUpLoot(false);
+
+        if (this.getScoreboardTeam() == null && !(this.getOwner() == null) && this.getOwner().getScoreboardTeam() != null && this.getOwner().getScoreboardTeam() instanceof Team team) {
+            this.getServer().getScoreboard().addPlayerToTeam(this.getEntityName(), team);
+        }
+
+        return data;
+    }
+
+    @Override
+    protected void initDataTracker () {
+        super.initDataTracker();
+        this.dataTracker.startTracking(OWNER_UUID, Optional.empty());
+        this.dataTracker.startTracking(SITTING, false);
+    }
+
+    @Override
+    protected void initGoals () {
+        super.initGoals();
+        this.goalSelector.add(0, new SwimGoal(this));
+        this.goalSelector.add(2, new FollowOwnerGoal(this));
+        // TODO: consider adding wander goals
+
+        this.targetSelector.add(0, new DefendOwnerGoal(this));
+        this.targetSelector.add(1, new FightForOwnerGoal(this));
+        this.targetSelector.add(2, new RevengeGoal(this, new Class[0]));
+    }
+
+    public static DefaultAttributeContainer.Builder createCloneAttributes () {
+        DefaultAttributeContainer.Builder attributes = HostileEntity.createMobAttributes();
+        attributes.add(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+        attributes.add(EntityAttributes.GENERIC_MAX_HEALTH, 10);
+        attributes.add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.35f);
+        attributes.add(EntityAttributes.GENERIC_FOLLOW_RANGE, 64);
+        return attributes;
+    }
+
+    @Override
+    protected boolean isDisallowedInPeaceful () {
+        return false;
+    }
+
+    @Override
+    public SoundCategory getSoundCategory () {
+        return SoundCategory.PLAYERS;
+    }
+
+    @Override
+    public boolean canPickupItem (ItemStack stack) {
+        return false;
+    }
+    
+    @Override
+    public boolean shouldRenderName () {
+        return true;
+    }
+
+    @Override
+    public void tick () {
+        super.tick();
+        if (!this.isOwned() || this.getOwner() == null || this.age > 1200) this.discard();
+    }
+
+    public boolean isOwned () {
+        return this.dataTracker.get(OWNER_UUID).isPresent();
+    }
+
+    @Nullable
+    public void setOwnerUUID (UUID uuid) {
+        if (uuid == null) this.dataTracker.set(OWNER_UUID, Optional.empty());
+        else this.dataTracker.set(OWNER_UUID, Optional.of(uuid));
+    }
+
+    @Nullable
+    public void setOwner (PlayerEntity owner) {
+        if (owner == null) {
+            this.setOwnerUUID(null);
+        }
+        else {
+            UUID uuid = owner.getUuid();
+            this.setOwnerUUID(uuid);
+        }
+    }
+
+    @Override
+    @Nullable
+    public UUID getOwnerUuid () {
+        Optional<UUID> uuid = this.dataTracker.get(OWNER_UUID);
+        if (uuid.isEmpty()) return null;
+        else return uuid.get();
+    }
+
+    @Override
+    @Nullable
+    public PlayerEntity getOwner () {
+        UUID uuid = this.getOwnerUuid();
+        if (uuid == null) return null;
+        else {
+            return this.world.getPlayerByUuid(uuid);
+        }
+    }
+
+    @Override
+    public void attack (LivingEntity target, float pullProgress) {
+        ItemStack arrowType = this.getArrowType(this.getStackInHand(ProjectileUtil.getHandPossiblyHolding(this, Items.BOW)));
+        PersistentProjectileEntity persistentProjectileEntity = this.createArrowProjectile(arrowType, pullProgress);
+        persistentProjectileEntity.setOwner(this.getOwner());
+
+        double xDirection = target.getX() - this.getX();
+        double yDirection = target.getBodyY(0.3333333333333333) - persistentProjectileEntity.getY();
+        double zDirection = target.getZ() - this.getZ();
+
+        double g = Math.sqrt(xDirection * xDirection + zDirection * zDirection);
+        persistentProjectileEntity.setVelocity(xDirection, yDirection + g * (double)0.2f, zDirection, 1.6f, 14 - this.world.getDifficulty().getId() * 4);
+
+        this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0f, 1.0f / (world.getRandom().nextFloat() * 0.4f + 1.2f) + pullProgress * 0.5f);
+        this.world.spawnEntity(persistentProjectileEntity);
+    }
+
+    public void updateWeaponGoals () {
+        final int WEAPON_GOAL_PRIORITY = 1;
+
+        if (this.world == null || this.world.isClient()) {
+            return;
+        }
+        this.goalSelector.remove(MELEE_ATTACK);
+        this.goalSelector.remove(RANGED_ATTACK);
+
+        if (this.isHolding(Items.BOW)) this.goalSelector.add(WEAPON_GOAL_PRIORITY, RANGED_ATTACK);
+        else this.goalSelector.add(WEAPON_GOAL_PRIORITY, MELEE_ATTACK);
+    }
+
+    @Override
+    public void readCustomDataFromNbt (NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        this.updateWeaponGoals();
+
+        UUID uuid;
+        if (nbt.containsUuid("Owner")) {
+            uuid = nbt.getUuid("Owner");
+        }
+        else {
+            String ownerName = nbt.getString("Owner");
+            uuid = ServerConfigHandler.getPlayerUuidByName(this.getServer(), ownerName);
+        }
+
+        if (uuid != null) this.setOwnerUUID(uuid);
+    }
+
+    @Override
+    public void writeCustomDataToNbt (NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+
+        if (this.isOwned()) nbt.putUuid("Owner", this.getOwnerUuid());
+    }
+
+    @Override
+    public ActionResult interactMob (PlayerEntity player, Hand hand) {
+        if (player == this.getOwner() && this.canSit) {
+            ActionResult result = super.interactMob(player, hand);
+            if (!result.isAccepted()) this.toggleSitting();
+            return result;
+        }
+        return ActionResult.PASS;
+    }
+
+    protected PersistentProjectileEntity createArrowProjectile (ItemStack arrow, float damageModifier) {
+        return ProjectileUtil.createArrowProjectile(this, arrow, damageModifier);
+    }
+
+    /*
+     * Full override on tryAttack so that the damage source can be redirected to be the player that owns the clone.
+     */
+    @Override
+    public boolean tryAttack (Entity target) {
+        boolean successful;
+        int fireAspect;
+        float damage = (float)this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+        float knockback = (float)this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_KNOCKBACK);
+
+        if (target instanceof LivingEntity living) {
+            damage += EnchantmentHelper.getAttackDamage(this.getMainHandStack(), living.getGroup());
+            knockback += (float)EnchantmentHelper.getKnockback(this);
+        }
+
+        if ((fireAspect = EnchantmentHelper.getFireAspect(this)) > 0) {
+            target.setOnFireFor(fireAspect * 4);
+        }
+
+        if (successful = target.damage(DamageSource.player(this.getOwner()), damage)) {
+            if (knockback > 0.0f && target instanceof LivingEntity living) {
+                living.takeKnockback(knockback * 0.5f, MathHelper.sin(this.getYaw() * ((float)Math.PI / 180)), -MathHelper.cos(this.getYaw() * ((float)Math.PI / 180)));
+                this.setVelocity(this.getVelocity().multiply(0.6, 1.0, 0.6));
+            }
+
+            if (target instanceof PlayerEntity playerEntity) {
+                ((MobEntityAccessor)this).invokeDisablePlayerShield(playerEntity, this.getMainHandStack(), playerEntity.isUsingItem() ? playerEntity.getActiveItem() : ItemStack.EMPTY);
+            }
+
+            this.applyDamageEffects(this, target);
+            this.onAttacking(target);
+        }
+
+        return successful;
+    }
+
+    @Override
+    public boolean canTarget (LivingEntity target) {
+        if (this.getOwner() == null || !target.canTakeDamage() || target == this.getOwner() || this.isSitting() || !this.canAttack ||
+            (this.getScoreboardTeam() != null && target.getScoreboardTeam() != null && this.getScoreboardTeam().isEqual(target.getScoreboardTeam())))
+                return false;
+        else if (target instanceof Tameable tameable) {
+            if (tameable.getOwner() == this.getOwner()) return false;
+        }
+        return true;
+    }
+
+    public void setCanSit (boolean value) {
+        this.canSit = value;
+    }
+
+    public void setFollowOwner (boolean value) {
+        this.followOwner = value;
+    }
+
+    public void setCanAttack (boolean value) {
+        this.canAttack = value;
+    }
+
+    public boolean isSitting () {
+        return this.dataTracker.get(SITTING);
+    }
+
+    public void toggleSitting () {
+        this.dataTracker.set(SITTING, !this.isSitting());
+    }
+
+    public void setSitting (boolean isSat) {
+        this.dataTracker.set(SITTING, isSat);
+    }
+    
+    protected abstract static class CloneGoal extends Goal {
+        protected final CloneEntity clone;
+        protected PlayerEntity owner;
+
+        protected CloneGoal (CloneEntity clone) {
+            this.clone = clone;
+        }
+
+        @Override
+        public boolean canStart() {
+            if (this.owner == null) owner = this.clone.getOwner();
+            return !this.clone.isSitting() && this.owner != null;
+        }
+    }
+
+    protected abstract static class AssistOwnerGoal extends TrackTargetGoal {
+        protected final CloneEntity clone;
+        protected PlayerEntity owner;
+        protected int timer;
+
+        protected AssistOwnerGoal (CloneEntity clone) {
+            super(clone, false);
+            this.timer = 0;
+            this.clone = clone;
+            this.setControls(EnumSet.of(Goal.Control.TARGET));
+        }
+
+        @Override
+        public boolean canStart () {
+            if (owner == null) owner = this.clone.getOwner();
+            return owner != null && !this.clone.isSitting() && this.clone.canAttack;
+        }
+    }
+
+    protected static class DefendOwnerGoal extends AssistOwnerGoal {
+        public DefendOwnerGoal (CloneEntity clone) {
+            super(clone);
+        }
+
+        @Override
+        public boolean canStart () {
+            if (super.canStart() && this.owner.getAttacker() != null && this.clone.canTarget(this.owner.getAttacker()) && this.timer != this.owner.getLastAttackedTime()) {
+                this.target = this.owner.getAttacker();
+                this.timer = this.owner.getLastAttackedTime();
+                return true;
+            }
+            return false;
+        }
+    }
+
+    protected static class FightForOwnerGoal extends AssistOwnerGoal {
+        public FightForOwnerGoal (CloneEntity clone) {
+            super(clone);
+        }
+
+        @Override
+        public boolean canStart () {
+            if (super.canStart() && this.owner.getAttacking() != null && this.clone.canTarget(this.owner.getAttacking()) && this.timer != this.owner.getLastAttackTime()) {
+                this.target = this.owner.getAttacking();
+                this.timer = this.owner.getLastAttackTime();
+                return true;
+            }
+            return false;
+        }
+    }
+
+    protected static class FollowOwnerGoal extends CloneGoal {
+        private static final double MAX_DISTANCE = 32;
+        private static final double MIN_DISTANCE = 6;
+
+        public FollowOwnerGoal (CloneEntity clone) {
+            super(clone);
+            this.setControls(EnumSet.of(Goal.Control.MOVE));
+        }
+
+        @Override
+        public boolean canStart () {
+            return super.canStart() && this.clone.followOwner && this.clone.distanceTo(this.owner) >= MAX_DISTANCE;
+        }
+        
+        @Override
+        public void start () {
+            this.clone.getNavigation().startMovingTo(this.owner, 1.0);
+        }
+
+        @Override
+        public void stop () {
+            this.clone.getNavigation().stop();
+        }
+
+        @Override
+        public boolean shouldContinue () {
+            return super.canStart() && this.clone.distanceTo(this.owner) >= MIN_DISTANCE;
+        }
+    }
+}

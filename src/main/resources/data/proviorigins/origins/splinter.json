@@ -1,0 +1,16 @@
+{
+    "powers": [
+        "proviorigins:splinter/mana",
+        "proviorigins:splinter/concentration",
+        "proviorigins:splinter/resource_recharge",
+        "proviorigins:splinter/fragment",
+        "proviorigins:splinter/distortion",
+        "proviorigins:splinter/arcane_glow",
+        "proviorigins:splinter/brittle",
+        "extrade:arcane"
+    ],
+    "icon": "minecraft:glass_pane",
+    "impact": 3,
+    "name": "power.proviorigins.splinter.name",
+    "description": "power.proviorigins.splinter.description"
+}

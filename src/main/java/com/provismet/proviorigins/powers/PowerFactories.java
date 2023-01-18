@@ -13,6 +13,7 @@ public class PowerFactories {
         register(EmissivePower.createPowerFactory());
         register(ActiveItemPower.createPowerFactory());
         register(OccludeVibrationsPower.createPowerFactory());
+        register(IllusionPower.createPowerFactory());
     }
 
     private static void register (PowerFactory<?> powerFactory) {
