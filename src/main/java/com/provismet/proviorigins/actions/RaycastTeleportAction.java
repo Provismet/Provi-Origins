@@ -57,7 +57,7 @@ public class RaycastTeleportAction {
                 CachedBlockPosition upByTwo = new CachedBlockPosition(entity.world, blockHit.getBlockPos().add(0, 2, 0), true);
 
                 if (isValid(upByOne, allowWater, allowLava) && isValid(upByTwo, allowWater, allowLava)) {
-                    entity.setPosition(blockHit.getBlockPos().getX(), blockHit.getBlockPos().getY() + 1, blockHit.getBlockPos().getZ());
+                    entity.setPosition(blockHit.getBlockPos().getX() + 0.5, blockHit.getBlockPos().getY() + 1, blockHit.getBlockPos().getZ() + 0.5);
                     if (successAction != null) successAction.accept(entity);
                 }
                 else if (failureAction != null) failureAction.accept(entity);
