@@ -1,4 +1,8 @@
 {
+    "category.proviorigins.keys": "Provi's Origins Extra Keys",
+    "key.proviorigins.tertiary_active": "Active Skill (Tertiary)",
+    "key.proviorigins.quaternary_active": "Active Skill (Quaternary)",
+
     "item.proviorigins.kraken_soul_lantern": "Kraken's Soul Lantern",
 
     "effect.proviorigins.void_poison": "Void Corruption",
