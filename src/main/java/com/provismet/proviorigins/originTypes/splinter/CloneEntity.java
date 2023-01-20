@@ -6,23 +6,26 @@ import java.util.UUID;
 
 import org.jetbrains.annotations.Nullable;
 
-import com.provismet.proviorigins.ProviOriginsMain;
 import com.provismet.proviorigins.mixin.MobEntityAccessor;
 
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.CrossbowUser;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.Tameable;
-import net.minecraft.entity.ai.RangedAttackMob;
 import net.minecraft.entity.ai.goal.BowAttackGoal;
+import net.minecraft.entity.ai.goal.CrossbowAttackGoal;
 import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.ai.goal.LookAroundGoal;
+import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.RevengeGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.TrackTargetGoal;
+import net.minecraft.entity.ai.goal.WanderAroundGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -30,9 +33,12 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
+import net.minecraft.entity.projectile.PersistentProjectileEntity.PickupPermission;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
@@ -51,16 +57,21 @@ import net.minecraft.world.World;
  * Clones are "tamed" entities that are summoned by a player, as much as is possible, they have the same appearance of the original player.
  * They are hostile because otherwise I have to implement my own version of BowAttackGoal.
  */
-public class CloneEntity extends HostileEntity implements Tameable, RangedAttackMob {
+public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser {
+    private static final double COMBAT_SPEED = 1.35;
+    private static final float SHOOTING_RANGE = 32f;
+
     private boolean canSit;
     private boolean followOwner;
     private boolean canAttack;
 
-    private final MeleeAttackGoal MELEE_ATTACK = new MeleeAttackGoal(this, 1.35, false);
-    private final BowAttackGoal<CloneEntity> RANGED_ATTACK = new BowAttackGoal<CloneEntity>(this, 1.35, 20, 32f); // TODO: pose the arms
+    private final MeleeAttackGoal MELEE_ATTACK = new MeleeAttackGoal(this, COMBAT_SPEED, false);
+    private final BowAttackGoal<CloneEntity> RANGED_ATTACK = new BowAttackGoal<CloneEntity>(this, COMBAT_SPEED, 20, SHOOTING_RANGE);
+    private final CrossbowAttackGoal<CloneEntity> CROSSBOW_ATTACK = new CrossbowAttackGoal<CloneEntity>(this, COMBAT_SPEED, SHOOTING_RANGE);
 
     private static final TrackedData<Optional<UUID>> OWNER_UUID = DataTracker.registerData(CloneEntity.class, TrackedDataHandlerRegistry.OPTIONAL_UUID);
     private static final TrackedData<Boolean> SITTING = DataTracker.registerData(CloneEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Boolean> CHARGING = DataTracker.registerData(CloneEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     public CloneEntity (EntityType<? extends CloneEntity> entityType, World world) {
         super(entityType, world);
@@ -86,6 +97,7 @@ public class CloneEntity extends HostileEntity implements Tameable, RangedAttack
         super.initDataTracker();
         this.dataTracker.startTracking(OWNER_UUID, Optional.empty());
         this.dataTracker.startTracking(SITTING, false);
+        this.dataTracker.startTracking(CHARGING, false);
     }
 
     @Override
@@ -93,7 +105,10 @@ public class CloneEntity extends HostileEntity implements Tameable, RangedAttack
         super.initGoals();
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(2, new FollowOwnerGoal(this));
-        // TODO: consider adding wander goals
+        this.goalSelector.add(3, new WanderAroundGoal(this, 0.8, 120, false));
+        this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 16f));
+        this.goalSelector.add(5, new LookAtEntityGoal(this, AnimalEntity.class, 16f));
+        this.goalSelector.add(6, new LookAroundGoal(this));
 
         this.targetSelector.add(0, new DefendOwnerGoal(this));
         this.targetSelector.add(1, new FightForOwnerGoal(this));
@@ -176,9 +191,15 @@ public class CloneEntity extends HostileEntity implements Tameable, RangedAttack
 
     @Override
     public void attack (LivingEntity target, float pullProgress) {
+        if (this.isHolding(Items.CROSSBOW)) {
+            this.shoot(this, 1.6f);
+            return;
+        }
+
         ItemStack arrowType = this.getArrowType(this.getStackInHand(ProjectileUtil.getHandPossiblyHolding(this, Items.BOW)));
-        PersistentProjectileEntity persistentProjectileEntity = this.createArrowProjectile(arrowType, pullProgress);
+        PersistentProjectileEntity persistentProjectileEntity = ProjectileUtil.createArrowProjectile(this, arrowType, pullProgress);
         persistentProjectileEntity.setOwner(this.getOwner());
+        persistentProjectileEntity.pickupType = PickupPermission.DISALLOWED;
 
         double xDirection = target.getX() - this.getX();
         double yDirection = target.getBodyY(0.3333333333333333) - persistentProjectileEntity.getY();
@@ -191,16 +212,40 @@ public class CloneEntity extends HostileEntity implements Tameable, RangedAttack
         this.world.spawnEntity(persistentProjectileEntity);
     }
 
+    public boolean isCharging () {
+        return this.dataTracker.get(CHARGING);
+    }
+
+    @Override
+    public void setCharging (boolean isCharging) {
+        this.dataTracker.set(CHARGING, isCharging);
+    }
+
+    @Override
+    public void shoot (LivingEntity target, ItemStack crossbow, ProjectileEntity projectile, float multiShotSpray) {
+        projectile.setOwner(this.getOwner());
+        if (projectile instanceof PersistentProjectileEntity persistent) {
+            persistent.pickupType = PickupPermission.DISALLOWED;
+        }
+        this.shoot(this, target, projectile, multiShotSpray, 1.6f);
+    }
+
+    @Override
+    public void postShoot () {
+        // Do nothing.
+    }
+
     public void updateWeaponGoals () {
         final int WEAPON_GOAL_PRIORITY = 1;
 
-        if (this.world == null || this.world.isClient()) {
-            return;
-        }
+        if (this.world == null || this.world.isClient()) return;
+
         this.goalSelector.remove(MELEE_ATTACK);
         this.goalSelector.remove(RANGED_ATTACK);
+        this.goalSelector.remove(CROSSBOW_ATTACK);
 
         if (this.isHolding(Items.BOW)) this.goalSelector.add(WEAPON_GOAL_PRIORITY, RANGED_ATTACK);
+        else if (this.isHolding(Items.CROSSBOW)) this.goalSelector.add(WEAPON_GOAL_PRIORITY, CROSSBOW_ATTACK);
         else this.goalSelector.add(WEAPON_GOAL_PRIORITY, MELEE_ATTACK);
     }
 
@@ -239,7 +284,9 @@ public class CloneEntity extends HostileEntity implements Tameable, RangedAttack
     }
 
     protected PersistentProjectileEntity createArrowProjectile (ItemStack arrow, float damageModifier) {
-        return ProjectileUtil.createArrowProjectile(this, arrow, damageModifier);
+        PersistentProjectileEntity projectile = ProjectileUtil.createArrowProjectile(this, arrow, damageModifier);
+        projectile.pickupType = PickupPermission.DISALLOWED;
+        return projectile;
     }
 
     /*

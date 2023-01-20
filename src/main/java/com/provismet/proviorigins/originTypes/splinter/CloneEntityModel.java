@@ -5,7 +5,13 @@ import com.provismet.proviorigins.extras.ModelLayerRegistry;
 import net.minecraft.client.model.Dilation;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.model.TexturedModelData;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.client.render.entity.model.CrossbowPosing;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.util.Arm;
+import net.minecraft.util.Hand;
 
 public class CloneEntityModel<T extends CloneEntity> extends PlayerEntityModel<T> {
     public CloneEntityModel (ModelPart root) {
@@ -30,5 +36,30 @@ public class CloneEntityModel<T extends CloneEntity> extends PlayerEntityModel<T
 
     public static TexturedModelData getTexturedModelDataOuter () {
         return TexturedModelData.of(PlayerEntityModel.getModelData(ModelLayerRegistry.ARMOR_DILATION, 0.0f), 64, 32);
+    }
+
+    @Override
+    public void animateModel (T clone, float limbAngle, float limbDistance, float tickDelta) {
+        this.rightArmPose = BipedEntityModel.ArmPose.EMPTY;
+        this.leftArmPose = BipedEntityModel.ArmPose.EMPTY;
+        ItemStack itemStack = clone.getStackInHand(Hand.MAIN_HAND);
+        if (itemStack.isOf(Items.BOW) && clone.isAttacking()) {
+            if (clone.getMainArm() == Arm.RIGHT) {
+                this.rightArmPose = BipedEntityModel.ArmPose.BOW_AND_ARROW;
+            } else {
+                this.leftArmPose = BipedEntityModel.ArmPose.BOW_AND_ARROW;
+            }
+        }
+        super.animateModel(clone, limbAngle, limbDistance, tickDelta);
+    }
+
+    @Override
+    public void setAngles (T clone, float f, float g, float h, float i, float j) {
+        super.setAngles(clone, f, g, h, i, j);
+
+        if (clone.isHolding(Items.CROSSBOW)) {
+            if (clone.isCharging()) CrossbowPosing.charge(this.rightArm, this.leftArm, clone, true);
+            else CrossbowPosing.hold(this.rightArm, this.leftArm, this.head, true);
+        }
     }
 }
