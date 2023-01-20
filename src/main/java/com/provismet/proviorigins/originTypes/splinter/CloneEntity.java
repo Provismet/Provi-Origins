@@ -431,9 +431,18 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
         private static final double MAX_DISTANCE = 32;
         private static final double MIN_DISTANCE = 6;
 
-        public FollowOwnerGoal (CloneEntity clone) {
+        private final double speed;
+
+        private int tickTimer = 0;
+
+        public FollowOwnerGoal (CloneEntity clone, double speed) {
             super(clone);
+            this.speed = speed;
             this.setControls(EnumSet.of(Goal.Control.MOVE, Goal.Control.LOOK));
+        }
+
+        public FollowOwnerGoal (CloneEntity clone) {
+            this(clone, 1.0);
         }
 
         @Override
@@ -443,7 +452,7 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
         
         @Override
         public void start () {
-            this.clone.getNavigation().startMovingTo(this.owner, 1.0);
+            this.clone.getNavigation().startMovingTo(this.owner, this.speed);
         }
 
         @Override
@@ -454,6 +463,15 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
         @Override
         public boolean shouldContinue () {
             return super.canStart() && this.clone.distanceTo(this.owner) >= MIN_DISTANCE;
+        }
+
+        @Override
+        public void tick () {
+            this.clone.getLookControl().lookAt(this.owner, 10f, this.clone.getMaxLookPitchChange());
+
+            if (this.clone.isLeashed() || this.clone.hasVehicle() || --this.tickTimer > 0) return;
+            this.tickTimer = this.getTickCount(10);
+            this.clone.getNavigation().startMovingTo(this.owner, this.speed);
         }
     }
 }
