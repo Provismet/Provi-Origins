@@ -25,7 +25,6 @@ import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.RevengeGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.TrackTargetGoal;
-import net.minecraft.entity.ai.goal.WanderAroundGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -105,7 +104,6 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
         super.initGoals();
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(2, new FollowOwnerGoal(this));
-        this.goalSelector.add(3, new WanderAroundGoal(this, 0.8, 120, false));
         this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 16f));
         this.goalSelector.add(5, new LookAtEntityGoal(this, AnimalEntity.class, 16f));
         this.goalSelector.add(6, new LookAroundGoal(this));
@@ -275,10 +273,13 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
 
     @Override
     public ActionResult interactMob (PlayerEntity player, Hand hand) {
-        if (player == this.getOwner() && this.canSit) {
-            ActionResult result = super.interactMob(player, hand);
-            if (!result.isAccepted()) this.toggleSitting();
-            return result;
+        if (player == this.getOwner()) {
+            if (this.world.isClient) return ActionResult.SUCCESS;
+
+            if (this.canSit) {
+                this.toggleSitting();
+                return ActionResult.success(false);
+            }
         }
         return ActionResult.PASS;
     }
@@ -432,7 +433,7 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
 
         public FollowOwnerGoal (CloneEntity clone) {
             super(clone);
-            this.setControls(EnumSet.of(Goal.Control.MOVE));
+            this.setControls(EnumSet.of(Goal.Control.MOVE, Goal.Control.LOOK));
         }
 
         @Override
