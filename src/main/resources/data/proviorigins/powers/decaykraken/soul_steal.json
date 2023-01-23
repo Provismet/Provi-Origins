@@ -51,9 +51,9 @@
                             "type": "origins:damage",
                             "amount": 4,
                             "source": {
-                                "name": "wither",
+                                "name": "kraken_soul_steal.player",
                                 "magic": true,
-                                "unblockable": true
+                                "bypasses_armor": true
                             }
                         },
                         {

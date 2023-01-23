@@ -12,7 +12,8 @@ import net.minecraft.util.registry.Registry;
 public class DecayKraken {
     public static final Item SOUL_LAMP = new Item(new FabricItemSettings().group(ItemGroup.MISC).maxCount(1).rarity(Rarity.RARE));
     
-    public static final DamageSource FRESHWATER = new DamageSource("freshwater").setBypassesArmor().setUnblockable();
+    public static final DamageSource FRESHWATER = new DamageSource("freshwater").setBypassesArmor();
+    public static final DamageSource SOUL_STEAL = new DamageSource("kraken_soul_steal").setUsesMagic().setBypassesArmor();
 
     public static void register () {
         Registry.register(Registry.ITEM, ProviOriginsMain.identifier("kraken_soul_lantern"), SOUL_LAMP);

@@ -50,20 +50,41 @@
                 }
             },
             {
-                "type": "origins:if_else",
-                "if_action": {
-                    "type": "origins:add_velocity",
-                    "z": 0.5,
-                    "space": "local"
-                },
-                "else_action": {
-                    "type": "origins:add_velocity",
-                    "z": 2,
-                    "space": "local"
-                },
-                "condition": {
-                    "type": "origins:fall_flying"
-                }
+                "type": "origins:if_else_list",
+                "actions": [
+                    {
+                        "action": {
+                            "type": "origins:add_velocity",
+                            "z": 0.1,
+                            "space": "local"
+                        },
+                        "condition": {
+                            "type": "origins:fall_flying"
+                        }
+                    },
+                    {
+                        "action": {
+                            "type": "origins:add_velocity",
+                            "z": 2.5,
+                            "space": "local"
+                        },
+                        "condition": {
+                            "type": "origins:submerged_in",
+                            "fluid": "minecraft:water"
+                        }
+                    },
+                    {
+                        "action": {
+                            "type": "origins:add_velocity",
+                            "z": 0.7,
+                            "space": "local"
+                        },
+                        "condition": {
+                            "type": "origins:constant",
+                            "value": true
+                        }
+                    }
+                ]
             },
             {
                 "type": "origins:change_resource",
