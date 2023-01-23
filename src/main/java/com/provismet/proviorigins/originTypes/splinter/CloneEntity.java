@@ -116,7 +116,7 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
     public static DefaultAttributeContainer.Builder createCloneAttributes () {
         DefaultAttributeContainer.Builder attributes = HostileEntity.createMobAttributes();
         attributes.add(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-        attributes.add(EntityAttributes.GENERIC_MAX_HEALTH, 10);
+        attributes.add(EntityAttributes.GENERIC_MAX_HEALTH, 20);
         attributes.add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.35f);
         attributes.add(EntityAttributes.GENERIC_FOLLOW_RANGE, 64);
         return attributes;

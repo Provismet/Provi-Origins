@@ -19,9 +19,19 @@
                 "bientity_action": {
                     "type": "origins:target_action",
                     "action": {
-                        "type": "origins:grant_power",
-                        "power": "proviorigins:splinter/distortion",
-                        "source": "proviorigins:splinter/fragment"
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:grant_power",
+                                "power": "proviorigins:splinter/distortion",
+                                "source": "proviorigins:splinter/fragment"
+                            },
+                            {
+                                "type": "origins:grant_power",
+                                "power": "proviorigins:splinter/brittle",
+                                "source": "proviorigins:splinter/fragment"
+                            }
+                        ]
                     }
                 }
             },
