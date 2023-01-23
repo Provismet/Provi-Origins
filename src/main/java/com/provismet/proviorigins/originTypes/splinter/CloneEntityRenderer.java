@@ -40,8 +40,13 @@ public class CloneEntityRenderer<T extends CloneEntity> extends BipedEntityRende
 
     @Override
     public void render (T clone, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light) {
-        this.getModel().sneaking = clone.isSitting();
-        super.render(clone, yaw, tickDelta, matrixStack, vertexConsumerProvider, light);
+        if (clone.isSitting()) {
+            matrixStack.push();
+            matrixStack.translate(0, -0.5, 0);
+            super.render(clone, yaw, tickDelta, matrixStack, vertexConsumerProvider, light);
+            matrixStack.pop();
+        }
+        else super.render(clone, yaw, tickDelta, matrixStack, vertexConsumerProvider, light);
     }
 
     @Override

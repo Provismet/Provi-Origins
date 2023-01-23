@@ -55,6 +55,8 @@ public class CloneEntityModel<T extends CloneEntity> extends PlayerEntityModel<T
 
     @Override
     public void setAngles (T clone, float f, float g, float h, float i, float j) {
+        this.riding = clone.isSitting();
+
         super.setAngles(clone, f, g, h, i, j);
 
         if (clone.isHolding(Items.CROSSBOW)) {
