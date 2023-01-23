@@ -1,0 +1,80 @@
+{
+    "name": "power.proviorigins.splinter.swap.name",
+    "description": "power.proviorigins.splinter.swap.desc",
+    "type": "origins:active_self",
+    "key": {
+        "key": "key.proviorigins.tertiary_active"
+    },
+    "entity_action": {
+        "type": "origins:if_else",
+        "condition": {
+            "type": "origins:sneaking"
+        },
+        "if_action": {
+            "type": "proviorigins:farthest_bientity",
+            "distance": 32,
+            "bientity_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "proviorigins:swap_positions",
+                        "reset_fall_height": true,
+                        "reset_velocity": true
+                    }
+                ]
+            },
+            "bientity_condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:owner"
+                    },
+                    {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:entity_type",
+                            "entity_type": "proviorigins:player_clone"
+                        }
+                    }
+                ]
+            }
+        },
+        "else_action": {
+            "type": "origins:raycast",
+            "distance": 32,
+            "block": false,
+            "entity": true,
+            "bientity_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "proviorigins:swap_positions",
+                        "reset_fall_height": true,
+                        "reset_velocity": true
+                    }
+                ]
+            },
+            "bientity_condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:owner"
+                    },
+                    {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:entity_type",
+                            "entity_type": "proviorigins:player_clone"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "condition": {
+        "type": "origins:resource",
+        "resource": "proviorigins:splinter/mana",
+        "comparison": ">=",
+        "compare_to": 40
+    }
+}

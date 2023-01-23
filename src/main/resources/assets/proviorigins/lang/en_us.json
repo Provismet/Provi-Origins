@@ -161,5 +161,7 @@
     "power.proviorigins.splinter.resources.name": "Arcane Energy",
     "power.proviorigins.splinter.resources.desc": "You have access to a mana resource with which to cast spells and concentration to summon clones.",
     "power.proviorigins.splinter.distortion.name": "Distort Their Perception",
-    "power.proviorigins.splinter.distortion.desc": "Blind enemies within a 16 block radius and create mirror images of yourself and your clones."
+    "power.proviorigins.splinter.distortion.desc": "Blind enemies within a 16 block radius and create mirror images of yourself and your clones.",
+    "power.proviorigins.splinter.swap.name": "Misdirection",
+    "power.proviorigins.splinter.swap.desc": "Swap places with the clone you are looking at, or if sneaking swap places with the furthest clone within 32 blocks."
 }
