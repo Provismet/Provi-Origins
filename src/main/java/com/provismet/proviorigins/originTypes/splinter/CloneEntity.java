@@ -41,6 +41,7 @@ import net.minecraft.entity.projectile.PersistentProjectileEntity.PickupPermissi
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.scoreboard.Team;
 import net.minecraft.server.ServerConfigHandler;
 import net.minecraft.sound.SoundCategory;
@@ -59,6 +60,7 @@ import net.minecraft.world.World;
 public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser {
     private static final double COMBAT_SPEED = 1.35;
     private static final float SHOOTING_RANGE = 32f;
+    private static final int MAX_AGE = 1200;
 
     private boolean canSit;
     private boolean followOwner;
@@ -145,7 +147,17 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
     @Override
     public void tick () {
         super.tick();
-        if (!this.isOwned() || this.getOwner() == null || this.age > 1200) this.discard();
+        if (this.getOwner() == null || this.age > MAX_AGE) {
+            this.discard();
+        }
+        else if (this.age == MAX_AGE - 1) {
+            for (int i = 0; i < 20; ++i) {
+                double velX = this.random.nextGaussian() * 0.02;
+                double velY = this.random.nextGaussian() * 0.02;
+                double velZ = this.random.nextGaussian() * 0.02;
+                this.world.addParticle(ParticleTypes.POOF, this.getParticleX(1.0), this.getRandomBodyY(), this.getParticleZ(1.0), velX, velY, velZ);
+            }
+        }
     }
 
     public boolean isOwned () {
