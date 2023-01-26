@@ -42,6 +42,10 @@
                 }
             ]
         },
+        "damage_condition": {
+            "type": "origins:name",
+            "name": "player"
+        },
         "condition": {
             "type": "origins:resource",
             "resource": "proviorigins:decaykraken/deaths_vice",
