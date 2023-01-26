@@ -42,12 +42,20 @@ public class CloneEntityModel<T extends CloneEntity> extends PlayerEntityModel<T
     public void animateModel (T clone, float limbAngle, float limbDistance, float tickDelta) {
         this.rightArmPose = BipedEntityModel.ArmPose.EMPTY;
         this.leftArmPose = BipedEntityModel.ArmPose.EMPTY;
-        ItemStack itemStack = clone.getStackInHand(Hand.MAIN_HAND);
-        if (itemStack.isOf(Items.BOW) && clone.isAttacking()) {
-            if (clone.getMainArm() == Arm.RIGHT) {
-                this.rightArmPose = BipedEntityModel.ArmPose.BOW_AND_ARROW;
-            } else {
-                this.leftArmPose = BipedEntityModel.ArmPose.BOW_AND_ARROW;
+        ItemStack itemStackMain = clone.getStackInHand(Hand.MAIN_HAND);
+        ItemStack itemStackOff = clone.getStackInHand(Hand.OFF_HAND);
+        if (itemStackMain.isOf(Items.BOW) && clone.isAttacking()) {
+            if (clone.getMainArm() == Arm.RIGHT) this.rightArmPose = BipedEntityModel.ArmPose.BOW_AND_ARROW;
+            else this.leftArmPose = BipedEntityModel.ArmPose.BOW_AND_ARROW;
+        }
+        else {
+            if (!itemStackMain.isEmpty()) {
+                if (clone.getMainArm() == Arm.RIGHT) this.rightArmPose = BipedEntityModel.ArmPose.ITEM;
+                else this.leftArmPose = BipedEntityModel.ArmPose.ITEM;
+            }
+            if (!itemStackOff.isEmpty()) {
+                if (clone.getMainArm() == Arm.RIGHT) this.leftArmPose = BipedEntityModel.ArmPose.ITEM;
+                else this.rightArmPose = BipedEntityModel.ArmPose.ITEM;
             }
         }
         super.animateModel(clone, limbAngle, limbDistance, tickDelta);
