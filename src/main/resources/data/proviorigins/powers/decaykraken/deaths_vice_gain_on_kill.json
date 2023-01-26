@@ -5,7 +5,7 @@
     "entity_action": {
         "type": "origins:change_resource",
         "resource": "proviorigins:decaykraken/deaths_vice",
-        "change": 25,
+        "change": 86,
         "operation": "add"
     }
 }

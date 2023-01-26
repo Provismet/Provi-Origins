@@ -74,7 +74,7 @@
     "power.proviorigins.decaykraken.deaths_vice_empty.name": "Death Vision",
     "power.proviorigins.decaykraken.deaths_vice_empty.desc": "Suffer from darkness when Death's Vice reaches zero.",
     "power.proviorigins.decaykraken.deaths_vice_gain.name": "Nothing Wasted",
-    "power.proviorigins.decaykraken.deaths_vice_gain.desc": "Gain Death's Vice when killing an entity.",
+    "power.proviorigins.decaykraken.deaths_vice_gain.desc": "Gain 0.5 bars of Death's Vice when killing an entity.",
     "power.proviorigins.decaykraken.deaths_vice_low.name": "Over-Reliance",
     "power.proviorigins.decaykraken.deaths_vice_low.desc": "Suffer weakness and slowness when Death's Vice is below 25%.",
     "power.proviorigins.decaykraken.deaths_vice_recharge.name": "Longing Embrace",
