@@ -12,6 +12,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.CrossbowUser;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityData;
+import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
@@ -336,6 +337,12 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
         }
 
         return successful;
+    }
+
+    @Override
+    public EntityGroup getGroup() {
+        if (this.getOwner() != null) return this.getOwner().getGroup();
+        else return super.getGroup();
     }
 
     @Override
