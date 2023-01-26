@@ -1,5 +1,6 @@
 package com.provismet.proviorigins.actions;
 
+import com.provismet.proviorigins.actions.bientity.StatusTransferAction;
 import com.provismet.proviorigins.actions.bientity.SwapPositionsAction;
 
 import io.github.apace100.apoli.power.factory.action.ActionFactory;
@@ -27,5 +28,6 @@ public class ActionFactories {
 
         // Bientity Actions
         registerBientityAction(SwapPositionsAction.createBientityActionFactory());
+        registerBientityAction(StatusTransferAction.createBientityActionFactory());
     }
 }

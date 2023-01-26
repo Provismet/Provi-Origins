@@ -1,0 +1,88 @@
+{
+    "name": "power.proviorigins.decaykraken.transfer_hit.name",
+    "description": "power.proviorigins.decaykraken.transfer_hit.desc",
+    "type": "origins:multiple",
+
+    "is_active": {
+        "type": "origins:cooldown",
+        "cooldown": 160
+    },
+
+    "visual_overlay": {
+        "type": "origins:overlay",
+        "texture": "minecraft:textures/misc/nausea.png",
+        "strength": 0.8,
+        "red": 0.7,
+        "green": 0.3,
+        "blue": 0.3,
+        "draw_mode": "nausea",
+        "draw_phase": "below_hud",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:decaykraken/transfer_hit_is_active",
+            "comparison": ">=",
+            "compare_to": 1
+        }
+    },
+
+    "activator": {
+        "type": "origins:active_self",
+        "key": "key.proviorigins.tertiary_active",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "proviorigins:decaykraken/transfer_hit_is_active"
+                },
+                {
+                    "type": "origins:spawn_particles",
+                    "particle": "minecraft:squid_ink",
+                    "count": 30,
+                    "speed": 0.25
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:decaykraken/deaths_vice",
+            "comparison": ">=",
+            "compare_to": 256
+        }
+    },
+
+    "hit_action": {
+        "type": "origins:action_on_hit",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "proviorigins:transfer_status",
+                    "cleanse_self": true,
+                    "amplifier_multiplier": 2,
+                    "duration_multiplier": 1.2,
+                    "status_types": ["harmful"]
+                },
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "proviorigins:decaykraken/deaths_vice",
+                        "change": -256,
+                        "operation": "add"
+                    }
+                }
+            ]
+        },
+        "damage_condition": {
+            "type": "origins:name",
+            "name": "player"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:decaykraken/transfer_hit_is_active",
+            "comparison": ">=",
+            "compare_to": 1
+        }
+    }
+}

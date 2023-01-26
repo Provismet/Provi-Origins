@@ -100,6 +100,8 @@
     "power.proviorigins.decaykraken.wither_evolve.desc": "Kill three Withers within 3 minutes of each other to evolve, granting immunity to freshwater and new uses for Death's Vice.",
     "power.proviorigins.decaykraken.wither_hit.name": "Touch of Decay",
     "power.proviorigins.decaykraken.wither_hit.desc": "When Death's Vice is above 6 bars, striking a target consume half a bar to inflict Wither for 6 seconds.",
+    "power.proviorigins.decaykraken.transfer_hit.name": "Virulent",
+    "power.proviorigins.decaykraken.transfer_hit.desc": "Your next melee attack within 8 seconds transfers negative status effects to your struck target.",
 
     "power.proviorigins.drakling.name": "Drakling",
     "power.proviorigins.drakling.description": "An emergent dragon, immature and yet brimming with potential.",
@@ -152,10 +154,10 @@
 
     "power.proviorigins.splinter.name": "Splinter",
     "power.proviorigins.splinter.description": "A fragile warrior, but a master of deception and fragmentation. The Splinter uses summoned clones of themself and trickery to survive.",
-    "power.splinter.arcane_glow.name": "Mana Glow",
-    "power.splinter.arcane_glow.desc": "You glow based on the amount of mana you currently have.",
-    "power.splinter.brittle.name": "Brittle Body",
-    "power.splinter.brittle.desc": "You have only 5 hearts.",
+    "power.proviorigins.splinter.arcane_glow.name": "Mana Glow",
+    "power.proviorigins.splinter.arcane_glow.desc": "You glow based on the amount of mana you currently have.",
+    "power.proviorigins.splinter.brittle.name": "Brittle Body",
+    "power.proviorigins.splinter.brittle.desc": "You have only 5 hearts.",
     "power.proviorigins.splinter.fragment.name": "Fragment",
     "power.proviorigins.splinter.fragment.desc": "Summon a clone of yourself at your current location.\nCosts 1 concentration.",
     "power.proviorigins.splinter.fragment.badge": "Clones inherit your equipment and will fight for you.\nPress [USE] on a clone to 'sit' them like an animal.",
