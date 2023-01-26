@@ -1,6 +1,6 @@
 {
-    "name": "power.splinter.arcane_glow.name",
-    "description": "power.splinter.arcane_glow.desc",
+    "name": "power.proviorigins.splinter.arcane_glow.name",
+    "description": "power.proviorigins.splinter.arcane_glow.desc",
     "type": "origins:multiple",
 
     "mid_emit": {

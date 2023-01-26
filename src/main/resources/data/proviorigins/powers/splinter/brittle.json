@@ -1,6 +1,6 @@
 {
-    "name": "power.splinter.brittle.name",
-    "description": "power.splinter.brittle.desc",
+    "name": "power.proviorigins.splinter.brittle.name",
+    "description": "power.proviorigins.splinter.brittle.desc",
     "type": "origins:attribute",
     "modifier": {
       "name": "Fragile health reduction",
