@@ -28,14 +28,6 @@ public class IllusionPower extends Power {
         this.distance = distance;
         this.count = count;
         this.resourceName = resourceType;
-
-        if (resourceType != null) {
-            Power power = PowerHolderComponent.KEY.get(entity).getPower(resourceType);
-
-            if (power instanceof VariableIntPower || power instanceof CooldownPower) this.resource = power;
-            else this.resource = null;
-        }
-        else this.resource = null;
     }
 
     private void getResource () {
