@@ -5,7 +5,7 @@
     "min": 0,
     "max": 2,
     "hud_render": {
-        "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
-        "bar_index": 7
+        "sprite_location": "proviorigins:textures/gui/splinter_clone_resource.png",
+        "bar_index": 0
     }
 }
