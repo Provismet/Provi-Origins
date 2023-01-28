@@ -22,7 +22,7 @@ body:
       required: true
   - type: markdown
     attributes:
-      value: "##Requested Change |"
-      Describe what should be added or changed in the wiki.
+      value: "##Requested Change" |
+        [Describe what should be added or changed in the wiki here.]
     validations:
       required: true
