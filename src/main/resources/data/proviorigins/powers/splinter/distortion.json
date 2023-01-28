@@ -98,6 +98,7 @@
     "illusion_spread": {
         "type": "proviorigins:illusioner_mirror",
         "distance": 0.0125,
+        "illusion_spread": "line",
         "resource": "proviorigins:splinter/distortion_internal_cooldown",
         "layers": 2,
         "condition": {

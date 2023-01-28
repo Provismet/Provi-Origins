@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.provismet.proviorigins.extras.RightAngledTriangle;
 import com.provismet.proviorigins.powers.IllusionPower;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
@@ -33,22 +32,11 @@ public abstract class MobEntityRendererMixin extends LivingEntityRenderer<MobEnt
         List<IllusionPower> mirrors = PowerHolderComponent.getPowers(livingEntity, IllusionPower.class);
         if (!mirrors.isEmpty()) {
             IllusionPower power = mirrors.get(0);
-            double[] offsets = power.getOffsets();
+            Vec3d[] offsets = power.getOffsets(MinecraftClient.getInstance().gameRenderer.getCamera().getPos());
 
-            // The trigonometry that makes this work is too tedious to write in a comment, it's just a lot of right-angles and this is merely the solved problem.
-            Vec3d cameraPos = MinecraftClient.getInstance().gameRenderer.getCamera().getPos();
-            RightAngledTriangle triangle = new RightAngledTriangle(cameraPos, livingEntity.getPos());
-            double cos = triangle.cosine();
-            double sin = triangle.sine();
-
-            for (double offset : offsets) {
+            for (Vec3d offset : offsets) {
                 matrixStack.push();
-                matrixStack.translate(offset * -cos, 0, offset * sin);
-                super.render(livingEntity, yaw, tickDelta, matrixStack, vertexConsumerProvider, light);
-                matrixStack.pop();
-
-                matrixStack.push();
-                matrixStack.translate(offset * cos, 0, offset * -sin);
+                matrixStack.translate(offset.getX(), offset.getY(), offset.getZ());
                 super.render(livingEntity, yaw, tickDelta, matrixStack, vertexConsumerProvider, light);
                 matrixStack.pop();
             }
