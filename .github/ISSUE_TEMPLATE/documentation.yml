@@ -20,9 +20,10 @@ body:
       placeholder: List the page or pages that need adjusting.
     validations:
       required: true
-  - type: markdown
+  - type: textarea
+    id: to-change
     attributes:
-      value: "##Requested Change" |
-        [Describe what should be added or changed in the wiki here.]
+      label: Requested Change
+      placeholder: Describe what should be added or changed in the wiki here.
     validations:
       required: true
