@@ -1,6 +1,5 @@
 package com.provismet.proviorigins.extras;
 
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
 /*
@@ -25,11 +24,8 @@ public class RightAngledTriangle {
     }
 
     private double clamped (double value) {
-        final double MIN_LENGTH = 0.001;
-        if (MIN_LENGTH > MathHelper.abs((float)value)) {
-            return MIN_LENGTH;
-        }
-        return value;
+        if (value == 0) return 0.00001;
+        else return value;
     }
 
     public double cosine () {
