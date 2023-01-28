@@ -1,0 +1,28 @@
+name: Documentation Change
+description: Is something incorrect, missing, or otherwise unclear on the wiki?
+labels: "documentation"
+body:
+  - type: dropdown
+    id: bug-type
+    attributes:
+      label: Type of Inaccuracy
+      options:
+        - Extra Clarification / Examples Required
+        - Incorrect Information
+        - Missing Information
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: wiki-area
+    attributes:
+      label: Location
+      placeholder: List the page or pages that need adjusting.
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      label: Requested Change
+      placeholder: Describe what should be added or changed in the wiki.
+    validations:
+      required: true
