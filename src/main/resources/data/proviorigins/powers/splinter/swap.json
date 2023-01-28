@@ -20,6 +20,14 @@
                         "type": "proviorigins:swap_positions",
                         "reset_fall_height": true,
                         "reset_velocity": true
+                    },
+                    {
+                        "type": "origins:actor_action",
+                        "action": {
+                            "type": "origins:change_resource",
+                            "resource": "proviorigins:splinter/mana",
+                            "change": -40
+                        }
                     }
                 ]
             },
@@ -51,6 +59,14 @@
                         "type": "proviorigins:swap_positions",
                         "reset_fall_height": true,
                         "reset_velocity": true
+                    },
+                    {
+                        "type": "origins:actor_action",
+                        "action": {
+                            "type": "origins:change_resource",
+                            "resource": "proviorigins:splinter/mana",
+                            "change": -40
+                        }
                     }
                 ]
             },
