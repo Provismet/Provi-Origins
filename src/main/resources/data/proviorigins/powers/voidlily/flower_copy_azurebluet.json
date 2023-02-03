@@ -90,7 +90,7 @@
         "start_value": 300,
         "hud_render": {
             "should_render": true,
-            "sprite_location": "proviorigins:textures/gui/voidlily_extra_resources.png",
+            "sprite_location": "proviorigins:textures/gui/resources/voidlily_extra_resources.png",
             "bar_index": 2,
             "condition": {
                 "type": "origins:resource",

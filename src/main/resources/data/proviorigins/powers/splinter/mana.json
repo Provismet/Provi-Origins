@@ -5,7 +5,7 @@
     "min": 0,
     "max": 120,
     "hud_render": {
-        "sprite_location": "proviorigins:textures/gui/extra_resources.png",
+        "sprite_location": "proviorigins:textures/gui/resources/extra_resources.png",
         "bar_index": 1
     }
 }

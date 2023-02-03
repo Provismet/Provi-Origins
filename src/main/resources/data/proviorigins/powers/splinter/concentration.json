@@ -5,7 +5,7 @@
     "min": 0,
     "max": 2,
     "hud_render": {
-        "sprite_location": "proviorigins:textures/gui/splinter_clone_resource.png",
+        "sprite_location": "proviorigins:textures/gui/resources/splinter_clone_resource.png",
         "bar_index": 0
     }
 }
