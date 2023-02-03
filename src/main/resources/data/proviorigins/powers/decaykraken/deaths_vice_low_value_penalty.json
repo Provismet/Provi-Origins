@@ -19,6 +19,6 @@
         "type": "origins:resource",
         "resource": "proviorigins:decaykraken/deaths_vice",
         "comparison": "<",
-        "compare_to": 300
+        "compare_to": 257
     }
 }
