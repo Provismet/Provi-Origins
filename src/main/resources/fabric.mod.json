@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Provi's Origins",
-  "description": "Custom origins made for the associates of the plant.\nIncluding:\n- Lily of the Void\n- Kraken of Decay",
+  "description": "Adds 6 additional origins, 2 extra power keybinds, sprites, and many custom power/action/condition implementations.",
   "authors": [
     "Provismet"
   ],
@@ -34,6 +34,7 @@
   },
 
   "recommends": {
-    "extrade-origins-addon": "*"
+    "extrade-origins-addon": "*",
+    "pehkui": "*"
   }
 }
