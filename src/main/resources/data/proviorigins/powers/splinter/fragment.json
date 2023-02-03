@@ -28,7 +28,7 @@
                             },
                             {
                                 "type": "origins:grant_power",
-                                "power": "proviorigins:splinter/brittle",
+                                "power": "proviorigins:brittle",
                                 "source": "proviorigins:splinter/fragment"
                             }
                         ]

@@ -42,6 +42,9 @@
 
     "tooltip.proviorigins.drakling.dragon_head": "Wear the flesh of your ancestors and gain their strength.",
 
+    "power.proviorigins.common.brittle.name": "Brittle Body",
+    "power.proviorigins.common.brittle.desc": "You have only 5 hearts.",
+
     "power.proviorigins.voidlily.name": "Lily of the Void",
     "power.proviorigins.voidlily.description": "Grown from a Void Flower rooted on the skybox, you are connected both to nature and to oblivion.",
     "power.proviorigins.voidlily.double_fire_damage.name": "Highly Flammable",
@@ -157,8 +160,6 @@
     "power.proviorigins.splinter.description": "A fragile warrior, but a master of deception and fragmentation. The Splinter uses summoned clones of themself and trickery to survive.",
     "power.proviorigins.splinter.arcane_glow.name": "Mana Glow",
     "power.proviorigins.splinter.arcane_glow.desc": "You glow based on the amount of mana you currently have.",
-    "power.proviorigins.splinter.brittle.name": "Brittle Body",
-    "power.proviorigins.splinter.brittle.desc": "You have only 5 hearts.",
     "power.proviorigins.splinter.fragment.name": "Fragment",
     "power.proviorigins.splinter.fragment.desc": "Summon a clone of yourself at your current location.\nCosts 1 concentration.",
     "power.proviorigins.splinter.fragment.badge": "Clones inherit your equipment and will fight for you.\nPress [USE] on a clone to 'sit' them like an animal.",

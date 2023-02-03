@@ -8,8 +8,10 @@
         "proviorigins:jellysculk/break_sculk_fast",
         "proviorigins:jellysculk/double_jump",
         "proviorigins:jellysculk/slow_fall",
+        "origins:fall_immunity",
         "proviorigins:jellysculk/buffs_on_sculk",
         "proviorigins:jellysculk/debuffs_off_sculk",
+        "proviorigins:brittle",
         "extrade:fungifloral"
     ],
     "icon": "minecraft:sculk_sensor",

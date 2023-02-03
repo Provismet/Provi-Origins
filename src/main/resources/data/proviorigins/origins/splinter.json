@@ -7,7 +7,7 @@
         "proviorigins:splinter/distortion",
         "proviorigins:splinter/arcane_glow",
         "proviorigins:splinter/swap",
-        "proviorigins:splinter/brittle",
+        "proviorigins:brittle",
         "extrade:arcane"
     ],
     "icon": "minecraft:glass_pane",

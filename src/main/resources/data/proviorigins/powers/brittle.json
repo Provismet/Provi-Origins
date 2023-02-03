@@ -1,9 +1,9 @@
 {
-    "name": "power.proviorigins.splinter.brittle.name",
-    "description": "power.proviorigins.splinter.brittle.desc",
+    "name": "power.proviorigins.common.brittle.name",
+    "description": "power.proviorigins.common.brittle.desc",
     "type": "origins:attribute",
     "modifier": {
-      "name": "Fragile health reduction",
+      "name": "Brittle health reduction",
       "attribute": "minecraft:generic.max_health",
       "value": -8.0,
       "operation": "addition"
