@@ -17,6 +17,7 @@ This mod adds a modest amount of additional powers types and other content, each
 ### Misc
 - Adjust Passenger Height
 - Emissive
+- Illusion
 
 ### Action Related
 - Action On Detect Vibration
@@ -32,6 +33,10 @@ This mod adds a modest amount of additional powers types and other content, each
 - Double Jump
 - Raycast Teleport
 - Summon Clone
+
+### Bientity
+- Act On Closest
+- Act On Farthest
 
 ## Conditions
 ### Bientity
