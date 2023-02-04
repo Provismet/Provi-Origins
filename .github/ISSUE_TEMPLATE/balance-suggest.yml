@@ -1,0 +1,35 @@
+name: Balance Feedback
+description: Issues relating to an origin being too strong or too weak.
+labels: "balance"
+body:
+  - type: dropdown
+    id: origin-type
+    attributes:
+      label: Origin
+      options:
+        - Lily of the Void
+        - Kraken of Decay
+        - Embodiment of Decay
+        - Drakling
+        - Drake
+        - Jellysculk
+        - Splinter
+    validations:
+      required: true
+  - type: dropdown
+    id: tweak-type
+    attributes:
+      label: Adjustment Type
+      options:
+        - Buff
+        - Nerf
+        - Functional tweak
+    validations:
+      required: true
+  - type: textarea
+    id: describe-issue
+    attributes:
+      label: Description
+      placeholder: Describe the issue here in as much detail as possible. Give examples of real gameplay scenarios if you have any.
+    validations:
+      required: true
