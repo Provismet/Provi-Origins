@@ -8,7 +8,7 @@
             "text": "origins.gui.badge.active"
         },
         {
-            "sprite": "origins:textures/gui/badge/info.png",
+            "sprite": "proviorigins:textures/gui/badge/cost.png",
             "text": "power.proviorigins.decaykraken.ink_propel.badge"
         }
     ],

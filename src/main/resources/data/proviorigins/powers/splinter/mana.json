@@ -3,7 +3,7 @@
     "type": "origins:resource",
 
     "min": 0,
-    "max": 120,
+    "max": 119,
     "hud_render": {
         "sprite_location": "proviorigins:textures/gui/resources/extra_resources.png",
         "bar_index": 1

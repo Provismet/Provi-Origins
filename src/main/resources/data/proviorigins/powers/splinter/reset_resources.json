@@ -1,0 +1,21 @@
+{
+    "hidden": true,
+    "type": "origins:action_on_callback",
+    "entity_action_respawned": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:change_resource",
+                "resource": "proviorigins:splinter/mana",
+                "change": 0,
+                "operation": "set"
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "proviorigins:splinter/concentration",
+                "change": 0,
+                "operation": "set"
+            }
+        ]
+    }
+}

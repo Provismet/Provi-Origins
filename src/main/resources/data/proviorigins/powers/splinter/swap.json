@@ -5,6 +5,16 @@
     "key": {
         "key": "key.proviorigins.tertiary_active"
     },
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "origins.gui.badge.active"
+        },
+        {
+            "sprite": "proviorigins:textures/gui/badge/cost.png",
+            "text": "power.proviorigins.splinter.swap.badge"
+        }
+    ],
     "entity_action": {
         "type": "origins:if_else",
         "condition": {
@@ -26,7 +36,7 @@
                         "action": {
                             "type": "origins:change_resource",
                             "resource": "proviorigins:splinter/mana",
-                            "change": -40
+                            "change": -34
                         }
                     }
                 ]
@@ -65,7 +75,7 @@
                         "action": {
                             "type": "origins:change_resource",
                             "resource": "proviorigins:splinter/mana",
-                            "change": -40
+                            "change": -34
                         }
                     }
                 ]
@@ -91,6 +101,6 @@
         "type": "origins:resource",
         "resource": "proviorigins:splinter/mana",
         "comparison": ">=",
-        "compare_to": 40
+        "compare_to": 34
     }
 }

@@ -87,10 +87,10 @@
     "power.proviorigins.decaykraken.pescatarian.desc": "You can only eat fish.",
     "power.proviorigins.decaykraken.ink_propel.name": "Ink Propulsion",
     "power.proviorigins.decaykraken.ink_propel.desc": "Enhance your ink jet with necrotic energy to boost yourself forwards.",
-    "power.proviorigins.decaykraken.ink_propel.badge": "Costs 1 bar of Death's Vice per activation.",
+    "power.proviorigins.decaykraken.ink_propel.badge": "Costs 1 bar of Death's Vice.",
     "power.proviorigins.decaykraken.soul_steal.name": "Soul Siphon",
     "power.proviorigins.decaykraken.soul_steal.desc": "Grasp the soul of your target, inflicting damage and healing yourself.",
-    "power.proviorigins.decaykraken.soul_steal.badge": "Costs 1.5 bars of Death's Vice per activation.",
+    "power.proviorigins.decaykraken.soul_steal.badge": "Costs 1.5 bars of Death's Vice.",
     "power.proviorigins.decaykraken.soulsand_spreading.name": "Soul Capture",
     "power.proviorigins.decaykraken.soulsand_spreading.desc": "Killing an undead mob whilst standing on coarse dirt will convert it into soul sand.",
     "power.proviorigins.decaykraken.water_glow.name": "Bioluminescence",
@@ -103,9 +103,10 @@
     "power.proviorigins.decaykraken.wither_evolve.desc": "Kill three Withers within 3 minutes of each other to evolve, granting immunity to freshwater and new uses for Death's Vice.",
     "power.proviorigins.decaykraken.wither_hit.name": "Touch of Decay",
     "power.proviorigins.decaykraken.wither_hit.desc": "When Death's Vice is above 6 bars, striking a target consume half a bar to inflict Wither for 6 seconds.",
+    "power.proviorigins.decaykraken.wither_hit.badge": "Costs 0.5 bars of Death's Vice.",
     "power.proviorigins.decaykraken.transfer_hit.name": "Virulent",
     "power.proviorigins.decaykraken.transfer_hit.desc": "Your next melee attack within 8 seconds transfers negative status effects to your struck target.",
-    "power.proviorigins.decaykraken.transfer_hit.badge": "Costs 1.5 bars of Death's Vice per use.",
+    "power.proviorigins.decaykraken.transfer_hit.badge": "Costs 1.5 bars of Death's Vice.",
 
     "power.proviorigins.drakling.name": "Drakling",
     "power.proviorigins.drakling.description": "An emergent dragon, immature and yet brimming with potential.",
@@ -165,8 +166,10 @@
     "power.proviorigins.splinter.fragment.badge": "Clones inherit your equipment and will fight for you.\nPress [USE] on a clone to 'sit' them like an animal.",
     "power.proviorigins.splinter.resources.name": "Arcane Energy",
     "power.proviorigins.splinter.resources.desc": "You have access to a mana resource with which to cast spells and concentration to summon clones.",
-    "power.proviorigins.splinter.distortion.name": "Distort Their Perception",
+    "power.proviorigins.splinter.distortion.name": "Illusory Presence",
     "power.proviorigins.splinter.distortion.desc": "Blind enemies within a 16 block radius and create mirror images of yourself and your clones.",
+    "power.proviorigins.splinter.distortion.badge": "Costs 2 bars of mana.",
     "power.proviorigins.splinter.swap.name": "Misdirection",
-    "power.proviorigins.splinter.swap.desc": "Swap places with the clone you are looking at, or if sneaking swap places with the furthest clone within 32 blocks."
+    "power.proviorigins.splinter.swap.desc": "Swap places with the clone you are looking at, or if sneaking swap places with the furthest clone within 32 blocks.",
+    "power.proviorigins.splinter.swap.badge": "Costs 2 bars of mana."
 }

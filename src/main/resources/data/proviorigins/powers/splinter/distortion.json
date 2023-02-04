@@ -2,6 +2,16 @@
     "name": "power.proviorigins.splinter.distortion.name",
     "description": "power.proviorigins.splinter.distortion.desc",
     "type": "origins:multiple",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "origins.gui.badge.active"
+        },
+        {
+            "sprite": "proviorigins:textures/gui/badge/cost.png",
+            "text": "power.proviorigins.splinter.distortion.badge"
+        }
+    ],
 
     "internal_cooldown": {
         "type": "origins:cooldown",
@@ -50,7 +60,7 @@
                 {
                     "type": "origins:change_resource",
                     "resource": "proviorigins:splinter/mana",
-                    "change": -40
+                    "change": -34
                 },
                 {
                     "type": "origins:area_of_effect",
@@ -91,7 +101,7 @@
             "type": "origins:resource",
             "resource": "proviorigins:splinter/mana",
             "comparison": ">=",
-            "compare_to": 40
+            "compare_to": 34
         }
     },
 

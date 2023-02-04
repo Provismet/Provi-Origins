@@ -8,6 +8,7 @@
         "proviorigins:splinter/arcane_glow",
         "proviorigins:splinter/swap",
         "proviorigins:brittle",
+        "proviorigins:splinter/reset_resources",
         "extrade:arcane"
     ],
     "icon": "minecraft:glass_pane",
