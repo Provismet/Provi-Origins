@@ -1,0 +1,8 @@
+{
+    "name": "power.proviorigins.common.no_food.name",
+    "description": "power.proviorigins.common.no_food.desc",
+    "type": "origins:prevent_item_use",
+    "item_condition": {
+        "type": "origins:food"
+    }
+}

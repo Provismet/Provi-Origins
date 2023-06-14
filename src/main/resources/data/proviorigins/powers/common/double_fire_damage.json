@@ -1,6 +1,6 @@
 {
-    "name": "power.proviorigins.voidlily.double_fire_damage.name",
-    "description": "power.proviorigins.voidlily.double_fire_damage.desc",
+    "name": "power.proviorigins.common.double_fire_damage.name",
+    "description": "power.proviorigins.common.double_fire_damage.desc",
     "type": "origins:modify_damage_taken",
     "damage_condition": {
         "type": "origins:in_tag",

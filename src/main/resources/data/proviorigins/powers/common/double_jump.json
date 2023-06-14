@@ -1,6 +1,6 @@
 {
-    "name": "power.proviorigins.jellysculk.double_jump.name",
-    "description": "power.proviorigins.jellysculk.double_jump.desc",
+    "name": "power.proviorigins.common.double_jump.name",
+    "description": "power.proviorigins.common.double_jump.desc",
     "type": "origins:multiple",
 
     "jump_cooldown": {
@@ -23,7 +23,7 @@
                 },
                 {
                     "type": "origins:change_resource",
-                    "resource": "proviorigins:jellysculk/double_jump_jump_cooldown",
+                    "resource": "proviorigins:common/double_jump_jump_cooldown",
                     "change": 1,
                     "operation": "set"
                 },
@@ -38,7 +38,7 @@
             "conditions": [
                 {
                     "type": "origins:resource",
-                    "resource": "proviorigins:jellysculk/double_jump_jump_cooldown",
+                    "resource": "proviorigins:common/double_jump_jump_cooldown",
                     "comparison": "==",
                     "compare_to": 0
                 },
@@ -55,7 +55,7 @@
         "type": "origins:action_on_land",
         "entity_action": {
             "type": "origins:change_resource",
-            "resource": "proviorigins:jellysculk/double_jump_jump_cooldown",
+            "resource": "proviorigins:common/double_jump_jump_cooldown",
             "change": 0,
             "operation": "set"
         }

@@ -1,6 +1,6 @@
 {
-    "hidden": true,
-    "description": "Unaffected by splash potions.",
+    "name": "power.proviorigins.common.no_splash_potions.name",
+    "description": "power.proviorigins.common.no_splash_potions.desc",
     "type": "origins:multiple",
 
     "unaffected_by_splash": {

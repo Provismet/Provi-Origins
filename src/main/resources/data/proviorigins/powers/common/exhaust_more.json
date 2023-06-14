@@ -1,6 +1,6 @@
 {
-    "name": "power.proviorigins.voidlily.exhaust_more.name",
-    "description": "power.proviorigins.voidlily.exhaust_more.desc",
+    "name": "power.proviorigins.common.exhaust_more.name",
+    "description": "power.proviorigins.common.exhaust_more.desc",
     "type": "origins:modify_exhaustion",
     "modifier": {
         "name": "Increased Exhaustion",

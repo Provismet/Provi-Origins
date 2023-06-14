@@ -1,6 +1,6 @@
 {
-    "name": "power.proviorigins.decaykraken.pescatarian.name",
-    "description": "power.proviorigins.decaykraken.pescatarian.desc",
+    "name": "power.proviorigins.common.pescatarian.name",
+    "description": "power.proviorigins.common.pescatarian.desc",
     "type": "origins:prevent_item_use",
     "item_condition": {
         "type": "origins:and",

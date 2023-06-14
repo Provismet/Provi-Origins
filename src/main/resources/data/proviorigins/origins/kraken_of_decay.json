@@ -4,7 +4,7 @@
 		"origins:like_water",
 		"origins:swim_speed",
 		"origins:aqua_affinity",
-		"proviorigins:decaykraken/amphibious",
+		"proviorigins:common/amphibious",
 		"proviorigins:decaykraken/deaths_vice",
 		"proviorigins:decaykraken/deaths_vice_passive_drain_and_gain",
 		"proviorigins:decaykraken/deaths_vice_recharge_rate",
@@ -20,7 +20,7 @@
 		"proviorigins:decaykraken/deaths_vice_empty",
 		"origins:fragile",
 		"proviorigins:decaykraken/water_sensitive",
-		"proviorigins:decaykraken/pescatarian",
+		"proviorigins:common/pescatarian",
 		"proviorigins:decaykraken/drop_ink_on_death",
 		"proviorigins:decaykraken/wither_evolve"
 	],

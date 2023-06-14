@@ -1,8 +1,0 @@
-{
-    "name": "power.proviorigins.voidlily.no_food.name",
-    "description": "power.proviorigins.voidlily.no_food.desc",
-    "type": "origins:prevent_item_use",
-    "item_condition": {
-        "type": "origins:food"
-    }
-}

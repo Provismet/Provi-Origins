@@ -1,6 +1,6 @@
 {
-    "name": "power.proviorigins.decaykraken.amphibious.name",
-    "description": "power.proviorigins.decaykraken.amphibious.desc",
+    "name": "power.proviorigins.common.amphibious.name",
+    "description": "power.proviorigins.common.amphibious.desc",
     "type": "origins:stacking_status_effect",
     "min_stacks": -1,
     "max_stacks": 1,
