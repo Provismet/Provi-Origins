@@ -24,7 +24,7 @@ public class CloneEntityRenderer<T extends CloneEntity> extends BipedEntityRende
 
         BipedEntityModel<T> inner = new BipedEntityModel<>(context.getPart(slimArms ? ModelLayerRegistry.CLONE_SLIM_INNER_LAYER : ModelLayerRegistry.CLONE_INNER_LAYER));
         BipedEntityModel<T> outer = new BipedEntityModel<>(context.getPart(slimArms ? ModelLayerRegistry.CLONE_SLIM_OUTER_LAYER : ModelLayerRegistry.CLONE_OUTER_LAYER));
-        this.addFeature(new ArmorFeatureRenderer<>(this, inner, outer));
+        this.addFeature(new ArmorFeatureRenderer<>(this, inner, outer, context.getModelManager()));
         this.addFeature(new StuckArrowsFeatureRenderer<>(context, this));
         this.addFeature(new StuckStingersFeatureRenderer<>(this));
     }

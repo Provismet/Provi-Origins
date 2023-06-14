@@ -7,9 +7,7 @@
         "entity_action": {
             "type": "origins:damage",
             "amount": 2,
-            "source": {
-                "name": "thorns"
-            }
+            "damage_type": "minecraft:thorns"
         },
         "damage_condition": {
             "type": "origins:and",

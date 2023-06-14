@@ -6,9 +6,6 @@ import java.util.UUID;
 
 import org.jetbrains.annotations.Nullable;
 
-import com.provismet.proviorigins.mixin.MobEntityAccessor;
-
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.CrossbowUser;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityData;
@@ -28,7 +25,6 @@ import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.TrackTargetGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -49,7 +45,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.EntityView;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -207,9 +203,8 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
             return;
         }
 
-        ItemStack arrowType = this.getArrowType(this.getStackInHand(ProjectileUtil.getHandPossiblyHolding(this, Items.BOW)));
+        ItemStack arrowType = this.getProjectileType(this.getStackInHand(ProjectileUtil.getHandPossiblyHolding(this, Items.BOW)));
         PersistentProjectileEntity persistentProjectileEntity = ProjectileUtil.createArrowProjectile(this, arrowType, pullProgress);
-        persistentProjectileEntity.setOwner(this.getOwner());
         persistentProjectileEntity.pickupType = PickupPermission.DISALLOWED;
 
         double xDirection = target.getX() - this.getX();
@@ -308,35 +303,7 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
      */
     @Override
     public boolean tryAttack (Entity target) {
-        boolean successful;
-        int fireAspect;
-        float damage = (float)this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-        float knockback = (float)this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_KNOCKBACK);
-
-        if (target instanceof LivingEntity living) {
-            damage += EnchantmentHelper.getAttackDamage(this.getMainHandStack(), living.getGroup());
-            knockback += (float)EnchantmentHelper.getKnockback(this);
-        }
-
-        if ((fireAspect = EnchantmentHelper.getFireAspect(this)) > 0) {
-            target.setOnFireFor(fireAspect * 4);
-        }
-
-        if (successful = target.damage(DamageSource.player(this.getOwner()), damage)) {
-            if (knockback > 0.0f && target instanceof LivingEntity living) {
-                living.takeKnockback(knockback * 0.5f, MathHelper.sin(this.getYaw() * ((float)Math.PI / 180)), -MathHelper.cos(this.getYaw() * ((float)Math.PI / 180)));
-                this.setVelocity(this.getVelocity().multiply(0.6, 1.0, 0.6));
-            }
-
-            if (target instanceof PlayerEntity playerEntity) {
-                ((MobEntityAccessor)this).invokeDisablePlayerShield(playerEntity, this.getMainHandStack(), playerEntity.isUsingItem() ? playerEntity.getActiveItem() : ItemStack.EMPTY);
-            }
-
-            this.applyDamageEffects(this, target);
-            this.onAttacking(target);
-        }
-
-        return successful;
+        return super.tryAttack(target);
     }
 
     @Override
@@ -492,5 +459,10 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
             this.tickTimer = this.getTickCount(10);
             this.clone.getNavigation().startMovingTo(this.owner, this.speed);
         }
+    }
+
+    @Override
+    public EntityView method_48926 () {
+        return getWorld();
     }
 }

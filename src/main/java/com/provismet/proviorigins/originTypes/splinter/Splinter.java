@@ -7,11 +7,12 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 
 public class Splinter {
     public static final EntityType<CloneEntity> CLONE = Registry.register(
-        Registry.ENTITY_TYPE,
+        Registries.ENTITY_TYPE,
         ProviOriginsMain.identifier("player_clone"),
         FabricEntityTypeBuilder.create(SpawnGroup.MISC, CloneEntity::new)
             .dimensions(PlayerEntity.STANDING_DIMENSIONS)

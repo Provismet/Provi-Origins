@@ -8,7 +8,7 @@
         "entity_action": {
             "type": "origins:apply_effect",
             "effect": {
-                "effect": "proviorigins:void_poison",
+                "effect": "proviorigins:void_corruption",
                 "duration": 120
             }
         },

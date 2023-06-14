@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "proviorigins:compost",
+        "proviorigins:bad_dimension",
+        "proviorigins:void_corrupted",
+        "proviorigins:freshwater"
+    ]
+}

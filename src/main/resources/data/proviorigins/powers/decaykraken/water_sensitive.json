@@ -16,11 +16,7 @@
     "fresh_damage": {
         "type": "origins:damage_over_time",
         "damage": 3,
-        "damage_source": {
-            "name": "freshwater",
-            "bypasses_armor": true,
-            "unblockable": true
-        },
+        "damage_type": "proviorigins:freshwater",
         "onset_delay": 30,
         "protection_enchantment": "origins:water_protection",
         "protection_effectiveness": 0.4,

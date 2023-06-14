@@ -3,7 +3,8 @@
     "description": "power.proviorigins.voidlily.double_fire_damage.desc",
     "type": "origins:modify_damage_taken",
     "damage_condition": {
-        "type": "origins:fire"
+        "type": "origins:in_tag",
+        "tag": "minecraft:is_fire"
     },
     "modifier": {
         "operation": "multiply_base_additive",

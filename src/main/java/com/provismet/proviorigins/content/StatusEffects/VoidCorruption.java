@@ -1,11 +1,13 @@
-package com.provismet.proviorigins.originTypes.voidlily;
+package com.provismet.proviorigins.content.StatusEffects;
+
+import com.provismet.proviorigins.content.DamageTypes;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 
-public class VoidPoison extends StatusEffect {
-    public VoidPoison () {
+public class VoidCorruption extends StatusEffect {
+    public VoidCorruption () {
         super(StatusEffectCategory.HARMFUL, 0x7E0DB4);
     }
 
@@ -16,6 +18,6 @@ public class VoidPoison extends StatusEffect {
 
     @Override
     public void applyUpdateEffect (LivingEntity entity, int amplifier) {
-        entity.damage(VoidLily.VOID_POISON, 1.5f + (0.5f * amplifier));
+        entity.damage(entity.getDamageSources().create(DamageTypes.VOID_CORRUPTION), 1.5f + (0.5f * amplifier));
     }
 }

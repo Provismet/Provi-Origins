@@ -16,11 +16,7 @@
             {
                 "type": "origins:damage",
                 "amount": 1000,
-                "source": {
-                    "name": "compost",
-                    "bypass_armor": true,
-                    "unblockable": true
-                }
+                "damage_type": "proviorigins:compost"
             }
         ]
     },

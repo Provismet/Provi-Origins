@@ -5,10 +5,9 @@ import org.slf4j.LoggerFactory;
 
 import com.provismet.proviorigins.actions.ActionFactories;
 import com.provismet.proviorigins.conditions.bientity.BiEntityConditionFactories;
-import com.provismet.proviorigins.originTypes.decaykraken.DecayKraken;
-import com.provismet.proviorigins.originTypes.jellysculk.JellySculk;
+import com.provismet.proviorigins.content.Items;
+import com.provismet.proviorigins.content.StatusEffects.StatusEffects;
 import com.provismet.proviorigins.originTypes.splinter.Splinter;
-import com.provismet.proviorigins.originTypes.voidlily.VoidLily;
 import com.provismet.proviorigins.powers.PowerFactories;
 
 import net.fabricmc.api.ModInitializer;
@@ -24,15 +23,14 @@ public class ProviOriginsMain implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Provi's Origins are live and ready.");
-
-        DecayKraken.register();
-        VoidLily.register();
-        JellySculk.register();
         Splinter.register();
+        Items.register();
+        StatusEffects.register();
 
         PowerFactories.register();
         ActionFactories.register();
         BiEntityConditionFactories.register();
+
+        LOGGER.info("Provi's Origins are live and ready.");
     }
 }

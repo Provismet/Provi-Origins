@@ -13,9 +13,9 @@ import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.registry.tag.GameEventTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.tag.GameEventTags;
-import net.minecraft.tag.TagKey;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -42,7 +42,7 @@ public class ActionOnDetectVibrationPower extends Power implements VibrationList
         this.bientityAction = bientityAction;
         this.bientityCondition = bientityCondition;
 
-        this.eventHandler = new EntityGameEventHandler<VibrationListener>(new NoDelayVibrationListener(new EntityPositionSource(this.entity, 0), this.range, this, null, 0, 0));
+        this.eventHandler = new EntityGameEventHandler<VibrationListener>(new NoDelayVibrationListener(new EntityPositionSource(this.entity, 0), this.range, this));
         this.setTicking();
     }
 

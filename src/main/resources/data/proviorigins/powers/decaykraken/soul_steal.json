@@ -50,11 +50,7 @@
                         {
                             "type": "origins:damage",
                             "amount": 4,
-                            "source": {
-                                "name": "kraken_soul_steal.player",
-                                "magic": true,
-                                "bypasses_armor": true
-                            }
+                            "damage_type": "proviorigins:kraken_soul_steal"
                         },
                         {
                             "type": "origins:target_action",
