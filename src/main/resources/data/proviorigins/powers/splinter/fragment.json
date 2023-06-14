@@ -4,6 +4,10 @@
     "type": "origins:active_self",
     "badges": [
         {
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "origins.gui.badge.active"
+        },
+        {
             "sprite": "origins:textures/gui/badge/info.png",
             "text": "power.proviorigins.splinter.fragment.badge"
         }
