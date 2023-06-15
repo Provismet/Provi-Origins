@@ -52,7 +52,7 @@ public class ActiveItemPower extends ActiveCooldownPower {
                 // If multiple of this power exist on one entity, avoid double using items.
                 List<ActiveItemPower> activeItemPowers = PowerHolderComponent.getPowers(this.entity, ActiveItemPower.class);
                 for (ActiveItemPower powerInstance : activeItemPowers) {
-                    if (powerInstance.itemCondition.test(mainhand)) return;
+                    if (powerInstance.itemCondition.test(mainhand) && getKey().equals(powerInstance.getKey())) return;
                 }
                 perform(Hand.OFF_HAND, offhand);
             }
