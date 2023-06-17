@@ -1,43 +1,17 @@
 # Provi's Origins
+[![Image](https://img.shields.io/badge/license-Apache2.0-orange?style=flat-square)](https://github.com/Provismet/Provi-Origins/blob/1.19/LICENSE)
+![Image](https://img.shields.io/badge/environment-both-4caf50?style=flat-square)
+![Image](https://img.shields.io/badge/mod%20loader-fabric-d64541?style=flat-square)
 
-## General
-A small collection of detailed and in-depth origins that I have crafted.
+## Summary
+A decently sized addon mod for [Origins](https://github.com/apace100/origins-fabric).
 
-## Origins
-- Lily of the Void
-- Kraken of Decay + Embodiment of Decay
-- Drakling + Drake
-- Jelly Sculk
-- Splinter
+Provi's Origins adds a collection of new origins, new power types, new action types, and conditions to enhance the game.  
 
-# Origins Datapack Addon Content
-This mod adds a modest amount of additional powers types and other content, each addition is designed to be generic enough to work in other potential origins.
+All of the additional Apoli content (power types, action types, etc) are designed to be easily reused in other addons or datapacks.  
+Check the [wiki](https://github.com/Provismet/Provi-Origins/wiki) for documentation or more information.
 
-## Powers
-### Misc
-- Adjust Passenger Height
-- Emissive
-- Illusion
-
-### Action Related
-- Action On Detect Vibration
-- Active Item
-
-### Preventing Types
-- Prevent Breathing
-- Prevent Potion Cloud (disables splash potion effects)
-- Occlude Vibrations
-
-## Actions
-### Entity
-- Double Jump
-- Raycast Teleport
-- Summon Clone
-
-### Bientity
-- Act On Closest
-- Act On Farthest
-
-## Conditions
-### Bientity
-- Teammate
+## Extras
+For the full experience, it's recommended to also use:
+- [Extra Damage Enchantments](https://github.com/Provismet/Extra-Damage-Enchantments)
+- [ExtraDE Origins Addon](https://github.com/Provismet/ExtraDE-Origins-Addon)
