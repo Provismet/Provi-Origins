@@ -15,3 +15,4 @@ Check the [wiki](https://github.com/Provismet/Provi-Origins/wiki) for documentat
 For the full experience, it's recommended to also use:
 - [Extra Damage Enchantments](https://github.com/Provismet/Extra-Damage-Enchantments)
 - [ExtraDE Origins Addon](https://github.com/Provismet/ExtraDE-Origins-Addon)
+- [Pehkui](https://github.com/Virtuoel/Pehkui)
