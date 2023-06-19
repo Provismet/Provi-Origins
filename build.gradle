@@ -59,6 +59,7 @@ dependencies {
 
 	modImplementation "com.github.provismet:extrade-origins-addon:${project.extrade_oa_version}"
 	modImplementation "com.github.apace100:origins-fabric:v${project.origins_version}"
+	//modImplementation "com.github.Virtuoel:Pehkui:${project.pehkui_version}"
 }
 
 processResources {
