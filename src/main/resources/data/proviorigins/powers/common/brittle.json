@@ -5,7 +5,7 @@
     "modifier": {
       "name": "Brittle health reduction",
       "attribute": "minecraft:generic.max_health",
-      "value": -8.0,
+      "value": -10.0,
       "operation": "addition"
     }
   }
