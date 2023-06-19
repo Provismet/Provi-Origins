@@ -7,7 +7,11 @@
         "actions": [
             {
                 "type": "origins:execute_command",
-                "command": "scale set 1.5"
+                "command": "scale set pehkui:height 1.5 @s"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:width 1.5 @s"
             },
             {
                 "type": "origins:execute_command",
