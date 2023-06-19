@@ -1,0 +1,116 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+
+    "stacks": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 3,
+        "start_value": 1,
+        "min_action": {
+            "type": "origins:revoke_power",
+            "power": "proviorigins:faemoth/stacking_passive",
+            "source": "proviorigins:faemoth"
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:apply_effect",
+                    "effect": {
+                        "effect": "proviorigins:sleep",
+                        "duration": 70,
+                        "amplifier": 0
+                    }
+                },
+                {
+                    "type": "proviorigins:particle_ring",
+                    "radius": 2,
+                    "step_size": 3,
+                    "particle": {
+                        "type": "minecraft:dust",
+                        "params": "1.0 0.0 0.0 1"
+                    }
+                },
+                {
+                    "type": "origins:revoke_power",
+                    "power": "proviorigins:faemoth/stacking_passive",
+                    "source": "proviorigins:faemoth"
+                }
+            ]
+        }
+    },
+
+    "countdown": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 3,
+        "max_action": {
+            "type": "origins:change_resource",
+            "resource": "proviorigins:faemoth/stacking_passive_stacks",
+            "change": -1
+        }
+    },
+
+    "apply_countdown": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "proviorigins:faemoth/stacking_passive_countdown",
+            "change": 1
+        },
+        "falling_action": {
+            "type": "origins:change_resource",
+            "resource": "proviorigins:faemoth/stacking_passive_countdown",
+            "change": 0,
+            "operation": "set"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:faemoth/stacking_passive_countdown",
+            "comparison": "<",
+            "compare_to": 3
+        }
+    },
+
+    "first_ring": {
+        "type": "origins:action_over_time",
+        "interval": 5,
+        "entity_action": {
+            "type": "proviorigins:particle_ring",
+            "radius": 1,
+            "step_size": 5,
+            "particle": {
+                "type": "minecraft:dust",
+                "params": "0.196 1.0 0.196 1"
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:faemoth/stacking_passive_stacks",
+            "comparison": ">=",
+            "compare_to": 1
+        }
+    },
+
+    "second_ring": {
+        "type": "origins:action_over_time",
+        "interval": 5,
+        "entity_action": {
+            "type": "proviorigins:particle_ring",
+            "radius": 1.5,
+            "step_size": 4,
+            "particle": {
+                "type": "minecraft:dust",
+                "params": "1.0 0.639 0.0 1"
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:faemoth/stacking_passive_stacks",
+            "comparison": ">=",
+            "compare_to": 2
+        }
+    }
+}

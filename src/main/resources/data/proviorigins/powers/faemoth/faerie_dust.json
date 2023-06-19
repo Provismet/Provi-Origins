@@ -1,0 +1,22 @@
+{
+    "name": "power.proviorigins.faemoth.faerie_dust.name",
+    "description": "power.proviorigins.faemoth.faerie_dust.desc",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "power.proviorigins.faemoth.faerie_dust.badge1"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "power.proviorigins.faemoth.faerie_dust.badge2"
+        }
+    ],
+    "type": "origins:resource",
+    "min": 0,
+    "max": 120,
+    "start_value": 120,
+    "hud_render": {
+        "sprite_location": "origins:textures/gui/resource_bar.png",
+        "bar_index": 5
+    }
+}

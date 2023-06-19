@@ -22,6 +22,7 @@ public class Powers {
     public static final String RADIUS = "radius";
     public static final String COMPARISON = "comparison";
     public static final String COMPARE_TO = "compare_to";
+    public static final String INTERVAL = "interval";
 
     // There are no "simple" powers in this mod, they would go here otherwise.
 

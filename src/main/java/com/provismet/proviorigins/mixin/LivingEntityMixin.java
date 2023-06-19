@@ -18,6 +18,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.world.World;
 
 public final class LivingEntityMixin {
@@ -74,6 +75,26 @@ public final class LivingEntityMixin {
         @Inject(at=@At("RETURN"), method="canTarget(Lnet/minecraft/entity/LivingEntity;)Z", cancellable=true)
         private void applyUntargetable (LivingEntity target, CallbackInfoReturnable<Boolean> cir) {
             if (target.hasStatusEffect(com.provismet.proviorigins.content.StatusEffects.StatusEffects.UNTARGETABLE)) cir.setReturnValue(false);
+        }
+
+        // Apply double damage from sleep.
+        @Inject(at=@At("RETURN"), method="modifyAppliedDamage", cancellable=true)
+        private void applySleepDamage (DamageSource source, float amount, CallbackInfoReturnable<Float> cir) {
+            if (!source.isIn(DamageTypeTags.BYPASSES_EFFECTS)) {
+                LivingEntity livingEntity = (LivingEntity)(Object)this;
+
+                if (livingEntity.hasStatusEffect(com.provismet.proviorigins.content.StatusEffects.StatusEffects.SLEEP)) {
+                    livingEntity.removeStatusEffect(com.provismet.proviorigins.content.StatusEffects.StatusEffects.SLEEP);
+                    cir.setReturnValue(cir.getReturnValue() * 2);
+                }
+            }
+        }
+
+        // Prevent sleeping entities from jumping.
+        @Inject(at=@At("HEAD"), method="jump", cancellable=true)
+        private void preventSleepJump (CallbackInfo info) {
+            LivingEntity livingEntity = (LivingEntity)(Object)this;
+            if (livingEntity.hasStatusEffect(com.provismet.proviorigins.content.StatusEffects.StatusEffects.SLEEP)) info.cancel();
         }
     }
 }

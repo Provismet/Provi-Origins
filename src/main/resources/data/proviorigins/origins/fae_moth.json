@@ -1,0 +1,21 @@
+{
+    "powers": [
+        "proviorigins:common/smaller",
+        "proviorigins:faemoth/faerie_dust",
+        "proviorigins:faemoth/faerie_dust_charging",
+        "proviorigins:faemoth/flutter",
+        "proviorigins:faemoth/crit_passive",
+        "proviorigins:faemoth/share_buffs",
+        "origins:fall_immunity",
+        "proviorigins:common/slow_fall",
+        "origins:fragile",
+        "proviorigins:common/poor_strength",
+        "proviorigins:common/double_fire_damage",
+        "origins:vegetarian",
+        "origins:arthropod"
+    ],
+    "icon": "proviorigins:fae_moth",
+    "impact": 2,
+    "name": "power.proviorigins.faemoth.name",
+    "description": "power.proviorigins.faemoth.description"
+}

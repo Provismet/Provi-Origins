@@ -9,6 +9,7 @@ import net.minecraft.registry.Registry;
 public class BiEntityConditionFactories {
     public static void register () {
         register(TeammateCondition.getFactory());
+        register(FriendlyCondition.getFactory());
     }
 
     private static void register (ConditionFactory<Pair<Entity,Entity>> conditionFactory) {

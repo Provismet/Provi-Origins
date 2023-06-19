@@ -1,0 +1,112 @@
+{
+    "hidden": true,
+    "type": "origins:action_over_time",
+    "interval": 20,
+    "entity_action": {
+        "type": "origins:if_else_list",
+        "actions": [
+            {
+                "condition": {
+                    "type": "origins:exposed_to_sun"
+                },
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:faemoth/faerie_dust",
+                    "change": -2
+                }
+            },
+            {
+                "condition": {
+                    "type": "origins:block_in_radius",
+                    "block_condition": {
+                        "type": "origins:in_tag",
+                        "tag": "proviorigins:faemoth/large_fires"
+                    },
+                    "radius": 4
+                },
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:faemoth/faerie_dust",
+                    "change": 3
+                }
+            },
+            {
+                "condition": {
+                    "type": "origins:block_in_radius",
+                    "block_condition": {
+                        "type": "origins:in_tag",
+                        "tag": "proviorigins:faemoth/large_fires"
+                    },
+                    "radius": 4
+                },
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:faemoth/faerie_dust",
+                    "change": 2
+                }
+            },
+            {
+                "condition": {
+                    "type": "proviorigins:entity_in_radius",
+                    "entity_condition": {
+                        "type": "origins:or",
+                        "conditions": [
+                            {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "tag": "proviorigins:faemoth/light_sources"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "tag": "proviorigins:faemoth/light_sources"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "radius": 4
+                },
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:faemoth/faerie_dust",
+                    "change": 1
+                }
+            },
+            {
+                "condition": {
+                    "type": "origins:block_in_radius",
+                    "block_condition": {
+                        "type": "origins:in_tag",
+                        "tag": "proviorigins:faemoth/torches"
+                    },
+                    "radius": 4
+                },
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:faemoth/faerie_dust",
+                    "change": 1
+                }
+            },
+            {
+                "condition": {
+                    "type": "origins:constant",
+                    "value": true
+                },
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:faemoth/faerie_dust",
+                    "change": -1
+                }
+            }
+        ]
+    }
+}

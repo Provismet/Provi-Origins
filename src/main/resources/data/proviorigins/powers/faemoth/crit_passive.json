@@ -1,0 +1,96 @@
+{
+    "name": "power.proviorigins.faemoth.crit_passive.name",
+    "description": "power.proviorigins.faemoth.crit_passive.desc",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "power.proviorigins.faemoth.crit_passive.badge1"
+        },
+        {
+            "sprite": "proviorigins:textures/gui/badge/cost.png",
+            "text": "power.proviorigins.faemoth.crit_passive.badge2"
+        }
+    ],
+    "type": "proviorigins:action_on_critical_hit",
+    "bientity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:target_action",
+                "action": {
+                    "type": "origins:if_else",
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "proviorigins:faemoth/stacking_passive_stacks",
+                                "change": 1
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "proviorigins:faemoth/stacking_passive_countdown",
+                                "change": 0,
+                                "operation": "set"
+                            }
+                        ]
+                    },
+                    "else_action": {
+                        "type": "origins:grant_power",
+                        "power": "proviorigins:faemoth/stacking_passive",
+                        "source": "proviorigins:faemoth"
+                    },
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:living"
+                            },
+                            {
+                                "type": "origins:power",
+                                "power": "proviorigins:faemoth/stacking_passive"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "type": "origins:actor_action",
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:faemoth/faerie_dust",
+                    "change": -26
+                }
+            }
+        ]
+    },
+    "bientity_condition": {
+        "type": "origins:target_condition",
+        "condition": {
+            "type": "origins:status_effect",
+            "effect": "proviorigins:sleep",
+            "inverted": true
+        }
+    },
+    "condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:resource",
+                "resource": "proviorigins:faemoth/faerie_dust",
+                "comparison": ">=",
+                "compare_to": 26
+            },
+            {
+                "type": "origins:equipped_item",
+                "equipment_slot": "mainhand",
+                "item_condition": {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "tag": "minecraft:swords"
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -25,6 +25,7 @@ public class ActionFactories {
         registerEntityAction(SummonCloneAction.createActionFactory());
         registerEntityAction(ActOnClosestEntity.createActionFactory());
         registerEntityAction(ActOnFarthestEntity.createActionFactory());
+        registerEntityAction(ParticleRingAction.createActionFactory());
 
         // Bientity Actions
         registerBientityAction(SwapPositionsAction.createBientityActionFactory());

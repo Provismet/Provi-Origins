@@ -1,0 +1,35 @@
+{
+    "name": "power.proviorigins.common.smaller.name",
+    "description": "power.proviorigins.common.smaller.desc",
+    "type": "origins:action_on_callback",
+    "entity_action_gained": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:height 0.75 @s"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:width 0.75 @s"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scale persist set true"
+            }
+        ]
+    },
+    "entity_action_lost": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "scale reset"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scale persist set false"
+            }
+        ]
+    }
+}

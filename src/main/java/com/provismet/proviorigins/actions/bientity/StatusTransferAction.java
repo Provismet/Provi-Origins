@@ -13,10 +13,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Pair;
 
 public class StatusTransferAction {
     private static final String STATUS_TYPE_LABEL = "status_types";
+    private static final String EFFECTS_LABEL = "effects";
     private static final String CLEANSE_SELF_LABEL = "cleanse_self";
     private static final String AMPLIFIER_MODIFIER_LABEL = "amplifier_multiplier";
     private static final String DURATION_MODIFIER_LABEL = "duration_multiplier";
@@ -30,7 +32,8 @@ public class StatusTransferAction {
     public static void action (SerializableData.Instance data, Pair<Entity, Entity> bientity) {
         if (!(bientity.getLeft() instanceof LivingEntity) || !(bientity.getRight() instanceof LivingEntity) || bientity.getLeft().world.isClient) return;
         
-        final List<String> statusTypes = data.<List<String>>get(STATUS_TYPE_LABEL);
+        final List<String> statusTypes = data.get(STATUS_TYPE_LABEL);
+        final List<String> effectTypes = data.get(EFFECTS_LABEL);
         final boolean cleanse = data.getBoolean(CLEANSE_SELF_LABEL);
         final double amplifierMultiplier = data.getDouble(AMPLIFIER_MODIFIER_LABEL);
         final double durationMultiplier = data.getDouble(DURATION_MODIFIER_LABEL);
@@ -39,7 +42,11 @@ public class StatusTransferAction {
         LivingEntity target = (LivingEntity)bientity.getRight();
 
         List<StatusEffectInstance> effects = actor.getStatusEffects().stream().filter(
-            effect -> statusTypes.contains(CATEGORIES.get(effect.getEffectType().getCategory()))
+            effect -> {
+                if (statusTypes != null && statusTypes.contains(CATEGORIES.get(effect.getEffectType().getCategory()))) return true;
+                if (effectTypes != null && effectTypes.contains(Registries.STATUS_EFFECT.getId(effect.getEffectType()).toString())) return true;
+                return false;
+            }
         ).toList();
         
         for (StatusEffectInstance instance : effects) {
@@ -60,7 +67,8 @@ public class StatusTransferAction {
     public static ActionFactory<Pair<Entity, Entity>> createBientityActionFactory () {
         return new ActionFactory<>(ProviOriginsMain.identifier("transfer_status"),
             new SerializableData()
-                .add(STATUS_TYPE_LABEL, SerializableDataTypes.STRINGS)
+                .add(STATUS_TYPE_LABEL, SerializableDataTypes.STRINGS, null)
+                .add(EFFECTS_LABEL, SerializableDataTypes.STRINGS, null)
                 .add(CLEANSE_SELF_LABEL, SerializableDataTypes.BOOLEAN)
                 .add(AMPLIFIER_MODIFIER_LABEL, SerializableDataTypes.DOUBLE, 1.0)
                 .add(DURATION_MODIFIER_LABEL, SerializableDataTypes.DOUBLE, 1.0),

@@ -5,11 +5,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import com.provismet.proviorigins.content.StatusEffects.StatusEffects;
 import com.provismet.proviorigins.powers.ActionOnCriticalHitPower;
 import com.provismet.proviorigins.powers.PreventCriticalHitPower;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -39,5 +42,12 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             if (PowerHolderComponent.hasPower(player, PreventCriticalHitPower.class)) return false;
         }
         return shouldCrit;
+    }
+
+    // Cannot break blocks when inflicted with Sleep.
+    @Inject(at=@At("RETURN"), method="getBlockBreakingSpeed", cancellable=true)
+    private void preventBlockBreakWhenSleeping (BlockState block, CallbackInfoReturnable<Float> cir) {
+        PlayerEntity player = (PlayerEntity)(Object)this;
+        if (player.hasStatusEffect(StatusEffects.SLEEP)) cir.setReturnValue(0f);
     }
 }

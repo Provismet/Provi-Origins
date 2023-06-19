@@ -1,0 +1,51 @@
+{
+    "name": "power.proviorigins.faemoth.flutter.name",
+    "description": "power.proviorigins.faemoth.flutter.desc",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "origins.gui.badge.active"
+        },
+        {
+            "sprite": "proviorigins:textures/gui/badge/cost.png",
+            "text": "power.proviorigins.faemoth.flutter.badge"
+        }
+    ],
+    "type": "origins:active_self",
+    "key": {
+        "key": "key.jump"
+    },
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "proviorigins:double_jump",
+                "height": 0.5
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "proviorigins:faemoth/faerie_dust",
+                "change": -17
+            },
+            {
+                "type": "origins:set_fall_distance",
+                "fall_distance": 0
+            }
+        ]
+    },
+    "condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:resource",
+                "resource": "proviorigins:faemoth/faerie_dust",
+                "comparison": ">=",
+                "compare_to": 17
+            },
+            {
+                "type": "origins:on_block",
+                "inverted": true
+            }
+        ]
+    }
+}

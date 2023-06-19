@@ -8,6 +8,8 @@
     "item.proviorigins.kraken_soul_lantern": "Kraken's Soul Lantern",
 
     "effect.proviorigins.void_corruption": "Void Corruption",
+    "effect.proviorigins.untargetable": "Illusive",
+    "effect.proviorigins.sleep": "Sleeping",
     
     "death.attack.freshwater": "%1$s ran out of salt",
     "death.attack.freshwater.player": "%1$s lost too much salt whilst fighting %2$s",
@@ -74,6 +76,12 @@
     "power.proviorigins.common.no_potions.desc": "You cannot drink potions.",
     "power.proviorigins.common.no_splash_potions.name": "Incompatible Alchemy",
     "power.proviorigins.common.no_splash_potions.desc": "You are unaffected by potion clouds, including splash and lingering potions.",
+    "power.proviorigins.common.no_crits.name": "Imprecise",
+    "power.proviorigins.common.no_crits.desc": "You cannot perform critical hits with your attacks.",
+    "power.proviorigins.common.smaller.name": "Small Body",
+    "power.proviorigins.common.smaller.desc": "You are smaller than most and have a height of 1.5 blocks.",
+    "power.proviorigins.common.poor_strength.name": "Weak Melee",
+    "power.proviorigins.common.poor_strength.desc": "Your melee hits deal 33% less damage.",
 
     "power.proviorigins.voidlily.name": "Lily of the Void",
     "power.proviorigins.voidlily.description": "Grown from a Void Flower rooted on the skybox, you are connected both to nature and to oblivion.",
@@ -175,5 +183,22 @@
     "power.proviorigins.splinter.distortion.badge": "Costs 2 bars of mana.",
     "power.proviorigins.splinter.swap.name": "Misdirection",
     "power.proviorigins.splinter.swap.desc": "Swap places with the clone you are looking at, or if sneaking swap places with the furthest clone within 32 blocks.",
-    "power.proviorigins.splinter.swap.badge": "Costs 2 bars of mana."
+    "power.proviorigins.splinter.swap.badge": "Costs 2 bars of mana.",
+
+    "power.proviorigins.faemoth.name": "Faerie Moth",
+    "power.proviorigins.faemoth.description": "The fae live with nature, adapting to it. This creature chose the likeness of a moth.",
+    "power.proviorigins.faemoth.faerie_dust.name": "Faerie Dust",
+    "power.proviorigins.faemoth.faerie_dust.desc": "Your moth-like body produces a magical powder when near appropriate light sources. Being in direct sunlight or too far from light will erode the powder.",
+    "power.proviorigins.faemoth.faerie_dust.badge1": "Artificial fire-related light sources such as torches, campfires, and lanterns allow you to produce Faerie Dust.",
+    "power.proviorigins.faemoth.faerie_dust.badge2": "Torches and lanterns held by yourself or other nearby players will also apply to this power.",
+    "power.proviorigins.faemoth.flutter.name": "Flutter",
+    "power.proviorigins.faemoth.flutter.desc": "Use your wings to boost yourself into the air: you have mid-air jumps.",
+    "power.proviorigins.faemoth.flutter.badge": "Costs 1 bar of Faerie Dust.",
+    "power.proviorigins.faemoth.crit_passive.name": "Hypnotic Powder",
+    "power.proviorigins.faemoth.crit_passive.desc": "Critical strikes with a sword will lace an opponent with a layer faerie dust. A target that has three layers on them at once will be put to sleep for a few seconds.",
+    "power.proviorigins.faemoth.crit_passive.badge1": "Sleep is a new status effect that disables an entity's movement, strength, and vision.\nEntities with Sleep take double damage, but the effect is then immediately removed.",
+    "power.proviorigins.faemoth.crit_passive.badge2": "Costs 1.5 bars of Faerie Dust per layer.",
+    "power.proviorigins.faemoth.share_buffs.name": "Blessings of the Fae",
+    "power.proviorigins.faemoth.share_buffs.desc": "Share speed, strength, and regeneration effects that you currently have with all allies in an 8 block radius.",
+    "power.proviorigins.faemoth.share_buffs.badge": "Costs 3.5 bars of Faerie Dust."
 }

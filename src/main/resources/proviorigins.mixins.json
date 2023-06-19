@@ -8,14 +8,17 @@
     "EntityMixin$EntityMixins",
     "LivingEntityMixin$LivingEntityAccessor",
     "LivingEntityMixin$LivingEntityMixins",
-    "MobEntityAccessor"
+    "MobEntityAccessor",
+    "PlayerEntityMixin"
   ],
   "client": [
     "EntityRendererMixin",
     "MobEntityRendererMixin",
     "PlayerEntityRendererMixin",
     "EntityRenderDispatcherMixin",
-    "LivingEntityRendererAccessor"
+    "LivingEntityRendererAccessor",
+    "WorldRendererMixin",
+    "StatusEffectFogModifierMixin"
   ],
   "injectors": {
     "defaultRequire": 1

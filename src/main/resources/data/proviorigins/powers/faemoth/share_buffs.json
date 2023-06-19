@@ -1,0 +1,56 @@
+{
+    "name": "power.proviorigins.faemoth.share_buffs.name",
+    "description": "power.proviorigins.faemoth.share_buffs.desc",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "origins.gui.badge.active"
+        },
+        {
+            "sprite": "proviorigins:textures/gui/badge/cost.png",
+            "text": "power.proviorigins.faemoth.share_buffs.badge"
+        }
+    ],
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "proviorigins:particle_ring",
+                "radius": 8,
+                "step_size": 1.5,
+                "particle": {
+                    "type": "minecraft:dust",
+                    "params": "0.0 1.0 0.0 1"
+                }
+            },
+            {
+                "type": "origins:area_of_effect",
+                "radius": 8,
+                "bientity_action": {
+                    "type": "proviorigins:transfer_status",
+                    "effects": [
+                        "minecraft:speed",
+                        "minecraft:regeneration",
+                        "minecraft:strength"
+                    ],
+                    "cleanse_self": false
+                },
+                "bientity_condition": {
+                    "type": "proviorigins:friendly"
+                }
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "proviorigins:faemoth/faerie_dust",
+                "change": -60
+            }
+        ]
+    },
+    "condition": {
+        "type": "origins:resource",
+        "resource": "proviorigins:faemoth/faerie_dust",
+        "comparison": ">=",
+        "compare_to": 60
+    }
+}
