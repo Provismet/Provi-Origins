@@ -14,6 +14,8 @@ public class PowerFactories {
         register(ActiveItemPower.createPowerFactory());
         register(OccludeVibrationsPower.createPowerFactory());
         register(IllusionPower.createPowerFactory());
+        register(PreventCriticalHitPower.createPowerFactory());
+        register(ActionOnCriticalHitPower.createPowerFactory());
     }
 
     private static void register (PowerFactory<?> powerFactory) {

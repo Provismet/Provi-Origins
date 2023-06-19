@@ -1,0 +1,43 @@
+package com.provismet.proviorigins.mixin;
+
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import com.provismet.proviorigins.powers.ActionOnCriticalHitPower;
+import com.provismet.proviorigins.powers.PreventCriticalHitPower;
+
+import io.github.apace100.apoli.component.PowerHolderComponent;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.World;
+
+@Mixin(PlayerEntity.class)
+public abstract class PlayerEntityMixin extends LivingEntity {
+    protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
+        super(entityType, world);
+    }
+
+    // Action On Critical Hit
+    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;addCritParticles(Lnet/minecraft/entity/Entity;)V", shift = At.Shift.AFTER), method = "attack(Lnet/minecraft/entity/Entity;)V")
+    private void applyCritEffects (Entity target, CallbackInfo info) {
+        PlayerEntity player = (PlayerEntity)(Object)this;
+        for (ActionOnCriticalHitPower critEffectPower : PowerHolderComponent.getPowers(player, ActionOnCriticalHitPower.class)) {
+            critEffectPower.tryAction(target);
+        }
+    }
+    
+    // Prevent Critical Hit Power
+    @ModifyVariable(at = @At("STORE"), method = "attack(Lnet/minecraft/entity/Entity;)V", ordinal = 2)
+    private boolean preventCrits (boolean shouldCrit) {
+        if (shouldCrit) {
+            PlayerEntity player = (PlayerEntity)(Object)this;
+            if (PowerHolderComponent.hasPower(player, PreventCriticalHitPower.class)) return false;
+        }
+        return shouldCrit;
+    }
+}
