@@ -19,6 +19,9 @@ public class Powers {
     public static final String HUD_RENDER = "hud_render";
     public static final String RESOURCE = "resource";
     public static final String DISTANCE = "distance";
+    public static final String RADIUS = "radius";
+    public static final String COMPARISON = "comparison";
+    public static final String COMPARE_TO = "compare_to";
 
     // There are no "simple" powers in this mod, they would go here otherwise.
 
