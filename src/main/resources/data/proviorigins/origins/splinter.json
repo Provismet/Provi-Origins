@@ -8,6 +8,7 @@
         "proviorigins:splinter/arcane_glow",
         "proviorigins:splinter/swap",
         "proviorigins:common/brittle",
+        "proviorigins:common/no_crits",
         "proviorigins:splinter/reset_resources",
         "extrade:arcane"
     ],
