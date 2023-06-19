@@ -11,7 +11,7 @@
         "proviorigins:drakling/dragon_evolution",
         "extrade:beastly"
     ],
-    "icon": "minecraft:dragon_egg",
+    "icon": "proviorigins:drakling",
     "impact": 2,
     "name": "power.proviorigins.drakling.name",
     "description": "power.proviorigins.drakling.description"

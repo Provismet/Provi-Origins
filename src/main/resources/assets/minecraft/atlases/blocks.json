@@ -4,6 +4,11 @@
             "type": "directory",
             "source": "lantern",
             "prefix": "lantern/"
+        },
+        {
+            "type": "directory",
+            "source": "origin_icons",
+            "prefix": "icons/"
         }
     ]
 }

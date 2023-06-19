@@ -11,7 +11,7 @@
         "proviorigins:splinter/reset_resources",
         "extrade:arcane"
     ],
-    "icon": "minecraft:glass_pane",
+    "icon": "proviorigins:splinter",
     "impact": 3,
     "name": "power.proviorigins.splinter.name",
     "description": "power.proviorigins.splinter.description"

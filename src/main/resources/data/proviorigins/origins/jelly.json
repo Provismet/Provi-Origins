@@ -14,7 +14,7 @@
         "proviorigins:common/brittle",
         "extrade:fungifloral"
     ],
-    "icon": "minecraft:sculk_sensor",
+    "icon": "proviorigins:jelly",
     "impact": 3,
     "name": "power.proviorigins.jellysculk.name",
     "description": "power.proviorigins.jellysculk.description"
