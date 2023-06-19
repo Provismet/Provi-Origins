@@ -54,6 +54,13 @@
                     }
                 },
                 {
+                    "type": "origins:apply_effect",
+                    "effect": {
+                        "effect": "proviorigins:untargetable",
+                        "duration": 80
+                    }
+                },
+                {
                     "type": "origins:trigger_cooldown",
                     "power": "proviorigins:splinter/distortion_internal_cooldown"
                 },

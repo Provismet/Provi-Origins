@@ -69,5 +69,11 @@ public final class LivingEntityMixin {
             List<PreventPotionCloudPower> noPots = PowerHolderComponent.getPowers((LivingEntity)(Object)this, PreventPotionCloudPower.class);
             cir.setReturnValue(noPots.isEmpty());
         }
+
+        // Untargetable Status Effect
+        @Inject(at=@At("RETURN"), method="canTarget(Lnet/minecraft/entity/LivingEntity;)Z", cancellable=true)
+        private void applyUntargetable (LivingEntity target, CallbackInfoReturnable<Boolean> cir) {
+            if (target.hasStatusEffect(com.provismet.proviorigins.content.StatusEffects.StatusEffects.UNTARGETABLE)) cir.setReturnValue(false);
+        }
     }
 }
