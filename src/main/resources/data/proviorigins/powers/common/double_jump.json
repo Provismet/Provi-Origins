@@ -43,21 +43,25 @@
                     "compare_to": 0
                 },
                 {
-                    "type": "origins:fall_distance",
-                    "comparison": ">",
-                    "compare_to": 0
+                    "type": "origins:on_block",
+                    "inverted": true
                 }
             ]
         }
     },
     
     "reset_cooldown_on_landing": {
-        "type": "origins:action_on_land",
-        "entity_action": {
+        "type": "origins:action_over_time",
+        "interval": 5,
+        "rising_action": {
             "type": "origins:change_resource",
             "resource": "proviorigins:common/double_jump_jump_cooldown",
             "change": 0,
             "operation": "set"
+        },
+        "condition": {
+            "type": "origins:on_block",
+            "inverted": true
         }
     }
 }
