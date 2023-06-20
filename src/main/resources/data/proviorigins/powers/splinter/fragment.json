@@ -9,7 +9,11 @@
         },
         {
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "power.proviorigins.splinter.fragment.badge"
+            "text": "power.proviorigins.splinter.fragment.badge1"
+        },
+        {
+            "sprite": "proviorigins:textures/gui/badge/cost.png",
+            "text": "power.proviorigins.splinter.fragment.badge2"
         }
     ],
     "key": {
