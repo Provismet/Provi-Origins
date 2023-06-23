@@ -1,7 +1,7 @@
 {
     "name": "power.proviorigins.decaykraken.soul_steal.name",
     "description": "power.proviorigins.decaykraken.soul_steal.desc",
-    "type": "origins:active_self",
+    "type": "origins:multiple",
     "badges": [
         {
             "sprite": "origins:textures/gui/badge/active.png",
@@ -12,76 +12,178 @@
             "text": "power.proviorigins.decaykraken.soul_steal.badge"
         }
     ],
-    "key": {
-        "key": "key.origins.secondary_active"
+
+    "activate_laser": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:decaykraken/soul_steal_charging",
+                    "change": 1,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:decaykraken/deaths_vice",
+                    "change": -256,
+                    "operation": "add"
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:decaykraken/deaths_vice",
+            "comparison": ">=",
+            "compare_to": 256
+        }
     },
-    "cooldown": 40,
-    "hud_render": {
-        "should_render": true,
-        "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
-        "bar_index": 9
+
+    "charging": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 6,
+        "max_action": {
+            "type": "origins:raycast",
+            "distance": 8.0,
+            "shape_type": "outline",
+            "before_action": {
+                "type": "origins:change_resource",
+                "resource": "proviorigins:decaykraken/soul_steal_charging",
+                "change": 0,
+                "operation": "set"
+            },
+            "bientity_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:actor_action",
+                        "action": {
+                            "type": "origins:heal",
+                            "amount": 5
+                        }
+                    },
+                    {
+                        "type": "origins:damage",
+                        "amount": 4,
+                        "damage_type": "proviorigins:kraken_soul_steal"
+                    },
+                    {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:spawn_particles",
+                            "particle": "minecraft:sculk_soul",
+                            "count": 3
+                        }
+                    },
+                    {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:play_sound",
+                            "sound": "minecraft:entity.vex.ambient"
+                        }
+                    }
+                ]
+            },
+            "bientity_condition": {
+                "type": "origins:target_condition",
+                "condition": {
+                    "type": "origins:living"
+                }
+            }
+        }
     },
-    "entity_action": {
-        "type": "origins:and",
-        "actions": [
-            {
-                "type": "origins:raycast",
-                "distance": 8.0,
-                "shape_type": "outline",
-                "bientity_action": {
-                    "type": "origins:and",
+
+    "apply_charge": {
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else_list",
                     "actions": [
                         {
-                            "type": "origins:actor_action",
-                            "action": {
-                                "type": "origins:change_resource",
-                                "resource": "proviorigins:decaykraken/deaths_vice",
-                                "change": -256,
-                                "operation": "add"
-                            }
-                        },
-                        {
-                            "type": "origins:actor_action",
-                            "action": {
-                                "type": "origins:heal",
-                                "amount": 4
-                            }
-                        },
-                        {
-                            "type": "origins:damage",
-                            "amount": 4,
-                            "damage_type": "proviorigins:kraken_soul_steal"
-                        },
-                        {
-                            "type": "origins:target_action",
-                            "action": {
-                                "type": "origins:spawn_particles",
-                                "particle": "minecraft:sculk_soul",
-                                "count": 3
-                            }
-                        },
-                        {
-                            "type": "origins:target_action",
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "proviorigins:decaykraken/soul_steal_charging",
+                                "comparison": "==",
+                                "compare_to": 1
+                            },
                             "action": {
                                 "type": "origins:play_sound",
-                                "sound": "minecraft:entity.vex.ambient"
+                                "sound": "minecraft:block.note_block.didgeridoo",
+                                "volume": 0.7,
+                                "pitch": 1.25
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "proviorigins:decaykraken/soul_steal_charging",
+                                "comparison": "==",
+                                "compare_to": 2
+                            },
+                            "action": {
+                                "type": "origins:play_sound",
+                                "sound": "minecraft:block.note_block.didgeridoo",
+                                "volume": 0.7,
+                                "pitch": 1.5
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "proviorigins:decaykraken/soul_steal_charging",
+                                "comparison": "==",
+                                "compare_to": 3
+                            },
+                            "action": {
+                                "type": "origins:play_sound",
+                                "sound": "minecraft:block.note_block.didgeridoo",
+                                "volume": 0.7,
+                                "pitch": 1.75
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "proviorigins:decaykraken/soul_steal_charging",
+                                "comparison": ">=",
+                                "compare_to": 4
+                            },
+                            "action": {
+                                "type": "origins:play_sound",
+                                "sound": "minecraft:block.note_block.didgeridoo",
+                                "volume": 0.7,
+                                "pitch": 2.0
                             }
                         }
                     ]
                 },
-                "bientity_condition": {
-                    "type": "origins:target_condition",
-                    "condition": {
-                        "type": "origins:living"
-                    }
+                {
+                    "type": "origins:raycast",
+                    "distance": 8.0,
+                    "shape_type": "outline",
+                    "command_along_ray": "particle minecraft:soul_fire_flame",
+                    "command_step": 0.333
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:decaykraken/soul_steal_charging",
+                    "change": 1
                 }
-            }
-        ]
-    },
-    "condition": {
-        "type": "origins:resource",
-        "resource": "proviorigins:decaykraken/deaths_vice",
-        "comparison": ">=",
-        "compare_to": 256
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:decaykraken/soul_steal_charging",
+            "comparison": ">",
+            "compare_to": 0
+        }
     }
 }

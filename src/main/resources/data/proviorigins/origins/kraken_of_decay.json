@@ -15,14 +15,16 @@
 		"proviorigins:decaykraken/wither_hit",
 		"proviorigins:decaykraken/propulsion",
 		"proviorigins:decaykraken/soul_steal",
+		"proviorigins:decaykraken/tentacle_grapple",
+		"proviorigins:decaykraken/soul_consume",
 		"proviorigins:decaykraken/water_glow",
 		"proviorigins:decaykraken/deaths_vice_low_value_penalty",
 		"proviorigins:decaykraken/deaths_vice_empty",
 		"origins:fragile",
 		"proviorigins:decaykraken/water_sensitive",
 		"proviorigins:common/pescatarian",
-		"proviorigins:decaykraken/drop_ink_on_death",
-		"proviorigins:decaykraken/wither_evolve"
+		"proviorigins:decaykraken/slow_on_land",
+		"proviorigins:decaykraken/drop_ink_on_death"
 	],
 	"icon": "proviorigins:kraken_of_decay",
 	"impact": 3,

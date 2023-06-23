@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import com.provismet.proviorigins.extras.Tags;
 import com.provismet.proviorigins.powers.PreventBreathingPower;
 import com.provismet.proviorigins.powers.PreventPotionCloudPower;
 
@@ -18,6 +19,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.world.World;
 
@@ -95,6 +97,21 @@ public final class LivingEntityMixin {
         private void preventSleepJump (CallbackInfo info) {
             LivingEntity livingEntity = (LivingEntity)(Object)this;
             if (livingEntity.hasStatusEffect(com.provismet.proviorigins.content.StatusEffects.StatusEffects.SLEEP)) info.cancel();
+        }
+
+        // Allow custom damage sources to disable shields when blocked.
+        @Inject(at=@At(value="INVOKE", target="Lnet/minecraft/entity/LivingEntity;damageShield(F)V", shift=At.Shift.AFTER), method="damage")
+        private void disableShield (DamageSource source, float amount, CallbackInfoReturnable<Boolean> info) {
+            if (source.isIn(Tags.DamageTypes.DISABLES_SHIELDS) && (LivingEntity)(Object)this instanceof PlayerEntity player) {
+                player.disableShield(true);
+            }
+        }
+
+        // Force certain damage sources to always be blocked when the player has their shield raised.
+        @Inject(at=@At("RETURN"), method="blockedByShield", cancellable=true)
+        private void alwaysBlock (DamageSource source, CallbackInfoReturnable<Boolean> cir) {
+            LivingEntity living = (LivingEntity)(Object)this;
+            if (living.isBlocking() && source.isIn(Tags.DamageTypes.ALWAYS_BLOCK)) cir.setReturnValue(true);
         }
     }
 }

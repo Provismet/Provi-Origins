@@ -1,0 +1,120 @@
+{
+    "name": "power.proviorigins.decaykraken.soul_consume.name",
+    "description": "power.proviorigins.decaykraken.soul_consume.desc",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "origins.gui.badge.active"
+        },
+        {
+            "sprite": "proviorigins:textures/gui/badge/cost.png",
+            "text": "power.proviorigins.decaykraken.soul_consume.badge"
+        }
+    ],
+    "type": "origins:multiple",
+
+    "max_souls": {
+        "type": "proviorigins:active_item",
+        "key": "key.proviorigins.quaternary_active",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:decaykraken/max_consume"
+            }
+        },
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "proviorigins:decaykraken/deaths_vice",
+            "change": 1200
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:decaykraken/deaths_vice",
+            "comparison": "<",
+            "compare_to": 1200
+        }
+    },
+
+    "medium_souls": {
+        "type": "proviorigins:active_item",
+        "key": "key.proviorigins.quaternary_active",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:decaykraken/medium_consume"
+            }
+        },
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "proviorigins:decaykraken/deaths_vice",
+            "change": 171
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:decaykraken/deaths_vice",
+            "comparison": "<",
+            "compare_to": 1200
+        }
+    },
+
+    "weak_souls": {
+        "type": "proviorigins:active_item",
+        "key": "key.proviorigins.quaternary_active",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:decaykraken/weak_consume"
+            }
+        },
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "proviorigins:decaykraken/deaths_vice",
+            "change": 42
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:decaykraken/deaths_vice",
+            "comparison": "<",
+            "compare_to": 1200
+        }
+    },
+
+    "weak_tooltip": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:decaykraken/weak_consume"
+            }
+        },
+        "text": {
+            "translate": "tooltip.proviorigins.decaykraken.weak_soul"
+        }
+    },
+
+    "medium_tooltip": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:decaykraken/medium_consume"
+            }
+        },
+        "text": {
+            "translate": "tooltip.proviorigins.decaykraken.medium_soul"
+        }
+    },
+
+    "max_tooltip": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:decaykraken/max_consume"
+            }
+        },
+        "text": {
+            "translate": "tooltip.proviorigins.decaykraken.max_soul"
+        }
+    }
+}
