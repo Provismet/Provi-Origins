@@ -17,7 +17,7 @@ public class EntityInRadius {
     private static final String INCLUDE_SELF = "include_self";
 
     public static boolean condition (SerializableData.Instance data, Entity entity) {
-        final int radius = data.getInt(Powers.RADIUS);
+        final double radius = data.getDouble(Powers.RADIUS);
         final int compareTo = data.getInt(Powers.COMPARE_TO);
         final boolean includeSelf = data.getBoolean(INCLUDE_SELF);
         Predicate<Entity> entityCondition = data.get(Powers.ENTITY_CONDITION);
@@ -63,7 +63,7 @@ public class EntityInRadius {
         return new ConditionFactory<>(Powers.identifier("entity_in_radius"),
             new SerializableData()
                 .add(Powers.ENTITY_CONDITION, ApoliDataTypes.ENTITY_CONDITION)
-                .add(Powers.RADIUS, SerializableDataTypes.INT)
+                .add(Powers.RADIUS, SerializableDataTypes.DOUBLE)
                 .add(INCLUDE_SELF, SerializableDataTypes.BOOLEAN, true)
                 .add(Powers.COMPARISON, ApoliDataTypes.COMPARISON, Comparison.GREATER_THAN_OR_EQUAL)
                 .add(Powers.COMPARE_TO, SerializableDataTypes.INT, 1),
