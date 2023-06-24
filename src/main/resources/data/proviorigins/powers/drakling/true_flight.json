@@ -2,11 +2,13 @@
     "name": "power.proviorigins.drakling.true_flight.name",
     "description": "power.proviorigins.drakling.true_flight.desc",
     "type": "origins:multiple",
+
     "elytra": {
         "type": "origins:elytra_flight",
         "render_elytra": true,
-        "texture_location": "minecraft:textures/block/obsidian.png"
+        "texture_location": "proviorigins:textures/entity/drakling_wings.png"
     },
+
     "boost": {
         "type": "origins:active_self",
         "entity_action": {

@@ -39,7 +39,7 @@
     "elytra": {
         "type": "origins:elytra_flight",
         "render_elytra": true,
-        "texture_location": "minecraft:textures/block/obsidian.png"
+        "texture_location": "proviorigins:textures/entity/drakling_wings.png"
     },
     
     "locked_elytra": {
