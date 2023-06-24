@@ -8,6 +8,11 @@
   "authors": [
     "Provismet"
   ],
+  "contact": {
+    "homepage": "https://github.com/Provismet/Provi-Origins",
+    "sources": "https://github.com/Provismet/Provi-Origins",
+    "issues": "https://github.com/Provismet/Provi-Origins/issues"
+  },
 
   "license": "Apache-2.0",
   "icon": "assets/proviorigins/icon.png",
