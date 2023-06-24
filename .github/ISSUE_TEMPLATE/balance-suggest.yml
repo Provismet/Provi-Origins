@@ -9,11 +9,11 @@ body:
       options:
         - Lily of the Void
         - Kraken of Decay
-        - Embodiment of Decay
         - Drakling
         - Drake
         - Jellysculk
         - Splinter
+        - Faerie Moth
     validations:
       required: true
   - type: dropdown
