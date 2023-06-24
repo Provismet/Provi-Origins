@@ -23,9 +23,12 @@
                     "event": "minecraft:flap"
                 },
                 {
-                    "type": "origins:spawn_particles",
-                    "particle": "minecraft:explosion",
-                    "count": 6
+                    "type": "proviorigins:particle_ring",
+                    "radius": 5,
+                    "step_size": 20,
+                    "offset_y": 0.0,
+                    "on_ground": false,
+                    "particle": "minecraft:explosion"
                 },
                 {
                     "type": "origins:add_velocity",

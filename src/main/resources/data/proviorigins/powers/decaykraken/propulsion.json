@@ -58,9 +58,23 @@
                     },
                     {
                         "action": {
-                            "type": "origins:add_velocity",
-                            "z": 1.5,
-                            "space": "local"
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:add_velocity",
+                                    "z": 1.5,
+                                    "space": "local"
+                                },
+                                {
+                                    "type": "proviorigins:particle_ring",
+                                    "radius": 4,
+                                    "step_size": 10,
+                                    "offset_y": 1,
+                                    "offset_z": -0.5,
+                                    "on_ground": false,
+                                    "particle": "minecraft:squid_ink"
+                                }
+                            ]
                         },
                         "condition": {
                             "type": "origins:submerged_in",
