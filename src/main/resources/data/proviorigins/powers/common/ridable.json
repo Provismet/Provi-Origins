@@ -132,7 +132,7 @@
     },
 
     "adjust_passenger": {
-        "type": "proviorigins:passenger_height",
+        "type": "proviorigins:modify_passenger_height",
         "offset": 0.9
     }
 }

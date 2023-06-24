@@ -8,7 +8,7 @@ public class PowerFactories {
     public static void register () {
         register(PreventBreathingPower.createPowerFactory());
         register(PreventPotionCloudPower.createPowerFactory());
-        register(AdjustPassengerHeightPower.createPowerFactory());
+        register(ModifyPassengerHeightPower.createPowerFactory());
         register(ActionOnDetectVibrationPower.createPowerFactory());
         register(EmissivePower.createPowerFactory());
         register(ActiveItemPower.createPowerFactory());

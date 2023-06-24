@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.provismet.proviorigins.powers.ActionOnDetectVibrationPower;
-import com.provismet.proviorigins.powers.AdjustPassengerHeightPower;
+import com.provismet.proviorigins.powers.ModifyPassengerHeightPower;
 import com.provismet.proviorigins.powers.OccludeVibrationsPower;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
@@ -50,7 +50,7 @@ public final class EntityMixin {
         private void adjustHeight (CallbackInfoReturnable<Double> cir) {
             if ((Object)this instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity)(Object)this;
-                List<AdjustPassengerHeightPower> powers = PowerHolderComponent.getPowers(living, AdjustPassengerHeightPower.class);
+                List<ModifyPassengerHeightPower> powers = PowerHolderComponent.getPowers(living, ModifyPassengerHeightPower.class);
 
                 if (!powers.isEmpty()) {
                     Double offset = powers.get(0).offset;
