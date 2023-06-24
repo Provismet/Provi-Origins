@@ -130,7 +130,7 @@ public class IllusionPower extends Power {
     }
 
     public static PowerFactory createPowerFactory () {
-        return new PowerFactory<>(ProviOriginsMain.identifier("illusioner_mirror"),
+        return new PowerFactory<>(Powers.identifier("illusioner_mirror"),
             new SerializableData()
                 .add(DISTANCE_LABEL, SerializableDataTypes.DOUBLE)
                 .add(COUNT_LABEL, SerializableDataTypes.INT)

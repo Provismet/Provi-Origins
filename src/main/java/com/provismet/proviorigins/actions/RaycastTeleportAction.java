@@ -3,6 +3,7 @@ package com.provismet.proviorigins.actions;
 import java.util.function.Consumer;
 
 import com.provismet.proviorigins.ProviOriginsMain;
+import com.provismet.proviorigins.powers.Powers;
 
 import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.power.factory.action.ActionFactory;
@@ -74,7 +75,7 @@ public class RaycastTeleportAction {
     }
 
     public static ActionFactory<Entity> createActionFactory () {
-        return new ActionFactory<>(ProviOriginsMain.identifier("raycast_teleport"), 
+        return new ActionFactory<>(Powers.identifier("raycast_teleport"), 
         new SerializableData()
             .add(DISTANCE_LABEL, SerializableDataTypes.DOUBLE)
             .add(DESTINATION_LABEL, SerializableDataTypes.STRING)

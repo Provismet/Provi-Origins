@@ -1,6 +1,6 @@
 package com.provismet.proviorigins.actions;
 
-import com.provismet.proviorigins.ProviOriginsMain;
+import com.provismet.proviorigins.powers.Powers;
 
 import io.github.apace100.apoli.power.factory.action.ActionFactory;
 import io.github.apace100.calio.data.SerializableData;
@@ -20,7 +20,7 @@ public class DoubleJumpAction {
     }
 
     public static ActionFactory<Entity> createActionFactory () {
-        return new ActionFactory<>(ProviOriginsMain.identifier("double_jump"),
+        return new ActionFactory<>(Powers.identifier("double_jump"),
             new SerializableData()
             .add("height", SerializableDataTypes.DOUBLE, Double.valueOf(2)),
             DoubleJumpAction::action

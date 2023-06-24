@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-import com.provismet.proviorigins.ProviOriginsMain;
 import com.provismet.proviorigins.powers.Powers;
 
 import io.github.apace100.apoli.data.ApoliDataTypes;
@@ -31,7 +30,7 @@ public class ActOnFarthestEntity {
     }
 
     public static ActionFactory<Entity> createActionFactory () {
-        return new ActionFactory<>(ProviOriginsMain.identifier("farthest_bientity"),
+        return new ActionFactory<>(Powers.identifier("farthest_bientity"),
             new SerializableData()
             .add(Powers.DISTANCE, SerializableDataTypes.DOUBLE)
             .add(Powers.BIENTITY_ACTION, ApoliDataTypes.BIENTITY_ACTION)

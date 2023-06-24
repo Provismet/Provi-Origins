@@ -79,7 +79,7 @@ public class SummonCloneAction {
     }
 
     public static ActionFactory<Entity> createActionFactory () {
-        return new ActionFactory<>(ProviOriginsMain.identifier("summon_clone"),
+        return new ActionFactory<>(Powers.identifier("summon_clone"),
             new SerializableData()
                 .add(CAN_SIT_LABEL, SerializableDataTypes.BOOLEAN, true)
                 .add(CAN_ATTACK_LABEL, SerializableDataTypes.BOOLEAN, true)

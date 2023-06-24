@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
-import com.provismet.proviorigins.ProviOriginsMain;
+import com.provismet.proviorigins.powers.Powers;
 
 import io.github.apace100.apoli.power.factory.action.ActionFactory;
 import io.github.apace100.calio.data.SerializableData;
@@ -65,7 +65,7 @@ public class StatusTransferAction {
     }
 
     public static ActionFactory<Pair<Entity, Entity>> createBientityActionFactory () {
-        return new ActionFactory<>(ProviOriginsMain.identifier("transfer_status"),
+        return new ActionFactory<>(Powers.identifier("transfer_status"),
             new SerializableData()
                 .add(STATUS_TYPE_LABEL, SerializableDataTypes.STRINGS, null)
                 .add(EFFECTS_LABEL, SerializableDataTypes.STRINGS, null)

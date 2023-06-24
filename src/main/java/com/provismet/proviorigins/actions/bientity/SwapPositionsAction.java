@@ -1,6 +1,6 @@
 package com.provismet.proviorigins.actions.bientity;
 
-import com.provismet.proviorigins.ProviOriginsMain;
+import com.provismet.proviorigins.powers.Powers;
 
 import io.github.apace100.apoli.power.factory.action.ActionFactory;
 import io.github.apace100.calio.data.SerializableData;
@@ -36,7 +36,7 @@ public class SwapPositionsAction {
     }
 
     public static ActionFactory<Pair<Entity,Entity>> createBientityActionFactory () {
-        return new ActionFactory<>(ProviOriginsMain.identifier("swap_positions"),
+        return new ActionFactory<>(Powers.identifier("swap_positions"),
             new SerializableData()
                 .add(RESET_FALL_LABEL, SerializableDataTypes.BOOLEAN, true)
                 .add(RESET_VELOCITY_LABEL, SerializableDataTypes.BOOLEAN),

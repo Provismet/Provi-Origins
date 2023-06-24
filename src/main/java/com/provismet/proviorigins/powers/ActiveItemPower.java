@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-import com.provismet.proviorigins.ProviOriginsMain;
-
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.power.Active;
@@ -69,7 +67,7 @@ public class ActiveItemPower extends ActiveCooldownPower {
     }
     
     public static PowerFactory createPowerFactory () {
-        return new PowerFactory<>(ProviOriginsMain.identifier("active_item"),
+        return new PowerFactory<>(Powers.identifier("active_item"),
         new SerializableData()
             .add(Powers.ENTITY_ACTION, ApoliDataTypes.ENTITY_ACTION)
             .add(Powers.ITEM_CONDITION, ApoliDataTypes.ITEM_CONDITION)

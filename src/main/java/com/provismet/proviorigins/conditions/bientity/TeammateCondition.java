@@ -1,6 +1,6 @@
 package com.provismet.proviorigins.conditions.bientity;
 
-import com.provismet.proviorigins.ProviOriginsMain;
+import com.provismet.proviorigins.powers.Powers;
 
 import io.github.apace100.apoli.power.factory.condition.ConditionFactory;
 import io.github.apace100.calio.data.SerializableData;
@@ -18,6 +18,6 @@ public class TeammateCondition {
     }
 
     public static ConditionFactory<Pair<Entity,Entity>> getFactory () {
-        return new ConditionFactory<>(ProviOriginsMain.identifier("teammate"), new SerializableData(), TeammateCondition::condition);
+        return new ConditionFactory<>(Powers.identifier("teammate"), new SerializableData(), TeammateCondition::condition);
     }
 }
