@@ -7,8 +7,10 @@
         "proviorigins:splinter/distortion",
         "proviorigins:splinter/arcane_glow",
         "proviorigins:splinter/swap",
+        "proviorigins:splinter/dodge_projectiles",
         "proviorigins:common/brittle",
         "proviorigins:common/no_crits",
+        "origins:no_shield",
         "proviorigins:splinter/reset_resources",
         "extrade:arcane"
     ],

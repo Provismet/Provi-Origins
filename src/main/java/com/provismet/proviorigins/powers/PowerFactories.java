@@ -16,6 +16,7 @@ public class PowerFactories {
         register(IllusionPower.createPowerFactory());
         register(PreventCriticalHitPower.createPowerFactory());
         register(ActionOnCriticalHitPower.createPowerFactory());
+        register(EvadeProjectilesPower.createPowerFactory());
     }
 
     private static void register (PowerFactory<?> powerFactory) {

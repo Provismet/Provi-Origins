@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.provismet.proviorigins.extras.Tags;
+import com.provismet.proviorigins.powers.EvadeProjectilesPower;
 import com.provismet.proviorigins.powers.PreventBreathingPower;
 import com.provismet.proviorigins.powers.PreventPotionCloudPower;
 
@@ -112,6 +113,15 @@ public final class LivingEntityMixin {
         private void alwaysBlock (DamageSource source, CallbackInfoReturnable<Boolean> cir) {
             LivingEntity living = (LivingEntity)(Object)this;
             if (living.isBlocking() && source.isIn(Tags.DamageTypes.ALWAYS_BLOCK)) cir.setReturnValue(true);
+        }
+
+        // Evade Projectile Power
+        @Inject(at=@At("HEAD"), method="damage", cancellable=true)
+        private void actOnProjectile (DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+            LivingEntity living = (LivingEntity)(Object)this;
+            if (source.isIn(DamageTypeTags.IS_PROJECTILE) && PowerHolderComponent.hasPower(living, EvadeProjectilesPower.class) && !living.isBlocking()) {
+                cir.setReturnValue(true); // This reports that damage was dealt, but prevents it from actually happening.
+            }
         }
     }
 }

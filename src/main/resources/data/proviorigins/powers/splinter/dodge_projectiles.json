@@ -1,0 +1,82 @@
+{
+    "name": "power.proviorigins.splinter.dodge_projectiles.name",
+    "description": "power.proviorigins.splinter.dodge_projectiles.desc",
+    "type": "origins:multiple",
+    "badges": [
+        {
+            "sprite": "proviorigins:textures/gui/badge/cost.png",
+            "text": "power.proviorigins.splinter.dodge_projectiles.badge"
+        }
+    ],
+
+    "internal_cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 15
+    },
+
+    "dodge": {
+        "type": "proviorigins:evade_projectiles",
+        "entity_action": {
+            "type": "origins:if_else",
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:trigger_cooldown",
+                        "power": "proviorigins:splinter/dodge_projectiles_internal_cooldown"
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "proviorigins:splinter/mana",
+                        "change": -34
+                    }
+                ]
+            },
+            "condition": {
+                "type": "origins:resource",
+                "resource": "proviorigins:splinter/dodge_projectiles_internal_cooldown",
+                "comparison": "==",
+                "compare_to": 0
+            }
+        },
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:splinter/dodge_projectiles_internal_cooldown",
+                    "comparison": ">=",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:sneaking"
+                        },
+                        {
+                            "type": "origins:resource",
+                            "resource": "proviorigins:splinter/mana",
+                            "comparison": ">=",
+                            "compare_to": 34
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+
+    "illusion_spread": {
+        "type": "proviorigins:illusioner_mirror",
+        "distance": 0.1,
+        "illusion_spread": "spread",
+        "resource": "proviorigins:splinter/dodge_projectiles_internal_cooldown",
+        "layers": 4,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:splinter/dodge_projectiles_internal_cooldown",
+            "comparison": ">=",
+            "compare_to": 1
+        }
+    }
+}

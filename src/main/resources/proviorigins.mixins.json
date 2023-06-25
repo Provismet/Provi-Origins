@@ -9,7 +9,9 @@
     "LivingEntityMixin$LivingEntityAccessor",
     "LivingEntityMixin$LivingEntityMixins",
     "MobEntityAccessor",
-    "PlayerEntityMixin"
+    "PlayerEntityMixin",
+    "ProjectileEntityMixin",
+    "PersistentProjectileEntityMixin"
   ],
   "client": [
     "EntityRendererMixin",

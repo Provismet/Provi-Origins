@@ -5,7 +5,7 @@
 
     "recharge_mana": {
         "type": "origins:action_over_time",
-        "interval": 20,
+        "interval": 10,
         "entity_action": {
             "type": "origins:change_resource",
             "resource": "proviorigins:splinter/mana",
