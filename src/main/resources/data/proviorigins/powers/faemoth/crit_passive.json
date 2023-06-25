@@ -67,9 +67,19 @@
     "bientity_condition": {
         "type": "origins:target_condition",
         "condition": {
-            "type": "origins:status_effect",
-            "effect": "proviorigins:sleep",
-            "inverted": true
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:status_effect",
+                    "effect": "proviorigins:sleep",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:status_effect",
+                    "effect": "proviorigins:alert",
+                    "inverted": true
+                }
+            ]
         }
     },
     "condition": {

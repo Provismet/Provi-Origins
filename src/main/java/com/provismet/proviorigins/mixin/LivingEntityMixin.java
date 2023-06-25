@@ -19,6 +19,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.tag.DamageTypeTags;
@@ -122,6 +123,12 @@ public final class LivingEntityMixin {
             if (source.isIn(DamageTypeTags.IS_PROJECTILE) && PowerHolderComponent.hasPower(living, EvadeProjectilesPower.class) && !living.isBlocking()) {
                 cir.setReturnValue(true); // This reports that damage was dealt, but prevents it from actually happening.
             }
+        }
+
+        @Inject(at=@At("RETURN"), method="canHaveStatusEffect", cancellable=true)
+        private void cannotHaveSleepAndAlert (StatusEffectInstance effectInstance, CallbackInfoReturnable<Boolean> cir) {
+            if (effectInstance.getEffectType() == com.provismet.proviorigins.content.StatusEffects.StatusEffects.SLEEP &&
+                ((LivingEntity)(Object)this).hasStatusEffect(com.provismet.proviorigins.content.StatusEffects.StatusEffects.ALERT)) cir.setReturnValue(false);
         }
     }
 }

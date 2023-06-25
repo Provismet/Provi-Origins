@@ -18,6 +18,7 @@
     "effect.proviorigins.void_corruption": "Void Corruption",
     "effect.proviorigins.untargetable": "Illusive",
     "effect.proviorigins.sleep": "Sleeping",
+    "effect.proviorigins.alert": "Alert",
     
     "death.attack.freshwater": "%1$s ran out of salt",
     "death.attack.freshwater.player": "%1$s lost too much salt whilst fighting %2$s",
@@ -200,6 +201,9 @@
     "power.proviorigins.splinter.swap.name": "Misdirection",
     "power.proviorigins.splinter.swap.desc": "Swap places with the clone you are looking at, or if sneaking swap places with the furthest clone within 32 blocks.",
     "power.proviorigins.splinter.swap.badge": "Costs 2 bars of mana.",
+    "power.proviorigins.splinter.dodge_projectiles.name": "Evasive",
+    "power.proviorigins.splinter.dodge_projectiles.desc": "Dodge projectiles when sneaking.",
+    "power.proviorigins.splinter.dodge_projectiles.badge": "Costs 2 bars of mana.",
 
     "power.proviorigins.faemoth.name": "Faerie Moth",
     "power.proviorigins.faemoth.description": "The fae live with nature, adapting to it. This creature chose the likeness of a moth.",
