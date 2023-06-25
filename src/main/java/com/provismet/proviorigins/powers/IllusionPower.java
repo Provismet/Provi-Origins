@@ -102,7 +102,7 @@ public class IllusionPower extends Power {
         return offsets;
     }
 
-    public Vec3d[] getOffsetsSpread () { // TODO: Random spread that works like the Illusioner mob.
+    public Vec3d[] getOffsetsSpread () {
         if (this.randomSpreads.size() == 0) {
             for (int i = 0; i < this.count; ++i) {
                 this.randomSpreads.add(new Polar(
