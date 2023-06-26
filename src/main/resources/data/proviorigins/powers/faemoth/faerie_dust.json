@@ -16,7 +16,7 @@
     "max": 120,
     "start_value": 120,
     "hud_render": {
-        "sprite_location": "origins:textures/gui/resource_bar.png",
-        "bar_index": 5
+        "sprite_location": "proviorigins:textures/gui/resources/extra_resources.png",
+        "bar_index": 2
     }
 }
