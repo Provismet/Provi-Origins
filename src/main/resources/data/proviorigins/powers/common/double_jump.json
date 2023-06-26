@@ -19,17 +19,13 @@
             "actions": [
                 {
                     "type": "proviorigins:double_jump",
-                    "height": 0.75
+                    "velocity": 0.75
                 },
                 {
                     "type": "origins:change_resource",
                     "resource": "proviorigins:common/double_jump_jump_cooldown",
                     "change": 1,
                     "operation": "set"
-                },
-                {
-                    "type": "origins:set_fall_distance",
-                    "fall_distance": 0
                 }
             ]
         },

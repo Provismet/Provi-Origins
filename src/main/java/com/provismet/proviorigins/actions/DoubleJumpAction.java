@@ -6,23 +6,34 @@ import io.github.apace100.apoli.power.factory.action.ActionFactory;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.Vec3d;
 
 public class DoubleJumpAction {
+    private final static String HEIGHT_LABEL = "velocity";
+    private static final String CLIENT_LABEL = "client";
+    private static final String SERVER_LABEL = "server";
+    private static final String FALL_LABEL = "reset_fall_height";
+
     public static void action (SerializableData.Instance data, Entity entity) {
-        if (entity instanceof LivingEntity) {
-            LivingEntity living = (LivingEntity)entity;
-            Vec3d currentVelocity = living.getVelocity();
-            living.setVelocity(currentVelocity.x, data.getDouble("height"), currentVelocity.z);
-            living.velocityModified = true;
+        if (entity.world.isClient) {
+            if (!data.getBoolean(CLIENT_LABEL)) return;
         }
+        else if (!data.getBoolean(SERVER_LABEL)) return;
+
+        Vec3d currentVelocity = entity.getVelocity();
+        entity.setVelocity(currentVelocity.x, data.getDouble(HEIGHT_LABEL), currentVelocity.z);
+        entity.velocityModified = true;
+        
+        if (data.getBoolean(FALL_LABEL)) entity.fallDistance = 0;
     }
 
     public static ActionFactory<Entity> createActionFactory () {
         return new ActionFactory<>(Powers.identifier("double_jump"),
             new SerializableData()
-            .add("height", SerializableDataTypes.DOUBLE, Double.valueOf(2)),
+            .add(HEIGHT_LABEL, SerializableDataTypes.DOUBLE)
+            .add(CLIENT_LABEL, SerializableDataTypes.BOOLEAN, true)
+            .add(SERVER_LABEL, SerializableDataTypes.BOOLEAN, true)
+            .add(FALL_LABEL, SerializableDataTypes.BOOLEAN, true),
             DoubleJumpAction::action
         );
     }
