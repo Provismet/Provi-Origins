@@ -42,6 +42,24 @@
             {
                 "type": "origins:on_block",
                 "inverted": true
+            },
+            {
+                "type": "origins:creative_flying",
+                "inverted": true
+            },
+            {
+                "type": "origins:fall_flying",
+                "inverted": true
+            },
+            {
+                "type": "origins:submerged_in",
+                "fluid": "minecraft:water",
+                "inverted": true
+            },
+            {
+                "type": "origins:submerged_in",
+                "fluid": "minecraft:lava",
+                "inverted": true
             }
         ]
     }
