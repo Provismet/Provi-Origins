@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "proviorigins:solid_lantern"
+        }
+    ],
+    "result": {
+        "item": "minecraft:lantern",
+        "count": 1
+    }
+}

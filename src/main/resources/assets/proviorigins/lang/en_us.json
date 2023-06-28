@@ -5,7 +5,8 @@
 
     "wiki.proviorigins.wiki": "Wiki",
 
-    "item.proviorigins.kraken_soul_lantern": "Kraken's Soul Lantern",
+    "item.proviorigins.kraken_soul_lantern": "Soul Lantern",
+    "item.proviorigins.solid_lantern": "Lantern",
 
     "item.proviorigins.lily_of_the_void": "Lily of the Void Origin Icon",
     "item.proviorigins.kraken_of_decay": "Kraken of Decay Origin Icon",
@@ -211,6 +212,7 @@
     "power.proviorigins.faemoth.faerie_dust.desc": "Your moth-like body produces a magical powder when near appropriate light sources. Being in direct sunlight or too far from light will erode the powder.",
     "power.proviorigins.faemoth.faerie_dust.badge1": "Artificial fire-related light sources such as torches, campfires, and lanterns allow you to produce Faerie Dust.",
     "power.proviorigins.faemoth.faerie_dust.badge2": "Torches and lanterns held by yourself or other nearby players will also apply to this power.",
+    "power.proviorigins.faemoth.faerie_dust.badge3": "For quality of life purposes, you may craft Lanterns into a unique version that cannot be placed but grants the same held effects.",
     "power.proviorigins.faemoth.flutter.name": "Flutter",
     "power.proviorigins.faemoth.flutter.desc": "Use your wings to boost yourself into the air: you have mid-air jumps.",
     "power.proviorigins.faemoth.flutter.badge": "Costs 1 bar of Faerie Dust.",

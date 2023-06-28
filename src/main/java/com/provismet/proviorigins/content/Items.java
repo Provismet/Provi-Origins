@@ -14,9 +14,11 @@ public class Items {
     }
 
     public static final Item SOUL_LAMP = new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE));
+    public static final Item SOLID_LANTERN = new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE));
 
     public static void register () {
         Registry.register(Registries.ITEM, ProviOriginsMain.identifier("kraken_soul_lantern"), SOUL_LAMP);
+        Registry.register(Registries.ITEM, ProviOriginsMain.identifier("solid_lantern"), SOLID_LANTERN);
         registerItemIcon("lily_of_the_void");
         registerItemIcon("kraken_of_decay");
         registerItemIcon("jelly");

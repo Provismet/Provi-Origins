@@ -9,6 +9,27 @@
         {
             "sprite": "origins:textures/gui/badge/info.png",
             "text": "power.proviorigins.faemoth.faerie_dust.badge2"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "power.proviorigins.faemoth.faerie_dust.badge3"
+        },
+        {
+            "type": "origins:crafting_recipe",
+            "sprite": "origins:textures/gui/badge/recipe.png",
+            "recipe": {
+                "id": "proviorigins:faemoth/qol_lantern_example",
+                "type": "minecraft:crafting_shapeless",
+                "ingredients": [
+                    {
+                        "item": "minecraft:lantern"
+                    }
+                ],
+                "result": {
+                    "item": "proviorigins:solid_lantern",
+                    "count": 1
+                }
+            }
         }
     ],
     "type": "origins:resource",
