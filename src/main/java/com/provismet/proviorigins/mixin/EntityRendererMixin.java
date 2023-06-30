@@ -15,7 +15,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.BlockPos;
 
-@Mixin(EntityRenderer.class)
+@Mixin(value = EntityRenderer.class, priority = 998)
 public abstract class EntityRendererMixin {
     // Emissive Power
     @Inject(at=@At("HEAD"), method="getBlockLight", cancellable=true)
