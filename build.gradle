@@ -41,6 +41,7 @@ repositories {
     maven {
         url "https://maven.terraformersmc.com/"
     }
+	mavenLocal()
 }
 
 dependencies {
@@ -57,8 +58,8 @@ dependencies {
 
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 
-	modImplementation "com.github.provismet:extrade-origins-addon:${project.extrade_oa_version}"
-	modImplementation "com.github.apace100:origins-fabric:v${project.origins_version}"
+	//modImplementation "com.github.provismet:extrade-origins-addon:${project.extrade_oa_version}"
+	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
 	//modImplementation "com.github.Virtuoel:Pehkui:${project.pehkui_version}"
 }
 

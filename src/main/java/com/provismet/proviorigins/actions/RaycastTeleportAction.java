@@ -47,15 +47,15 @@ public class RaycastTeleportAction {
         Vec3d direction = entity.getRotationVec(1);
         Vec3d end = start.add(direction.multiply(distance));
 
-        BlockHitResult blockHit = entity.world.raycast(new RaycastContext(start, end, shapeType, fluidHandling, entity));
+        BlockHitResult blockHit = entity.getWorld().raycast(new RaycastContext(start, end, shapeType, fluidHandling, entity));
         if (blockHit.getType() != HitResult.Type.MISS) {
             if (destination.equals(DIRECT)) {
                 entity.setPosition(blockHit.getPos());
                 if (successAction != null) successAction.accept(entity);
             }
             else if (destination.equals(ON_TOP)) {
-                CachedBlockPosition upByOne = new CachedBlockPosition(entity.world, blockHit.getBlockPos().add(0, 1, 0), true);
-                CachedBlockPosition upByTwo = new CachedBlockPosition(entity.world, blockHit.getBlockPos().add(0, 2, 0), true);
+                CachedBlockPosition upByOne = new CachedBlockPosition(entity.getWorld(), blockHit.getBlockPos().add(0, 1, 0), true);
+                CachedBlockPosition upByTwo = new CachedBlockPosition(entity.getWorld(), blockHit.getBlockPos().add(0, 2, 0), true);
 
                 if (isValid(upByOne, allowWater, allowLava) && isValid(upByTwo, allowWater, allowLava)) {
                     entity.setPosition(blockHit.getBlockPos().getX() + 0.5, blockHit.getBlockPos().getY() + 1, blockHit.getBlockPos().getZ() + 0.5);

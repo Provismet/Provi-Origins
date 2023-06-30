@@ -9,8 +9,8 @@ import net.minecraft.entity.Entity;
 
 public class ClientServerCondition {
     public static boolean condition (SerializableData.Instance data, Entity entity) {
-        if (entity.world.isClient && data.getBoolean(Powers.CLIENT)) return true;
-        if (!entity.world.isClient && data.getBoolean(Powers.SERVER)) return true;
+        if (entity.getWorld().isClient() && data.getBoolean(Powers.CLIENT)) return true;
+        if (!entity.getWorld().isClient() && data.getBoolean(Powers.SERVER)) return true;
         return false;
     }
 

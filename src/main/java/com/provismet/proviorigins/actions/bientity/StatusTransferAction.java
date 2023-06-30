@@ -30,7 +30,7 @@ public class StatusTransferAction {
     );
 
     public static void action (SerializableData.Instance data, Pair<Entity, Entity> bientity) {
-        if (!(bientity.getLeft() instanceof LivingEntity) || !(bientity.getRight() instanceof LivingEntity) || bientity.getLeft().world.isClient) return;
+        if (!(bientity.getLeft() instanceof LivingEntity) || !(bientity.getRight() instanceof LivingEntity) || bientity.getLeft().getWorld().isClient()) return;
         
         final List<String> statusTypes = data.get(STATUS_TYPE_LABEL);
         final List<String> effectTypes = data.get(EFFECTS_LABEL);

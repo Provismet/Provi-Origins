@@ -25,7 +25,7 @@ public class EntityInRadiusCondition {
 
         int count = 0;
         int stopAt = -1;
-        List<Entity> others = entity.world.getOtherEntities(entity, Box.from(entity.getPos()).expand(radius));
+        List<Entity> others = entity.getWorld().getOtherEntities(entity, Box.from(entity.getPos()).expand(radius));
 
         switch(comparison) {
             case EQUAL:

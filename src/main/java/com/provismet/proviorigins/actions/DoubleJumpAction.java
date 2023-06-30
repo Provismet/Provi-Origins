@@ -13,7 +13,7 @@ public class DoubleJumpAction {
     private static final String FALL_LABEL = "reset_fall_height";
 
     public static void action (SerializableData.Instance data, Entity entity) {
-        if (entity.world.isClient) {
+        if (entity.getWorld().isClient()) {
             if (!data.getBoolean(Powers.CLIENT)) return;
         }
         else if (!data.getBoolean(Powers.SERVER)) return;

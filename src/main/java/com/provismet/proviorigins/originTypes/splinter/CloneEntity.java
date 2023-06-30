@@ -152,7 +152,7 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
                 double velX = this.random.nextGaussian() * 0.02;
                 double velY = this.random.nextGaussian() * 0.02;
                 double velZ = this.random.nextGaussian() * 0.02;
-                this.world.addParticle(ParticleTypes.POOF, this.getParticleX(1.0), this.getRandomBodyY(), this.getParticleZ(1.0), velX, velY, velZ);
+                this.getWorld().addParticle(ParticleTypes.POOF, this.getParticleX(1.0), this.getRandomBodyY(), this.getParticleZ(1.0), velX, velY, velZ);
             }
         }
     }
@@ -192,7 +192,7 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
         UUID uuid = this.getOwnerUuid();
         if (uuid == null) return null;
         else {
-            return this.world.getPlayerByUuid(uuid);
+            return this.getWorld().getPlayerByUuid(uuid);
         }
     }
 
@@ -212,10 +212,10 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
         double zDirection = target.getZ() - this.getZ();
 
         double g = Math.sqrt(xDirection * xDirection + zDirection * zDirection);
-        persistentProjectileEntity.setVelocity(xDirection, yDirection + g * (double)0.2f, zDirection, 1.6f, 14 - this.world.getDifficulty().getId() * 4);
+        persistentProjectileEntity.setVelocity(xDirection, yDirection + g * (double)0.2f, zDirection, 1.6f, 14 - this.getWorld().getDifficulty().getId() * 4);
 
-        this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0f, 1.0f / (world.getRandom().nextFloat() * 0.4f + 1.2f) + pullProgress * 0.5f);
-        this.world.spawnEntity(persistentProjectileEntity);
+        this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0f, 1.0f / (this.getWorld().getRandom().nextFloat() * 0.4f + 1.2f) + pullProgress * 0.5f);
+        this.getWorld().spawnEntity(persistentProjectileEntity);
     }
 
     public boolean isCharging () {
@@ -244,7 +244,7 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
     public void updateWeaponGoals () {
         final int WEAPON_GOAL_PRIORITY = 1;
 
-        if (this.world == null || this.world.isClient()) return;
+        if (this.getWorld() == null || this.getWorld().isClient()) return;
 
         this.goalSelector.remove(MELEE_ATTACK);
         this.goalSelector.remove(RANGED_ATTACK);
@@ -282,7 +282,7 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
     @Override
     public ActionResult interactMob (PlayerEntity player, Hand hand) {
         if (player == this.getOwner()) {
-            if (this.world.isClient) return ActionResult.SUCCESS;
+            if (this.getWorld().isClient()) return ActionResult.SUCCESS;
 
             if (this.canSit) {
                 this.toggleSitting();

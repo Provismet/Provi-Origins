@@ -19,7 +19,7 @@ public class ActOnClosestEntityAction {
         final Consumer<Pair<Entity, Entity>> bientityAction = data.get(Powers.BIENTITY_ACTION);
         final Predicate<Pair<Entity,Entity>> bientityCondition = data.get(Powers.BIENTITY_CONDITION);
 
-        List<Entity> others = entity.world.getOtherEntities(entity, entity.getBoundingBox().expand(distance));
+        List<Entity> others = entity.getWorld().getOtherEntities(entity, entity.getBoundingBox().expand(distance));
         Entity closest = null;
 
         for (Entity other : others) {

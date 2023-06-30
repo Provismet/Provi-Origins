@@ -27,7 +27,7 @@ public class ParticleRingAction {
     private static final String GROUND_LABEL = "on_ground";
 
     public static void action (SerializableData.Instance data, Entity entity) {
-        if (entity.world.isClient) return;
+        if (entity.getWorld().isClient()) return;
         
         final float radius = data.getFloat(Powers.RADIUS);
         final float step = data.getFloat(STEP_LABEL) / MathHelper.DEGREES_PER_RADIAN;
@@ -45,7 +45,7 @@ public class ParticleRingAction {
         final float pitchRadians = (MathHelper.PI / 2) - (entity.getPitch() / MathHelper.DEGREES_PER_RADIAN);
         final float yawRadians = -entity.getHeadYaw() / MathHelper.DEGREES_PER_RADIAN;
 
-        ServerWorld sWorld = (ServerWorld)entity.world;
+        ServerWorld sWorld = (ServerWorld)entity.getWorld();
         for (float angle = 0; angle < 2 * MathHelper.PI; angle += step) {
             Vec3d point = initial.add(radius * MathHelper.sin(angle), 0.0, radius * MathHelper.cos(angle));
 

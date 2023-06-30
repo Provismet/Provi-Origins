@@ -36,8 +36,8 @@ public final class EntityMixin {
             if ((Object)this instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity)(Object)this;
 
-                if (!(living.world instanceof ServerWorld)) return;
-                ServerWorld world = (ServerWorld)living.world;
+                if (!(living.getWorld() instanceof ServerWorld)) return;
+                ServerWorld world = (ServerWorld)living.getWorld();
         
                 for (ActionOnDetectVibrationPower power : PowerHolderComponent.getPowers(living, ActionOnDetectVibrationPower.class)) {
                     callback.accept(power.eventHandler, world);
