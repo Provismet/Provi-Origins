@@ -18,6 +18,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory.Context;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Vec3d;
 
 @Mixin(PlayerEntityRenderer.class)
@@ -40,6 +41,13 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
                 super.render(livingEntity, yaw, tickDelta, matrixStack, vertexConsumerProvider, light);
                 matrixStack.pop();
             }
+        }
+    }
+
+    @Inject(at=@At("HEAD"), method="render")
+    public void displaceRider (AbstractClientPlayerEntity livingEntity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light, CallbackInfo info) {
+        if (livingEntity.hasVehicle() && livingEntity.getVehicle() instanceof PlayerEntity mountPlayer) {
+            matrixStack.translate(0, -(0.222222 * livingEntity.getHeight()), 0);
         }
     }
 }
