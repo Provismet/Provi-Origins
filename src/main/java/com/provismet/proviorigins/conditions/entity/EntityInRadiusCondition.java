@@ -13,7 +13,7 @@ import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.Box;
 
-public class EntityInRadius {
+public class EntityInRadiusCondition {
     private static final String INCLUDE_SELF = "include_self";
 
     public static boolean condition (SerializableData.Instance data, Entity entity) {
@@ -67,6 +67,6 @@ public class EntityInRadius {
                 .add(INCLUDE_SELF, SerializableDataTypes.BOOLEAN, true)
                 .add(Powers.COMPARISON, ApoliDataTypes.COMPARISON, Comparison.GREATER_THAN_OR_EQUAL)
                 .add(Powers.COMPARE_TO, SerializableDataTypes.INT, 1),
-            EntityInRadius::condition);
+            EntityInRadiusCondition::condition);
     }
 }

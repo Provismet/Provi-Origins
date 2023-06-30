@@ -23,6 +23,8 @@ public class Powers {
     public static final String COMPARISON = "comparison";
     public static final String COMPARE_TO = "compare_to";
     public static final String INTERVAL = "interval";
+    public static final String CLIENT = "client";
+    public static final String SERVER = "server";
 
     // There are no "simple" powers in this mod, they would go here otherwise.
 

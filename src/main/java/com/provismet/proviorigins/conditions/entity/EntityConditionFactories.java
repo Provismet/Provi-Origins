@@ -12,7 +12,7 @@ public class EntityConditionFactories {
 
     public static void register () {
         register(HasTeamCondition.getFactory());
-        register(EntityInRadius.getFactory());
+        register(EntityInRadiusCondition.getFactory());
         register(ClientServerCondition.getFactory());
     }
 }

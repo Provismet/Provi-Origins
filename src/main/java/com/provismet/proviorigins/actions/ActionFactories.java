@@ -23,8 +23,8 @@ public class ActionFactories {
         registerEntityAction(DoubleJumpAction.createActionFactory());
         registerEntityAction(RaycastTeleportAction.createActionFactory());
         registerEntityAction(SummonCloneAction.createActionFactory());
-        registerEntityAction(ActOnClosestEntity.createActionFactory());
-        registerEntityAction(ActOnFarthestEntity.createActionFactory());
+        registerEntityAction(ActOnClosestEntityAction.createActionFactory());
+        registerEntityAction(ActOnFarthestEntityAction.createActionFactory());
         registerEntityAction(ParticleRingAction.createActionFactory());
 
         // Bientity Actions

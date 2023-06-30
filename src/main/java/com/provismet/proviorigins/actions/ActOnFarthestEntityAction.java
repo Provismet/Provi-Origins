@@ -13,7 +13,7 @@ import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Pair;
 
-public class ActOnFarthestEntity {
+public class ActOnFarthestEntityAction {
     public static void action (SerializableData.Instance data, Entity entity) {
         final double distance = data.getDouble(Powers.DISTANCE);
         final Consumer<Pair<Entity, Entity>> bientityAction = data.get(Powers.BIENTITY_ACTION);
@@ -35,7 +35,7 @@ public class ActOnFarthestEntity {
             .add(Powers.DISTANCE, SerializableDataTypes.DOUBLE)
             .add(Powers.BIENTITY_ACTION, ApoliDataTypes.BIENTITY_ACTION)
             .add(Powers.BIENTITY_CONDITION, ApoliDataTypes.BIENTITY_CONDITION),
-            ActOnFarthestEntity::action
+            ActOnFarthestEntityAction::action
         );
     }
 }
