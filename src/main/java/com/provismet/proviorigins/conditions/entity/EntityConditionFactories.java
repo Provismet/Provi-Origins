@@ -13,5 +13,6 @@ public class EntityConditionFactories {
     public static void register () {
         register(HasTeamCondition.getFactory());
         register(EntityInRadius.getFactory());
+        register(ClientServerCondition.getFactory());
     }
 }

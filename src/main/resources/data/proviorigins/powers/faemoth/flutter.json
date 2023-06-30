@@ -34,6 +34,10 @@
         "type": "origins:and",
         "conditions": [
             {
+                "type": "proviorigins:client_server",
+                "client": false
+            },
+            {
                 "type": "origins:resource",
                 "resource": "proviorigins:faemoth/faerie_dust",
                 "comparison": ">=",
