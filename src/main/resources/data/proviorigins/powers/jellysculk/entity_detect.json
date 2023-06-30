@@ -31,7 +31,7 @@
 
     "detection": {
         "type": "proviorigins:action_on_detect_vibration",
-        "range": 32,
+        "range": 24,
         "bientity_action": {
             "type": "origins:actor_action",
             "action": {
