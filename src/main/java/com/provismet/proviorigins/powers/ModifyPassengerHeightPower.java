@@ -9,18 +9,27 @@ import net.minecraft.entity.LivingEntity;
 
 @SuppressWarnings("rawtypes")
 public class ModifyPassengerHeightPower extends Power {
-    public final Double offset;
+    private static final String OFFSET_ADD_LABEL = "offset_add";
+    private static final String OFFSET_MULTIPLY_LABEL = "offset_multiply";
 
-    public ModifyPassengerHeightPower(PowerType<?> type, LivingEntity entity, Double offset) {
+    public final Double offsetAdditive;
+    public final Double offsetMultiplicative;
+
+    public ModifyPassengerHeightPower(PowerType<?> type, LivingEntity entity, Double offsetAdd, Double offsetMul) {
         super(type, entity);
-        this.offset = offset;
+        this.offsetAdditive = offsetAdd;
+        this.offsetMultiplicative = offsetMul;
     }
     
     public static PowerFactory createPowerFactory () {
         return new PowerFactory<>(Powers.identifier("modify_passenger_height"),
             new SerializableData()
-            .add("offset", SerializableDataTypes.DOUBLE),
-            data -> (type, player) -> new ModifyPassengerHeightPower(type, player, data.getDouble("offset")))
-            .allowCondition();
+            .add(OFFSET_ADD_LABEL, SerializableDataTypes.DOUBLE, 0.0)
+            .add(OFFSET_MULTIPLY_LABEL, SerializableDataTypes.DOUBLE, 1.0),
+            data -> (type, player) -> new ModifyPassengerHeightPower(type, player,
+                data.getDouble(OFFSET_ADD_LABEL),
+                data.getDouble(OFFSET_MULTIPLY_LABEL)
+            )
+        ).allowCondition();
     }
 }
