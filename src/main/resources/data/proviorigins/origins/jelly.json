@@ -9,6 +9,7 @@
         "proviorigins:common/double_jump",
         "proviorigins:common/slow_fall",
         "origins:fall_immunity",
+        "proviorigins:jellysculk/catalyse",
         "proviorigins:jellysculk/buffs_on_sculk",
         "proviorigins:jellysculk/debuffs_off_sculk",
         "proviorigins:common/brittle",

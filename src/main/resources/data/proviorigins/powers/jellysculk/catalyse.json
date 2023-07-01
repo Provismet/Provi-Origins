@@ -1,0 +1,38 @@
+{
+    "name": "power.proviorigins.jellysculk.catalyse.name",
+    "description": "power.proviorigins.jellysculk.catalyse.desc",
+    "type": "proviorigins:action_on_gain_experience",
+    "entity_action": {
+        "type": "origins:block_action_at",
+        "block_action": {
+            "type": "origins:area_of_effect",
+            "radius": 4,
+            "shape": "sphere",
+            "block_action": {
+                "type": "origins:chance",
+                "chance": 0.2,
+                "action": {
+                    "type": "origins:add_block",
+                    "block": "minecraft:sculk_vein[down=true]"
+                }
+            },
+            "block_condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:in_tag",
+                        "tag": "minecraft:sculk_replaceable"
+                    },
+                    {
+                        "type": "origins:offset",
+                        "y": 1,
+                        "condition": {
+                            "type": "origins:material",
+                            "material": "air"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

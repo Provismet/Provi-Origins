@@ -1,0 +1,8 @@
+accessWidener v1 named
+
+extendable class net/minecraft/client/render/BackgroundRenderer$StatusEffectFogModifier
+
+accessible class net/minecraft/client/render/BackgroundRenderer$StatusEffectFogModifier
+accessible class net/minecraft/client/render/BackgroundRenderer$FogData
+
+accessible field net/minecraft/client/render/BackgroundRenderer FOG_MODIFIERS Ljava/util/List;

@@ -53,10 +53,11 @@ public final class EntityMixin {
                 List<ModifyPassengerHeightPower> powers = PowerHolderComponent.getPowers(living, ModifyPassengerHeightPower.class);
 
                 if (!powers.isEmpty()) {
-                    Double offset = powers.get(0).offset;
+                    Double offsetAdd = powers.get(0).offsetAdditive;
+                    Double offsetMul = powers.get(0).offsetMultiplicative;
                     EntityDimensions dimensions = ((EntityAccessor)this).getDimensions();
 
-                    cir.setReturnValue(dimensions.height * 0.75 + offset);
+                    cir.setReturnValue(dimensions.height * 0.75 * offsetMul + offsetAdd);
                 }
             }
         }

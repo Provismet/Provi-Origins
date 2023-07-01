@@ -185,6 +185,8 @@
     "power.proviorigins.jellysculk.spread_sculk.name": "Spreading Your Domain",
     "power.proviorigins.jellysculk.spread_sculk.desc": "You can spend experience points to spread sculk to any sculk replaceable block.",
     "power.proviorigins.jellysculk.spread_sculk.badge": "[USE] with an empty hand while sneaking to activate.",
+    "power.proviorigins.jellysculk.catalyse.name": "Catalyzer",
+    "power.proviorigins.jellysculk.catalyse.desc": "Occasionally spread sculk veins when gaining experience.",
 
     "power.proviorigins.splinter.name": "Splinter",
     "power.proviorigins.splinter.description": "A fragile warrior, but a master of deception and fragmentation. The Splinter uses summoned clones of themself and trickery to survive.",

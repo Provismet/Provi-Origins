@@ -1,5 +1,7 @@
 package com.provismet.proviorigins.mixin;
 
+import java.util.List;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -9,6 +11,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.provismet.proviorigins.content.StatusEffects.StatusEffects;
 import com.provismet.proviorigins.powers.ActionOnCriticalHitPower;
+import com.provismet.proviorigins.powers.ActionOnGainExpPower;
+import com.provismet.proviorigins.powers.ActionOnGainLevelPower;
 import com.provismet.proviorigins.powers.PreventCriticalHitPower;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
@@ -49,5 +53,23 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     private void preventBlockBreakWhenSleeping (BlockState block, CallbackInfoReturnable<Float> cir) {
         PlayerEntity player = (PlayerEntity)(Object)this;
         if (player.hasStatusEffect(StatusEffects.SLEEP)) cir.setReturnValue(0f);
+    }
+
+    // Action On Gain Level Power
+    @Inject(at=@At("HEAD"), method="addExperienceLevels")
+    private void executeOnLevel (int levels, CallbackInfo info) {
+        List<ActionOnGainLevelPower> powers = PowerHolderComponent.getPowers((PlayerEntity)(Object)this, ActionOnGainLevelPower.class);
+        for (ActionOnGainLevelPower instance : powers) {
+            instance.execute(levels);
+        }
+    }
+
+    // Action On Gain Experience Power
+    @Inject(at=@At("HEAD"), method="addExperience")
+    private void executeOnExp (int experience, CallbackInfo info) {
+        List<ActionOnGainExpPower> powers = PowerHolderComponent.getPowers((PlayerEntity)(Object)this, ActionOnGainExpPower.class);
+        for (ActionOnGainExpPower instance : powers) {
+            instance.execute(experience);
+        }
     }
 }
