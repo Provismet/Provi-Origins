@@ -2,6 +2,7 @@
     "values": [
         "minecraft:sculk",
         "minecraft:sculk_sensor",
-        "minecraft:sculk_shrieker"
+        "minecraft:sculk_shrieker",
+        "minecraft:sculk_vein"
     ]
 }
