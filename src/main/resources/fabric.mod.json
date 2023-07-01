@@ -30,6 +30,8 @@
     "proviorigins.mixins.json"
   ],
 
+  "accessWidener": "proviorigins.accesswidener",
+
   "depends": {
     "fabricloader": ">=0.14.6",
     "fabric-api": "*",

@@ -19,8 +19,7 @@
     "PlayerEntityRendererMixin",
     "EntityRenderDispatcherMixin",
     "LivingEntityRendererAccessor",
-    "WorldRendererMixin",
-    "StatusEffectFogModifierMixin"
+    "WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
