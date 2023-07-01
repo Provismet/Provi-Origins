@@ -16,3 +16,7 @@ For the full experience, it's recommended to also use:
 - [Extra Damage Enchantments](https://github.com/Provismet/Extra-Damage-Enchantments)
 - [ExtraDE Origins Addon](https://github.com/Provismet/ExtraDE-Origins-Addon)
 - [Pehkui](https://github.com/Virtuoel/Pehkui)
+
+## Download Pages
+- [Modrinth](https://modrinth.com/mod/provis-origins)
+- [CurseForge](https://www.curseforge.com/minecraft/mc-mods/provis-origins)
