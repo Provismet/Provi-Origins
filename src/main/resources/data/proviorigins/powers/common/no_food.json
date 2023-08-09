@@ -3,6 +3,18 @@
     "description": "power.proviorigins.common.no_food.desc",
     "type": "origins:prevent_item_use",
     "item_condition": {
-        "type": "origins:food"
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "tag": "origins:ignore_diet"
+                },
+                "inverted": true
+            },
+            {
+                "type": "origins:food"
+            }
+        ]
     }
 }

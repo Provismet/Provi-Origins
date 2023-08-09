@@ -13,6 +13,13 @@
                 "inverted": true
             },
             {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "tag": "origins:ignore_diet"
+                },
+                "inverted": true
+            },
+            {
                 "type": "origins:food"
             }
         ]

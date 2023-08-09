@@ -37,6 +37,8 @@
     "death.attack.compost.player": "%1$s was composted by %2$s",
     "death.attack.compost.item": "%1$s was composted by %2$s using %3$s",
 
+    "tooltip.proviorigins.common.no_potions": "You are unaffected by potions.",
+
     "tooltip.proviorigins.voidlily.grants_armour": "Consume to gain armor.",
     "tooltip.proviorigins.voidlily.grants_blindness": "Consume to inflict blindness on struck entities.",
     "tooltip.proviorigins.voidlily.grants_corruption": "Consume to enhance your latent poison with the void.",
@@ -52,7 +54,6 @@
     "tooltip.proviorigins.voidlily.grants_weakness": "Consume to inflict weakness on struck entities.",
     "tooltip.proviorigins.voidlily.grants_wither": "Consume to inflict wither on struck entities.",
     "tooltip.proviorigins.voidlily.grants_water_breathing": "Consume to gain oxygen.",
-    "tooltip.proviorigins.voidlily.no_potions": "You are unaffected by potions.",
 
     "tooltip.proviorigins.decaykraken.weak_soul": "Weak Soul",
     "tooltip.proviorigins.decaykraken.medium_soul": "Medium Soul",
