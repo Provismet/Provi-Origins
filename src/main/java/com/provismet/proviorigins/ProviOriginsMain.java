@@ -9,6 +9,7 @@ import com.provismet.proviorigins.conditions.entity.EntityConditionFactories;
 import com.provismet.proviorigins.content.registries.Blocks;
 import com.provismet.proviorigins.content.registries.Items;
 import com.provismet.proviorigins.content.registries.StatusEffects;
+import com.provismet.proviorigins.content.world.gen.WorldGen;
 import com.provismet.proviorigins.originTypes.splinter.Splinter;
 import com.provismet.proviorigins.powers.PowerFactories;
 
@@ -29,6 +30,8 @@ public class ProviOriginsMain implements ModInitializer {
         Items.register();
         StatusEffects.register();
         Blocks.register();
+
+        WorldGen.generateWorldGen();
 
         PowerFactories.register();
         ActionFactories.register();

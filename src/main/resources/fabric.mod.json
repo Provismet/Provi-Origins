@@ -24,6 +24,9 @@
     ],
     "client": [
       "com.provismet.proviorigins.ProviOriginsClient"
+    ],
+    "fabric-datagen": [
+      "com.provismet.datagen.proviorigins.ProviOriginsDataGenerator"
     ]
   },
   "mixins": [

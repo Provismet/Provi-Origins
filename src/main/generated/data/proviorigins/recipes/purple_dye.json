@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "proviorigins:lily_of_the_void"
+    }
+  ],
+  "result": {
+    "item": "minecraft:purple_dye"
+  }
+}
