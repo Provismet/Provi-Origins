@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.provismet.proviorigins.content.StatusEffects.StatusEffects;
+import com.provismet.proviorigins.content.registries.StatusEffects;
 import com.provismet.proviorigins.powers.ActionOnCriticalHitPower;
 import com.provismet.proviorigins.powers.ActionOnGainExpPower;
 import com.provismet.proviorigins.powers.ActionOnGainLevelPower;

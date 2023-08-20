@@ -2,6 +2,8 @@ package com.provismet.proviorigins.content.StatusEffects;
 
 import java.util.UUID;
 
+import com.provismet.proviorigins.content.registries.StatusEffects;
+
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributeModifier;

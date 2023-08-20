@@ -1,6 +1,6 @@
 package com.provismet.proviorigins.extras;
 
-import com.provismet.proviorigins.content.StatusEffects.StatusEffects;
+import com.provismet.proviorigins.content.registries.StatusEffects;
 
 import net.minecraft.client.render.BackgroundRenderer.FogData;
 import net.minecraft.client.render.BackgroundRenderer.FogType;

@@ -78,7 +78,7 @@ public final class LivingEntityMixin {
         // Untargetable Status Effect
         @Inject(at=@At("RETURN"), method="canTarget(Lnet/minecraft/entity/LivingEntity;)Z", cancellable=true)
         private void applyUntargetable (LivingEntity target, CallbackInfoReturnable<Boolean> cir) {
-            if (target.hasStatusEffect(com.provismet.proviorigins.content.StatusEffects.StatusEffects.UNTARGETABLE)) cir.setReturnValue(false);
+            if (target.hasStatusEffect(com.provismet.proviorigins.content.registries.StatusEffects.UNTARGETABLE)) cir.setReturnValue(false);
         }
 
         // Apply double damage from sleep.
@@ -87,8 +87,8 @@ public final class LivingEntityMixin {
             if (!source.isIn(DamageTypeTags.BYPASSES_EFFECTS)) {
                 LivingEntity livingEntity = (LivingEntity)(Object)this;
 
-                if (livingEntity.hasStatusEffect(com.provismet.proviorigins.content.StatusEffects.StatusEffects.SLEEP)) {
-                    livingEntity.removeStatusEffect(com.provismet.proviorigins.content.StatusEffects.StatusEffects.SLEEP);
+                if (livingEntity.hasStatusEffect(com.provismet.proviorigins.content.registries.StatusEffects.SLEEP)) {
+                    livingEntity.removeStatusEffect(com.provismet.proviorigins.content.registries.StatusEffects.SLEEP);
                     cir.setReturnValue(cir.getReturnValue() * 2);
                 }
             }
@@ -98,7 +98,7 @@ public final class LivingEntityMixin {
         @Inject(at=@At("HEAD"), method="jump", cancellable=true)
         private void preventSleepJump (CallbackInfo info) {
             LivingEntity livingEntity = (LivingEntity)(Object)this;
-            if (livingEntity.hasStatusEffect(com.provismet.proviorigins.content.StatusEffects.StatusEffects.SLEEP)) info.cancel();
+            if (livingEntity.hasStatusEffect(com.provismet.proviorigins.content.registries.StatusEffects.SLEEP)) info.cancel();
         }
 
         // Allow custom damage sources to disable shields when blocked.
@@ -127,8 +127,8 @@ public final class LivingEntityMixin {
 
         @Inject(at=@At("RETURN"), method="canHaveStatusEffect", cancellable=true)
         private void cannotHaveSleepAndAlert (StatusEffectInstance effectInstance, CallbackInfoReturnable<Boolean> cir) {
-            if (effectInstance.getEffectType() == com.provismet.proviorigins.content.StatusEffects.StatusEffects.SLEEP &&
-                ((LivingEntity)(Object)this).hasStatusEffect(com.provismet.proviorigins.content.StatusEffects.StatusEffects.ALERT)) cir.setReturnValue(false);
+            if (effectInstance.getEffectType() == com.provismet.proviorigins.content.registries.StatusEffects.SLEEP &&
+                ((LivingEntity)(Object)this).hasStatusEffect(com.provismet.proviorigins.content.registries.StatusEffects.ALERT)) cir.setReturnValue(false);
         }
     }
 }
