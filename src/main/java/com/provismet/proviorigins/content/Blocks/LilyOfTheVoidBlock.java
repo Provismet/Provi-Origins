@@ -1,4 +1,4 @@
-package com.provismet.proviorigins.content.Blocks;
+package com.provismet.proviorigins.content.blocks;
 
 import com.provismet.proviorigins.content.DamageTypes;
 import com.provismet.proviorigins.content.registries.StatusEffects;
@@ -21,7 +21,7 @@ public class LilyOfTheVoidBlock extends FlowerBlock {
     
     @Override
     protected boolean canPlantOnTop (BlockState floor, BlockView world, BlockPos pos) {
-        return super.canPlantOnTop(floor, world, pos) || floor.isIn(Tags.Blocks.VOID_PLANTABLE);
+        return floor.isIn(Tags.Blocks.VOID_PLANTABLE);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class LilyOfTheVoidBlock extends FlowerBlock {
         if (world.isClient || world.getDifficulty() == Difficulty.PEACEFUL) return;
 
         if (entity instanceof LivingEntity living && !living.isInvulnerableTo(living.getDamageSources().create(DamageTypes.VOID_CORRUPTION))) {
-            living.addStatusEffect(new StatusEffectInstance(StatusEffects.VOID_CORRUPTION, 40));
+            living.addStatusEffect(new StatusEffectInstance(StatusEffects.VOID_CORRUPTION, 51));
         }
     }
 }
