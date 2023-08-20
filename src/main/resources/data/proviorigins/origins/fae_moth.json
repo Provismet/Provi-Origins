@@ -14,7 +14,7 @@
         "origins:vegetarian",
         "origins:arthropod"
     ],
-    "icon": "proviorigins:fae_moth",
+    "icon": "proviorigins:fae_moth_icon",
     "impact": 2,
     "name": "power.proviorigins.faemoth.name",
     "description": "power.proviorigins.faemoth.description"

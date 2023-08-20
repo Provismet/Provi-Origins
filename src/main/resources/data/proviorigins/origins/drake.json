@@ -12,7 +12,7 @@
         "proviorigins:drakling/remove_dragon_head",
         "extrade:beastly"
     ],
-    "icon": "proviorigins:drake",
+    "icon": "proviorigins:drake_icon",
     "impact": 2,
     "unchoosable": true,
     "name": "power.proviorigins.drakling.evolved.name",

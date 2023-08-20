@@ -5,16 +5,18 @@
 
     "wiki.proviorigins.wiki": "Wiki",
 
+    "block.proviorigins.lily_of_the_void": "Lily of the Void",
+
     "item.proviorigins.kraken_soul_lantern": "Soul Lantern",
     "item.proviorigins.solid_lantern": "Lantern",
 
-    "item.proviorigins.lily_of_the_void": "Lily of the Void Origin Icon",
-    "item.proviorigins.kraken_of_decay": "Kraken of Decay Origin Icon",
-    "item.proviorigins.drakling": "Drakling Origin Icon",
-    "item.proviorigins.drake": "Drake Origin Icon",
-    "item.proviorigins.jelly": "Jelly Sculk Origin Icon",
-    "item.proviorigins.splinter": "Splinter Origin Icon",
-    "item.proviorigins.fae_moth": "Faerie Moth Origin Icon",
+    "item.proviorigins.lily_of_the_void_icon": "Lily of the Void Origin Icon",
+    "item.proviorigins.kraken_of_decay_icon": "Kraken of Decay Origin Icon",
+    "item.proviorigins.drakling_icon": "Drakling Origin Icon",
+    "item.proviorigins.drake_icon": "Drake Origin Icon",
+    "item.proviorigins.jelly_icon": "Jelly Sculk Origin Icon",
+    "item.proviorigins.splinter_icon": "Splinter Origin Icon",
+    "item.proviorigins.fae_moth_icon": "Faerie Moth Origin Icon",
 
     "effect.proviorigins.void_corruption": "Void Corruption",
     "effect.proviorigins.untargetable": "Illusive",
@@ -120,7 +122,7 @@
     "power.proviorigins.decaykraken.deaths_vice_low.name": "Over-Reliance",
     "power.proviorigins.decaykraken.deaths_vice_low.desc": "Suffer weakness and slowness when Death's Vice is below 25%.",
     "power.proviorigins.decaykraken.deaths_vice_recharge.name": "Longing Embrace",
-    "power.proviorigins.decaykraken.deaths_vice_recharge.desc": "Regain Death's Vice when within 5 blocks of any form of soul fire or when holding a soul lantern in your hand. This bonus is increased in the Nether and further increased in Soul Sand Valleys.",
+    "power.proviorigins.decaykraken.deaths_vice_recharge.desc": "Regain Death's Vice when within 5 blocks of any form of soul fire or when holding a soul lantern in your hand. This bonus is increased in the Nether and further increased in soulful biomes.",
     "power.proviorigins.decaykraken.deaths_vice_recharge.badge": "For quality of life purposes, you may craft Soul Lanterns into a unique version that cannot be placed but grants the same held effects.",
     "power.proviorigins.decaykraken.ink_propel.name": "Ink Propulsion",
     "power.proviorigins.decaykraken.ink_propel.desc": "Expel a cloud of ink to boost yourself in the direction you're facing. This ability is much stronger in water.",

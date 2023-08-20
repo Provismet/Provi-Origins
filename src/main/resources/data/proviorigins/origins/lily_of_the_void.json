@@ -33,7 +33,7 @@
 		"proviorigins:voidlily/death_particles",
 		"extrade:fungifloral"
 	],
-	"icon": "proviorigins:lily_of_the_void",
+	"icon": "proviorigins:lily_of_the_void_icon",
 	"impact": 3,
 	"name": "power.proviorigins.voidlily.name",
 	"description": "power.proviorigins.voidlily.description"

@@ -14,7 +14,7 @@
         "proviorigins:splinter/reset_resources",
         "extrade:arcane"
     ],
-    "icon": "proviorigins:splinter",
+    "icon": "proviorigins:splinter_icon",
     "impact": 3,
     "name": "power.proviorigins.splinter.name",
     "description": "power.proviorigins.splinter.description"
