@@ -1,4 +1,4 @@
-package com.provismet.proviorigins.content.StatusEffects;
+package com.provismet.proviorigins.content.statusEffects;
 
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;

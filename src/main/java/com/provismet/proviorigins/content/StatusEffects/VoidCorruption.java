@@ -1,4 +1,4 @@
-package com.provismet.proviorigins.content.StatusEffects;
+package com.provismet.proviorigins.content.statusEffects;
 
 import com.provismet.proviorigins.content.DamageTypes;
 

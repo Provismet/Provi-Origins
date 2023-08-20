@@ -1,7 +1,7 @@
 package com.provismet.proviorigins.content.registries;
 
 import com.provismet.proviorigins.ProviOriginsMain;
-import com.provismet.proviorigins.content.Blocks.LilyOfTheVoidBlock;
+import com.provismet.proviorigins.content.blocks.LilyOfTheVoidBlock;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;

@@ -1,10 +1,10 @@
 package com.provismet.proviorigins.content.registries;
 
 import com.provismet.proviorigins.ProviOriginsMain;
-import com.provismet.proviorigins.content.StatusEffects.AlertEffect;
-import com.provismet.proviorigins.content.StatusEffects.SleepEffect;
-import com.provismet.proviorigins.content.StatusEffects.Untargetable;
-import com.provismet.proviorigins.content.StatusEffects.VoidCorruption;
+import com.provismet.proviorigins.content.statusEffects.AlertEffect;
+import com.provismet.proviorigins.content.statusEffects.SleepEffect;
+import com.provismet.proviorigins.content.statusEffects.Untargetable;
+import com.provismet.proviorigins.content.statusEffects.VoidCorruption;
 
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.registry.Registries;
