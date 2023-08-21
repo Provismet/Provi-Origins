@@ -38,7 +38,7 @@ public class LilyOfTheVoidBlock extends FlowerBlock {
         
         if (random.nextDouble() < 0.3) {
 
-            world.addParticle(Particles.LILY_PETAL_PARTICLE,
+            world.addParticle(Particles.LILY_PETAL,
                 x + random.nextDouble() / 5.0,
                 (double)pos.getY() + (0.5 - random.nextDouble()),
                 z + random.nextDouble() / 5.0,
@@ -54,7 +54,7 @@ public class LilyOfTheVoidBlock extends FlowerBlock {
         if (world.isClient || world.getDifficulty() == Difficulty.PEACEFUL) return;
 
         if (entity instanceof LivingEntity living && !living.isInvulnerableTo(living.getDamageSources().create(DamageTypes.VOID_CORRUPTION))) {
-            living.addStatusEffect(new StatusEffectInstance(StatusEffects.VOID_CORRUPTION, 50));
+            living.addStatusEffect(new StatusEffectInstance(StatusEffects.VOID_CORRUPTION, 25));
         }
     }
 }
