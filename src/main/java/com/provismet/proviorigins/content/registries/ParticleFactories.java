@@ -1,6 +1,7 @@
 package com.provismet.proviorigins.content.registries;
 
 import com.provismet.proviorigins.content.particles.LilyPetalParticle;
+import com.provismet.proviorigins.content.particles.MagicCircleParticle;
 import com.provismet.proviorigins.content.particles.SoulCircleParticle;
 
 import net.fabricmc.api.EnvType;
@@ -16,7 +17,8 @@ public class ParticleFactories {
     }
 
     public static void register () {
-        registerDefaultParticleFactory(Particles.LILY_PETAL_PARTICLE, LilyPetalParticle.Factory::new);
-        registerDefaultParticleFactory(Particles.SOUL_CIRCLE_PARTICLE, SoulCircleParticle.Factory::new);
+        registerDefaultParticleFactory(Particles.LILY_PETAL, LilyPetalParticle.Factory::new);
+        registerDefaultParticleFactory(Particles.SOUL_CIRCLE, SoulCircleParticle.Factory::new);
+        registerDefaultParticleFactory(Particles.MAGIC_CIRCLE, MagicCircleParticle.Factory::new);
     }
 }
