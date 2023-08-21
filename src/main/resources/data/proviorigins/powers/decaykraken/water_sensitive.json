@@ -95,7 +95,7 @@
                     "type": "origins:resource",
                     "resource": "proviorigins:decaykraken/deaths_vice",
                     "comparison": ">=",
-                    "compare_to": 171
+                    "compare_to": 684
                 }
             ]
         },
