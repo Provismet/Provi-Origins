@@ -2,6 +2,7 @@
     "name": "power.proviorigins.voidlily.void_growth.name",
     "description": "power.proviorigins.voidlily.void_growth.desc",
     "type": "origins:multiple",
+
     "growth": {
         "type": "origins:stacking_status_effect",
         "min_stacks": -1,
@@ -63,25 +64,16 @@
             ]
         }
     },
+
     "particles": {
         "type": "origins:particle",
-        "particle": {
-            "type": "minecraft:dust",
-            "params": "0.494 0.051 0.706 1"
-        },
+        "particle": "proviorigins:lily_petal",
         "frequency": 8,
-        "condition": {
-            "type": "origins:power_active",
-            "power": "*:*_growth"
-        }
-    },
-    "particles2": {
-        "type": "origins:particle",
-        "particle": {
-            "type": "minecraft:dust",
-            "params": "0.2 0.2 0.2 1"
+        "spread": {
+            "x": 0.45,
+            "y": 0.5,
+            "z": 0.45
         },
-        "frequency": 8,
         "condition": {
             "type": "origins:power_active",
             "power": "*:*_growth"

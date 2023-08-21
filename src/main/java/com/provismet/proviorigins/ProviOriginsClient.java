@@ -3,6 +3,7 @@ package com.provismet.proviorigins;
 import org.lwjgl.glfw.GLFW;
 
 import com.provismet.proviorigins.content.registries.BlockRenderLayers;
+import com.provismet.proviorigins.content.registries.ParticleFactories;
 import com.provismet.proviorigins.extras.ModelLayerRegistry;
 import com.provismet.proviorigins.extras.RendererRegistry;
 import com.provismet.proviorigins.extras.SleepFogModifier;
@@ -34,5 +35,7 @@ public class ProviOriginsClient implements ClientModInitializer {
         BlockRenderLayers.register();
 
         BackgroundRenderer.FOG_MODIFIERS.add(0, new SleepFogModifier());
+
+        ParticleFactories.register();
     }
 }

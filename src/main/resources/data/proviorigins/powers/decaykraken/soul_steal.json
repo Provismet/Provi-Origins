@@ -169,7 +169,7 @@
                     "type": "origins:raycast",
                     "distance": 8.0,
                     "shape_type": "outline",
-                    "command_along_ray": "particle minecraft:soul_fire_flame",
+                    "command_along_ray": "particle proviorigins:soul_circle",
                     "command_step": 0.333
                 },
                 {
