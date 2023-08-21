@@ -19,7 +19,8 @@
     "PlayerEntityRendererMixin",
     "EntityRenderDispatcherMixin",
     "LivingEntityRendererAccessor",
-    "WorldRendererMixin"
+    "WorldRendererMixin",
+    "LightmapTextureManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

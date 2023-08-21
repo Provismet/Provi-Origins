@@ -13,6 +13,7 @@
         "proviorigins:jellysculk/buffs_on_sculk",
         "proviorigins:jellysculk/debuffs_off_sculk",
         "proviorigins:common/brittle",
+        "proviorigins:common/ignore_darkness_pulse",
         "extrade:fungifloral"
     ],
     "icon": "proviorigins:jelly_icon",
