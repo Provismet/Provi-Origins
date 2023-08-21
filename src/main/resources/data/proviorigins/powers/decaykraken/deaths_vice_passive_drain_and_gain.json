@@ -22,7 +22,7 @@
                 "action": {
                     "type": "origins:change_resource",
                     "resource": "proviorigins:decaykraken/deaths_vice",
-                    "change": 2,
+                    "change": 3,
                     "operation": "add"
                 },
                 "condition": {
@@ -36,7 +36,7 @@
                 "action": {
                     "type": "origins:change_resource",
                     "resource": "proviorigins:decaykraken/deaths_vice",
-                    "change": 5,
+                    "change": 8,
                     "operation": "add"
                 },
                 "condition": {
@@ -50,7 +50,7 @@
                 "action": {
                     "type": "origins:change_resource",
                     "resource": "proviorigins:decaykraken/deaths_vice",
-                    "change": 10,
+                    "change": 16,
                     "operation": "add"
                 },
                 "condition": {
@@ -64,7 +64,7 @@
                 "action": {
                     "type": "origins:change_resource",
                     "resource": "proviorigins:decaykraken/deaths_vice",
-                    "change": 25,
+                    "change": 38,
                     "operation": "add"
                 },
                 "condition": {
