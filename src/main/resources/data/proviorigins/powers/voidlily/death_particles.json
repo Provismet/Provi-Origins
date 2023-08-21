@@ -8,18 +8,9 @@
                 "type": "origins:spawn_particles",
                 "particle": {
                     "type": "minecraft:block",
-                    "params": "minecraft:nether_portal"
+                    "params": "proviorigins:lily_of_the_void"
                 },
-                "count": 24,
-                "speed": 5.0
-            },
-            {
-                "type": "origins:spawn_particles",
-                "particle": {
-                    "type": "minecraft:block",
-                    "params": "minecraft:quartz_block"
-                },
-                "count": 8,
+                "count": 32,
                 "speed": 5.0
             }
         ]
