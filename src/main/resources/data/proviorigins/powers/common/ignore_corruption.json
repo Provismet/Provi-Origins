@@ -1,0 +1,13 @@
+{
+    "hidden": true,
+    "type": "origins:modify_damage_taken",
+    "damage_condition": {
+        "type": "origins:name",
+        "name": "void_corrupted"
+    },
+    "modifier": {
+        "name": "Immune To Corruption",
+        "operation": "set_total",
+        "value": 0
+    }
+}

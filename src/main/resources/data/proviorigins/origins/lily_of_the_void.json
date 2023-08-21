@@ -31,6 +31,7 @@
 		"proviorigins:common/exhaust_more",
 		"proviorigins:voidlily/composter_death",
 		"proviorigins:voidlily/death_particles",
+		"proviorigins:common/ignore_corruption",
 		"extrade:fungifloral"
 	],
 	"icon": "proviorigins:lily_of_the_void_icon",
