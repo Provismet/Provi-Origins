@@ -33,19 +33,33 @@
             "type": "origins:and",
             "conditions": [
                 {
+                    "type": "proviorigins:client_server",
+                    "client": false
+                },
+                {
                     "type": "origins:resource",
                     "resource": "proviorigins:common/double_jump_jump_cooldown",
                     "comparison": "==",
                     "compare_to": 0
                 },
                 {
-                    "type": "proviorigins:client_server",
-                    "client": false
+                    "type": "origins:on_block",
+                    "inverted": true
                 },
                 {
-                    "type": "origins:fall_distance",
-                    "comparison": ">",
-                    "compare_to": 0
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "proviorigins:velocity_y",
+                            "comparison": "<",
+                            "compare_to": -0.1
+                        },
+                        {
+                            "type": "proviorigins:velocity_y",
+                            "comparison": ">",
+                            "compare_to": 0.1
+                        }
+                    ]
                 },
                 {
                     "type": "origins:creative_flying",

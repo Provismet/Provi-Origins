@@ -14,5 +14,6 @@ public class EntityConditionFactories {
         register(HasTeamCondition.getFactory());
         register(EntityInRadiusCondition.getFactory());
         register(ClientServerCondition.getFactory());
+        register(VelocityYCondition.getFactory());
     }
 }
