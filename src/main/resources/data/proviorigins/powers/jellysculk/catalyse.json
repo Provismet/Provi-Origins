@@ -3,36 +3,55 @@
     "description": "power.proviorigins.jellysculk.catalyse.desc",
     "type": "proviorigins:action_on_gain_experience",
     "entity_action": {
-        "type": "origins:block_action_at",
-        "block_action": {
-            "type": "origins:area_of_effect",
-            "radius": 4,
-            "shape": "sphere",
-            "block_action": {
-                "type": "origins:chance",
-                "chance": 0.2,
-                "action": {
-                    "type": "origins:add_block",
-                    "block": "minecraft:sculk_vein[down=true]"
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:block_action_at",
+                "block_action": {
+                    "type": "origins:area_of_effect",
+                    "radius": 4,
+                    "shape": "sphere",
+                    "block_action": {
+                        "type": "origins:chance",
+                        "chance": 0.2,
+                        "action": {
+                            "type": "origins:add_block",
+                            "block": "minecraft:sculk_vein[down=true]"
+                        }
+                    },
+                    "block_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:in_tag",
+                                "tag": "minecraft:sculk_replaceable"
+                            },
+                            {
+                                "type": "origins:offset",
+                                "y": 1,
+                                "condition": {
+                                    "type": "origins:material",
+                                    "material": "air"
+                                }
+                            }
+                        ]
+                    }
                 }
             },
-            "block_condition": {
-                "type": "origins:and",
-                "conditions": [
-                    {
-                        "type": "origins:in_tag",
-                        "tag": "minecraft:sculk_replaceable"
-                    },
-                    {
-                        "type": "origins:offset",
-                        "y": 1,
-                        "condition": {
-                            "type": "origins:material",
-                            "material": "air"
-                        }
-                    }
-                ]
+            {
+                "type": "origins:spawn_particles",
+                "particle": {
+                    "type": "minecraft:sculk_charge",
+                    "params": "0"
+                },
+                "count": 3,
+                "offset_y": 0.15,
+                "spread": {
+                    "x": 0.5,
+                    "y": 0,
+                    "z": 0.5
+                }
             }
-        }
+        ]
     }
 }
