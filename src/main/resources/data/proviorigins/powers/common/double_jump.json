@@ -39,8 +39,14 @@
                     "compare_to": 0
                 },
                 {
-                    "type": "origins:on_block",
-                    "inverted": true
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:fall_distance",
+                            "comparison": ">",
+                            "compare_to": 0
+                        }
+                    ]
                 }
             ]
         }
@@ -56,8 +62,7 @@
             "operation": "set"
         },
         "condition": {
-            "type": "origins:on_block",
-            "inverted": true
+            "type": "origins:on_block"
         }
     }
 }
