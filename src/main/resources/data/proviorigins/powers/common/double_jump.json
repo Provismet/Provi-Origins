@@ -39,14 +39,31 @@
                     "compare_to": 0
                 },
                 {
-                    "type": "origins:or",
-                    "conditions": [
-                        {
-                            "type": "origins:fall_distance",
-                            "comparison": ">",
-                            "compare_to": 0
-                        }
-                    ]
+                    "type": "proviorigins:client_server",
+                    "client": false
+                },
+                {
+                    "type": "origins:fall_distance",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:creative_flying",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:fall_flying",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:submerged_in",
+                    "fluid": "minecraft:water",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:submerged_in",
+                    "fluid": "minecraft:lava",
+                    "inverted": true
                 }
             ]
         }
