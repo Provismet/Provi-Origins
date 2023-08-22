@@ -46,7 +46,7 @@
     "charging": {
         "type": "origins:resource",
         "min": 0,
-        "max": 6,
+        "max": 5,
         "max_action": {
             "type": "origins:raycast",
             "distance": 8.0,
