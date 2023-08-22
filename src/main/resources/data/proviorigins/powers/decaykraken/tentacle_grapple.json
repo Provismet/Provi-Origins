@@ -43,7 +43,7 @@
                             }
                         ]
                     },
-                    "command_along_ray": "particle minecraft:glow_squid_ink",
+                    "command_along_ray": "particle minecraft:squid_ink",
                     "command_step": 0.333,
                     "hit_action": {
                         "type": "origins:raycast",
