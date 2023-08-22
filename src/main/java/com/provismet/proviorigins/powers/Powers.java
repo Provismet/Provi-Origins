@@ -25,6 +25,11 @@ public class Powers {
     public static final String INTERVAL = "interval";
     public static final String CLIENT = "client";
     public static final String SERVER = "server";
+    public static final String COUNT = "count";
+    public static final String PARTICLE = "particle";
+    public static final String OFFSET_X = "offset_x";
+    public static final String OFFSET_Y = "offset_y";
+    public static final String OFFSET_Z = "offset_z";
 
     // There are no "simple" powers in this mod, they would go here otherwise.
 
