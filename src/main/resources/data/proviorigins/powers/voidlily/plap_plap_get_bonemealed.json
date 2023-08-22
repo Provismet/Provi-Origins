@@ -1,0 +1,47 @@
+{
+    "hidden": true,
+    "type": "origins:action_on_being_used",
+    "item_condition": {
+        "type": "origins:ingredient",
+        "ingredient": {
+            "item": "minecraft:bone_meal"
+        }
+    },
+    "held_item_action": {
+        "type": "origins:consume",
+        "amount": 1
+    },
+    "priority": 1,
+    "bientity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:target_action",
+                "action": {
+                    "type": "origins:spawn_particles",
+                    "particle": "minecraft:happy_villager",
+                    "count": 12
+                }
+            },
+            {
+                "type": "origins:target_action",
+                "action": {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:item.bone_meal.use"
+                }
+            },
+            {
+                "type": "origins:chance",
+                "chance": 0.404,
+                "action": {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:spawn_entity",
+                        "entity_type": "minecraft:item",
+                        "tag": "{Item:{id:\"proviorigins:lily_of_the_void\",Count:1b}}"
+                    }
+                }
+            }
+        ]
+    }
+}
