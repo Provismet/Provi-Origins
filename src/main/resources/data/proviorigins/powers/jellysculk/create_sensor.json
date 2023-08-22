@@ -26,20 +26,50 @@
         ]
     },
     "block_action": {
-        "type": "origins:offset",
-        "action": {
-            "type": "origins:set_block",
-            "block": "minecraft:sculk_sensor"
-        },
-        "y": 1
+        "type": "origins:if_else_list",
+        "actions": [
+            {
+                "action": {
+                    "type": "origins:offset",
+                    "action": {
+                        "type": "origins:set_block",
+                        "block": "minecraft:sculk_sensor"
+                    },
+                    "y": 1
+                },
+                "condition": {
+                    "type": "origins:block",
+                    "block": "minecraft:sculk"
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:set_block",
+                    "block": "minecraft:sculk_sensor"
+                },
+                "condition": {
+                    "type": "origins:block",
+                    "block": "minecraft:sculk_vein"
+                }
+            }
+        ]
     },
     "hands": ["main_hand"],
     "block_condition": {
         "type": "origins:and",
         "conditions": [
             {
-                "type": "origins:block",
-                "block": "minecraft:sculk"
+                "type": "origins:or",
+                "conditions": [
+                    {
+                        "type": "origins:block",
+                        "block": "minecraft:sculk"
+                    },
+                    {
+                        "type": "origins:block",
+                        "block": "minecraft:sculk_vein"
+                    }
+                ]
             },
             {
                 "type": "origins:offset",
