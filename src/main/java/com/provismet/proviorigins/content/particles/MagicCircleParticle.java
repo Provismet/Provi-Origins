@@ -11,17 +11,24 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
 public class MagicCircleParticle extends FlatParticle {
+    private final boolean rotationDirection;
+
     protected MagicCircleParticle (ClientWorld clientWorld, double x, double y, double z, SpriteProvider spriteProvider) {
         super(clientWorld, x, y, z, spriteProvider);
         this.maxAge = 30;
         this.scale = 8f;
+        this.rotationDirection = random.nextBoolean();
     }
 
     @Override
     public void tick () {
         super.tick();
         this.prevAngle = this.angle;
-        this.angle += Math.toRadians(5.0);
+        this.angle += rotationDirection ? Math.toRadians(5.0) : -Math.toRadians(5.0);
+
+        float multiplier = (float)this.age / (float)this.maxAge;
+        float tempAlpha = 1f - multiplier * multiplier;
+        this.alpha = tempAlpha >= 0.11f ? tempAlpha : 0.11f;
     }
 
     @Environment(value=EnvType.CLIENT)

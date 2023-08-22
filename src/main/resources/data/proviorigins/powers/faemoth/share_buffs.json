@@ -17,7 +17,7 @@
         "actions": [
             {
                 "type": "origins:spawn_particles",
-                "particle": "minecraft:electric_spark",
+                "particle": "minecraft:firework",
                 "count": 30,
                 "force": true,
                 "spread": {
