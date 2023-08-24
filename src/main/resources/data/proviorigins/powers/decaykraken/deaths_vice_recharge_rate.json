@@ -76,7 +76,7 @@
                                     "type": "origins:biome",
                                     "condition": {
                                         "type": "origins:in_tag",
-                                        "tag": "proviorigins:soul_collector"
+                                        "tag": "proviorigins:decaykraken/soul_collector"
                                     }
                                 }
                             },
@@ -164,7 +164,7 @@
                                     "type": "origins:biome",
                                     "condition": {
                                         "type": "origins:in_tag",
-                                        "tag": "proviorigins:soul_collector"
+                                        "tag": "proviorigins:decaykraken/soul_collector"
                                     }
                                 }
                             },

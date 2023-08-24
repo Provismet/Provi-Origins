@@ -27,7 +27,7 @@
                     "type": "origins:biome",
                     "condition": {
                         "type": "origins:in_tag",
-                        "tag": "proviorigins:has_saltwater",
+                        "tag": "proviorigins:decaykraken/has_saltwater",
                         "inverted": true
                     }
                 },
