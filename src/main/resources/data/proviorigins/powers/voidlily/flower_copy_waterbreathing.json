@@ -23,7 +23,7 @@
     "particles": {
         "type": "origins:particle",
         "particle": {
-            "type": "minecraft:dust",
+            "type": "proviorigins:flower",
             "params": "0.965 0.965 0.965 1"
         },
         "frequency": 8,
