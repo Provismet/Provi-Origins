@@ -1,0 +1,16 @@
+{
+    "powers": [
+        "proviorigins:alraune/photosynthesis",
+        "proviorigins:alraune/through_grass",
+        "proviorigins:common/hearty",
+        "proviorigins:common/medium_taller",
+        "proviorigins:common/poor_strength",
+        "origins:carnivore",
+        "proviorigins:common/double_fire_damage",
+        "extrade:fungifloral"
+    ],
+    "icon:": "minecraft:fern",
+    "impact": 2,
+    "name": "power.proviorigins.alraune.name",
+    "description": "power.proviorigins.alraune.description"
+}

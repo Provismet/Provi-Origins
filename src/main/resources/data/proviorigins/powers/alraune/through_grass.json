@@ -1,0 +1,13 @@
+{
+    "name": "power.proviorigins.alraune.through_grass.name",
+    "description": "power.proviorigins.alraune.through_grass.desc",
+    "type": "origins:prevent_block_selection",
+    "block_condition": {
+        "type": "origins:in_tag",
+        "tag": "proviorigins:alraune/foliage"
+    },
+    "condition": {
+        "type": "origins:sneaking",
+        "inverted": true
+    }
+}

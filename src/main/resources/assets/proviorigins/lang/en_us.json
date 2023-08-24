@@ -96,6 +96,10 @@
     "power.proviorigins.common.smaller.desc": "You are smaller than most and have a height of 1.15 blocks.",
     "power.proviorigins.common.poor_strength.name": "Weak Melee",
     "power.proviorigins.common.poor_strength.desc": "Your melee hits deal 33% less damage.",
+    "power.proviorigins.common.hearty.name": "Hearty",
+    "power.proviorigins.common.hearty.desc": "You have 2 additional hearts.",
+    "power.proviorigins.common.medium_taller.name": "Grown Body",
+    "power.proviorigins.common.medium_taller.desc": "You are slightly taller than others with a height of 2.5 blocks.",
 
     "power.proviorigins.voidlily.name": "Lily of the Void",
     "power.proviorigins.voidlily.description": "Grown from a Void Flower rooted on the skybox, you are connected both to nature and to oblivion.",
@@ -228,5 +232,12 @@
     "power.proviorigins.faemoth.crit_passive.badge2": "Costs 1.5 bars of Faerie Dust per layer.",
     "power.proviorigins.faemoth.share_buffs.name": "Blessings of the Fae",
     "power.proviorigins.faemoth.share_buffs.desc": "Share speed, strength, and regeneration effects that you currently have with all allies in an 8 block radius.",
-    "power.proviorigins.faemoth.share_buffs.badge": "Costs 3.5 bars of Faerie Dust."
+    "power.proviorigins.faemoth.share_buffs.badge": "Costs 3.5 bars of Faerie Dust.",
+
+    "power.proviorigins.alraune.name": "Alraune",
+    "power.proviorigins.alraune.description": "A keeper of the forest.",
+    "power.proviorigins.alraune.photosynthesis.name": "Photosynthesis",
+    "power.proviorigins.alraune.photosynthesis.desc": "Slowly gain regain food and saturation when exposed to sunlight.",
+    "power.proviorigins.alraune.through_grass.name": "Unrestricted Herb",
+    "power.proviorigins.alraune.through_grass.desc": "Nature moves out of your way, you can strike through foliage when not sneaking."
 }
