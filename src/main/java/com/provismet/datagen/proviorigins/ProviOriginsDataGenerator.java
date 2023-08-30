@@ -19,7 +19,7 @@ public class ProviOriginsDataGenerator implements DataGeneratorEntrypoint {
     
     @Override
     public void buildRegistry(RegistryBuilder registryBuilder) {
-        registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, FeaturesConfigured::buildFeatures);
+        registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, FeaturesConfigured::buildFeatures); // VSCode says this line is an error in the editor, but the datagen gradle task does execute with no issue.
         registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, FeaturesPlaced::buildPlacedFeatures);
     }
 }
