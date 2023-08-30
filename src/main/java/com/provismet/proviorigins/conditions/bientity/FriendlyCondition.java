@@ -13,12 +13,19 @@ import net.minecraft.util.Pair;
 public class FriendlyCondition {
     public static boolean condition (SerializableData.Instance data, Pair<Entity,Entity> pair) {
         if (pair.getLeft() instanceof LivingEntity actor && pair.getRight() instanceof LivingEntity target) {
-            if (actor.getAttacker() == target || actor.getAttacking() == target || target.getAttacker() == actor || target.getAttacking() == actor) return false;
+            if (actor instanceof Tameable tameable) {
+                if (tameable.getOwner() == target) return true; // One owns the other.
+                if (target instanceof Tameable tameable2 && tameable.getOwner() == tameable2.getOwner()) return true; // Same owner. (symmetrical condition)
+                if (target == tameable.getOwner().getAttacker() || target == tameable.getOwner().getAttacking()) return false; // Help owner.
+            }
+            if (target instanceof Tameable tameable) {
+                if (tameable.getOwner() == actor) return true;
+                if (actor == tameable.getOwner().getAttacker() || actor == tameable.getOwner().getAttacking()) return false; // Help owner.
+            }
+            if (actor.getAttacker() == target || actor.getAttacking() == target || target.getAttacker() == actor || target.getAttacking() == actor) return false; // In combat with each other.
             if (TeammateCondition.condition(data, pair)) return true;
-            if (actor instanceof Tameable tameable && tameable.getOwner() == target) return true;
-            if (target instanceof Tameable tameable && tameable.getOwner() == actor) return true;
-            if ((actor instanceof HostileEntity) != (target instanceof HostileEntity)) return false;
-            if (actor.getScoreboardTeam() == null && target.getScoreboardTeam() == null) return true;
+            if ((actor instanceof HostileEntity) != (target instanceof HostileEntity)) return false; // Only one is hostile.
+            if (actor.getScoreboardTeam() == null && target.getScoreboardTeam() == null) return true; // Neither is on a team.
         }
         return false;
     }
