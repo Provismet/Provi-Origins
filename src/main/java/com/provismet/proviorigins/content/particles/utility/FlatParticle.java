@@ -19,6 +19,11 @@ import net.minecraft.util.math.Vec3d;
 public abstract class FlatParticle extends SpriteBillboardParticle {
     protected final SpriteProvider spriteProvider;
 
+    protected float angleX;
+    protected float prevAngleX;
+    protected float angleZ;
+    protected float prevAngleZ;
+
     protected FlatParticle (ClientWorld clientWorld, double x, double y, double z, SpriteProvider spriteProvider) {
         super(clientWorld, x, y, z);
         this.spriteProvider = spriteProvider;
@@ -28,12 +33,31 @@ public abstract class FlatParticle extends SpriteBillboardParticle {
         this.velocityX = 0f;
         this.velocityY = 0f;
         this.velocityZ = 0f;
+        this.angleX = 0f;
+        this.prevAngleX = 0f;
+        this.angleZ = 0f;
+        this.prevAngleZ = 0f;
     }
 
     protected FlatParticle (ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
         super(clientWorld, x, y, z, velocityX, velocityY, velocityZ);
         this.spriteProvider = spriteProvider;
         this.setSpriteForAge(this.spriteProvider);
+    }
+
+    public void setAngleX (float radians) {
+        this.prevAngleX = this.angleX;
+        this.angleX = radians;
+    }
+
+    public void setAngleY (float radians) {
+        this.prevAngle = this.angle;
+        this.angle = radians;
+    }
+
+    public void setAngleZ (float radians) {
+        this.prevAngleZ = this.angleZ;
+        this.angleZ = radians;
     }
 
     @Override
@@ -65,7 +89,9 @@ public abstract class FlatParticle extends SpriteBillboardParticle {
         float zLerp = (float)(MathHelper.lerp((double)tickDelta, this.prevPosZ, this.z) - vec3d.getZ());
 
         Quaternionf quaternion = new Quaternionf();
+        quaternion.rotateX(MathHelper.lerp(tickDelta, this.prevAngleX, this.angleX));
         quaternion.rotateY(MathHelper.lerp(tickDelta, this.prevAngle, this.angle));
+        quaternion.rotateZ(MathHelper.lerp(tickDelta, this.prevAngleZ, this.angleZ));
 
         Vector3f[] vector3fs = new Vector3f[] {
             new Vector3f(-1f, 0f, -1f),

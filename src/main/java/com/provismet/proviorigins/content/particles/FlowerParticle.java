@@ -12,11 +12,11 @@ import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.world.ClientWorld;
 
 public class FlowerParticle extends AbstractDustParticle<FlowerParticleEffect> {
-    private final double rotationSpeed;
+    private final float rotationSpeed;
 
     protected FlowerParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, FlowerParticleEffect parameters, SpriteProvider spriteProvider) {
         super(world, x, y, z, velocityX, velocityY, velocityZ, parameters, spriteProvider);
-        this.rotationSpeed = random.nextDouble() * (random.nextBoolean() ? 2.5 : -2.5);
+        this.rotationSpeed = (float)Math.toRadians(random.nextDouble() * (random.nextBoolean() ? 2.5 : -2.5));
     }
 
     @Override
@@ -26,7 +26,7 @@ public class FlowerParticle extends AbstractDustParticle<FlowerParticleEffect> {
             this.setAlpha(1.0f - ((float)this.age - (float)(this.maxAge / 2)) / (float)this.maxAge);
         }
         this.prevAngle = this.angle;
-        this.angle += (float)Math.toRadians(this.rotationSpeed);
+        this.angle += this.rotationSpeed;
     }
 
     @Override
