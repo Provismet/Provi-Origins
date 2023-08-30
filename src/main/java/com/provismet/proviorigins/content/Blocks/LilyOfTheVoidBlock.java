@@ -54,7 +54,7 @@ public class LilyOfTheVoidBlock extends FlowerBlock {
         if (world.isClient || world.getDifficulty() == Difficulty.PEACEFUL) return;
 
         if (entity instanceof LivingEntity living && !living.isInvulnerableTo(living.getDamageSources().create(DamageTypes.VOID_CORRUPTION))) {
-            living.addStatusEffect(new StatusEffectInstance(StatusEffects.VOID_CORRUPTION, 25));
+            living.addStatusEffect(new StatusEffectInstance(StatusEffects.VOID_CORRUPTION, 50));
         }
     }
 }
