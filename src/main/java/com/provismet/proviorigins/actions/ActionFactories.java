@@ -26,6 +26,9 @@ public class ActionFactories {
         registerEntityAction(ActOnClosestEntityAction.createActionFactory());
         registerEntityAction(ActOnFarthestEntityAction.createActionFactory());
         registerEntityAction(ParticleRingAction.createActionFactory());
+        registerEntityAction(SummonMinionAction.createActionFactory());
+        registerEntityAction(ActOnOwnerAction.createActionFactory());
+        registerEntityAction(SetMinionMaxLifeAction.createActionFactory());
 
         // Bientity Actions
         registerBientityAction(SwapPositionsAction.createBientityActionFactory());

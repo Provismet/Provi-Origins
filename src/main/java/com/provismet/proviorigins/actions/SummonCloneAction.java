@@ -3,8 +3,8 @@ package com.provismet.proviorigins.actions;
 import java.util.function.Consumer;
 
 import com.provismet.proviorigins.ProviOriginsMain;
-import com.provismet.proviorigins.originTypes.splinter.CloneEntity;
-import com.provismet.proviorigins.originTypes.splinter.Splinter;
+import com.provismet.proviorigins.content.entities.CloneEntity;
+import com.provismet.proviorigins.content.registries.Entities;
 import com.provismet.proviorigins.powers.Powers;
 
 import io.github.apace100.apoli.data.ApoliDataTypes;
@@ -44,12 +44,12 @@ public class SummonCloneAction {
 
     private static CloneEntity summon (PlayerEntity player, boolean canSit, boolean followOwner, boolean canAttack, boolean inheritsEquipment, boolean inheritsEnchantments) {
         if (player.getWorld() instanceof ServerWorld serverWorld) {
-            CloneEntity clone = new CloneEntity(Splinter.CLONE, serverWorld);
+            CloneEntity clone = new CloneEntity(Entities.CLONE, serverWorld);
             clone.setCanSit(canSit);
             clone.setCanAttack(canAttack);
             clone.setFollowOwner(followOwner);
 
-            clone.setPosition(player.getPos());
+            clone.refreshPositionAndAngles(player.getX(), player.getY(), player.getZ(), player.getHeadYaw(), 0);
 
             clone.initialize(serverWorld, serverWorld.getLocalDifficulty(player.getBlockPos()), SpawnReason.REINFORCEMENT, null, null);
             clone.setCustomName(player.getName());

@@ -30,6 +30,7 @@ public class Powers {
     public static final String OFFSET_X = "offset_x";
     public static final String OFFSET_Y = "offset_y";
     public static final String OFFSET_Z = "offset_z";
+    public static final String AMOUNT = "amount";
 
     // There are no "simple" powers in this mod, they would go here otherwise.
 

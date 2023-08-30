@@ -12,9 +12,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.google.common.collect.ImmutableMap;
-import com.provismet.proviorigins.originTypes.splinter.CloneEntity;
-import com.provismet.proviorigins.originTypes.splinter.CloneEntityRenderer;
-import com.provismet.proviorigins.originTypes.splinter.Splinter;
+import com.provismet.proviorigins.content.entities.CloneEntity;
+import com.provismet.proviorigins.content.entities.renderers.CloneEntityRenderer;
+import com.provismet.proviorigins.content.registries.Entities;
 
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.fabricmc.fabric.impl.client.rendering.RegistrationHelperImpl;
@@ -79,7 +79,7 @@ public abstract class EntityRenderDispatcherMixin {
         CloneEntityRenderer<CloneEntity> renderer = new CloneEntityRenderer<>(context, slimArms);
         LivingEntityRendererAccessor accessor = (LivingEntityRendererAccessor)renderer;
         LivingEntityFeatureRendererRegistrationCallback.EVENT.invoker()
-            .registerRenderers(Splinter.CLONE, renderer, new RegistrationHelperImpl(accessor::invokeAddFeature), context);
+            .registerRenderers(Entities.CLONE, renderer, new RegistrationHelperImpl(accessor::invokeAddFeature), context);
         return renderer;
     }
 }

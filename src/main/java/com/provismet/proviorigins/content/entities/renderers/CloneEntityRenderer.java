@@ -1,6 +1,9 @@
-package com.provismet.proviorigins.originTypes.splinter;
+package com.provismet.proviorigins.content.entities.renderers;
 
-import com.provismet.proviorigins.extras.ModelLayerRegistry;
+import com.provismet.proviorigins.content.entities.CloneEntity;
+import com.provismet.proviorigins.content.entities.models.CloneEntityModel;
+import com.provismet.proviorigins.content.registries.ModelLayerRegistry;
+
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;

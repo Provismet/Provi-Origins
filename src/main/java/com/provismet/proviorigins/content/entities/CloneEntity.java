@@ -1,10 +1,12 @@
-package com.provismet.proviorigins.originTypes.splinter;
+package com.provismet.proviorigins.content.entities;
 
 import java.util.EnumSet;
 import java.util.Optional;
 import java.util.UUID;
 
 import org.jetbrains.annotations.Nullable;
+
+import com.provismet.proviorigins.extras.ExtraTameable;
 
 import net.minecraft.entity.CrossbowUser;
 import net.minecraft.entity.Entity;
@@ -54,7 +56,7 @@ import net.minecraft.world.World;
  * Clones are "tamed" entities that are summoned by a player, as much as is possible, they have the same appearance of the original player.
  * They are hostile because otherwise I have to implement my own version of BowAttackGoal.
  */
-public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser {
+public class CloneEntity extends HostileEntity implements ExtraTameable, CrossbowUser {
     private static final double COMBAT_SPEED = 1.35;
     private static final float SHOOTING_RANGE = 32f;
     private static final int MAX_AGE = 1200;
@@ -157,37 +159,36 @@ public class CloneEntity extends HostileEntity implements Tameable, CrossbowUser
         }
     }
 
+    @Override
     public boolean isOwned () {
         return this.dataTracker.get(OWNER_UUID).isPresent();
     }
 
     @Nullable
+    @Override
     public void setOwnerUUID (UUID uuid) {
         if (uuid == null) this.dataTracker.set(OWNER_UUID, Optional.empty());
         else this.dataTracker.set(OWNER_UUID, Optional.of(uuid));
     }
 
     @Nullable
-    public void setOwner (PlayerEntity owner) {
-        if (owner == null) {
-            this.setOwnerUUID(null);
-        }
-        else {
-            UUID uuid = owner.getUuid();
-            this.setOwnerUUID(uuid);
-        }
+    @Override
+    public void setOwner (LivingEntity owner) {
+        if (!(owner instanceof PlayerEntity)) return;
+
+        ExtraTameable.super.setOwner(owner);
     }
 
-    @Override
     @Nullable
+    @Override
     public UUID getOwnerUuid () {
         Optional<UUID> uuid = this.dataTracker.get(OWNER_UUID);
         if (uuid.isEmpty()) return null;
         else return uuid.get();
     }
 
-    @Override
     @Nullable
+    @Override
     public PlayerEntity getOwner () {
         UUID uuid = this.getOwnerUuid();
         if (uuid == null) return null;

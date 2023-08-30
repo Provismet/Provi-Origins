@@ -1,6 +1,7 @@
-package com.provismet.proviorigins.originTypes.splinter;
+package com.provismet.proviorigins.content.entities.models;
 
-import com.provismet.proviorigins.extras.ModelLayerRegistry;
+import com.provismet.proviorigins.content.entities.CloneEntity;
+import com.provismet.proviorigins.content.registries.ModelLayerRegistry;
 
 import net.minecraft.client.model.Dilation;
 import net.minecraft.client.model.ModelPart;
