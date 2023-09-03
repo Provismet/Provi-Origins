@@ -13,12 +13,12 @@ import net.minecraft.util.Pair;
 public class FriendlyCondition {
     public static boolean condition (SerializableData.Instance data, Pair<Entity,Entity> pair) {
         if (pair.getLeft() instanceof LivingEntity actor && pair.getRight() instanceof LivingEntity target) {
-            if (actor instanceof Tameable tameable) {
+            if (actor instanceof Tameable tameable && tameable.getOwner() != null) {
                 if (tameable.getOwner() == target) return true; // One owns the other.
                 if (target instanceof Tameable tameable2 && tameable.getOwner() == tameable2.getOwner()) return true; // Same owner. (symmetrical condition)
                 if (target == tameable.getOwner().getAttacker() || target == tameable.getOwner().getAttacking()) return false; // Help owner.
             }
-            if (target instanceof Tameable tameable) {
+            if (target instanceof Tameable tameable && tameable.getOwner() != null) {
                 if (tameable.getOwner() == actor) return true;
                 if (actor == tameable.getOwner().getAttacker() || actor == tameable.getOwner().getAttacking()) return false; // Help owner.
             }

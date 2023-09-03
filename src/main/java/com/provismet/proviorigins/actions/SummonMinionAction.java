@@ -53,7 +53,7 @@ public class SummonMinionAction {
             minion.refreshPositionAndAngles(living.getX(), living.getY(), living.getZ(), living.getHeadYaw(), living.getPitch());
             minion.initialize(world, world.getLocalDifficulty(living.getBlockPos()), SpawnReason.REINFORCEMENT, null, null);
             minion.setCustomName(Text.of("Minion of " + entity.getName().getString()));
-            minion.setMaxLifeTime(maxLife);
+            minion.setMaxLifetime(maxLife);
 
             living.getWorld().spawnEntity(minion);
 

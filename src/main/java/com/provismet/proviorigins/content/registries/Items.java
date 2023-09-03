@@ -50,5 +50,6 @@ public class Items {
         registerItemIcon("drake");
         registerItemIcon("splinter");
         registerItemIcon("fae_moth");
+        registerItemIcon("alraune");
     }
 }

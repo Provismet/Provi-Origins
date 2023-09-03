@@ -1,0 +1,111 @@
+{
+    "name": "power.proviorigins.alraune.summon_plant.name",
+    "description": "power.proviorigins.alraune.summon_plant.desc",
+    "type": "origins:multiple",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "origins.gui.badge.active"
+        },
+        {
+            "sprite": "proviorigins:textures/gui/badge/cost.png",
+            "text": "power.proviorigins.alraune.summon_plant.badge.1"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "power.proviorigins.alraune.summon_plant.badge.2"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "power.proviorigins.alraune.summon_plant.badge.3"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "power.proviorigins.alraune.summon_plant.badge.4"
+        }
+    ],
+    
+    "summon": {
+        "type": "proviorigins:active_item",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:alraune/summon_aoe"
+            }
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "proviorigins:summon_minion",
+                    "follow_owner": false,
+                    "scale": 2,
+                    "texture": "proviorigins:textures/entity/aoe_minion.png",
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:grant_power",
+                                    "power": "proviorigins:alraune/summoned_passives",
+                                    "source": "proviorigins:alraune/summon_plant_turret"
+                                }
+                            },
+                            {
+                                "type": "origins:if_else",
+                                "if_action": {
+                                    "type": "origins:target_action",
+                                    "action": {
+                                        "type": "origins:grant_power",
+                                        "power": "proviorigins:alraune/summoned_aoe_upgrade",
+                                        "source": "proviorigins:alraune/summon_plant_turret"
+                                    }
+                                },
+                                "else_action": {
+                                    "type": "origins:target_action",
+                                    "action": {
+                                        "type": "origins:grant_power",
+                                        "power": "proviorigins:alraune/summoned_aoe",
+                                        "source": "proviorigins:alraune/summon_plant_turret"
+                                    }
+                                },
+                                "condition": {
+                                    "type": "origins:actor_condition",
+                                    "condition": {
+                                        "type": "origins:advancement",
+                                        "advancement": "minecraft:end/kill_dragon"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:alraune/life_sap",
+                    "change": -1
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:alraune/life_sap",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+
+    "tooltip": {
+        "type": "origins:tooltip",
+        "text": {
+            "translate": "tooltip.proviorigins.alraune.summons_aoe"
+        },
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:alraune/summon_aoe"
+            }
+        }
+    }
+}

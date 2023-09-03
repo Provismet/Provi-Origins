@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.jetbrains.annotations.Nullable;
 
 import com.provismet.proviorigins.extras.ExtraTameable;
+import com.provismet.proviorigins.extras.Temporary;
 
 import net.minecraft.entity.CrossbowUser;
 import net.minecraft.entity.Entity;
@@ -56,14 +57,14 @@ import net.minecraft.world.World;
  * Clones are "tamed" entities that are summoned by a player, as much as is possible, they have the same appearance of the original player.
  * They are hostile because otherwise I have to implement my own version of BowAttackGoal.
  */
-public class CloneEntity extends HostileEntity implements ExtraTameable, CrossbowUser {
+public class CloneEntity extends HostileEntity implements ExtraTameable, CrossbowUser, Temporary {
     private static final double COMBAT_SPEED = 1.35;
     private static final float SHOOTING_RANGE = 32f;
-    private static final int MAX_AGE = 1200;
 
     private boolean canSit;
     private boolean followOwner;
     private boolean canAttack;
+    private int maxTicks;
 
     private final MeleeAttackGoal MELEE_ATTACK = new MeleeAttackGoal(this, COMBAT_SPEED, false);
     private final BowAttackGoal<CloneEntity> RANGED_ATTACK = new BowAttackGoal<CloneEntity>(this, COMBAT_SPEED, 20, SHOOTING_RANGE);
@@ -77,6 +78,7 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
         super(entityType, world);
         this.updateWeaponGoals();
         this.experiencePoints = 0;
+        this.maxTicks = 1200;
     }
     
     @Override
@@ -146,10 +148,10 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
     @Override
     public void tick () {
         super.tick();
-        if (this.getOwner() == null || this.age > MAX_AGE) {
+        if (this.getOwner() == null || this.getOwner().getWorld() != this.getWorld() || this.age > this.maxTicks) {
             this.discard();
         }
-        else if (this.age == MAX_AGE - 1) {
+        else if (this.age == this.maxTicks - 1) {
             for (int i = 0; i < 20; ++i) {
                 double velX = this.random.nextGaussian() * 0.02;
                 double velY = this.random.nextGaussian() * 0.02;
@@ -465,5 +467,10 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
     @Override
     public EntityView method_48926 () {
         return getWorld();
+    }
+
+    @Override
+    public void setMaxLifetime(int ticks) {
+        this.maxTicks = ticks;
     }
 }

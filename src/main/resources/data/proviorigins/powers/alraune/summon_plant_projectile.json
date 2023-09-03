@@ -1,0 +1,88 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    
+    "summon": {
+        "type": "proviorigins:active_item",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:alraune/summon_projectile"
+            }
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "proviorigins:summon_minion",
+                    "follow_owner": false,
+                    "scale": 2,
+                    "texture": "proviorigins:textures/entity/projectile_minion.png",
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:grant_power",
+                                    "power": "proviorigins:alraune/summoned_passives",
+                                    "source": "proviorigins:alraune/summon_plant_turret"
+                                }
+                            },
+                            {
+                                "type": "origins:if_else",
+                                "if_action": {
+                                    "type": "origins:target_action",
+                                    "action": {
+                                        "type": "origins:grant_power",
+                                        "power": "proviorigins:alraune/summoned_projectile_upgrade",
+                                        "source": "proviorigins:alraune/summon_plant_turret"
+                                    }
+                                },
+                                "else_action": {
+                                    "type": "origins:target_action",
+                                    "action": {
+                                        "type": "origins:grant_power",
+                                        "power": "proviorigins:alraune/summoned_projectile",
+                                        "source": "proviorigins:alraune/summon_plant_turret"
+                                    }
+                                },
+                                "condition": {
+                                    "type": "origins:actor_condition",
+                                    "condition": {
+                                        "type": "origins:advancement",
+                                        "advancement": "minecraft:end/kill_dragon"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "proviorigins:alraune/life_sap",
+                    "change": -1
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:alraune/life_sap",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+
+    "tooltip": {
+        "type": "origins:tooltip",
+        "text": {
+            "translate": "tooltip.proviorigins.alraune.summons_projectile"
+        },
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "proviorigins:alraune/summon_projectile"
+            }
+        }
+    }
+}

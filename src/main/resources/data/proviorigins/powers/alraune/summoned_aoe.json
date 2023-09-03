@@ -1,0 +1,47 @@
+{
+    "type": "origins:action_over_time",
+    "interval": 30,
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "proviorigins:particle_ring",
+                "radius": 4,
+                "step_size": 3,
+                "particle": {
+                    "type": "proviorigins:flower",
+                    "params": "0.8 0 0 0.75"
+                }
+            },
+            {
+                "type": "origins:area_of_effect",
+                "radius": 4,
+                "bientity_action": {
+                    "type": "origins:damage",
+                    "amount": 3,
+                    "damage_type": "minecraft:magic"
+                },
+                "bientity_condition": {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:target_condition",
+                            "condition": {
+                                "type": "origins:living"
+                            }
+                        },
+                        {
+                            "type": "proviorigins:friendly",
+                            "inverted": true
+                        },
+                        {
+                            "type": "origins:can_see",
+                            "shape_type": "collider",
+                            "fluid_handling": "none"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

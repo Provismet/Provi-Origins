@@ -14,6 +14,7 @@ public class Powers {
     public static final String BIENTITY_CONDITION = "bientity_condition";
     public static final String ITEM_ACTION = "item_action";
     public static final String ITEM_CONDITION = "item_condition";
+    public static final String PROJECTILE_ACTION = "projectile_action";
     public static final String KEY = "key";
     public static final String COOLDOWN = "cooldown";
     public static final String HUD_RENDER = "hud_render";

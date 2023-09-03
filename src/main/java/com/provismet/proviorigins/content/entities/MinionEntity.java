@@ -9,6 +9,7 @@ import org.joml.Vector3f;
 import com.provismet.proviorigins.ProviOriginsMain;
 import com.provismet.proviorigins.content.entities.renderers.MinionEntityRenderer;
 import com.provismet.proviorigins.extras.ExtraTameable;
+import com.provismet.proviorigins.extras.Temporary;
 
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
@@ -32,7 +33,7 @@ import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 
-public class MinionEntity extends MobEntity implements ExtraTameable {
+public class MinionEntity extends MobEntity implements ExtraTameable, Temporary {
     private static final TrackedData<Optional<UUID>> OWNER_UUID = DataTracker.registerData(MinionEntity.class, TrackedDataHandlerRegistry.OPTIONAL_UUID);
     private static final TrackedData<String> TEXTURE_NAMESPACE = DataTracker.registerData(MinionEntity.class, TrackedDataHandlerRegistry.STRING);
     private static final TrackedData<String> TEXTURE_PATH = DataTracker.registerData(MinionEntity.class, TrackedDataHandlerRegistry.STRING);
@@ -43,14 +44,12 @@ public class MinionEntity extends MobEntity implements ExtraTameable {
     private static final TrackedData<Float> SCALE = DataTracker.registerData(MinionEntity.class, TrackedDataHandlerRegistry.FLOAT);
 
     protected int maxLifeTime;
-    protected int currentLifetime;
 
     public MinionEntity (EntityType<? extends MobEntity> entityType, World world) {
         super(entityType, world);
         this.setCanPickUpLoot(false);
         this.setPersistent();
         this.setCustomNameVisible(false);
-        this.currentLifetime = 0;
         this.maxLifeTime = 1200; // Default value, but will be immediately overridden by SummonMinionAction.
     }
 
@@ -95,13 +94,12 @@ public class MinionEntity extends MobEntity implements ExtraTameable {
     @Override
     public void tick () {
         super.tick();
-        ++this.currentLifetime;
-        if (this.currentLifetime > this.maxLifeTime && this.maxLifeTime > 0) {
+        if (this.age > this.maxLifeTime && this.maxLifeTime > 0) {
             this.kill();
         }
         else if (this.shouldFollowOwner()) {
             LivingEntity owner = this.getOwner();
-            if (owner == null) {
+            if (owner == null || owner.getWorld() != this.getWorld()) {
                 this.kill();
                 return;
             }
@@ -236,6 +234,7 @@ public class MinionEntity extends MobEntity implements ExtraTameable {
         }
 
         if (nbt.contains("Scale")) this.setScale(nbt.getFloat("Scale"));
+        if (nbt.contains("MaxLifetime")) this.setMaxLifetime(nbt.getInt("MaxLifetime"));
     }
 
     @Override
@@ -256,6 +255,7 @@ public class MinionEntity extends MobEntity implements ExtraTameable {
         }
 
         nbt.putFloat("Scale", this.getScale());
+        nbt.putInt("MaxLifetime", this.maxLifeTime);
 
         NbtCompound texture = new NbtCompound();
         texture.putString("Namespace", this.getTexture().getNamespace());
@@ -273,7 +273,7 @@ public class MinionEntity extends MobEntity implements ExtraTameable {
         // Do nothing. Minions should not take knockback.
     }
 
-    public void setMaxLifeTime (int max) {
-        this.maxLifeTime = max;
+    public void setMaxLifetime (int ticks) {
+        this.maxLifeTime = ticks;
     }
 }

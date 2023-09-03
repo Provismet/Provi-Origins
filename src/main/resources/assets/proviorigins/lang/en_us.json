@@ -64,6 +64,12 @@
 
     "tooltip.proviorigins.drakling.dragon_head": "§8Wear the flesh of your ancestors and gain their strength.",
 
+    "tooltip.proviorigins.alraune.summons_aoe": "§8Summons a flower that deals damage in an area.",
+    "tooltip.proviorigins.alraune.summons_pull": "§8Summons a flower that pulls in foes.",
+    "tooltip.proviorigins.alraune.summons_push": "§8Summons a flower that pushes foes away.",
+    "tooltip.proviorigins.alraune.summons_projectile": "§8Summons a flower that shoots arrows at foes.",
+    "tooltip.proviorigins.alraune.super_fertiliser": "§8A super effective fertilizer.",
+
     "power.proviorigins.common.brittle.name": "Brittle Body",
     "power.proviorigins.common.brittle.desc": "You have only 5 hearts.",
     "power.proviorigins.common.amphibious.name": "Amphibious",
@@ -100,6 +106,8 @@
     "power.proviorigins.common.hearty.desc": "You have 2 additional hearts.",
     "power.proviorigins.common.medium_taller.name": "Grown Body",
     "power.proviorigins.common.medium_taller.desc": "You are slightly taller than others with a height of 2.5 blocks.",
+    "power.proviorigins.common.dried_up.name": "Dried Up",
+    "power.proviorigins.common.dried_up.desc": "Lose hydration in hot biomes, drinking or standing in water restores hydration. You will catch fire after 30 seconds of losing hydration.",
 
     "power.proviorigins.voidlily.name": "Lily of the Void",
     "power.proviorigins.voidlily.description": "Grown from a Void Flower rooted on the skybox, you are connected both to nature and to oblivion.",
@@ -235,9 +243,17 @@
     "power.proviorigins.faemoth.share_buffs.badge": "Costs 3.5 bars of Faerie Dust.",
 
     "power.proviorigins.alraune.name": "Alraune",
-    "power.proviorigins.alraune.description": "A keeper of the forest.",
+    "power.proviorigins.alraune.description": "Blooming from the energy of the forest, you are a facet of nature itself: one whom grows and is protected by nature.",
     "power.proviorigins.alraune.photosynthesis.name": "Photosynthesis",
     "power.proviorigins.alraune.photosynthesis.desc": "Slowly gain regain food and saturation when exposed to sunlight.",
     "power.proviorigins.alraune.through_grass.name": "Unrestricted Herb",
-    "power.proviorigins.alraune.through_grass.desc": "Nature moves out of your way, you can strike through foliage when not sneaking."
+    "power.proviorigins.alraune.through_grass.desc": "Nature moves out of your way, you can strike through foliage when not sneaking.",
+    "power.proviorigins.alraune.life_sap.name": "Sap of Life",
+    "power.proviorigins.alraune.life_sap.desc": "Your connection to nature allows you to harness its power. Using this power allows you to transform flowers into placed turrets that aid you in battle.",
+    "power.proviorigins.alraune.summon_plant.name": "Floral Summoning",
+    "power.proviorigins.alraune.summon_plant.desc": "Using your connection to nature allows you to empower flowers into stationary Flower Sprites that damage nearby enemies.",
+    "power.proviorigins.alraune.summon_plant.badge.1": "Costs 1 Sap of Life.",
+    "power.proviorigins.alraune.summon_plant.badge.2": "Flower Sprites will take damage if not placed on plantable blocks.",
+    "power.proviorigins.alraune.summon_plant.badge.3": "Flower Sprites have different requirements for different biomes.\nMost biomes require the Sprite to be exposed to sunlight.\nFor biomes with denser foliage, such as forests, only exposure to the sky is required.\nSome biomes, such as Lush Caves, will allow Flower Sprites to grow regardless.\nUse bone meal on a Flower Sprite to bypass this limitation.",
+    "power.proviorigins.alraune.summon_plant.badge.4": "A Flower Sprite will die after 1200 ticks if not fed with a super fertilizer such as dragon breath."
 }

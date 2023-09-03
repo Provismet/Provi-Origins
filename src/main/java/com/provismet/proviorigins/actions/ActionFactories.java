@@ -1,5 +1,6 @@
 package com.provismet.proviorigins.actions;
 
+import com.provismet.proviorigins.actions.bientity.FireProjectileAction;
 import com.provismet.proviorigins.actions.bientity.StatusTransferAction;
 import com.provismet.proviorigins.actions.bientity.SwapPositionsAction;
 
@@ -28,10 +29,11 @@ public class ActionFactories {
         registerEntityAction(ParticleRingAction.createActionFactory());
         registerEntityAction(SummonMinionAction.createActionFactory());
         registerEntityAction(ActOnOwnerAction.createActionFactory());
-        registerEntityAction(SetMinionMaxLifeAction.createActionFactory());
+        registerEntityAction(SetSummonMaxLifeAction.createActionFactory());
 
         // Bientity Actions
         registerBientityAction(SwapPositionsAction.createBientityActionFactory());
         registerBientityAction(StatusTransferAction.createBientityActionFactory());
+        registerBientityAction(FireProjectileAction.createBientityActionFactory());
     }
 }
