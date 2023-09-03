@@ -1,0 +1,14 @@
+{
+    "powers": [
+        "origins:tailwind",
+        "proviorigins:common/more_experience",
+        "proviorigins:common/no_splash_potions",
+        "proviorigins:common/no_trades",
+        "proviorigins:common/angry_golems",
+        "extrade:humanoid"
+    ],
+    "icon": "proviorigins:homunculus_icon",
+    "impact": 1,
+    "name": "power.proviorigins.homunculus.name",
+    "description": "power.proviorigins.homunculus.description"
+}

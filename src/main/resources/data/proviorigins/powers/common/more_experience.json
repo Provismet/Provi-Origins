@@ -1,0 +1,9 @@
+{
+    "name": "power.proviorigins.common.more_experience.name",
+    "description": "power.proviorigins.common.more_experience.desc",
+    "type": "origins:modify_xp_gain",
+    "modifier": {
+        "operation": "multiply_base",
+        "value": 0.5
+    }
+}

@@ -18,6 +18,9 @@
     "item.proviorigins.jelly_icon": "Jelly Sculk Origin Icon",
     "item.proviorigins.splinter_icon": "Splinter Origin Icon",
     "item.proviorigins.fae_moth_icon": "Faerie Moth Origin Icon",
+    "item.proviorigins.alraune_icon": "Alraune Origin Icon",
+    "item.proviorigins.homunculus_icon": "Homunculus Origin Icon",
+    "item.proviorigins.crystalliser_icon": "Crystallizer Origin Icon",
 
     "effect.proviorigins.void_corruption": "Void Corruption",
     "effect.proviorigins.untargetable": "Illusive",
@@ -108,6 +111,12 @@
     "power.proviorigins.common.medium_taller.desc": "You are slightly taller than others with a height of 2.5 blocks.",
     "power.proviorigins.common.dried_up.name": "Dried Up",
     "power.proviorigins.common.dried_up.desc": "Lose hydration in hot biomes, drinking or standing in water restores hydration. You will catch fire after 30 seconds of losing hydration.",
+    "power.proviorigins.common.no_trades.name": "Merchant Ban",
+    "power.proviorigins.common.no_trades.desc": "Villagers refuse to acknowledge you. You cannot trade with them.",
+    "power.proviorigins.common.angry_golems.name": "Oppressive Iron",
+    "power.proviorigins.common.angry_golems.desc": "Iron golems view you as hostile and will attack you on-sight.",
+    "power.proviorigins.common.more_experience.name": "Enhanced Intellect",
+    "power.proviorigins.common.more_experience.desc": "You gain x1.5 more experience.",
 
     "power.proviorigins.voidlily.name": "Lily of the Void",
     "power.proviorigins.voidlily.description": "Grown from a Void Flower rooted on the skybox, you are connected both to nature and to oblivion.",
@@ -255,5 +264,8 @@
     "power.proviorigins.alraune.summon_plant.badge.1": "Costs 1 Sap of Life.",
     "power.proviorigins.alraune.summon_plant.badge.2": "Flower Sprites will take damage if not placed on plantable blocks.",
     "power.proviorigins.alraune.summon_plant.badge.3": "Flower Sprites have different requirements for different biomes.\nMost biomes require the Sprite to be exposed to sunlight.\nFor biomes with denser foliage, such as forests, only exposure to the sky is required.\nSome biomes, such as Lush Caves, will allow Flower Sprites to grow regardless.\nUse bone meal on a Flower Sprite to bypass this limitation.",
-    "power.proviorigins.alraune.summon_plant.badge.4": "A Flower Sprite will die after 1200 ticks if not fed with a super fertilizer such as dragon breath."
+    "power.proviorigins.alraune.summon_plant.badge.4": "A Flower Sprite will die after 1200 ticks if not fed with a super fertilizer such as dragon breath.",
+
+    "power.proviorigins.homunculus.name": "Homunculus",
+    "power.proviorigins.homunculus.description": "An artificial human, created by witchcraft and seen as a outlier by all of society."
 }
