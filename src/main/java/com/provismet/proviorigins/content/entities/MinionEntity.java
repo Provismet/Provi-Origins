@@ -273,7 +273,13 @@ public class MinionEntity extends MobEntity implements ExtraTameable, Temporary 
         // Do nothing. Minions should not take knockback.
     }
 
+    @Override
     public void setMaxLifetime (int ticks) {
         this.maxLifeTime = ticks;
+    }
+
+    @Override
+    public boolean canUsePortals () {
+        return false;
     }
 }

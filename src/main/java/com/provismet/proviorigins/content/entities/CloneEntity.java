@@ -10,7 +10,6 @@ import com.provismet.proviorigins.extras.ExtraTameable;
 import com.provismet.proviorigins.extras.Temporary;
 
 import net.minecraft.entity.CrossbowUser;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
@@ -148,7 +147,7 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
     @Override
     public void tick () {
         super.tick();
-        if (this.getOwner() == null || this.getOwner().getWorld() != this.getWorld() || this.age > this.maxTicks) {
+        if (this.getOwner() == null || this.getOwner().getWorld() != this.getWorld() || (this.age > this.maxTicks && this.maxTicks > 0)) {
             this.discard();
         }
         else if (this.age == this.maxTicks - 1) {
@@ -301,14 +300,6 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
         return projectile;
     }
 
-    /*
-     * Full override on tryAttack so that the damage source can be redirected to be the player that owns the clone.
-     */
-    @Override
-    public boolean tryAttack (Entity target) {
-        return super.tryAttack(target);
-    }
-
     @Override
     public EntityGroup getGroup() {
         if (this.getOwner() != null) return this.getOwner().getGroup();
@@ -348,6 +339,21 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
 
     public void setSitting (boolean isSat) {
         this.dataTracker.set(SITTING, isSat);
+    }
+
+    @Override
+    public EntityView method_48926 () {
+        return getWorld();
+    }
+
+    @Override
+    public void setMaxLifetime (int ticks) {
+        this.maxTicks = ticks;
+    }
+
+    @Override
+    public boolean canUsePortals () {
+        return false;
     }
     
     protected abstract static class CloneGoal extends Goal {
@@ -462,15 +468,5 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
             this.tickTimer = this.getTickCount(10);
             this.clone.getNavigation().startMovingTo(this.owner, this.speed);
         }
-    }
-
-    @Override
-    public EntityView method_48926 () {
-        return getWorld();
-    }
-
-    @Override
-    public void setMaxLifetime(int ticks) {
-        this.maxTicks = ticks;
     }
 }
