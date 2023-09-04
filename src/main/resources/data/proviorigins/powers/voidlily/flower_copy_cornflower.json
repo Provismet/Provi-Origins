@@ -55,7 +55,7 @@
                 },
                 {
                     "type": "origins:play_sound",
-                    "sound": "minecraft:entity.illusioner.prepare_mirror",
+                    "sound": "proviorigins:origin.voidlily.mimic",
                     "pitch": 2
                 },
                 {

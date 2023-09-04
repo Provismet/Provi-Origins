@@ -1,5 +1,6 @@
 {
     "category.proviorigins.keys": "Provi's Origins Extra Keys",
+
     "key.proviorigins.tertiary_active": "Active Skill (Tertiary)",
     "key.proviorigins.quaternary_active": "Active Skill (Quaternary)",
 
@@ -26,6 +27,10 @@
     "effect.proviorigins.untargetable": "Illusive",
     "effect.proviorigins.sleep": "Sleeping",
     "effect.proviorigins.alert": "Alert",
+
+    "subtitles.proviorigins.voidlily.mimic": "Lily mimics",
+    "subtitles.proviorigins.voidlily.mimic_end": "Lily loses mimic",
+    "subtitles.proviorigins.voidlily.teleport": "Lily teleports",
     
     "death.attack.freshwater": "%1$s ran out of salt",
     "death.attack.freshwater.player": "%1$s lost too much salt whilst fighting %2$s",
@@ -267,5 +272,10 @@
     "power.proviorigins.alraune.summon_plant.badge.4": "A Flower Sprite will die after 1200 ticks if not fed with a super fertilizer such as dragon breath.",
 
     "power.proviorigins.homunculus.name": "Homunculus",
-    "power.proviorigins.homunculus.description": "An artificial human, created by witchcraft and seen as a outlier by all of society."
+    "power.proviorigins.homunculus.description": "An artificial human, created by witchcraft and seen as a outlier by all of society.",
+
+    "power.proviorigins.crystalliser.name": "Crystallizer",
+    "power.proviorigins.crystalliser.description": "An amalgam of shards left behind from exploded End Crystals. After gaining sapience, you've retained a similar level of strength.",
+    "power.proviorigins.crystalliser.summon_follower.name": "Deadly Refraction",
+    "power.proviorigins.crystalliser.summon_follower.desc": "Summon a crystal shard above your head. The shard follows you and attacks your enemies from up to 32 blocks away."
 }

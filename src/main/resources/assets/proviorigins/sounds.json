@@ -1,0 +1,23 @@
+{
+    "origin.voidlily.mimic": {
+        "subtitle": "subtitles.proviorigins.voidlily.mimic",
+        "sounds": [
+            "minecraft:mob/illusion_illager/prepare_mirror"
+        ]
+    },
+
+    "origin.voidlily.mimic_end": {
+        "subtitle": "subtitles.proviorigins.voidlily.mimic_end",
+        "sounds": [
+            "minecraft:mob/illusion_illager/prepare_mirror"
+        ]
+    },
+
+    "origin.voidlily.teleport": {
+        "subtitle": "subtitles.proviorigins.voidlily.teleport",
+        "sounds": [
+            "minecraft:mob/endermen/portal",
+            "minecraft:mob/endermen/portal2"
+        ]
+    }
+}
