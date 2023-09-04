@@ -27,7 +27,7 @@ public class ProviOriginsMain implements ModInitializer {
     }
 
     @Override
-    public void onInitialize() {
+    public void onInitialize () {
         Entities.register();
         Items.register();
         StatusEffects.register();
