@@ -1,6 +1,7 @@
 package com.provismet.proviorigins.actions;
 
 import com.provismet.proviorigins.actions.bientity.FireProjectileAction;
+import com.provismet.proviorigins.actions.bientity.ParticleBeamAction;
 import com.provismet.proviorigins.actions.bientity.StatusTransferAction;
 import com.provismet.proviorigins.actions.bientity.SwapPositionsAction;
 
@@ -35,5 +36,6 @@ public class ActionFactories {
         registerBientityAction(SwapPositionsAction.createBientityActionFactory());
         registerBientityAction(StatusTransferAction.createBientityActionFactory());
         registerBientityAction(FireProjectileAction.createBientityActionFactory());
+        registerBientityAction(ParticleBeamAction.createBientityActionFactory());
     }
 }
