@@ -12,6 +12,7 @@ import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleType;
 
 public class FlowerParticleEffect extends AbstractDustParticleEffect {
+    @SuppressWarnings("deprecation")
     public static final ParticleEffect.Factory<FlowerParticleEffect> PARAMETERS_FACTORY = new ParticleEffect.Factory<FlowerParticleEffect>(){
 
         @Override
