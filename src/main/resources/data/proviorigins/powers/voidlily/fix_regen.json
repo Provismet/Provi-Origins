@@ -35,9 +35,11 @@
                     "type": "origins:relative_health",
                     "comparison": "<",
                     "compare_to": 1
+                },
+                {
+                    "type": "proviorigins:can_natural_regen"
                 }
             ]
-
         }
     }
 }
