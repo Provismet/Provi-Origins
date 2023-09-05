@@ -2,6 +2,7 @@ package com.provismet.proviorigins.content.registries;
 
 import com.provismet.proviorigins.ProviOriginsMain;
 import com.provismet.proviorigins.content.particles.effects.FlowerParticleEffect;
+import com.provismet.proviorigins.content.particles.effects.TelegraphParticleEffect;
 
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.particle.DefaultParticleType;
@@ -16,6 +17,7 @@ public class Particles {
     public static final DefaultParticleType MAGIC_CIRCLE = FabricParticleTypes.simple();
 
     public static final ParticleType<FlowerParticleEffect> FLOWER = FabricParticleTypes.complex(FlowerParticleEffect.PARAMETERS_FACTORY);
+    public static final ParticleType<TelegraphParticleEffect> TELEGRAPH = FabricParticleTypes.complex(TelegraphParticleEffect.PARAMETERS_FACTORY);
 
     private static void registerSimple (DefaultParticleType particle, String path) {
         Registry.register(Registries.PARTICLE_TYPE, ProviOriginsMain.identifier(path), particle);
@@ -31,5 +33,6 @@ public class Particles {
         registerSimple(MAGIC_CIRCLE, "magic_circle");
 
         registerComplex(FLOWER, "flower");
+        registerComplex(TELEGRAPH, "telegraph");
     }
 }

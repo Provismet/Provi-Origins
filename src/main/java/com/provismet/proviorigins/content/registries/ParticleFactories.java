@@ -4,6 +4,7 @@ import com.provismet.proviorigins.content.particles.FlowerParticle;
 import com.provismet.proviorigins.content.particles.LilyPetalParticle;
 import com.provismet.proviorigins.content.particles.MagicCircleParticle;
 import com.provismet.proviorigins.content.particles.SoulCircleParticle;
+import com.provismet.proviorigins.content.particles.TelegraphParticle;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -29,5 +30,6 @@ public class ParticleFactories {
         registerDefaultParticleFactory(Particles.MAGIC_CIRCLE, MagicCircleParticle.Factory::new);
 
         registerParticleFactory(Particles.FLOWER, FlowerParticle.Factory::new);
+        registerParticleFactory(Particles.TELEGRAPH, TelegraphParticle.Factory::new);
     }
 }

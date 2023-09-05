@@ -14,6 +14,20 @@
                 }
             },
             {
+                "type": "origins:spawn_particles",
+                "particle": {
+                    "type": "proviorigins:telegraph",
+                    "params": "0.8 0 0 0.75 6 30"
+                },
+                "spread": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "offset_y": 0.1,
+                "count": 1
+            },
+            {
                 "type": "origins:area_of_effect",
                 "radius": 6,
                 "bientity_action": {
