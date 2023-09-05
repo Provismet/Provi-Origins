@@ -31,6 +31,15 @@
     "subtitles.proviorigins.voidlily.mimic": "Lily mimics",
     "subtitles.proviorigins.voidlily.mimic_end": "Lily loses mimic",
     "subtitles.proviorigins.voidlily.teleport": "Lily teleports",
+
+    "subtitle.proviorigins.decaykraken.bide": "Kraken bides",
+    "subtitle.proviorigins.decaykraken.soul_steal": "Kraken grasps",
+    "subtitle.proviorigins.decaykraken.ink": "Kraken squirts",
+    "subtitle.proviorigins.decaykraken.salt": "Kraken dissolves",
+
+    "subtitle.proviorigins.drakling.evolve": "Drakling evolves",
+    "subtitle.proviorigins.drakling.birth": "Drake emerges",
+    "subtitle.proviorigins.drakling.flap": "Drake flaps",
     
     "death.attack.freshwater": "%1$s ran out of salt",
     "death.attack.freshwater.player": "%1$s lost too much salt whilst fighting %2$s",
@@ -78,6 +87,8 @@
     "tooltip.proviorigins.alraune.summons_projectile": "§8Summons a flower that shoots arrows at foes.",
     "tooltip.proviorigins.alraune.super_fertiliser": "§8A super effective fertilizer.",
 
+    "power.proviorigins.common.kill_dragon.badge": "This power is upgraded upon gaining the Free The End advancement.",
+
     "power.proviorigins.common.brittle.name": "Brittle Body",
     "power.proviorigins.common.brittle.desc": "You have only 5 hearts.",
     "power.proviorigins.common.amphibious.name": "Amphibious",
@@ -122,6 +133,8 @@
     "power.proviorigins.common.angry_golems.desc": "Iron golems view you as hostile and will attack you on-sight.",
     "power.proviorigins.common.more_experience.name": "Enhanced Intellect",
     "power.proviorigins.common.more_experience.desc": "You gain x1.5 more experience.",
+    "power.proviorigins.common.no_shooting.name": "Low Dexterity",
+    "power.proviorigins.common.no_shooting.desc": "You are unable to use bows and crossbows.",
 
     "power.proviorigins.voidlily.name": "Lily of the Void",
     "power.proviorigins.voidlily.description": "Grown from a Void Flower rooted on the skybox, you are connected both to nature and to oblivion.",

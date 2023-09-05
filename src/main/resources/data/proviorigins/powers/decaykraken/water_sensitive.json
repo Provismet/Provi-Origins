@@ -70,7 +70,7 @@
                 },
                 {
                     "type": "origins:play_sound",
-                    "sound": "entity.squid.hurt",
+                    "sound": "proviorigins:origin.decaykraken.salt",
                     "volume": 0.7,
                     "pitch": 0.65
                 },

@@ -84,7 +84,7 @@
                         "type": "origins:target_action",
                         "action": {
                             "type": "origins:play_sound",
-                            "sound": "minecraft:entity.vex.ambient"
+                            "sound": "proviorigins:origin.decaykraken.soul_steal"
                         }
                     }
                 ]
@@ -116,7 +116,7 @@
                             },
                             "action": {
                                 "type": "origins:play_sound",
-                                "sound": "minecraft:block.note_block.didgeridoo",
+                                "sound": "proviorigins:origin.decaykraken.bide",
                                 "volume": 0.7,
                                 "pitch": 1.25
                             }
@@ -130,7 +130,7 @@
                             },
                             "action": {
                                 "type": "origins:play_sound",
-                                "sound": "minecraft:block.note_block.didgeridoo",
+                                "sound": "proviorigins:origin.decaykraken.bide",
                                 "volume": 0.7,
                                 "pitch": 1.5
                             }
@@ -144,7 +144,7 @@
                             },
                             "action": {
                                 "type": "origins:play_sound",
-                                "sound": "minecraft:block.note_block.didgeridoo",
+                                "sound": "proviorigins:origin.decaykraken.bide",
                                 "volume": 0.7,
                                 "pitch": 1.75
                             }
@@ -158,7 +158,7 @@
                             },
                             "action": {
                                 "type": "origins:play_sound",
-                                "sound": "minecraft:block.note_block.didgeridoo",
+                                "sound": "proviorigins:origin.decaykraken.bide",
                                 "volume": 0.7,
                                 "pitch": 2.0
                             }

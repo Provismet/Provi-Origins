@@ -19,5 +19,67 @@
             "minecraft:mob/endermen/portal",
             "minecraft:mob/endermen/portal2"
         ]
+    },
+
+    "origin.decaykraken.bide": {
+        "subtitle": "subtitle.proviorigins.decaykraken.bide",
+        "sounds": [
+            "minecraft:note/didgeridoo"
+        ]
+    },
+
+    "origin.decaykraken.soul_steal": {
+        "subtitle": "subtitle.proviorigins.decaykraken.soul_steal",
+        "sounds": [
+            "minecraft:mob/vex/idle1",
+            "minecraft:mob/vex/idle2",
+            "minecraft:mob/vex/idle3",
+            "minecraft:mob/vex/idle4"
+        ]
+    },
+
+    "origin.decaykraken.ink": {
+        "subtitle": "subtitle.proviorigins.decaykraken.ink",
+        "sounds": [
+            "minecraft:entity/squid/squirt1",
+            "minecraft:entity/squid/squirt2",
+            "minecraft:entity/squid/squirt3"
+        ]
+    },
+
+    "origin.decaykraken.salt": {
+        "subtitle": "subtitle.proviorigins.decaykraken.salt",
+        "sounds": [
+            "minecraft:entity/squid/hurt1",
+            "minecraft:entity/squid/hurt2",
+            "minecraft:entity/squid/hurt3",
+            "minecraft:entity/squid/hurt4"
+        ]
+    },
+
+    "origin.drakling.evolve": {
+        "subtitle": "subtitle.proviorigins.drakling.evolve",
+        "sounds": [
+            "minecraft:item/totem/use_totem"
+        ]
+    },
+
+    "origin.drakling.birth": {
+        "subtitle": "subtitle.proviorigins.drakling.birth",
+        "sounds": [
+            "minecraft:mob/enderdragon/end"
+        ]
+    },
+
+    "origin.drakling.flap": {
+        "subtitle": "subtitle.proviorigins.drakling.flap",
+        "sounds": [
+            "minecraft:mob/enderdragon/wings1",
+            "minecraft:mob/enderdragon/wings2",
+            "minecraft:mob/enderdragon/wings3",
+            "minecraft:mob/enderdragon/wings4",
+            "minecraft:mob/enderdragon/wings5",
+            "minecraft:mob/enderdragon/wings6"
+        ]
     }
 }
