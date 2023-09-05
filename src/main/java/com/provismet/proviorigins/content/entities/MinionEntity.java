@@ -161,6 +161,7 @@ public class MinionEntity extends MobEntity implements ExtraTameable, Temporary 
 
     public void setFollowOwner (boolean shouldFollow) {
         this.dataTracker.set(FOLLOW_OWNER, shouldFollow);
+        this.setNoGravity(shouldFollow);
     }
 
     public boolean shouldFollowOwner () {
