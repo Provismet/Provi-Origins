@@ -12,6 +12,8 @@ import com.provismet.proviorigins.extras.ExtraTameable;
 import com.provismet.proviorigins.extras.Temporary;
 
 import net.minecraft.entity.EntityData;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
@@ -186,12 +188,21 @@ public class MinionEntity extends MobEntity implements ExtraTameable, Temporary 
         );
     }
 
-    /*
     @Override
-    public boolean isInvulnerableTo (DamageSource damageSource) {
-        return this.isInvulnerable();
+    public void onTrackedDataSet (TrackedData<?> data) {
+        if (SCALE.equals(data)) this.calculateDimensions();
+        super.onTrackedDataSet(data);
     }
-    */
+
+    @Override
+    public EntityDimensions getDimensions (EntityPose pose) {
+        return super.getDimensions(pose).scaled(this.getScale());
+    }
+
+    @Override
+    protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
+        return 0.5f * dimensions.height;
+    }
 
     @Override
     public void readCustomDataFromNbt (NbtCompound nbt) {
