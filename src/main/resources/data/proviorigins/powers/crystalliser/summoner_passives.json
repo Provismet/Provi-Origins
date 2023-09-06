@@ -1,0 +1,206 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+
+    "resource_condition": {
+        "type": "origins:cooldown",
+        "cooldown": 500,
+        "hud_render": {
+            "sprite_location": "proviorigins:textures/gui/resources/extra_resources.png",
+            "bar_index": 3,
+            "should_render": true,
+            "inverted": true,
+            "condition": {
+                "type": "origins:constant",
+                "value": true
+            }
+        }
+    },
+
+    "weakened": {
+        "type": "origins:stacking_status_effect",
+        "min_stacks": -2,
+        "max_stacks": 2,
+        "duration_per_stack": 10,
+        "effects": [
+            {
+                "effect": "minecraft:weakness",
+                "duration": 15,
+                "is_ambient": true,
+                "show_particles": false,
+                "show_icon": true
+            },
+            {
+                "effect": "minecraft:slowness",
+                "amplifier": 2,
+                "duration": 15,
+                "is_ambient": true,
+                "show_particles": false,
+                "show_icon": true
+            }
+        ],
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:crystalliser/summoner_passives_resource_condition",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:advancement",
+                    "advancement": "minecraft:end/kill_dragon",
+                    "inverted": true
+                }
+            ]
+            
+        }
+    },
+
+    "altered": {
+        "type": "origins:stacking_status_effect",
+        "min_stacks": -2,
+        "max_stacks": 2,
+        "duration_per_stack": 10,
+        "effects": [
+            {
+                "effect": "minecraft:weakness",
+                "duration": 15,
+                "is_ambient": true,
+                "show_particles": false,
+                "show_icon": true
+            },
+            {
+                "effect": "minecraft:slowness",
+                "amplifier": 2,
+                "duration": 15,
+                "is_ambient": true,
+                "show_particles": false,
+                "show_icon": true
+            },
+            {
+                "effect": "minecraft:resistance",
+                "duration": 15,
+                "is_ambient": true,
+                "show_particles": true,
+                "show_icon": true
+            }
+        ],
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:crystalliser/summoner_passives_resource_condition",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:advancement",
+                    "advancement": "minecraft:end/kill_dragon"
+                }
+            ]
+            
+        }
+    },
+
+    "overlay": {
+        "type": "origins:overlay",
+        "texture": "proviorigins:textures/misc/crystal.png",
+        "strength": 0.6,
+        "red": 0.7,
+        "green": 0.0,
+        "blue": 0.7,
+        "draw_mode": "nausea",
+        "draw_phase": "below_hud",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:crystalliser/summoner_passives_resource_condition",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+
+    "particle_aura": {
+        "type": "origins:particle",
+        "frequency": 5,
+        "particle": {
+            "type": "proviorigins:telegraph",
+            "params": "0.8 0 0.8 0.6 0.5 20"
+        },
+        "spread": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        },
+        "offset_y": 0.1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:resource",
+                            "resource": "proviorigins:crystalliser/summoner_passives_resource_condition",
+                            "comparison": ">",
+                            "compare_to": 0
+                        },
+                        {
+                            "type": "origins:resource",
+                            "resource": "proviorigins:crystalliser/crystal_charging_shards",
+                            "comparison": "==",
+                            "compare_to": 140
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:moving"
+                },
+                {
+                    "type": "origins:on_block"
+                },
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+
+    "particle_landing": {
+        "type": "origins:action_on_land",
+        "entity_action": {
+            "type": "origins:spawn_particles",
+            "particle": {
+                "type": "proviorigins:telegraph",
+                "params": "0.8 0 0.8 0.6 0.5 20"
+            },
+            "count": 1,
+            "spread": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "offset_y": 0.1
+        },
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:crystalliser/summoner_passives_resource_condition",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "proviorigins:crystalliser/crystal_charging_shards",
+                    "comparison": "==",
+                    "compare_to": 140
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "name": "power.proviorigins.common.no_shooting.name",
+    "description": "power.proviorigins.common.no_shooting.desc",
+    "type": "origins:prevent_item_use",
+    "item_condition": {
+        "type": "origins:ingredient",
+        "ingredient": {
+            "tag": "c:bows"
+        }
+    }
+}

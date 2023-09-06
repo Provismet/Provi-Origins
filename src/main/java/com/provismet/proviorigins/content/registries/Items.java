@@ -52,5 +52,6 @@ public class Items {
         registerItemIcon("fae_moth");
         registerItemIcon("alraune");
         registerItemIcon("homunculus");
+        registerItemIcon("crystalliser");
     }
 }

@@ -1,0 +1,36 @@
+{
+    "name": "power.proviorigins.crystalliser.shard_absorb.name",
+    "description": "power.proviorigins.crystalliser.shard_absorb.desc",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "origins.gui.badge.active"
+        },
+        {
+            "sprite": "proviorigins:textures/gui/badge/cost.png",
+            "text": "power.proviorigins.crystalliser.shard_absorb.badge"
+        }
+    ],
+    "type": "origins:active_self",
+    "key": {"key": "key.origins.secondary_active"},
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:heal",
+                "amount": 4
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "proviorigins:crystalliser/crystal_charging_shards",
+                "change": -20
+            }
+        ]
+    },
+    "condition": {
+        "type": "origins:resource",
+        "resource": "proviorigins:crystalliser/crystal_charging_shards",
+        "comparison": ">=",
+        "compare_to": 20
+    }
+}

@@ -10,7 +10,7 @@
 
     "power.proviorigins.jellysculk.catalyse.name": "Catalyser",
 
-    "power.proviorigins.alraune.forest_armour.name": "Forest Armour",
-    "power.proviorigins.alraune.forest_armour.desc": "Gain 4 additional armour points in floral biomes.",
-    "power.proviorigins.alraune.summon_plant.badge.4": "A Flower Sprite will die after 1200 ticks if not fed with a super fertiliser such as dragon breath."
+    "power.proviorigins.alraune.summon_plant.badge.2": "Flower Sprites\n- Will take damage if not placed on plantable blocks such as dirt or grass.\n- Will die after 1200 ticks unless fed with a super fertiliser such as dragon breath.",
+
+    "power.proviorigins.crystalliser.name": "Crystalliser"
 }

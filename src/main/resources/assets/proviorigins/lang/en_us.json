@@ -278,11 +278,10 @@
     "power.proviorigins.alraune.life_sap.name": "Sap of Life",
     "power.proviorigins.alraune.life_sap.desc": "Your connection to nature allows you to harness its power. Using this power allows you to transform flowers into placed turrets that aid you in battle.",
     "power.proviorigins.alraune.summon_plant.name": "Floral Summoning",
-    "power.proviorigins.alraune.summon_plant.desc": "Using your connection to nature allows you to empower flowers into stationary Flower Sprites that damage nearby enemies.",
+    "power.proviorigins.alraune.summon_plant.desc": "Using your connection to nature allows you to empower flowers into stationary Flower Sprites that damage and hinder nearby enemies.",
     "power.proviorigins.alraune.summon_plant.badge.1": "Costs 1 Sap of Life.",
-    "power.proviorigins.alraune.summon_plant.badge.2": "Flower Sprites will take damage if not placed on plantable blocks.",
-    "power.proviorigins.alraune.summon_plant.badge.3": "Flower Sprites have different requirements for different biomes.\nMost biomes require the Sprite to be exposed to sunlight.\nFor biomes with denser foliage, such as forests, only exposure to the sky is required.\nSome biomes, such as Lush Caves, will allow Flower Sprites to grow regardless.\nUse bone meal on a Flower Sprite to bypass this limitation.",
-    "power.proviorigins.alraune.summon_plant.badge.4": "A Flower Sprite will die after 1200 ticks if not fed with a super fertilizer such as dragon breath.",
+    "power.proviorigins.alraune.summon_plant.badge.2": "Flower Sprites\n- Will take damage if not placed on plantable blocks such as dirt or grass.\n- Will die after 1200 ticks unless fed with a super fertilizer such as dragon breath.",
+    "power.proviorigins.alraune.summon_plant.badge.3": "Flower Sprites have different requirements for different biomes.\n- Most biomes require the Sprite to be exposed to sunlight.\n- For biomes with denser foliage, such as forests, only exposure to the sky is required.\n- Some biomes, such as Lush Caves, will allow Flower Sprites to grow regardless.\n- Use bone meal on a Flower Sprite to bypass this limitation.",
 
     "power.proviorigins.homunculus.name": "Homunculus",
     "power.proviorigins.homunculus.description": "An artificial human, created by witchcraft and seen as a outlier by all of society.",
@@ -290,5 +289,13 @@
     "power.proviorigins.crystalliser.name": "Crystallizer",
     "power.proviorigins.crystalliser.description": "An amalgam of shards left behind from exploded End Crystals. After gaining sapience, you've retained a similar level of strength.",
     "power.proviorigins.crystalliser.summon_follower.name": "Deadly Refraction",
-    "power.proviorigins.crystalliser.summon_follower.desc": "Summon a crystal shard above your head. The shard follows you and attacks your enemies from up to 32 blocks away."
+    "power.proviorigins.crystalliser.summon_follower.desc": "Deplete your crystal shards to summon a full crystal above your head. The crystal follows you and attacks your enemies from up to 32 blocks away.",
+    "power.proviorigins.crystalliser.summon_follower.badge": "Costs every bar of Crystal Shards.",
+    "power.proviorigins.crystalliser.crystal_charging.name": "Shard Collector",
+    "power.proviorigins.crystalliser.crystal_charging.desc": "Gain crystal shards when dealing critical hits, taking attacks, and killing enemies.",
+    "power.proviorigins.crystalliser.shard_absorb.name": "Shard Absorption",
+    "power.proviorigins.crystalliser.shard_absorb.desc": "Consume some of your crystal shards and regain 2 hearts of health.",
+    "power.proviorigins.crystalliser.shard_absorb.badge": "Costs 1 bar of Crystal Shards.",
+    "power.proviorigins.crystalliser.explosion_resist.name": "Explosive Nature",
+    "power.proviorigins.crystalliser.explosion_resist.desc": "You take 75% less explosion damage."
 }
