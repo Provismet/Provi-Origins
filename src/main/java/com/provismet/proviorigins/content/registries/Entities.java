@@ -27,7 +27,7 @@ public class Entities {
         Registries.ENTITY_TYPE,
         ProviOriginsMain.identifier("minion"),
         FabricEntityTypeBuilder.create(SpawnGroup.MISC, MinionEntity::new)
-            .dimensions(new EntityDimensions(0.8f, 0.8f, false))
+            .dimensions(new EntityDimensions(0.5f, 0.5f, false))
             .disableSummon()
             .build()
     );
