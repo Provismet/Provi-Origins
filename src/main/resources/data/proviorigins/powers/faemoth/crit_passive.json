@@ -97,7 +97,7 @@
                 "item_condition": {
                     "type": "origins:ingredient",
                     "ingredient": {
-                        "tag": "minecraft:swords"
+                        "tag": "c:swords"
                     }
                 }
             }
