@@ -46,11 +46,14 @@ public class SummonMinionAction {
             minion.setScale(scale);
             minion.setInvulnerable(isInvulnerable);
 
-            if (shouldFollow && offset != null) {
-                minion.setFollowOwnerOffset(offset);
+            Vec3d minionPosition = new Vec3d(living.getX(), living.getY(), living.getZ());
+
+            if (offset != null) {
+                if (shouldFollow) minion.setFollowOwnerOffset(offset);
+                minionPosition = minionPosition.add(offset);
             }
 
-            minion.refreshPositionAndAngles(living.getX(), living.getY(), living.getZ(), living.getHeadYaw(), living.getPitch());
+            minion.refreshPositionAndAngles(minionPosition.getX(), minionPosition.getY(), minionPosition.getZ(), living.getHeadYaw(), living.getPitch());
             minion.initialize(world, world.getLocalDifficulty(living.getBlockPos()), SpawnReason.REINFORCEMENT, null, null);
             minion.setCustomName(Text.of("Minion of " + entity.getName().getString()));
             minion.setMaxLifetime(maxLife);
