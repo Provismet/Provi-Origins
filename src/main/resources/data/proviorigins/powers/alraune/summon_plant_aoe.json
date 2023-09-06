@@ -20,10 +20,6 @@
             "text": "power.proviorigins.alraune.summon_plant.badge.3"
         },
         {
-            "sprite": "origins:textures/gui/badge/info.png",
-            "text": "power.proviorigins.alraune.summon_plant.badge.4"
-        },
-        {
             "sprite": "proviorigins:textures/gui/badge/dragon.png",
             "text": "power.proviorigins.common.kill_dragon.badge"
         }
