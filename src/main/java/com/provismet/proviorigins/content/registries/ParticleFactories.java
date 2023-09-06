@@ -1,5 +1,6 @@
 package com.provismet.proviorigins.content.registries;
 
+import com.provismet.proviorigins.content.particles.CrystalParticle;
 import com.provismet.proviorigins.content.particles.FlowerParticle;
 import com.provismet.proviorigins.content.particles.LilyPetalParticle;
 import com.provismet.proviorigins.content.particles.MagicCircleParticle;
@@ -31,5 +32,6 @@ public class ParticleFactories {
 
         registerParticleFactory(Particles.FLOWER, FlowerParticle.Factory::new);
         registerParticleFactory(Particles.TELEGRAPH, TelegraphParticle.Factory::new);
+        registerParticleFactory(Particles.CRYSTAL, CrystalParticle.Factory::new);
     }
 }

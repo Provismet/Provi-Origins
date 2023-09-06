@@ -34,7 +34,7 @@ public class FlowerParticleEffect extends AbstractDustParticleEffect {
     }
 
     @Override
-    public ParticleType<?> getType () {
+    public ParticleType<FlowerParticleEffect> getType () {
         return Particles.FLOWER;
     }
 }

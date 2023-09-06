@@ -1,6 +1,7 @@
 package com.provismet.proviorigins.content.registries;
 
 import com.provismet.proviorigins.ProviOriginsMain;
+import com.provismet.proviorigins.content.particles.effects.CrystalParticleEffect;
 import com.provismet.proviorigins.content.particles.effects.FlowerParticleEffect;
 import com.provismet.proviorigins.content.particles.effects.TelegraphParticleEffect;
 
@@ -18,6 +19,7 @@ public class Particles {
 
     public static final ParticleType<FlowerParticleEffect> FLOWER = FabricParticleTypes.complex(FlowerParticleEffect.PARAMETERS_FACTORY);
     public static final ParticleType<TelegraphParticleEffect> TELEGRAPH = FabricParticleTypes.complex(TelegraphParticleEffect.PARAMETERS_FACTORY);
+    public static final ParticleType<CrystalParticleEffect> CRYSTAL = FabricParticleTypes.complex(CrystalParticleEffect.PARAMETERS_FACTORY);
 
     private static void registerSimple (DefaultParticleType particle, String path) {
         Registry.register(Registries.PARTICLE_TYPE, ProviOriginsMain.identifier(path), particle);
@@ -34,5 +36,6 @@ public class Particles {
 
         registerComplex(FLOWER, "flower");
         registerComplex(TELEGRAPH, "telegraph");
+        registerComplex(CRYSTAL, "crystal");
     }
 }
