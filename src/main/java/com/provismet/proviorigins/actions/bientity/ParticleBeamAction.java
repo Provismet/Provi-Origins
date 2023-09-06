@@ -33,16 +33,13 @@ public class ParticleBeamAction {
         final double actor_y = data.getDouble(ACTOR_OFFSET_LABEL);
         final double target_y = data.getDouble(TARGET_OFFSET_LABEL);
 
-        Vec3d currentPos = actor.getPos();
+        Vec3d currentPos = actor.getPos().add(0, actor_y, 0);
+        Vec3d destPos = target.getPos().add(0, target_y, 0);
         final double maxDistance = actor.getPos().distanceTo(target.getPos());
 
-        Vec3d eachStep = (new Vec3d(
-            target.getX() - actor.getX(),
-            (target.getEyeY() + actor_y) - (actor.getEyeY() + target_y),
-            target.getZ() - actor.getZ())
-        ).normalize().multiply(step);
+        Vec3d eachStep = destPos.subtract(currentPos).normalize().multiply(step);
         
-        while (currentPos.distanceTo(actor.getPos()) < maxDistance) {
+        while (currentPos.distanceTo(destPos) < maxDistance) {
             sWorld.spawnParticles(particle, currentPos.x, currentPos.y, currentPos.z, count, 0.0, 0.0, 0.0, speed);
             currentPos = currentPos.add(eachStep);
         }
