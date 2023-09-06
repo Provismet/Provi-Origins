@@ -19,6 +19,8 @@ public class LilyPetalParticle extends AnimatedParticle {
         this.velocityY = velocityY;
         this.velocityZ = velocityZ;
         this.setSpriteForAge(this.spriteProvider);
+        this.angle = (float)Math.toRadians(random.nextDouble() * 360);
+        this.prevAngle = angle;
         this.rotationSpeed = (float)Math.toRadians(random.nextDouble() * (random.nextBoolean() ? 2.5 : -2.5));
     }
 
