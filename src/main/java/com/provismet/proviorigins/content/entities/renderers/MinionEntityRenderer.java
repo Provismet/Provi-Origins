@@ -1,6 +1,5 @@
 package com.provismet.proviorigins.content.entities.renderers;
 
-import com.provismet.proviorigins.ProviOriginsMain;
 import com.provismet.proviorigins.content.entities.MinionEntity;
 import com.provismet.proviorigins.content.entities.models.MinionEntityModel;
 import com.provismet.proviorigins.content.registries.ModelLayerRegistry;
@@ -14,8 +13,6 @@ import net.minecraft.util.Identifier;
 
 @Environment(value=EnvType.CLIENT)
 public class MinionEntityRenderer<T extends MinionEntity> extends MobEntityRenderer<T, MinionEntityModel<T>> {
-    public static final Identifier TEMPLATE_TEXTURE = ProviOriginsMain.identifier("textures/entity/minion_template.png");
-
     public MinionEntityRenderer  (Context context) {
         super(context, new MinionEntityModel<>(context.getPart(ModelLayerRegistry.MINION_MODEL_LAYER)), 0.5f);
     }

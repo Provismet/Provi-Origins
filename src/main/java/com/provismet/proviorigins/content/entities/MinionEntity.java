@@ -7,7 +7,6 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 
 import com.provismet.proviorigins.ProviOriginsMain;
-import com.provismet.proviorigins.content.entities.renderers.MinionEntityRenderer;
 import com.provismet.proviorigins.extras.ExtraTameable;
 import com.provismet.proviorigins.extras.Temporary;
 
@@ -36,6 +35,8 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 
 public class MinionEntity extends MobEntity implements ExtraTameable, Temporary {
+    public static final Identifier TEMPLATE_TEXTURE = ProviOriginsMain.identifier("textures/entity/minion_template.png");
+
     private static final TrackedData<Optional<UUID>> OWNER_UUID = DataTracker.registerData(MinionEntity.class, TrackedDataHandlerRegistry.OPTIONAL_UUID);
     private static final TrackedData<String> TEXTURE_NAMESPACE = DataTracker.registerData(MinionEntity.class, TrackedDataHandlerRegistry.STRING);
     private static final TrackedData<String> TEXTURE_PATH = DataTracker.registerData(MinionEntity.class, TrackedDataHandlerRegistry.STRING);
@@ -64,8 +65,8 @@ public class MinionEntity extends MobEntity implements ExtraTameable, Temporary 
     protected void initDataTracker () {
         super.initDataTracker();
         this.dataTracker.startTracking(OWNER_UUID, Optional.empty());
-        this.dataTracker.startTracking(TEXTURE_NAMESPACE, MinionEntityRenderer.TEMPLATE_TEXTURE.getNamespace());
-        this.dataTracker.startTracking(TEXTURE_PATH, MinionEntityRenderer.TEMPLATE_TEXTURE.getPath());
+        this.dataTracker.startTracking(TEXTURE_NAMESPACE, TEMPLATE_TEXTURE.getNamespace());
+        this.dataTracker.startTracking(TEXTURE_PATH, TEMPLATE_TEXTURE.getPath());
         this.dataTracker.startTracking(FOLLOW_OWNER, false);
         this.dataTracker.startTracking(FOLLOW_OWNER_OFFSET_X, 0f);
         this.dataTracker.startTracking(FOLLOW_OWNER_OFFSET_Y, 0f);

@@ -3,7 +3,6 @@ package com.provismet.proviorigins.actions;
 import java.util.function.Consumer;
 
 import com.provismet.proviorigins.content.entities.MinionEntity;
-import com.provismet.proviorigins.content.entities.renderers.MinionEntityRenderer;
 import com.provismet.proviorigins.content.registries.Entities;
 import com.provismet.proviorigins.powers.Powers;
 
@@ -68,7 +67,7 @@ public class SummonMinionAction {
     public static ActionFactory<Entity> createActionFactory () {
         return new ActionFactory<>(Powers.identifier("summon_minion"),
             new SerializableData()
-                .add(TEXTURE_LABEL, SerializableDataTypes.IDENTIFIER, MinionEntityRenderer.TEMPLATE_TEXTURE)
+                .add(TEXTURE_LABEL, SerializableDataTypes.IDENTIFIER, MinionEntity.TEMPLATE_TEXTURE)
                 .add(FOLLOW_OWNER_LABEL, SerializableDataTypes.BOOLEAN)
                 .add(FOLLOW_OWNER_OFFSET_LABEL, SerializableDataTypes.VECTOR, null)
                 .add(SCALE_LABEL, SerializableDataTypes.FLOAT, 1f)
