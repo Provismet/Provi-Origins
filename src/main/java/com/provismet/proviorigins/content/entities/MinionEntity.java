@@ -102,7 +102,7 @@ public class MinionEntity extends MobEntity implements ExtraTameable, Temporary 
         }
         else if (this.shouldFollowOwner()) {
             LivingEntity owner = this.getOwner();
-            if (owner == null || owner.getWorld() != this.getWorld()) {
+            if (owner == null || owner.getWorld().getRegistryKey() != this.getWorld().getRegistryKey()) {
                 this.kill();
                 return;
             }
@@ -294,5 +294,11 @@ public class MinionEntity extends MobEntity implements ExtraTameable, Temporary 
     @Override
     public boolean canUsePortals () {
         return false;
+    }
+
+    @Override
+    public boolean canHit () {
+        if (this.shouldFollowOwner()) return false;
+        return super.canHit();
     }
 }

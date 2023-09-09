@@ -147,7 +147,7 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
     @Override
     public void tick () {
         super.tick();
-        if (this.getOwner() == null || this.getOwner().getWorld() != this.getWorld() || (this.age > this.maxTicks && this.maxTicks > 0)) {
+        if (this.getOwner() == null || this.getOwner().getWorld().getRegistryKey() != this.getWorld().getRegistryKey() || (this.age > this.maxTicks && this.maxTicks > 0)) {
             this.discard();
         }
         else if (this.age == this.maxTicks - 1) {
