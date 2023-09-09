@@ -26,7 +26,7 @@
                 "follow_offset": {
                     "x": 0,
                     "y": 2.5,
-                    "z": -0.25
+                    "z": 0
                 },
                 "invulnerable": true,
                 "max_life_ticks": 500,
