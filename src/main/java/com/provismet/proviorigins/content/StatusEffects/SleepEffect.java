@@ -22,8 +22,8 @@ public class SleepEffect extends StatusEffect {
     }
 
     @Override
-    public void onRemoved(LivingEntity entity, AttributeContainer attributes, int amplifier) {
+    public void onRemoved (LivingEntity entity, AttributeContainer attributes, int amplifier) {
         super.onRemoved(entity, attributes, amplifier);
-        if (!entity.hasStatusEffect(StatusEffects.ALERT)) entity.addStatusEffect(new StatusEffectInstance(StatusEffects.ALERT, 100));
+        if (!entity.hasStatusEffect(StatusEffects.ALERT)) entity.addStatusEffect(new StatusEffectInstance(StatusEffects.ALERT, 150));
     }
 }

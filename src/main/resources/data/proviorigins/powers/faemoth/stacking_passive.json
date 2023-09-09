@@ -19,7 +19,7 @@
                     "type": "origins:apply_effect",
                     "effect": {
                         "effect": "proviorigins:sleep",
-                        "duration": 70,
+                        "duration": 100,
                         "amplifier": 0
                     }
                 },
@@ -54,7 +54,7 @@
 
     "apply_countdown": {
         "type": "origins:action_over_time",
-        "interval": 20,
+        "interval": 25,
         "entity_action": {
             "type": "origins:change_resource",
             "resource": "proviorigins:faemoth/stacking_passive_countdown",
