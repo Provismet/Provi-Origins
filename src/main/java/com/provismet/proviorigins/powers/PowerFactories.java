@@ -20,6 +20,7 @@ public class PowerFactories {
         register(ActionOnGainLevelPower.createPowerFactory());
         register(ActionOnGainExpPower.createPowerFactory());
         register(ModifyDarknessPulsePower.createPowerFactory());
+        register(PreventPortalsPower.createPowerFactory());
     }
 
     private static void register (PowerFactory<?> powerFactory) {

@@ -202,5 +202,15 @@
                 }
             ]
         }
+    },
+
+    "no_portals": {
+        "type": "proviorigins:prevent_portal_use",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:crystalliser/summoner_passives_resource_condition",
+            "comparison": ">",
+            "compare_to": 0
+        }
     }
 }

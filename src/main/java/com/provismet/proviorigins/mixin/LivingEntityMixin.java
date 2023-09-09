@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import com.provismet.proviorigins.extras.Tags;
 import com.provismet.proviorigins.powers.EvadeProjectilesPower;
 import com.provismet.proviorigins.powers.PreventBreathingPower;
+import com.provismet.proviorigins.powers.PreventPortalsPower;
 import com.provismet.proviorigins.powers.PreventPotionCloudPower;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
@@ -125,5 +126,11 @@ public abstract class LivingEntityMixin extends Entity {
     private void cannotHaveSleepAndAlert (StatusEffectInstance effectInstance, CallbackInfoReturnable<Boolean> cir) {
         if (effectInstance.getEffectType() == com.provismet.proviorigins.content.registries.StatusEffects.SLEEP &&
             ((LivingEntity)(Object)this).hasStatusEffect(com.provismet.proviorigins.content.registries.StatusEffects.ALERT)) cir.setReturnValue(false);
+    }
+
+    // Prevent Portal Powers
+    @Inject(at=@At("RETURN"), method="canUsePortals", cancellable=true)
+    private void cannotUsePortals (CallbackInfoReturnable<Boolean> cir) {
+        if (PowerHolderComponent.hasPower((LivingEntity)(Object)this, PreventPortalsPower.class)) cir.setReturnValue(false);
     }
 }
