@@ -1,0 +1,50 @@
+{
+    "type": "origins:action_over_time",
+    "interval": 40,
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "proviorigins:particle_ring",
+                "radius": 16,
+                "step_size": 1.5,
+                "particle": {
+                    "type": "proviorigins:flower",
+                    "params": "0.8 0.25 0.8 0.75"
+                }
+            },
+            {
+                "type": "proviorigins:closest_bientity",
+                "distance": 16,
+                "bientity_action": {
+                    "type": "proviorigins:fire_projectile",
+                    "entity_type": "minecraft:arrow",
+                    "speed": 1.75,
+                    "tag": {
+                        "Potion": "minecraft:poison"
+                    }
+                },
+                "bientity_condition": {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:target_condition",
+                            "condition": {
+                                "type": "origins:living"
+                            }
+                        },
+                        {
+                            "type": "proviorigins:friendly",
+                            "inverted": true
+                        },
+                        {
+                            "type": "origins:can_see",
+                            "shape_type": "collider",
+                            "fluid_handling": "none"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

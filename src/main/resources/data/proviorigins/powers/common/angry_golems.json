@@ -1,0 +1,10 @@
+{
+    "name": "power.proviorigins.common.angry_golems.name",
+    "description": "power.proviorigins.common.angry_golems.desc",
+    "type": "origins:action_over_time",
+    "interval": 40,
+    "entity_action": {
+        "type": "origins:execute_command",
+        "command": "data modify entity @e[limit=1,distance=..32,type=minecraft:iron_golem,sort=nearest] AngryAt set from entity @s UUID"
+    }
+}

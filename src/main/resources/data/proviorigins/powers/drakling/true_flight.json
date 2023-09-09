@@ -16,7 +16,7 @@
             "actions": [
                 {
                     "type": "origins:play_sound",
-                    "sound": "minecraft:entity.ender_dragon.flap"
+                    "sound": "proviorigins:origin.drakling.flap"
                 },
                 {
                     "type": "origins:emit_game_event",

@@ -1,5 +1,6 @@
 {
     "category.proviorigins.keys": "Provi's Origins Extra Keys",
+
     "key.proviorigins.tertiary_active": "Active Skill (Tertiary)",
     "key.proviorigins.quaternary_active": "Active Skill (Quaternary)",
 
@@ -18,17 +19,32 @@
     "item.proviorigins.jelly_icon": "Jelly Sculk Origin Icon",
     "item.proviorigins.splinter_icon": "Splinter Origin Icon",
     "item.proviorigins.fae_moth_icon": "Faerie Moth Origin Icon",
+    "item.proviorigins.alraune_icon": "Alraune Origin Icon",
+    "item.proviorigins.homunculus_icon": "Homunculus Origin Icon",
+    "item.proviorigins.crystalliser_icon": "Crystallizer Origin Icon",
 
     "effect.proviorigins.void_corruption": "Void Corruption",
     "effect.proviorigins.untargetable": "Illusive",
     "effect.proviorigins.sleep": "Sleeping",
     "effect.proviorigins.alert": "Alert",
+
+    "subtitles.proviorigins.voidlily.mimic": "Lily mimics",
+    "subtitles.proviorigins.voidlily.mimic_end": "Lily loses mimic",
+    "subtitles.proviorigins.voidlily.teleport": "Lily teleports",
+
+    "subtitle.proviorigins.decaykraken.bide": "Kraken bides",
+    "subtitle.proviorigins.decaykraken.soul_steal": "Kraken grasps",
+    "subtitle.proviorigins.decaykraken.ink": "Kraken squirts",
+    "subtitle.proviorigins.decaykraken.salt": "Kraken dissolves",
+
+    "subtitle.proviorigins.drakling.evolve": "Drakling evolves",
+    "subtitle.proviorigins.drakling.birth": "Drake emerges",
+    "subtitle.proviorigins.drakling.flap": "Drake flaps",
     
     "death.attack.freshwater": "%1$s ran out of salt",
     "death.attack.freshwater.player": "%1$s lost too much salt whilst fighting %2$s",
     "death.attack.freshwater.item": "%1$s lost too much salt trying to deal with %2$s's %3$s",
-    "death.attack.kraken_soul_steal": "%1$s lost their soul.",
-    "death.attack.kraken_soul_steal.player": "%1$s had their soul stolen by %2$s",
+    "death.attack.kraken_soul_steal": "%1$s had their soul stolen by %2$s",
     "death.attack.kraken_soul_steal.item": "%1$s had their soul stolen by %2$s using %3$s",
     "death.attack.void_corrupted": "%1$s was corrupted by the void",
     "death.attack.void_corrupted.player": "%1$s succumbed to the void whilst fighting %2$s",
@@ -39,6 +55,8 @@
     "death.attack.compost": "%1$s was composted",
     "death.attack.compost.player": "%1$s was composted by %2$s",
     "death.attack.compost.item": "%1$s was composted by %2$s using %3$s",
+    "death.attack.crystal_beam": "%1$s was shattered by %2$s",
+    "death.attack.crystal_beam.item": "%1$s was shattered by %2$s using %3$s",
 
     "tooltip.proviorigins.common.no_potions": "§8You are unaffected by potions.",
 
@@ -63,6 +81,14 @@
     "tooltip.proviorigins.decaykraken.max_soul": "§8Perfect Soul",
 
     "tooltip.proviorigins.drakling.dragon_head": "§8Wear the flesh of your ancestors and gain their strength.",
+
+    "tooltip.proviorigins.alraune.summons_aoe": "§8Summons a flower that deals damage in an area.",
+    "tooltip.proviorigins.alraune.summons_pull": "§8Summons a flower that pulls in foes.",
+    "tooltip.proviorigins.alraune.summons_push": "§8Summons a flower that pushes foes away.",
+    "tooltip.proviorigins.alraune.summons_projectile": "§8Summons a flower that shoots arrows at foes.",
+    "tooltip.proviorigins.alraune.super_fertiliser": "§8A super effective fertilizer.",
+
+    "power.proviorigins.common.kill_dragon.badge": "This power is upgraded upon gaining the Free The End advancement.",
 
     "power.proviorigins.common.brittle.name": "Brittle Body",
     "power.proviorigins.common.brittle.desc": "You have only 5 hearts.",
@@ -96,6 +122,20 @@
     "power.proviorigins.common.smaller.desc": "You are smaller than most and have a height of 1.15 blocks.",
     "power.proviorigins.common.poor_strength.name": "Weak Melee",
     "power.proviorigins.common.poor_strength.desc": "Your melee hits deal 33% less damage.",
+    "power.proviorigins.common.hearty.name": "Hearty",
+    "power.proviorigins.common.hearty.desc": "You have 2 additional hearts.",
+    "power.proviorigins.common.medium_taller.name": "Grown Body",
+    "power.proviorigins.common.medium_taller.desc": "You are slightly taller than others with a height of 2.5 blocks.",
+    "power.proviorigins.common.dried_up.name": "Dried Up",
+    "power.proviorigins.common.dried_up.desc": "Lose hydration in hot biomes, drinking or standing in water restores hydration. You will catch fire after 30 seconds of losing hydration.",
+    "power.proviorigins.common.no_trades.name": "Merchant Ban",
+    "power.proviorigins.common.no_trades.desc": "Villagers refuse to acknowledge you. You cannot trade with them.",
+    "power.proviorigins.common.angry_golems.name": "Oppressive Iron",
+    "power.proviorigins.common.angry_golems.desc": "Iron golems view you as hostile and will attack you on-sight.",
+    "power.proviorigins.common.more_experience.name": "Enhanced Intellect",
+    "power.proviorigins.common.more_experience.desc": "You gain x1.5 more experience.",
+    "power.proviorigins.common.no_shooting.name": "Low Dexterity",
+    "power.proviorigins.common.no_shooting.desc": "You are unable to use bows and crossbows.",
 
     "power.proviorigins.voidlily.name": "Lily of the Void",
     "power.proviorigins.voidlily.description": "Grown from a Void Flower rooted on the skybox, you are connected both to nature and to oblivion.",
@@ -203,7 +243,7 @@
     "power.proviorigins.splinter.resources.name": "Arcane Energy",
     "power.proviorigins.splinter.resources.desc": "You have access to a mana resource with which to cast spells and concentration to summon clones.",
     "power.proviorigins.splinter.distortion.name": "Illusory Presence",
-    "power.proviorigins.splinter.distortion.desc": "Blind enemies within a 16 block radius, become untargetable, and create mirror images of yourself and your clones.",
+    "power.proviorigins.splinter.distortion.desc": "Blind enemies within a 6 block radius, become untargetable, and create mirror images of yourself and your clones.",
     "power.proviorigins.splinter.distortion.badge": "Costs 2 bars of mana.",
     "power.proviorigins.splinter.swap.name": "Misdirection",
     "power.proviorigins.splinter.swap.desc": "Swap places with the clone you are looking at, or if sneaking swap places with the furthest clone within 32 blocks.",
@@ -228,5 +268,35 @@
     "power.proviorigins.faemoth.crit_passive.badge2": "Costs 1.5 bars of Faerie Dust per layer.",
     "power.proviorigins.faemoth.share_buffs.name": "Blessings of the Fae",
     "power.proviorigins.faemoth.share_buffs.desc": "Share speed, strength, and regeneration effects that you currently have with all allies in an 8 block radius.",
-    "power.proviorigins.faemoth.share_buffs.badge": "Costs 3.5 bars of Faerie Dust."
+    "power.proviorigins.faemoth.share_buffs.badge": "Costs 3.5 bars of Faerie Dust.",
+
+    "power.proviorigins.alraune.name": "Alraune",
+    "power.proviorigins.alraune.description": "Blooming from the energy of the forest, you are a facet of nature itself: one whom grows and is protected by nature.",
+    "power.proviorigins.alraune.photosynthesis.name": "Photosynthesis",
+    "power.proviorigins.alraune.photosynthesis.desc": "Slowly gain regain food and saturation when exposed to sunlight.",
+    "power.proviorigins.alraune.through_grass.name": "Unrestricted Herb",
+    "power.proviorigins.alraune.through_grass.desc": "Nature moves out of your way, you can strike through foliage when not sneaking.",
+    "power.proviorigins.alraune.life_sap.name": "Sap of Life",
+    "power.proviorigins.alraune.life_sap.desc": "Your connection to nature allows you to harness its power. Using this power allows you to transform flowers into placed turrets that aid you in battle.",
+    "power.proviorigins.alraune.summon_plant.name": "Floral Summoning",
+    "power.proviorigins.alraune.summon_plant.desc": "Using your connection to nature allows you to empower flowers into stationary Flower Sprites that damage and hinder nearby enemies.",
+    "power.proviorigins.alraune.summon_plant.badge.1": "Costs 1 Sap of Life.",
+    "power.proviorigins.alraune.summon_plant.badge.2": "Flower Sprites\n- Will take damage if not placed on plantable blocks such as dirt or grass.\n- Will die after 1200 ticks unless fed with a super fertilizer such as dragon breath.",
+    "power.proviorigins.alraune.summon_plant.badge.3": "Flower Sprites have different requirements for different biomes.\n- Most biomes require the Sprite to be exposed to sunlight.\n- For biomes with denser foliage, such as forests, only exposure to the sky is required.\n- Some biomes, such as Lush Caves, will allow Flower Sprites to grow regardless.\n- Use bone meal on a Flower Sprite to bypass this limitation.",
+
+    "power.proviorigins.homunculus.name": "Homunculus",
+    "power.proviorigins.homunculus.description": "An artificial human, created by witchcraft and seen as a outlier by all of society.",
+
+    "power.proviorigins.crystalliser.name": "Crystallizer",
+    "power.proviorigins.crystalliser.description": "An amalgam of shards left behind from exploded End Crystals. After gaining sapience, you've retained a similar level of strength.",
+    "power.proviorigins.crystalliser.summon_follower.name": "Deadly Refraction",
+    "power.proviorigins.crystalliser.summon_follower.desc": "Deplete your crystal shards to summon a full crystal above your head. The crystal follows you and attacks your enemies from up to 32 blocks away.",
+    "power.proviorigins.crystalliser.summon_follower.badge": "Costs every bar of Crystal Shards.",
+    "power.proviorigins.crystalliser.crystal_charging.name": "Shard Collector",
+    "power.proviorigins.crystalliser.crystal_charging.desc": "Gain crystal shards when dealing critical hits, taking attacks, and killing enemies.",
+    "power.proviorigins.crystalliser.shard_absorb.name": "Shard Absorption",
+    "power.proviorigins.crystalliser.shard_absorb.desc": "Consume some of your crystal shards and regain 2 hearts of health.",
+    "power.proviorigins.crystalliser.shard_absorb.badge": "Costs 1 bar of Crystal Shards.",
+    "power.proviorigins.crystalliser.explosion_resist.name": "Explosive Nature",
+    "power.proviorigins.crystalliser.explosion_resist.desc": "You take 75% less explosion damage."
 }

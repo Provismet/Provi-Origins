@@ -1,0 +1,12 @@
+{
+    "name": "power.proviorigins.common.no_trades.name",
+    "description": "power.proviorigins.common.no_trades.desc",
+    "type": "origins:prevent_entity_use",
+    "bientity_condition": {
+        "type": "origins:target_condition",
+        "condition": {
+            "type": "origins:in_tag",
+            "tag": "proviorigins:common/can_trade"
+        }
+    }
+}

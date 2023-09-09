@@ -1,0 +1,102 @@
+{
+    "name": "power.proviorigins.crystalliser.summon_follower.name",
+    "description": "power.proviorigins.crystalliser.summon_follower.desc",
+    "type": "origins:active_self",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "origins.gui.badge.active"
+        },
+        {
+            "sprite": "proviorigins:textures/gui/badge/cost.png",
+            "text": "power.proviorigins.crystalliser.summon_follower.badge"
+        },
+        {
+            "sprite": "proviorigins:textures/gui/badge/dragon.png",
+            "text": "power.proviorigins.common.kill_dragon.badge"
+        }
+    ],
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "proviorigins:summon_minion",
+                "texture": "proviorigins:textures/entity/crystal.png",
+                "follow_owner": true,
+                "follow_offset": {
+                    "x": 0,
+                    "y": 2.5,
+                    "z": 0
+                },
+                "invulnerable": true,
+                "max_life_ticks": 500,
+                "bientity_action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:target_action",
+                            "action": {
+                                "type": "origins:grant_power",
+                                "power": "proviorigins:crystalliser/crystal_passives",
+                                "source": "proviorigins:crystalliser/summon_follower"
+                            }
+                        },
+                        {
+                            "type": "origins:if_else",
+                            "if_action": {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:grant_power",
+                                    "power": "proviorigins:crystalliser/crystal_attack_upgrade",
+                                    "source": "proviorigins:crystalliser/summon_follower"
+                                }
+                            },
+                            "else_action": {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:grant_power",
+                                    "power": "proviorigins:crystalliser/crystal_attack",
+                                    "source": "proviorigins:crystalliser/summon_follower"
+                                }
+                            },
+                            "condition": {
+                                "type": "origins:actor_condition",
+                                "condition": {
+                                    "type": "origins:advancement",
+                                    "advancement": "minecraft:end/kill_dragon"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "origins:trigger_cooldown",
+                "power": "proviorigins:crystalliser/summoner_passives_resource_condition"
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "proviorigins:crystalliser/crystal_charging_shards",
+                "change": 0,
+                "operation": "set"
+            }
+        ]
+    },
+    "condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:resource",
+                "resource": "proviorigins:crystalliser/summoner_passives_resource_condition",
+                "comparison": "==",
+                "compare_to": 0
+            },
+            {
+                "type": "origins:resource",
+                "resource": "proviorigins:crystalliser/crystal_charging_shards",
+                "comparison": "==",
+                "compare_to": 140
+            }
+        ]
+    }
+}

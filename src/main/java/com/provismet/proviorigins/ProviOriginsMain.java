@@ -7,11 +7,12 @@ import com.provismet.proviorigins.actions.ActionFactories;
 import com.provismet.proviorigins.conditions.bientity.BiEntityConditionFactories;
 import com.provismet.proviorigins.conditions.entity.EntityConditionFactories;
 import com.provismet.proviorigins.content.registries.Blocks;
+import com.provismet.proviorigins.content.registries.Entities;
 import com.provismet.proviorigins.content.registries.Items;
 import com.provismet.proviorigins.content.registries.Particles;
+import com.provismet.proviorigins.content.registries.Sounds;
 import com.provismet.proviorigins.content.registries.StatusEffects;
 import com.provismet.proviorigins.content.world.gen.WorldGen;
-import com.provismet.proviorigins.originTypes.splinter.Splinter;
 import com.provismet.proviorigins.powers.PowerFactories;
 
 import net.fabricmc.api.ModInitializer;
@@ -26,12 +27,13 @@ public class ProviOriginsMain implements ModInitializer {
     }
 
     @Override
-    public void onInitialize() {
-        Splinter.register();
+    public void onInitialize () {
+        Entities.register();
         Items.register();
         StatusEffects.register();
         Blocks.register();
         Particles.register();
+        Sounds.register();
 
         WorldGen.generateWorldGen();
 

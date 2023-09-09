@@ -1,0 +1,27 @@
+{
+    "name": "power.proviorigins.alraune.photosynthesis.name",
+    "description": "power.proviorigins.alraune.photosynthesis.desc",
+    "type": "origins:action_over_time",
+    "interval": 20,
+    "entity_action": {
+        "type": "origins:if_else",
+        "if_action": {
+            "type": "origins:feed",
+            "food": 1,
+            "saturation": 0
+        },
+        "else_action": {
+            "type": "origins:feed",
+            "food": 0,
+            "saturation": 1
+        },
+        "condition": {
+            "type": "origins:food_level",
+            "comparison": "<",
+            "compare_to": 20
+        }
+    },
+    "condition": {
+        "type": "origins:exposed_to_sun"
+    }
+}

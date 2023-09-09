@@ -3,9 +3,9 @@ package com.provismet.proviorigins;
 import org.lwjgl.glfw.GLFW;
 
 import com.provismet.proviorigins.content.registries.BlockRenderLayers;
+import com.provismet.proviorigins.content.registries.ModelLayerRegistry;
 import com.provismet.proviorigins.content.registries.ParticleFactories;
-import com.provismet.proviorigins.extras.ModelLayerRegistry;
-import com.provismet.proviorigins.extras.RendererRegistry;
+import com.provismet.proviorigins.content.registries.RendererRegistry;
 import com.provismet.proviorigins.extras.SleepFogModifier;
 
 import net.fabricmc.api.ClientModInitializer;
@@ -25,8 +25,6 @@ public class ProviOriginsClient implements ClientModInitializer {
         GLFW.GLFW_KEY_UNKNOWN,
         "category.proviorigins.keys"
     ));
-
-
 
     @Override
     public void onInitializeClient () {

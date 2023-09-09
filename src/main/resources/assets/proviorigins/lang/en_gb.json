@@ -1,8 +1,16 @@
 {
+    "item.proviorigins.crystalliser_icon": "Crystalliser Origin Icon",
+
     "tooltip.voidlily.grants_armour": "§8Consume to gain armour.",
+
+    "tooltip.proviorigins.alraune.super_fertiliser": "§8A super effective fertiliser.",
 
     "power.proviorigins.drakling.chain_crafting.desc": "You can craft chainmail armour.",
     "power.proviorigins.drakling.weak_armour.desc": "Your newfound strength allows you to wear stronger armour, but your bodily heat loosens the material and makes it weaker than normal.",
 
-    "power.proviorigins.jellysculk.catalyse.name": "Catalyser"
+    "power.proviorigins.jellysculk.catalyse.name": "Catalyser",
+
+    "power.proviorigins.alraune.summon_plant.badge.2": "Flower Sprites\n- Will take damage if not placed on plantable blocks such as dirt or grass.\n- Will die after 1200 ticks unless fed with a super fertiliser such as dragon breath.",
+
+    "power.proviorigins.crystalliser.name": "Crystalliser"
 }

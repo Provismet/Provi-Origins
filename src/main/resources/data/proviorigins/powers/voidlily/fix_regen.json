@@ -8,7 +8,7 @@
     
     "heal_when_full": {
         "type": "origins:action_over_time",
-        "interval": 50,
+        "interval": 80,
         "entity_action": {
             "type": "origins:and",
             "actions": [
@@ -18,7 +18,7 @@
                 },
                 {
                     "type": "origins:exhaust",
-                    "amount": 10
+                    "amount": 6
                 }
             ]
 
@@ -29,15 +29,17 @@
                 {
                     "type": "origins:food_level",
                     "comparison": ">=",
-                    "compare_to": 15
+                    "compare_to": 17
                 },
                 {
                     "type": "origins:relative_health",
                     "comparison": "<",
                     "compare_to": 1
+                },
+                {
+                    "type": "proviorigins:can_natural_regen"
                 }
             ]
-
         }
     }
 }

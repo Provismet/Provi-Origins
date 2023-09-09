@@ -14,6 +14,7 @@ public class Powers {
     public static final String BIENTITY_CONDITION = "bientity_condition";
     public static final String ITEM_ACTION = "item_action";
     public static final String ITEM_CONDITION = "item_condition";
+    public static final String PROJECTILE_ACTION = "projectile_action";
     public static final String KEY = "key";
     public static final String COOLDOWN = "cooldown";
     public static final String HUD_RENDER = "hud_render";
@@ -30,6 +31,7 @@ public class Powers {
     public static final String OFFSET_X = "offset_x";
     public static final String OFFSET_Y = "offset_y";
     public static final String OFFSET_Z = "offset_z";
+    public static final String AMOUNT = "amount";
 
     // There are no "simple" powers in this mod, they would go here otherwise.
 

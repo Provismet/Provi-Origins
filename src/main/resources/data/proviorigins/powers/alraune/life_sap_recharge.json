@@ -1,0 +1,10 @@
+{
+    "hidden": true,
+    "type": "origins:action_over_time",
+    "interval": 500,
+    "entity_action": {
+        "type": "origins:change_resource",
+        "resource": "proviorigins:alraune/life_sap",
+        "change": 1
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "name": "power.proviorigins.alraune.life_sap.name",
+    "description": "power.proviorigins.alraune.life_sap.desc",
+    "type": "origins:resource",
+    "min": 0,
+    "max": 5,
+    "start_value": 5,
+    "hud_render": {
+        "sprite_location": "proviorigins:textures/gui/resources/alraune_life_sap_resource.png",
+        "bar_index": 0
+    }
+}

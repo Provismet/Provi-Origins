@@ -23,7 +23,7 @@
     "particles": {
         "type": "origins:particle",
         "particle": {
-            "type": "minecraft:dust",
+            "type": "proviorigins:flower",
             "params": "0.965 0.965 0.965 1"
         },
         "frequency": 8,
@@ -38,7 +38,7 @@
     "particles2": {
         "type": "origins:particle",
         "particle": {
-            "type": "minecraft:dust",
+            "type": "proviorigins:flower",
             "params": "0.494 0.051 0.706 1"
         },
         "frequency": 8,
@@ -69,7 +69,7 @@
                 },
                 {
                     "type": "origins:play_sound",
-                    "sound": "minecraft:entity.illusioner.prepare_mirror",
+                    "sound": "proviorigins:origin.voidlily.mimic",
                     "pitch": 2
                 },
                 {

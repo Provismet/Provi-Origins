@@ -1,0 +1,22 @@
+{
+    "type": "origins:multiple",
+
+    "translucent": {
+        "type": "origins:model_color",
+        "alpha": 0.65
+    },
+
+    "life_steal": {
+        "type": "origins:self_action_on_kill",
+        "entity_action": {
+            "type": "proviorigins:owner_bientity",
+            "bientity_action": {
+                "type": "origins:target_action",
+                "action": {
+                    "type": "origins:heal",
+                    "amount": 2
+                }
+            }
+        }
+    }
+}

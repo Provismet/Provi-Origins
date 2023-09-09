@@ -28,7 +28,7 @@
                             },
                             {
                                 "type": "origins:play_sound",
-                                "sound": "minecraft:entity.enderman.teleport"
+                                "sound": "proviorigins:origin.voidlily.teleport"
                             },
                             {
                                 "type": "origins:if_else",

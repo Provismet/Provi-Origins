@@ -1,0 +1,14 @@
+{
+    "name": "power.proviorigins.crystalliser.explosion_resist.name",
+    "description": "power.proviorigins.crystalliser.explosion_resist.desc",
+    "type": "origins:modify_damage_taken",
+    "modifier": {
+        "name": "Resistant to explosions",
+        "operation": "multiply_total",
+        "value": -0.75
+    },
+    "damage_condition": {
+        "type": "origins:in_tag",
+        "tag": "minecraft:is_explosion"
+    }
+}

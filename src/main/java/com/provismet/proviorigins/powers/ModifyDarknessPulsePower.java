@@ -34,6 +34,6 @@ public class ModifyDarknessPulsePower extends Power {
                 data.getFloat(MULTIPLIER_LABEL),
                 data.getFloat(ADDITION_LABEL)
             )
-        );
+        ).allowCondition();
     }
 }

@@ -1,0 +1,17 @@
+{
+    "powers": [
+        "proviorigins:crystalliser/crystal_charging",
+        "proviorigins:crystalliser/shard_absorb",
+        "proviorigins:crystalliser/summon_follower",
+        "proviorigins:crystalliser/summoner_passives",
+        "proviorigins:crystalliser/explosion_resist",
+        "proviorigins:common/brittle",
+        "origins:water_vulnerability",
+        "proviorigins:common/no_bows",
+        "extrade:outerworldly"
+    ],
+    "icon": "proviorigins:crystalliser_icon",
+    "impact": 2,
+    "name": "power.proviorigins.crystalliser.name",
+    "description": "power.proviorigins.crystalliser.description"
+}

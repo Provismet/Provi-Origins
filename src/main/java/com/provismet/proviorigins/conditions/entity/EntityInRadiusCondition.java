@@ -11,6 +11,7 @@ import io.github.apace100.apoli.util.Comparison;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.Pair;
 import net.minecraft.util.math.Box;
 
 public class EntityInRadiusCondition {
@@ -21,6 +22,7 @@ public class EntityInRadiusCondition {
         final int compareTo = data.getInt(Powers.COMPARE_TO);
         final boolean includeSelf = data.getBoolean(INCLUDE_SELF);
         Predicate<Entity> entityCondition = data.get(Powers.ENTITY_CONDITION);
+        Predicate<Pair<Entity,Entity>> bientityCondition = data.get(Powers.BIENTITY_CONDITION);
         Comparison comparison = data.get(Powers.COMPARISON);
 
         int count = 0;
@@ -50,7 +52,7 @@ public class EntityInRadiusCondition {
         }
 
         for (Entity other : others) {
-            if (entityCondition.test(other)) {
+            if ((entityCondition == null || entityCondition.test(other)) && (bientityCondition == null || bientityCondition.test(new Pair<Entity,Entity>(entity, other)))) {
                 ++count;
                 if (count == stopAt) break;
             }
@@ -62,7 +64,8 @@ public class EntityInRadiusCondition {
     public static ConditionFactory<Entity> getFactory () {
         return new ConditionFactory<>(Powers.identifier("entity_in_radius"),
             new SerializableData()
-                .add(Powers.ENTITY_CONDITION, ApoliDataTypes.ENTITY_CONDITION)
+                .add(Powers.ENTITY_CONDITION, ApoliDataTypes.ENTITY_CONDITION, null)
+                .add(Powers.BIENTITY_CONDITION, ApoliDataTypes.BIENTITY_CONDITION, null)
                 .add(Powers.RADIUS, SerializableDataTypes.DOUBLE)
                 .add(INCLUDE_SELF, SerializableDataTypes.BOOLEAN, true)
                 .add(Powers.COMPARISON, ApoliDataTypes.COMPARISON, Comparison.GREATER_THAN_OR_EQUAL)

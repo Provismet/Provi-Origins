@@ -23,7 +23,7 @@
             },
             {
                 "type": "origins:play_sound",
-                "sound": "minecraft:entity.squid.squirt"
+                "sound": "proviorigins:origin.decaykraken.ink"
             },
             {
                 "type": "origins:emit_game_event",

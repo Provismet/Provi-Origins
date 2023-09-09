@@ -172,7 +172,7 @@
                                 "actions": [
                                     {
                                         "type": "origins:play_sound",
-                                        "sound": "minecraft:item.totem.use"
+                                        "sound": "proviorigins:origin.drakling.evolve"
                                     },
                                     {
                                         "type": "origins:spawn_particles",
@@ -199,7 +199,7 @@
                                 "actions": [
                                     {
                                         "type": "origins:play_sound",
-                                        "sound": "minecraft:item.totem.use"
+                                        "sound": "proviorigins:origin.drakling.evolve"
                                     },
                                     {
                                         "type": "origins:spawn_particles",
@@ -226,7 +226,7 @@
                                 "actions": [
                                     {
                                         "type": "origins:play_sound",
-                                        "sound": "minecraft:item.totem.use"
+                                        "sound": "proviorigins:origin.drakling.evolve"
                                     },
                                     {
                                         "type": "origins:spawn_particles",
@@ -253,7 +253,7 @@
                                 "actions": [
                                     {
                                         "type": "origins:play_sound",
-                                        "sound": "minecraft:item.totem.use"
+                                        "sound": "proviorigins:origin.drakling.evolve"
                                     },
                                     {
                                         "type": "origins:spawn_particles",
@@ -280,7 +280,7 @@
                                 "actions": [
                                     {
                                         "type": "origins:play_sound",
-                                        "sound": "minecraft:item.totem.use"
+                                        "sound": "proviorigins:origin.drakling.evolve"
                                     },
                                     {
                                         "type": "origins:spawn_particles",
@@ -307,7 +307,7 @@
                                 "actions": [
                                     {
                                         "type": "origins:play_sound",
-                                        "sound": "minecraft:entity.ender_dragon.death"
+                                        "sound": "proviorigins:origin.drakling.birth"
                                     },
                                     {
                                         "type": "origins:execute_command",

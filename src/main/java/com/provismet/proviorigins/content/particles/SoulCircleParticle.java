@@ -11,25 +11,25 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
 public class SoulCircleParticle extends SpriteBillboardParticle {
-    private final float startingScale = 0.42f;
-    private final float endingScale = 1f;
+    private static final float STARTING_SCALE = 0.42f;
+    private static final float ENDING_SCALE = 1f;
 
-    private final boolean rotationDirection;
+    private final float rotationSpeed;
 
     protected SoulCircleParticle(ClientWorld world, double x, double y, double z) {
         super(world, x, y, z);
         this.maxAge = 10;
-        this.scale = startingScale;
+        this.scale = STARTING_SCALE;
         this.alpha = 0.8f;
-        this.rotationDirection = random.nextBoolean();
+        this.rotationSpeed = (float)Math.toRadians(random.nextBoolean() ? 5.0 : -5.0);
     }
 
     @Override
     public void tick () {
         super.tick();
-        this.scale = startingScale + (endingScale - startingScale) * ((float)this.age / (float)this.maxAge);
+        this.scale = STARTING_SCALE + (ENDING_SCALE - STARTING_SCALE) * ((float)this.age / (float)this.maxAge);
         this.prevAngle = this.angle;
-        this.angle += (float)Math.toRadians(5.0 * (rotationDirection ? 1.0 : -1.0));
+        this.angle += this.rotationSpeed;
         this.alpha = 0.8f - 0.6f * ((float)this.age / (float)this.maxAge);
     }
 

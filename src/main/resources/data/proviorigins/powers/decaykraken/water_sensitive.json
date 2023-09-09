@@ -27,7 +27,7 @@
                     "type": "origins:biome",
                     "condition": {
                         "type": "origins:in_tag",
-                        "tag": "proviorigins:has_saltwater",
+                        "tag": "proviorigins:decaykraken/has_saltwater",
                         "inverted": true
                     }
                 },
@@ -70,7 +70,7 @@
                 },
                 {
                     "type": "origins:play_sound",
-                    "sound": "entity.squid.hurt",
+                    "sound": "proviorigins:origin.decaykraken.salt",
                     "volume": 0.7,
                     "pitch": 0.65
                 },

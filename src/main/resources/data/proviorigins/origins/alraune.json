@@ -1,0 +1,27 @@
+{
+    "powers": [
+        "proviorigins:alraune/life_sap",
+        "proviorigins:alraune/life_sap_recharge",
+        "proviorigins:alraune/photosynthesis",
+        "proviorigins:alraune/summon_plant_aoe",
+        "proviorigins:alraune/summon_plant_pull",
+        "proviorigins:alraune/summon_plant_push",
+        "proviorigins:alraune/summon_plant_projectile",
+        "proviorigins:alraune/through_grass",
+        "proviorigins:alraune/hidden_passives",
+        "proviorigins:common/hearty",
+        "proviorigins:common/medium_taller",
+        "proviorigins:common/poor_strength",
+        "origins:carnivore",
+        "proviorigins:common/exhaust_more",
+        "proviorigins:common/dried_up",
+        "proviorigins:voidlily/composter_death",
+        "proviorigins:common/double_fire_damage",
+        "proviorigins:alraune/plap_plap_give_pitcher_pod",
+        "extrade:fungifloral"
+    ],
+    "icon": "proviorigins:alraune_icon",
+    "impact": 2,
+    "name": "power.proviorigins.alraune.name",
+    "description": "power.proviorigins.alraune.description"
+}

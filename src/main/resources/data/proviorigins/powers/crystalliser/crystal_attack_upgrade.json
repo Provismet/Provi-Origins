@@ -1,0 +1,103 @@
+{
+    "type": "origins:action_over_time",
+    "interval": 10,
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "proviorigins:closest_bientity",
+                "distance": 32,
+                "bientity_action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "proviorigins:particle_beam",
+                            "step": 0.5,
+                            "actor_offset_y": 0.25,
+                            "target_offset_y": 1.25,
+                            "particle": {
+                                "type": "proviorigins:crystal",
+                                "params": "0.0 0.3 0.7 1"
+                            }
+                        },
+                        {
+                            "type": "origins:damage",
+                            "amount": 7,
+                            "damage_type": "proviorigins:crystal_beam"
+                        }
+                    ]
+                },
+                "bientity_condition": {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "proviorigins:friendly",
+                            "inverted": true
+                        },
+                        {
+                            "type": "origins:target_condition",
+                            "condition": {
+                                "type": "origins:living"
+                            }
+                        },
+                        {
+                            "type": "origins:can_see",
+                            "shape_type": "collider",
+                            "fluid_handling": "none"
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "proviorigins:farthest_bientity",
+                "distance": 32,
+                "bientity_action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "proviorigins:particle_beam",
+                            "step": 0.5,
+                            "target_offset_y": 1.25,
+                            "particle": {
+                                "type": "proviorigins:crystal",
+                                "params": "0.7 0.3 0 1"
+                            }
+                        },
+                        {
+                            "type": "origins:damage",
+                            "amount": 3,
+                            "damage_type": "proviorigins:crystal_beam"
+                        },
+                        {
+                            "type": "origins:target_action",
+                            "action": {
+                                "type": "origins:set_on_fire",
+                                "duration": 2
+                            }
+                        }
+                    ]
+                },
+                "bientity_condition": {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "proviorigins:friendly",
+                            "inverted": true
+                        },
+                        {
+                            "type": "origins:target_condition",
+                            "condition": {
+                                "type": "origins:living"
+                            }
+                        },
+                        {
+                            "type": "origins:can_see",
+                            "shape_type": "collider",
+                            "fluid_handling": "none"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
