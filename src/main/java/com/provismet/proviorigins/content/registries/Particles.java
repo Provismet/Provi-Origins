@@ -14,12 +14,12 @@ import net.minecraft.registry.Registry;
 
 public class Particles {
     public static final DefaultParticleType LILY_PETAL = FabricParticleTypes.simple();
-    public static final DefaultParticleType SOUL_CIRCLE = FabricParticleTypes.simple();
+    public static final DefaultParticleType SOUL_CIRCLE = FabricParticleTypes.simple(true);
     public static final DefaultParticleType MAGIC_CIRCLE = FabricParticleTypes.simple();
 
     public static final ParticleType<FlowerParticleEffect> FLOWER = FabricParticleTypes.complex(FlowerParticleEffect.PARAMETERS_FACTORY);
-    public static final ParticleType<TelegraphParticleEffect> TELEGRAPH = FabricParticleTypes.complex(TelegraphParticleEffect.PARAMETERS_FACTORY);
-    public static final ParticleType<CrystalParticleEffect> CRYSTAL = FabricParticleTypes.complex(CrystalParticleEffect.PARAMETERS_FACTORY);
+    public static final ParticleType<TelegraphParticleEffect> TELEGRAPH = FabricParticleTypes.complex(true, TelegraphParticleEffect.PARAMETERS_FACTORY);
+    public static final ParticleType<CrystalParticleEffect> CRYSTAL = FabricParticleTypes.complex(true, CrystalParticleEffect.PARAMETERS_FACTORY);
 
     private static void registerSimple (DefaultParticleType particle, String path) {
         Registry.register(Registries.PARTICLE_TYPE, ProviOriginsMain.identifier(path), particle);
