@@ -44,8 +44,7 @@
     "death.attack.freshwater": "%1$s ran out of salt",
     "death.attack.freshwater.player": "%1$s lost too much salt whilst fighting %2$s",
     "death.attack.freshwater.item": "%1$s lost too much salt trying to deal with %2$s's %3$s",
-    "death.attack.kraken_soul_steal": "%1$s lost their soul.",
-    "death.attack.kraken_soul_steal.player": "%1$s had their soul stolen by %2$s",
+    "death.attack.kraken_soul_steal": "%1$s had their soul stolen by %2$s",
     "death.attack.kraken_soul_steal.item": "%1$s had their soul stolen by %2$s using %3$s",
     "death.attack.void_corrupted": "%1$s was corrupted by the void",
     "death.attack.void_corrupted.player": "%1$s succumbed to the void whilst fighting %2$s",
@@ -56,6 +55,8 @@
     "death.attack.compost": "%1$s was composted",
     "death.attack.compost.player": "%1$s was composted by %2$s",
     "death.attack.compost.item": "%1$s was composted by %2$s using %3$s",
+    "death.attack.crystal_beam": "%1$s was shattered by %2$s",
+    "death.attack.crystal_beam.item": "%1$s was shattered by %2$s using %3$s",
 
     "tooltip.proviorigins.common.no_potions": "§8You are unaffected by potions.",
 

@@ -33,7 +33,7 @@
                 "bientity_action": {
                     "type": "origins:damage",
                     "amount": 3,
-                    "damage_type": "minecraft:magic"
+                    "damage_type": "minecraft:indirect_magic"
                 },
                 "bientity_condition": {
                     "type": "origins:and",

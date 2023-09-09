@@ -20,7 +20,7 @@
                 {
                     "type": "origins:damage",
                     "amount": 4,
-                    "damage_type": "minecraft:magic"
+                    "damage_type": "proviorigins:crystal_beam"
                 }
             ]
         },
