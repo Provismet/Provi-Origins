@@ -3,14 +3,11 @@
     "type": "origins:multiple",
 
     "passive": {
-        "type": "origins:stacking_status_effect",
-        "min_stacks": -1,
-        "max_stacks": 1,
-        "duration_per_stack": 100,
-        "effect": {
-            "effect": "minecraft:regeneration",
-            "show_particles": false,
-            "is_ambient": true
+        "type": "origins:action_over_time",
+        "interval": 50,
+        "entity_action": {
+            "type": "origins:heal",
+            "amount": 1
         },
         "condition": {
             "type": "origins:resource",
