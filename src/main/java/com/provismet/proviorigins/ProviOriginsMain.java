@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.provismet.proviorigins.actions.ActionFactories;
 import com.provismet.proviorigins.conditions.bientity.BiEntityConditionFactories;
+import com.provismet.proviorigins.conditions.block.BlockConditionFactories;
 import com.provismet.proviorigins.conditions.entity.EntityConditionFactories;
 import com.provismet.proviorigins.content.registries.Blocks;
 import com.provismet.proviorigins.content.registries.Entities;
@@ -41,6 +42,7 @@ public class ProviOriginsMain implements ModInitializer {
         ActionFactories.register();
         EntityConditionFactories.register();
         BiEntityConditionFactories.register();
+        BlockConditionFactories.register();
 
         LOGGER.info("Provi's Origins are live and ready.");
     }

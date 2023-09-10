@@ -3,8 +3,17 @@
     "description": "power.proviorigins.alraune.through_grass.desc",
     "type": "origins:prevent_block_selection",
     "block_condition": {
-        "type": "origins:in_tag",
-        "tag": "proviorigins:alraune/foliage"
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:in_tag",
+                "tag": "proviorigins:alraune/foliage"
+            },
+            {
+                "type": "proviorigins:can_collide",
+                "inverted": true
+            }
+        ]
     },
     "condition": {
         "type": "origins:sneaking",
