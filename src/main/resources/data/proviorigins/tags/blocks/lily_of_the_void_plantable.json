@@ -1,6 +1,18 @@
 {
     "values": [
         "#proviorigins:voidlily/void_touching",
-        "#proviorigins:voidlily/weakly_void_touching"
+        "#proviorigins:voidlily/weakly_void_touching",
+        {
+            "id": "betterend:shadow_grass",
+            "required": false
+        },
+        {
+            "id": "betterend:chorus_nylium",
+            "required": false
+        },
+        {
+            "id": "betterend:pink_moss",
+            "required": false
+        }
     ]
 }

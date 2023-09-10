@@ -1,5 +1,17 @@
 {
     "values": [
-        "#proviorigins:decaykraken/soul_fire_fire_state"
+        "#proviorigins:decaykraken/soul_fire_fire_state",
+        {
+            "id": "betternether:cincinnasite_fire_bowl",
+            "required": false
+        },
+        {
+            "id": "betternether:bricks_fire_bowl",
+            "required": false
+        },
+        {
+            "id": "betternether:netherite_fire_bowl",
+            "required": false
+        }
     ]
 }

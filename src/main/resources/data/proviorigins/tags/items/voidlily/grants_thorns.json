@@ -2,6 +2,22 @@
     "values": [
         "minecraft:cactus",
         "minecraft:rose_bush",
-        "minecraft:sweet_berries"
+        "minecraft:sweet_berries",
+        {
+            "id": "betternether:nether_cactus",
+            "required": false
+        },
+        {
+            "id": "betternether:barrel_cactus",
+            "required": false
+        },
+        {
+            "id": "betterend:needlegrass",
+            "required": false
+        },
+        {
+            "id": "betterend:neon_cactus",
+            "required": false
+        }
     ]
 }

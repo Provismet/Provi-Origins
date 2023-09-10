@@ -1,5 +1,29 @@
 {
     "values": [
-        "minecraft:kelp"
+        "minecraft:kelp",
+        {
+            "id": "betterend:charnia_red",
+            "required": false
+        },
+        {
+            "id": "betterend:charnia_orange",
+            "required": false
+        },
+        {
+            "id": "betterend:charnia_purple",
+            "required": false
+        },
+        {
+            "id": "betterend:charnia_light_blue",
+            "required": false
+        },
+        {
+            "id": "betterend:charnia_cyan",
+            "required": false
+        },
+        {
+            "id": "betterend:charnia_green",
+            "required": false
+        }
     ]
 }

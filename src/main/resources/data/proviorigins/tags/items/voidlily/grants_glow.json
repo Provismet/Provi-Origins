@@ -1,5 +1,17 @@
 {
     "values": [
-        "minecraft:glow_berries"
+        "minecraft:glow_berries",
+        {
+            "id": "betterend:glowing_pillar_leaves",
+            "required": false
+        },
+        {
+            "id": "betterend:lumecorn_rod",
+            "required": false
+        },
+        {
+            "id": "betterend:blue_vine_fur",
+            "required": false
+        }
     ]
 }

@@ -3,6 +3,270 @@
         "minecraft:lantern",
         "minecraft:soul_lantern",
         "minecraft:fire",
-        "minecraft:soul_fire"
+        "minecraft:soul_fire",
+        {
+            "id": "betterend:flavolite_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:violecite_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:sulphuric_rock_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:virid_jadestone_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:azure_jadestone_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:sandy_jadestone_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:umbralith_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_white",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_gray",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_light_gray",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_black",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_blue",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_lime",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_magenta",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_red",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_orange",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_purple",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_cyan",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_brown",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_green",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_yellow",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_pink",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_light_blue",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_white",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_gray",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_light_gray",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_black",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_blue",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_lime",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_magenta",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_red",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_orange",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_purple",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_cyan",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_brown",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_green",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_yellow",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_pink",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_light_blue",
+            "required": false
+        },
+        {
+            "id": "betterend:andesite_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:diorite_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:granite_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:quartz_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:purpur_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:end_stone_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:blackstone_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_white",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_gray",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_light_gray",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_black",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_blue",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_lime",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_magenta",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_red",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_orange",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_purple",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_cyan",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_brown",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_green",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_yellow",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_pink",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_light_blue",
+            "required": false
+        },
+        {
+            "id": "betternether:cincinnasite_lantern_small",
+            "required": false
+        }
     ]
 }

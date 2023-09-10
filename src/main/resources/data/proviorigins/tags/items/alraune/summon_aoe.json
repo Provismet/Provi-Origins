@@ -6,6 +6,14 @@
         "minecraft:white_tulip",
         "minecraft:pink_tulip",
         "minecraft:blue_orchid",
-        "minecraft:oxeye_daisy"
+        "minecraft:oxeye_daisy",
+        {
+            "id": "betterend:flammalix",
+            "required": false
+        },
+        {
+            "id": "betterend:aeridium",
+            "required": false
+        }
     ]
 }

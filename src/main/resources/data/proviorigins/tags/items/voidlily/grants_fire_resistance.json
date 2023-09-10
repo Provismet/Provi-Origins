@@ -1,5 +1,9 @@
 {
     "values": [
-        "minecraft:allium"
+        "minecraft:allium",
+        {
+            "id": "betternether:magma_flower",
+            "required": false
+        }
     ]
 }

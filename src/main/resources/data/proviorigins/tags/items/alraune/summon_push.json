@@ -4,6 +4,14 @@
         "minecraft:dandelion",
         "minecraft:allium",
         "minecraft:cornflower",
-        "minecraft:lilac"
+        "minecraft:lilac",
+        {
+            "id": "betterend:blooming_cooksonia",
+            "required": false
+        },
+        {
+            "id": "betterend:umbrella_moss",
+            "required": false
+        }
     ]
 }

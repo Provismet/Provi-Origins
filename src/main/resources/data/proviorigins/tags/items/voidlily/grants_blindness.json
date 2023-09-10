@@ -1,5 +1,9 @@
 {
     "values": [
-        "minecraft:azure_bluet"
+        "minecraft:azure_bluet",
+        {
+            "id": "betterend:murkweed",
+            "required": false
+        }
     ]
 }

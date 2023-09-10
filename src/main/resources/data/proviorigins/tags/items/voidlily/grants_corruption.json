@@ -1,6 +1,14 @@
 {
     "values": [
         "minecraft:lily_of_the_valley",
-        "proviorigins:lily_of_the_void"
+        "proviorigins:lily_of_the_void",
+        {
+            "id": "betterend:end_lily_seed",
+            "required": false
+        },
+        {
+            "id": "betterend:end_lotus_seed",
+            "required": false
+        }
     ]
 }

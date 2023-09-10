@@ -1,5 +1,16 @@
 {
     "values": [
-        
+        {
+            "id": "betternether:cincinnasite_fire_bowl_soul",
+            "required": false
+        },
+        {
+            "id": "betternether:bricks_fire_bowl_soul",
+            "required": false
+        },
+        {
+            "id": "betternether:netherite_fire_bowl_soul",
+            "required": false
+        }
     ]
 }
