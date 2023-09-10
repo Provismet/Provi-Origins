@@ -9,5 +9,6 @@ import net.minecraft.world.gen.GenerationStep;
 public class FlowerGen {
     public static void generateFlowers () {
         BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.VEGETAL_DECORATION, FeaturesPlaced.LILY_OF_THE_VOID);
+        BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.VEGETAL_DECORATION, FeaturesPlaced.LILY_OF_THE_VOID_END);
     }
 }

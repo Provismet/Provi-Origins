@@ -27,7 +27,7 @@ public class FeaturesConfigured {
 
     public static void buildFeatures (Registerable<ConfiguredFeature<?,?>> context) {
         register(context, LILY_OF_THE_VOID, Feature.FLOWER,
-            new RandomPatchFeatureConfig(64, 6, 2,
+            new RandomPatchFeatureConfig(96, 7, 4,
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.LILY_OF_THE_VOID)))));
     }
 }
