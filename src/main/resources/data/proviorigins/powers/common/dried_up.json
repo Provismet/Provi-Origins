@@ -19,23 +19,6 @@
                         "type": "origins:or",
                         "conditions": [
                             {
-                                "type": "origins:fluid_height",
-                                "fluid": "minecraft:water",
-                                "comparison": ">",
-                                "compare_to": 0
-                            },
-                            {
-                                "type": "origins:in_rain"
-                            },
-                            {
-                                "type": "origins:biome",
-                                "condition": {
-                                    "type": "origins:temperature",
-                                    "comparison": "<=",
-                                    "compare_to": 1.5
-                                }
-                            },
-                            {
                                 "type": "origins:gamemode",
                                 "gamemode": "creative"
                             },
@@ -48,14 +31,23 @@
                 },
                 {
                     "action": {
-                        "type": "origins:set_on_fire",
-                        "duration": 5
+                        "type": "origins:change_resource",
+                        "resource": "proviorigins:common/dried_up_hydrate",
+                        "change": 5
                     },
                     "condition": {
-                        "type": "origins:resource",
-                        "resource": "proviorigins:common/dried_up_hydrate",
-                        "comparison": "==",
-                        "compare_to": 0
+                        "type": "origins:or",
+                        "conditions": [
+                            {
+                                "type": "origins:fluid_height",
+                                "fluid": "minecraft:water",
+                                "comparison": ">",
+                                "compare_to": 0
+                            },
+                            {
+                                "type": "origins:in_rain"
+                            }
+                        ]
                     }
                 },
                 {
@@ -65,11 +57,60 @@
                         "change": -1
                     },
                     "condition": {
+                        "type": "origins:or",
+                        "conditions": [
+                            {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:biome",
+                                        "condition": {
+                                            "type": "origins:temperature",
+                                            "comparison": ">",
+                                            "compare_to": 1.5
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:exposed_to_sun"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "origins:biome",
+                                "condition": {
+                                    "type": "origins:in_tag",
+                                    "tag": "proviorigins:common/hot_underground"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "proviorigins:common/dried_up_hydrate",
+                        "change": 1
+                    },
+                    "condition": {
                         "type": "origins:constant",
                         "value": true
                     }
                 }
             ]
+        }
+    },
+
+    "burn": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:set_on_fire",
+            "duration": 5
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:common/dried_up_hydrate",
+            "comparison": "==",
+            "compare_to": 0
         }
     },
 

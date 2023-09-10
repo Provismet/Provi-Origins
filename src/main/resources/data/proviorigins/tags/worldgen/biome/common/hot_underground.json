@@ -1,0 +1,9 @@
+{
+    "values": [
+        "#c:in_nether",
+        {
+            "id": "terralith:cave/thermal_caves",
+            "required": false
+        }
+    ]
+}

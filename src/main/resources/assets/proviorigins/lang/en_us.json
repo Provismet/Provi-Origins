@@ -127,7 +127,7 @@
     "power.proviorigins.common.medium_taller.name": "Grown Body",
     "power.proviorigins.common.medium_taller.desc": "You are slightly taller than others with a height of 2.5 blocks.",
     "power.proviorigins.common.dried_up.name": "Dried Up",
-    "power.proviorigins.common.dried_up.desc": "Lose hydration in hot biomes, drinking or standing in water restores hydration. You will catch fire after 30 seconds of losing hydration.",
+    "power.proviorigins.common.dried_up.desc": "Lose hydration when under the sun in hot biomes and always when in underground hot biomes. Drinking or standing in water restores hydration. You will catch fire after 30 seconds of losing hydration.",
     "power.proviorigins.common.no_trades.name": "Merchant Ban",
     "power.proviorigins.common.no_trades.desc": "Villagers refuse to acknowledge you. You cannot trade with them.",
     "power.proviorigins.common.angry_golems.name": "Oppressive Iron",
