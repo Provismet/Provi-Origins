@@ -1,15 +1,5 @@
 {
     "values": [
-        "#proviorigins:jellysculk/boats",
-        "#proviorigins:jellysculk/minecarts",
-        "#proviorigins:jellysculk/projectiles",
-        "#proviorigins:jellysculk/decoration_entities",
-        "minecraft:item",
-        "minecraft:experience_orb",
-        "minecraft:fishing_bobber",
-        "minecraft:tnt",
-        "minecraft:falling_block",
-        "minecraft:lightning_bolt",
-        "minecraft:marker"
+        "minecraft:armor_stand"
     ]
 }

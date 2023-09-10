@@ -80,7 +80,17 @@
     "scoreboard_vision": {
         "type": "origins:entity_glow",
         "entity_condition": {
-            "type": "origins:living"
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:living"
+                },
+                {
+                    "type": "origins:in_tag",
+                    "tag": "proviorigins:jellysculk/always_visible",
+                    "inverted": true
+                }
+            ]
         },
         "bientity_condition": {
             "type": "origins:and",

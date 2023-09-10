@@ -1,9 +1,8 @@
 {
     "values": [
-        "minecraft:ender_dragon",
+        "#c:bosses",
         "minecraft:ghast",
         "minecraft:phantom",
-        "minecraft:wither",
         "minecraft:warden"
     ]
 }
