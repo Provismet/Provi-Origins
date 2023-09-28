@@ -10,6 +10,7 @@ public class BiEntityConditionFactories {
     public static void register () {
         register(TeammateCondition.getFactory());
         register(FriendlyCondition.getFactory());
+        register(CanSeeCondition.getFactory());
     }
 
     private static void register (ConditionFactory<Pair<Entity,Entity>> conditionFactory) {

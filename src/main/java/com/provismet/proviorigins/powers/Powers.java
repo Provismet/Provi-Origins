@@ -32,6 +32,8 @@ public class Powers {
     public static final String OFFSET_Y = "offset_y";
     public static final String OFFSET_Z = "offset_z";
     public static final String AMOUNT = "amount";
+    public static final String FLUID_HANDLING = "fluid_handling";
+    public static final String SHAPE_TYPE = "shape_type";
 
     // There are no "simple" powers in this mod, they would go here otherwise.
 
