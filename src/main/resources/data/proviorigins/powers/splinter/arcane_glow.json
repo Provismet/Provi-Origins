@@ -6,6 +6,7 @@
     "mid_emit": {
         "type": "proviorigins:emissive",
         "light": 7,
+        "dynamic_light": 3,
         "condition": {
             "type": "origins:resource",
             "resource": "proviorigins:splinter/mana",
@@ -17,6 +18,7 @@
     "high_emit": {
         "type": "proviorigins:emissive",
         "light": 15,
+        "dynamic_light": 7,
         "condition": {
             "type": "origins:resource",
             "resource": "proviorigins:splinter/mana",

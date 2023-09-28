@@ -43,7 +43,7 @@
                         "type": "origins:and",
                         "conditions": [
                             {
-                                "type": "proviorigins:teammate",
+                                "type": "proviorigins:friendly",
                                 "inverted": true
                             },
                             {

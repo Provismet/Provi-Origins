@@ -12,6 +12,18 @@
         }
     },
 
+    "passive_2": {
+        "type": "proviorigins:emissive",
+        "light": 15,
+        "dynamic_light": 15,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "proviorigins:voidlily/flower_copy__resource",
+            "comparison": "==",
+            "compare_to": 11
+        }
+    },
+
     "consume": {
         "type": "proviorigins:active_item",
         "entity_action": {
