@@ -2,6 +2,7 @@
     "powers": [
         "proviorigins:splinter/mana",
         "proviorigins:splinter/concentration",
+        "proviorigins:splinter/reset_resources_on_death",
         "proviorigins:splinter/resource_recharge",
         "proviorigins:splinter/fragment",
         "proviorigins:splinter/distortion",
