@@ -7,13 +7,16 @@ body:
     attributes:
       label: Origin
       options:
-        - Lily of the Void
-        - Kraken of Decay
+        - Homunculus
         - Drakling
         - Drake
+        - Faerie Moth
+        - Alraune
+        - Crystalliser
+        - Lily of the Void
+        - Kraken of Decay
         - Jellysculk
         - Splinter
-        - Faerie Moth
     validations:
       required: true
   - type: dropdown
