@@ -1,14 +1,12 @@
 {
-    "name": "power.proviorigins.drakling.ridable.name",
-    "description": "power.proviorigins.drakling.ridable.desc",
     "badges": [
         {
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "power.proviorigins.drakling.ridable.badge.1"
+            "text": "power.proviorigins.drakling/ridable.badge.1"
         },
         {
             "sprite": "origins:textures/gui/badge/active.png",
-            "text": "power.proviorigins.drakling.ridable.badge.2"
+            "text": "power.proviorigins.drakling/ridable.badge.2"
         }
     ],
     "type": "origins:multiple",
@@ -133,6 +131,6 @@
 
     "adjust_passenger": {
         "type": "proviorigins:modify_passenger_height",
-        "offset_add": 0.6
+        "offset_add": 0.9
     }
 }

@@ -12,10 +12,10 @@ public class ModifyPassengerHeightPower extends Power {
     private static final String OFFSET_ADD_LABEL = "offset_add";
     private static final String OFFSET_MULTIPLY_LABEL = "offset_multiply";
 
-    public final Double offsetAdditive;
-    public final Double offsetMultiplicative;
+    public final double offsetAdditive;
+    public final double offsetMultiplicative;
 
-    public ModifyPassengerHeightPower(PowerType<?> type, LivingEntity entity, Double offsetAdd, Double offsetMul) {
+    public ModifyPassengerHeightPower(PowerType<?> type, LivingEntity entity, double offsetAdd, double offsetMul) {
         super(type, entity);
         this.offsetAdditive = offsetAdd;
         this.offsetMultiplicative = offsetMul;

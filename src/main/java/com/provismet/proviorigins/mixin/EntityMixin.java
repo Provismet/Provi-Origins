@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -19,6 +20,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.event.listener.EntityGameEventHandler;
 
 @Mixin(Entity.class)
@@ -42,19 +44,20 @@ public abstract class EntityMixin {
     }
 
     // Adjust Passenger Height Power
-    @Inject(at=@At("HEAD"), method="getMountedHeightOffset()D", cancellable=true)
-    private void adjustHeight (CallbackInfoReturnable<Double> cir) {
+    @ModifyVariable(at=@At("STORE"), ordinal=0, method="updatePassengerPosition(Lnet/minecraft/entity/Entity;Lnet/minecraft/entity/Entity$PositionUpdater;)V")
+    private Vec3d adjustHeight (Vec3d position) {
         if ((Object)this instanceof LivingEntity) {
             LivingEntity living = (LivingEntity)(Object)this;
             List<ModifyPassengerHeightPower> powers = PowerHolderComponent.getPowers(living, ModifyPassengerHeightPower.class);
 
             if (!powers.isEmpty()) {
-                Double offsetAdd = powers.get(0).offsetAdditive;
-                Double offsetMul = powers.get(0).offsetMultiplicative;
+                double offsetAdd = powers.get(0).offsetAdditive;
+                double offsetMul = powers.get(0).offsetMultiplicative;
 
-                cir.setReturnValue(this.dimensions.height * 0.75 * offsetMul + offsetAdd);
+                return position.multiply(1.0, offsetMul, 1.0).add(0.0, offsetAdd, 0.0);
             }
         }
+        return position;
     }
 
     // Occlude Vibration Power
