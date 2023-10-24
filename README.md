@@ -22,3 +22,7 @@ For the full experience, it's recommended to also use:
 - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/provis-origins)
 
 Use these links to better support the mod.
+
+## License
+The source-code and distributables of this mod are licensed Apache-2.  
+Assets and supporting imagery, including images used in the documentation, are not covered by the license and are All Rights Reserved.
