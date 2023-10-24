@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.common.brittle.name",
-    "description": "power.proviorigins.common.brittle.desc",
     "type": "origins:attribute",
     "modifier": {
       "name": "Brittle health reduction",

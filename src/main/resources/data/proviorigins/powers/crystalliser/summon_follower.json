@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.crystalliser.summon_follower.name",
-    "description": "power.proviorigins.crystalliser.summon_follower.desc",
     "type": "origins:active_self",
     "badges": [
         {
@@ -9,11 +7,11 @@
         },
         {
             "sprite": "proviorigins:textures/gui/badge/cost.png",
-            "text": "power.proviorigins.crystalliser.summon_follower.badge"
+            "text": "power.proviorigins.crystalliser/summon_follower.badge"
         },
         {
             "sprite": "proviorigins:textures/gui/badge/dragon.png",
-            "text": "power.proviorigins.common.kill_dragon.badge"
+            "text": "power.proviorigins.common/kill_dragon.badge"
         }
     ],
     "entity_action": {

@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.common.poor_strength.name",
-    "description": "power.proviorigins.common.poor_strength.desc",
     "type": "origins:modify_damage_dealt",
     "modifier": {
         "operation": "multiply_total",

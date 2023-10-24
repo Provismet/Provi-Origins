@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.drakling.short_flight.name",
-    "description": "power.proviorigins.drakling.short_flight.desc",
     "type": "origins:multiple",
 
     "flight_bar": {

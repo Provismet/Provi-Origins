@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.drakling.enderdragon_mandatory.name",
-    "description": "power.proviorigins.drakling.enderdragon_mandatory.desc",
     "type": "origins:action_over_time",
     "interval": 20,
     "entity_action": {

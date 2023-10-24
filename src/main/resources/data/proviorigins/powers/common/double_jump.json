@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.common.double_jump.name",
-    "description": "power.proviorigins.common.double_jump.desc",
     "type": "origins:multiple",
 
     "jump_cooldown": {

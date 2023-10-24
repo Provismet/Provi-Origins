@@ -1,5 +1,3 @@
 {
-    "name": "power.proviorigins.common.no_crits.name",
-    "description": "power.proviorigins.common.no_crits.desc",
     "type": "proviorigins:prevent_critical_hits"
 }

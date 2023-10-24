@@ -17,7 +17,5 @@
         "extrade:fungifloral"
     ],
     "icon": "proviorigins:jelly_icon",
-    "impact": 3,
-    "name": "power.proviorigins.jellysculk.name",
-    "description": "power.proviorigins.jellysculk.description"
+    "impact": 3
 }

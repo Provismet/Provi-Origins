@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.decaykraken.soulsand_spreading.name",
-    "description": "power.proviorigins.decaykraken.soulsand_spreading.desc",
     "type": "origins:self_action_on_kill",
     "entity_action": {
         "type": "origins:execute_command",

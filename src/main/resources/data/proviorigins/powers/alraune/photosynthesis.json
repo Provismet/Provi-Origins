@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.alraune.photosynthesis.name",
-    "description": "power.proviorigins.alraune.photosynthesis.desc",
     "type": "origins:action_over_time",
     "interval": 20,
     "entity_action": {

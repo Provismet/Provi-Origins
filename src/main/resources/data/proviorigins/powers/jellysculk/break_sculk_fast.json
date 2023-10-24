@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.jellysculk.break_sculk_fast.name",
-    "description": "power.proviorigins.jellysculk.break_sculk_fast.desc",
     "type": "origins:modify_break_speed",
     "block_condition": {
         "type": "origins:in_tag",

@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.crystalliser.crystal_charging.name",
-    "description": "power.proviorigins.crystalliser.crystal_charging.desc",
     "type": "origins:multiple",
 
     "shards": {

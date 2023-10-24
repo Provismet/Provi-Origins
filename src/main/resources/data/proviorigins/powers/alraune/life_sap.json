@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.alraune.life_sap.name",
-    "description": "power.proviorigins.alraune.life_sap.desc",
     "type": "origins:resource",
     "min": 0,
     "max": 5,

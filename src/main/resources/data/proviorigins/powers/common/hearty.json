@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.common.hearty.name",
-    "description": "power.proviorigins.common.hearty.desc",
     "type": "origins:attribute",
     "modifier": {
       "name": "Brittle health reduction",

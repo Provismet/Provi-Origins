@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.crystalliser.explosion_resist.name",
-    "description": "power.proviorigins.crystalliser.explosion_resist.desc",
     "type": "origins:modify_damage_taken",
     "modifier": {
         "name": "Resistant to explosions",

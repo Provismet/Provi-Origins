@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.decaykraken.deaths_vice_gain.name",
-    "description": "power.proviorigins.decaykraken.deaths_vice_gain.desc",
     "type": "origins:self_action_on_kill",
     "entity_action": {
         "type": "origins:change_resource",

@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.splinter.distortion.name",
-    "description": "power.proviorigins.splinter.distortion.desc",
     "type": "origins:multiple",
     "badges": [
         {
@@ -9,7 +7,7 @@
         },
         {
             "sprite": "proviorigins:textures/gui/badge/cost.png",
-            "text": "power.proviorigins.splinter.distortion.badge"
+            "text": "power.proviorigins.splinter/distortion.badge"
         }
     ],
 

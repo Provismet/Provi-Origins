@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.common.slow_fall.name",
-    "description": "power.proviorigins.common.slow_fall.desc",
     "type": "origins:multiple",
 
     "slow_falling": {

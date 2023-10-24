@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.common.medium_taller.name",
-    "description": "power.proviorigins.common.medium_taller.desc",
     "type": "origins:action_on_callback",
     "entity_action_gained": {
         "type": "origins:and",

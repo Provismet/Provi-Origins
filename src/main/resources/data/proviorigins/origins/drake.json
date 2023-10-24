@@ -14,7 +14,5 @@
     ],
     "icon": "proviorigins:drake_icon",
     "impact": 2,
-    "unchoosable": true,
-    "name": "power.proviorigins.drakling.evolved.name",
-    "description": "power.proviorigins.drakling.evolved.description"
+    "unchoosable": true
 }

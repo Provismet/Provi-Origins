@@ -1,11 +1,9 @@
 {
-    "name": "power.proviorigins.jellysculk.entity_detect.name",
-    "description": "power.proviorigins.jellysculk.entity_detect.desc",
     "type": "origins:multiple",
     "badges": [
         {
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "power.proviorigins.jellysculk.entity_detect.badge"
+            "text": "power.proviorigins.jellysculk/entity_detect.badge"
         }
     ],
 

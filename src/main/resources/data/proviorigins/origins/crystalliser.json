@@ -11,7 +11,5 @@
         "extrade:outerworldly"
     ],
     "icon": "proviorigins:crystalliser_icon",
-    "impact": 2,
-    "name": "power.proviorigins.crystalliser.name",
-    "description": "power.proviorigins.crystalliser.description"
+    "impact": 2
 }

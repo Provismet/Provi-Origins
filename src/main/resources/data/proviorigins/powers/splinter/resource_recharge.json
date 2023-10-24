@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.splinter.resources.name",
-    "description": "power.proviorigins.splinter.resources.desc",
     "type": "origins:multiple",
 
     "recharge_mana": {

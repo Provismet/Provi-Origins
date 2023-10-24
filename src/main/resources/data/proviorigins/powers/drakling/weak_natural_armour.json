@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.drakling.weak_armour.name",
-    "description": "power.proviorigins.drakling.weak_armour.desc",
     "type": "origins:attribute",
     "modifier": {
         "name": "Molten Metal",

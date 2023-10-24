@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.common.angry_golems.name",
-    "description": "power.proviorigins.common.angry_golems.desc",
     "type": "origins:action_over_time",
     "interval": 40,
     "entity_action": {

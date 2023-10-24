@@ -1,6 +1,6 @@
 {
-    "name": "power.proviorigins.alraune.summon_plant.name",
-    "description": "power.proviorigins.alraune.summon_plant.desc",
+    "name": {"translate": "power.proviorigins.alraune/summon_plant.name"},
+    "description": {"translate": "power.proviorigins.alraune/summon_plant.description"},
     "type": "origins:multiple",
     "badges": [
         {
@@ -9,19 +9,19 @@
         },
         {
             "sprite": "proviorigins:textures/gui/badge/cost.png",
-            "text": "power.proviorigins.alraune.summon_plant.badge.1"
+            "text": "power.proviorigins.alraune/summon_plant.badge.1"
         },
         {
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "power.proviorigins.alraune.summon_plant.badge.2"
+            "text": "power.proviorigins.alraune/summon_plant.badge.2"
         },
         {
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "power.proviorigins.alraune.summon_plant.badge.3"
+            "text": "power.proviorigins.alraune/summon_plant.badge.3"
         },
         {
             "sprite": "proviorigins:textures/gui/badge/dragon.png",
-            "text": "power.proviorigins.common.kill_dragon.badge"
+            "text": "power.proviorigins.common/kill_dragon.badge"
         }
     ],
     

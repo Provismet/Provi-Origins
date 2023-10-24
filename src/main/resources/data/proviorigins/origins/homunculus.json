@@ -9,7 +9,5 @@
         "extrade:humanoid"
     ],
     "icon": "proviorigins:homunculus_icon",
-    "impact": 1,
-    "name": "power.proviorigins.homunculus.name",
-    "description": "power.proviorigins.homunculus.description"
+    "impact": 1
 }

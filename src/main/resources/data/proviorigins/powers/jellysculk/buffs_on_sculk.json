@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.jellysculk.buffs_on_sculk.name",
-    "description": "power.proviorigins.jellysculk.buffs_on_sculk.desc",
     "type": "origins:stacking_status_effect",
     "effects": [
         {

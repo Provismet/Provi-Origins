@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.drakling.dragon_evolution.name",
-    "description": "power.proviorigins.drakling.dragon_evolution.desc",
     "type": "origins:multiple",
 
     "tooltip": {
@@ -11,7 +9,7 @@
                 "item": "minecraft:dragon_head"
             }
         },
-        "text": "power.proviorigins.drakling.dragon_head"
+        "text": "tooltip.proviorigins.drakling.dragon_head"
     },
 
     "evolution_bar": {

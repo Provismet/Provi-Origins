@@ -16,7 +16,5 @@
         "extrade:arcane"
     ],
     "icon": "proviorigins:splinter_icon",
-    "impact": 3,
-    "name": "power.proviorigins.splinter.name",
-    "description": "power.proviorigins.splinter.description"
+    "impact": 3
 }

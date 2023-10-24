@@ -1,6 +1,5 @@
 {
-    "name": "power.proviorigins.faemoth.share_buffs.name",
-    "description": "power.proviorigins.faemoth.share_buffs.desc",
+    "type": "origins:active_self",
     "badges": [
         {
             "sprite": "origins:textures/gui/badge/active.png",
@@ -8,10 +7,9 @@
         },
         {
             "sprite": "proviorigins:textures/gui/badge/cost.png",
-            "text": "power.proviorigins.faemoth.share_buffs.badge"
+            "text": "power.proviorigins.faemoth/share_buffs.badge"
         }
     ],
-    "type": "origins:active_self",
     "entity_action": {
         "type": "origins:and",
         "actions": [

@@ -1,11 +1,9 @@
 {
-    "name": "power.proviorigins.decaykraken.wither_hit.name",
-    "description": "power.proviorigins.decaykraken.wither_hit.desc",
     "type": "origins:multiple",
     "badges": [
         {
             "sprite": "proviorigins:textures/gui/badge/cost.png",
-            "text": "power.proviorigins.decaykraken.wither_hit.badge"
+            "text": "power.proviorigins.decaykraken/wither_hit.badge"
         }
     ],
 

@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.splinter.swap.name",
-    "description": "power.proviorigins.splinter.swap.desc",
     "type": "origins:active_self",
     "key": {
         "key": "key.proviorigins.tertiary_active"
@@ -12,7 +10,7 @@
         },
         {
             "sprite": "proviorigins:textures/gui/badge/cost.png",
-            "text": "power.proviorigins.splinter.swap.badge"
+            "text": "power.proviorigins.splinter/swap.badge"
         }
     ],
     "entity_action": {

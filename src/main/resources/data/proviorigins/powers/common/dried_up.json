@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.common.dried_up.name",
-    "description": "power.proviorigins.common.dried_up.desc",
     "type": "origins:multiple",
 
     "dry": {

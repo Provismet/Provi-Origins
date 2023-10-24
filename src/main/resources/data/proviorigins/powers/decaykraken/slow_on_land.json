@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.decaykraken.slow_on_land.name",
-    "description": "power.proviorigins.decaykraken.slow_on_land.desc",
     "type": "origins:attribute",
     "modifier": {
       "name": "Slow on Land speed deficit",

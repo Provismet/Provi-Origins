@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.voidlily.nether_air.name",
-    "description": "power.proviorigins.voidlily.nether_air.desc",
     "type": "proviorigins:prevent_breathing",
     "damage_type": "proviorigins:bad_dimension",
     "condition": {

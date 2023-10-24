@@ -1,6 +1,6 @@
 {
-    "name": "power.proviorigins.voidlily.floral_mimicry.name",
-    "description": "power.proviorigins.voidlily.floral_mimicry.desc",
+    "name": {"translate": "power.proviorigins.voidlily/floral_mimicry.name"},
+    "description": {"translate": "power.proviorigins.voidlily/floral_mimicry.description"},
     "type": "origins:multiple",
 
     "passive": {

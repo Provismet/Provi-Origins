@@ -1,15 +1,13 @@
 {
-    "name": "power.proviorigins.decaykraken.water_sensitive.name",
-    "description": "power.proviorigins.decaykraken.water_sensitive.desc",
     "type": "origins:multiple",
     "badges": [
         {
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "power.proviorigins.decaykraken.water_sensitive.badge.1"
+            "text": "power.proviorigins.decaykraken/water_sensitive.badge.1"
         },
         {
             "sprite": "origins:textures/gui/badge/star.png",
-            "text": "power.proviorigins.decaykraken.water_sensitive.badge.2"
+            "text": "power.proviorigins.decaykraken/water_sensitive.badge.2"
         }
     ],
 

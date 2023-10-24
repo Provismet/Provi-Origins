@@ -22,7 +22,5 @@
         "extrade:fungifloral"
     ],
     "icon": "proviorigins:alraune_icon",
-    "impact": 2,
-    "name": "power.proviorigins.alraune.name",
-    "description": "power.proviorigins.alraune.description"
+    "impact": 2
 }

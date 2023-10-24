@@ -1,11 +1,9 @@
 {
-    "name": "power.proviorigins.decaykraken.deaths_vice_recharge.name",
-    "description": "power.proviorigins.decaykraken.deaths_vice_recharge.desc",
     "type": "origins:multiple",
     "badges": [
         {
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "power.proviorigins.decaykraken.deaths_vice_recharge.badge"
+            "text": "power.proviorigins.decaykraken/deaths_vice_recharge_rate.badge"
         },
         {
             "type": "origins:crafting_recipe",

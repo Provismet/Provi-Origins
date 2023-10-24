@@ -1,11 +1,9 @@
 {
-    "name": "power.proviorigins.jellysculk.spread_sculk.name",
-    "description": "power.proviorigins.jellysculk.spread_sculk.desc",
     "type": "origins:multiple",
     "badges": [
         {
             "sprite": "origins:textures/gui/badge/active.png",
-            "text": "power.proviorigins.jellysculk.spread_sculk.badge"
+            "text": "power.proviorigins.jellysculk/spread_sculk.badge"
         }
     ],
 

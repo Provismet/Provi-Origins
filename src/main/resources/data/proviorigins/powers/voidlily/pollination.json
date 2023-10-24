@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.voidlily.pollination.name",
-    "description": "power.proviorigins.voidlily.pollination.desc",
     "type": "origins:action_over_time",
     "interval": 10,
     "entity_action": {

@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.decaykraken.deaths_vice_empty.name",
-    "description": "power.proviorigins.decaykraken.deaths_vice_empty.desc",
     "type": "origins:stacking_status_effect",
     "min_stacks": -1,
     "max_stacks": 1,

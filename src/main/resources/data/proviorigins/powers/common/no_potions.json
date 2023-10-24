@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.common.no_potions.name",
-    "description": "power.proviorigins.common.no_potions.desc",
     "type": "origins:prevent_item_use",
     "item_condition": {
         "type": "origins:ingredient",

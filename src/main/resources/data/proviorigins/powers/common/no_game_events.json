@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.common.no_game_events.name",
-    "description": "power.proviorigins.common.no_game_events.desc",
     "type": "origins:multiple",
 
     "prevent_most": {

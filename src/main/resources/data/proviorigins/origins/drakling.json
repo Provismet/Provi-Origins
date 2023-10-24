@@ -13,7 +13,5 @@
         "extrade:beastly"
     ],
     "icon": "proviorigins:drakling_icon",
-    "impact": 2,
-    "name": "power.proviorigins.drakling.name",
-    "description": "power.proviorigins.drakling.description"
+    "impact": 2
 }

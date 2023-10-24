@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.common.slow_swim.name",
-    "description": "power.proviorigins.common.slow_swim.desc",
     "type": "origins:modify_swim_speed",
     "modifier": {
         "operation": "multiply_base",

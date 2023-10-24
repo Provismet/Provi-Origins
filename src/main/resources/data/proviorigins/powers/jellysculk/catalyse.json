@@ -1,6 +1,4 @@
 {
-    "name": "power.proviorigins.jellysculk.catalyse.name",
-    "description": "power.proviorigins.jellysculk.catalyse.desc",
     "type": "proviorigins:action_on_gain_experience",
     "entity_action": {
         "type": "origins:and",

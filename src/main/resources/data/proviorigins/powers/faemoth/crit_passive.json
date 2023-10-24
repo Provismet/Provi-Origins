@@ -1,17 +1,15 @@
 {
-    "name": "power.proviorigins.faemoth.crit_passive.name",
-    "description": "power.proviorigins.faemoth.crit_passive.desc",
+    "type": "proviorigins:action_on_critical_hit",
     "badges": [
         {
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "power.proviorigins.faemoth.crit_passive.badge1"
+            "text": "power.proviorigins.faemoth/crit_passive.badge1"
         },
         {
             "sprite": "proviorigins:textures/gui/badge/cost.png",
-            "text": "power.proviorigins.faemoth.crit_passive.badge2"
+            "text": "power.proviorigins.faemoth/crit_passive.badge2"
         }
     ],
-    "type": "proviorigins:action_on_critical_hit",
     "bientity_action": {
         "type": "origins:and",
         "actions": [
