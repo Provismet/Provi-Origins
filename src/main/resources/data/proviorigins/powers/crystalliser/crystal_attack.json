@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "type": "origins:can_see",
+                    "type": "proviorigins:can_see_any",
                     "shape_type": "collider",
                     "fluid_handling": "none"
                 }

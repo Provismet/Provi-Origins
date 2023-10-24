@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
-        "proviorigins:compost"
+        "proviorigins:compost",
+        "proviorigins:crystal_beam"
     ]
 }

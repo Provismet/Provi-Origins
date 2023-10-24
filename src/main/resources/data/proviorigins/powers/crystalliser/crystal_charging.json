@@ -22,12 +22,30 @@
     "attacking": {
         "type": "proviorigins:action_on_critical_hit",
         "bientity_action": {
-            "type": "origins:actor_action",
-            "action": {
-                "type": "origins:change_resource",
-                "resource": "proviorigins:crystalliser/crystal_charging_shards",
-                "change": 7
-            }
+            "type": "origins:if_else",
+                "if_action": {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "proviorigins:crystalliser/crystal_charging_shards",
+                        "change": 10
+                    }
+                },
+                "else_action": {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "proviorigins:crystalliser/crystal_charging_shards",
+                        "change": 7
+                    }
+                },
+                "condition": {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:in_tag",
+                        "tag": "proviorigins:crystalliser/extra_shards"
+                    }
+                }
         },
         "bientity_condition": {
             "type": "origins:target_condition",
