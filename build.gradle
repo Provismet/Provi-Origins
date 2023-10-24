@@ -66,6 +66,10 @@ repositories {
     maven {
         url "https://maven.terraformersmc.com/"
     }
+    maven {
+		name = "QuiltMC"
+		url = "https://maven.quiltmc.org/repository/release"
+	}
     exclusiveContent {
         forRepository {
             maven {
