@@ -38,7 +38,7 @@ public class CloneEntityRenderer<T extends CloneEntity> extends BipedEntityRende
         PlayerListEntry entry = MinecraftClient.getInstance().getNetworkHandler().getPlayerListEntry(clone.getOwnerUuid());
         
         if (entry == null) return DEFAULT_STEVE;
-        else return entry.getSkinTexture();
+        else return entry.getSkinTextures().texture();
     }
 
     @Override

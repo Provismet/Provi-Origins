@@ -5,7 +5,6 @@ import java.util.UUID;
 import com.provismet.proviorigins.content.registries.StatusEffects;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
@@ -22,8 +21,12 @@ public class SleepEffect extends StatusEffect {
     }
 
     @Override
-    public void onRemoved (LivingEntity entity, AttributeContainer attributes, int amplifier) {
-        super.onRemoved(entity, attributes, amplifier);
+    public boolean canApplyUpdateEffect (int duration, int amplifier) {
+        return duration <= 1;
+    }
+
+    @Override
+    public void applyUpdateEffect (LivingEntity entity, int amplifier) {
         if (!entity.hasStatusEffect(StatusEffects.ALERT)) entity.addStatusEffect(new StatusEffectInstance(StatusEffects.ALERT, 150));
     }
 }

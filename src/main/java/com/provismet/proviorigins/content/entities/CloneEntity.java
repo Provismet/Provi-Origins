@@ -199,7 +199,7 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
     }
 
     @Override
-    public void attack (LivingEntity target, float pullProgress) {
+    public void shootAt (LivingEntity target, float pullProgress) {
         if (this.isHolding(Items.CROSSBOW)) {
             this.shoot(this, 1.6f);
             return;
