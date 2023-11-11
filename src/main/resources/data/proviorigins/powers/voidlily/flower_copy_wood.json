@@ -46,8 +46,8 @@
                 },
                 {
                     "type": "origins:change_resource",
-                    "resource": "proviorigins:voidlily/flower_copy_poppy_hud",
-                    "change": 600,
+                    "resource": "proviorigins:voidlily/flower_copy_wood_hud",
+                    "change": 90,
                     "operation": "set"
                 },
                 {
