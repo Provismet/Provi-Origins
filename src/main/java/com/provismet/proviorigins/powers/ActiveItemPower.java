@@ -19,16 +19,18 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Pair;
+import net.minecraft.world.World;
 
 @SuppressWarnings("rawtypes")
 public class ActiveItemPower extends ActiveCooldownPower {
     private final Consumer<Entity> entityAction;
-    private final Predicate<ItemStack> itemCondition;
+    private final Predicate<Pair<World, ItemStack>> itemCondition;
     private final Predicate<Entity> consumeCondition;
     private final int consumeAmount;
     private final boolean shouldSwingArm;
 
-    public ActiveItemPower(PowerType<?> type, LivingEntity entity, int cooldownDuration, HudRender hudRender, Consumer<Entity> entityAction, Predicate<ItemStack> itemCondition, Predicate<Entity> consumeCondition, int consumeAmount, boolean shouldSwingArm) {
+    public ActiveItemPower(PowerType<?> type, LivingEntity entity, int cooldownDuration, HudRender hudRender, Consumer<Entity> entityAction, Predicate<Pair<World, ItemStack>> itemCondition, Predicate<Entity> consumeCondition, int consumeAmount, boolean shouldSwingArm) {
         super(type, entity, cooldownDuration, hudRender, entityAction);
         this.entityAction = entityAction;
         this.itemCondition = itemCondition;
@@ -40,19 +42,19 @@ public class ActiveItemPower extends ActiveCooldownPower {
     @Override
     public void onUse () {
         if (this.canUse()) {
-            ItemStack mainhand = this.entity.getEquippedStack(EquipmentSlot.MAINHAND);
-            ItemStack offhand = this.entity.getEquippedStack(EquipmentSlot.OFFHAND);
+            Pair<World, ItemStack> mainhand = new Pair<>(this.entity.getWorld(), this.entity.getEquippedStack(EquipmentSlot.MAINHAND));
+            Pair<World, ItemStack> offhand = new Pair<>(this.entity.getWorld(), this.entity.getEquippedStack(EquipmentSlot.OFFHAND));
 
-            if (this.itemCondition.test(mainhand) && mainhand.getCount() >= this.consumeAmount) {
-                perform(Hand.MAIN_HAND, mainhand);
+            if (this.itemCondition.test(mainhand) && mainhand.getRight().getCount() >= this.consumeAmount) {
+                perform(Hand.MAIN_HAND, mainhand.getRight());
             }
-            else if (this.itemCondition.test(offhand) && offhand.getCount() >= this.consumeAmount) {
+            else if (this.itemCondition.test(offhand) && offhand.getRight().getCount() >= this.consumeAmount) {
                 // If multiple of this power exist on one entity, avoid double using items.
                 List<ActiveItemPower> activeItemPowers = PowerHolderComponent.getPowers(this.entity, ActiveItemPower.class);
                 for (ActiveItemPower powerInstance : activeItemPowers) {
                     if (powerInstance.itemCondition.test(mainhand) && getKey().equals(powerInstance.getKey())) return;
                 }
-                perform(Hand.OFF_HAND, offhand);
+                perform(Hand.OFF_HAND, offhand.getRight());
             }
         }
     }
