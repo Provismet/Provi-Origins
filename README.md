@@ -1,5 +1,5 @@
 # Provi's Origins
-[![Image](https://img.shields.io/badge/license-Apache2.0-orange?style=flat-square)](https://github.com/Provismet/Provi-Origins/blob/1.19/LICENSE)
+[![Image](https://img.shields.io/badge/license-Lily%20License-7E0EB4?style=flat-square)](https://github.com/Provismet/Provi-Origins/blob/1.20/LICENSE)
 ![Image](https://img.shields.io/badge/environment-both-4caf50?style=flat-square)
 ![Image](https://img.shields.io/badge/mod%20loader-fabric-d64541?style=flat-square)
 
