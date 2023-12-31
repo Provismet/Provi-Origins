@@ -1,7 +1,11 @@
+<div align="center">
+
 # Provi's Origins
-[![Image](https://img.shields.io/badge/license-Lily%20License-7E0EB4?style=flat-square)](https://github.com/Provismet/Provi-Origins/blob/1.20/LICENSE)
-![Image](https://img.shields.io/badge/environment-both-4caf50?style=flat-square)
-![Image](https://img.shields.io/badge/mod%20loader-fabric-d64541?style=flat-square)
+[![](https://img.shields.io/jitpack/version/com.github.Provismet/Provi-Origins?style=flat-square&logo=jitpack&color=F6F6F6)](https://jitpack.io/#Provismet/Provi-Origins)
+[![](https://img.shields.io/modrinth/dt/uze1qMee?style=flat-square&logo=modrinth&color=F6F6F6)](https://modrinth.com/mod/provis-origins)
+[![](https://img.shields.io/curseforge/dt/881653?style=flat-square&logo=curseforge&color=F6F6F6)](https://www.curseforge.com/minecraft/mc-mods/provis-origins)
+
+</div>
 
 ## Summary
 A decently sized addon mod for [Origins](https://github.com/apace100/origins-fabric).
