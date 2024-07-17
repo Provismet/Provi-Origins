@@ -55,9 +55,14 @@ public abstract class EntityRenderDispatcherMixin {
     public <T extends Entity> void getCloneRenderer (T entity, CallbackInfoReturnable<EntityRenderer<? super T>> cir) {
         if (entity instanceof CloneEntity clone) {
             if (clone.isOwned()) {
-                String modelType = MinecraftClient.getInstance().getNetworkHandler().getPlayerListEntry(clone.getOwnerUuid()).getSkinTextures().model().getName();
-                EntityRenderer<? super T> renderer = (EntityRenderer<? super T>)cloneRenderers.get(modelType);
-                cir.setReturnValue(renderer);
+                try {
+                    String modelType = MinecraftClient.getInstance().getNetworkHandler().getPlayerListEntry(clone.getOwnerUuid()).getSkinTextures().model().getName();
+                    EntityRenderer<? super T> renderer = (EntityRenderer<? super T>) cloneRenderers.get(modelType);
+                    cir.setReturnValue(renderer);
+                }
+                catch (NullPointerException e) {
+                    cir.setReturnValue((EntityRenderer<? super T>)cloneRenderers.get("default"));
+                }
             }
             else {
                 cir.setReturnValue((EntityRenderer<? super T>)cloneRenderers.get("default"));
@@ -74,6 +79,7 @@ public abstract class EntityRenderDispatcherMixin {
         );
     }
 
+    @Unique
     @SuppressWarnings({"unchecked", "ConstantConditions", "rawtypes"})
     private static CloneEntityRenderer<CloneEntity> createCloneEntityRenderer (Context context, boolean slimArms) {
         CloneEntityRenderer<CloneEntity> renderer = new CloneEntityRenderer<>(context, slimArms);
