@@ -5,7 +5,7 @@ import com.provismet.proviorigins.ProviOriginsMain;
 import net.minecraft.util.Identifier;
 
 public class Powers {
-    public static final String NAMESPACE = ProviOriginsMain.modid;
+    public static final String NAMESPACE = ProviOriginsMain.MODID;
 
     // Generic field names
     public static final String ENTITY_ACTION = "entity_action";

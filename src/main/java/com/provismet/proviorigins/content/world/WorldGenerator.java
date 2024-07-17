@@ -22,6 +22,6 @@ public class WorldGenerator extends FabricDynamicRegistryProvider {
 
     @Override
     public String getName () {
-        return ProviOriginsMain.modid;
+        return ProviOriginsMain.MODID;
     }
 }

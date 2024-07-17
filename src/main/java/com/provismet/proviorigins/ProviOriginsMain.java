@@ -20,11 +20,11 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 
 public class ProviOriginsMain implements ModInitializer {
-    public static final String modid = "proviorigins";
+    public static final String MODID = "proviorigins";
     public static final Logger LOGGER = LoggerFactory.getLogger("Provi's Origins");
 
     public static Identifier identifier (String path) {
-        return new Identifier(modid, path);
+        return new Identifier(MODID, path);
     }
 
     @Override
