@@ -1,6 +1,6 @@
 package com.provismet.proviorigins.extras;
 
-import com.provismet.proviorigins.content.registries.StatusEffects;
+import com.provismet.proviorigins.content.registries.POStatusEffects;
 
 import net.minecraft.client.render.BackgroundRenderer.FogData;
 import net.minecraft.client.render.BackgroundRenderer.FogType;
@@ -12,7 +12,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 public class SleepFogModifier implements StatusEffectFogModifier {
     @Override
     public StatusEffect getStatusEffect () {
-        return StatusEffects.SLEEP;
+        return POStatusEffects.SLEEP;
     }
 
     @Override

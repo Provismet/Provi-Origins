@@ -2,7 +2,7 @@ package com.provismet.proviorigins.extras;
 
 import java.util.List;
 
-import com.provismet.proviorigins.content.registries.Entities;
+import com.provismet.proviorigins.content.registries.POEntities;
 import com.provismet.proviorigins.powers.EmissivePower;
 
 import dev.lambdaurora.lambdynlights.api.DynamicLightHandlers;
@@ -22,7 +22,7 @@ public class DynamicLightsEntry implements DynamicLightsInitializer {
             return light;
         });
 
-        DynamicLightHandlers.registerDynamicLightHandler(Entities.CLONE, entity -> {
+        DynamicLightHandlers.registerDynamicLightHandler(POEntities.CLONE, entity -> {
             int light = 0;
             List<EmissivePower> powers = PowerHolderComponent.getPowers(entity, EmissivePower.class);
             for (EmissivePower power : powers) {
@@ -31,7 +31,7 @@ public class DynamicLightsEntry implements DynamicLightsInitializer {
             return light;
         });
 
-        DynamicLightHandlers.registerDynamicLightHandler(Entities.MINION, entity -> {
+        DynamicLightHandlers.registerDynamicLightHandler(POEntities.MINION, entity -> {
             int light = 0;
             List<EmissivePower> powers = PowerHolderComponent.getPowers(entity, EmissivePower.class);
             for (EmissivePower power : powers) {

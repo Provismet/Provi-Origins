@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#proviorigins:decaykraken/soul_fires_fire_state",
+      "required": false
+    },
+    {
+      "id": "betternether:cincinnasite_fire_bowl",
+      "required": false
+    },
+    {
+      "id": "betternether:bricks_fire_bowl",
+      "required": false
+    },
+    {
+      "id": "betternether:netherite_fire_bowl",
+      "required": false
+    }
+  ]
+}

@@ -2,6 +2,8 @@ package com.provismet.proviorigins.mixin;
 
 import java.util.List;
 
+import com.provismet.proviorigins.content.registries.POStatusEffects;
+import com.provismet.proviorigins.utility.tags.PODamageTypeTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -9,7 +11,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.provismet.proviorigins.extras.Tags;
 import com.provismet.proviorigins.powers.EvadeProjectilesPower;
 import com.provismet.proviorigins.powers.PreventBreathingPower;
 import com.provismet.proviorigins.powers.PreventPortalsPower;
@@ -75,7 +76,7 @@ public abstract class LivingEntityMixin extends Entity {
     // Untargetable Status Effect
     @Inject(at=@At("RETURN"), method="canTarget(Lnet/minecraft/entity/LivingEntity;)Z", cancellable=true)
     private void applyUntargetable (LivingEntity target, CallbackInfoReturnable<Boolean> cir) {
-        if (target.hasStatusEffect(com.provismet.proviorigins.content.registries.StatusEffects.UNTARGETABLE)) cir.setReturnValue(false);
+        if (target.hasStatusEffect(POStatusEffects.UNTARGETABLE)) cir.setReturnValue(false);
     }
 
     // Apply double damage from sleep.
@@ -84,8 +85,8 @@ public abstract class LivingEntityMixin extends Entity {
         if (!source.isIn(DamageTypeTags.BYPASSES_EFFECTS)) {
             LivingEntity livingEntity = (LivingEntity)(Object)this;
 
-            if (livingEntity.hasStatusEffect(com.provismet.proviorigins.content.registries.StatusEffects.SLEEP)) {
-                livingEntity.removeStatusEffect(com.provismet.proviorigins.content.registries.StatusEffects.SLEEP);
+            if (livingEntity.hasStatusEffect(POStatusEffects.SLEEP)) {
+                livingEntity.removeStatusEffect(POStatusEffects.SLEEP);
                 cir.setReturnValue(cir.getReturnValue() * 2);
             }
         }
@@ -95,13 +96,13 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(at=@At("HEAD"), method="jump", cancellable=true)
     private void preventSleepJump (CallbackInfo info) {
         LivingEntity livingEntity = (LivingEntity)(Object)this;
-        if (livingEntity.hasStatusEffect(com.provismet.proviorigins.content.registries.StatusEffects.SLEEP)) info.cancel();
+        if (livingEntity.hasStatusEffect(POStatusEffects.SLEEP)) info.cancel();
     }
 
     // Allow custom damage sources to disable shields when blocked.
     @Inject(at=@At(value="INVOKE", target="Lnet/minecraft/entity/LivingEntity;damageShield(F)V", shift=At.Shift.AFTER), method="damage")
     private void disableShield (DamageSource source, float amount, CallbackInfoReturnable<Boolean> info) {
-        if (source.isIn(Tags.DamageTypes.DISABLES_SHIELDS) && (LivingEntity)(Object)this instanceof PlayerEntity player) {
+        if (source.isIn(PODamageTypeTags.DISABLES_SHIELDS) && (LivingEntity)(Object)this instanceof PlayerEntity player) {
             player.disableShield(true);
         }
     }
@@ -110,7 +111,7 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(at=@At("RETURN"), method="blockedByShield", cancellable=true)
     private void alwaysBlock (DamageSource source, CallbackInfoReturnable<Boolean> cir) {
         LivingEntity living = (LivingEntity)(Object)this;
-        if (living.isBlocking() && source.isIn(Tags.DamageTypes.ALWAYS_BLOCK)) cir.setReturnValue(true);
+        if (living.isBlocking() && source.isIn(PODamageTypeTags.ALWAYS_BLOCK)) cir.setReturnValue(true);
     }
 
     // Evade Projectile Power
@@ -124,8 +125,8 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(at=@At("RETURN"), method="canHaveStatusEffect", cancellable=true)
     private void cannotHaveSleepAndAlert (StatusEffectInstance effectInstance, CallbackInfoReturnable<Boolean> cir) {
-        if (effectInstance.getEffectType() == com.provismet.proviorigins.content.registries.StatusEffects.SLEEP &&
-            ((LivingEntity)(Object)this).hasStatusEffect(com.provismet.proviorigins.content.registries.StatusEffects.ALERT)) cir.setReturnValue(false);
+        if (effectInstance.getEffectType() == POStatusEffects.SLEEP &&
+            ((LivingEntity)(Object)this).hasStatusEffect(POStatusEffects.ALERT)) cir.setReturnValue(false);
     }
 
     // Prevent Portal Powers

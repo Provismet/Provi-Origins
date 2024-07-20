@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 
 import com.provismet.proviorigins.ProviOriginsMain;
 import com.provismet.proviorigins.content.entities.CloneEntity;
-import com.provismet.proviorigins.content.registries.Entities;
+import com.provismet.proviorigins.content.registries.POEntities;
 import com.provismet.proviorigins.powers.Powers;
 
 import io.github.apace100.apoli.data.ApoliDataTypes;
@@ -44,7 +44,7 @@ public class SummonCloneAction {
 
     private static CloneEntity summon (PlayerEntity player, boolean canSit, boolean followOwner, boolean canAttack, boolean inheritsEquipment, boolean inheritsEnchantments) {
         if (player.getWorld() instanceof ServerWorld serverWorld) {
-            CloneEntity clone = new CloneEntity(Entities.CLONE, serverWorld);
+            CloneEntity clone = new CloneEntity(POEntities.CLONE, serverWorld);
             clone.setCanSit(canSit);
             clone.setCanAttack(canAttack);
             clone.setFollowOwner(followOwner);

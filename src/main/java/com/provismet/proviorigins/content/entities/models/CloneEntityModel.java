@@ -1,7 +1,7 @@
 package com.provismet.proviorigins.content.entities.models;
 
 import com.provismet.proviorigins.content.entities.CloneEntity;
-import com.provismet.proviorigins.content.registries.ModelLayerRegistry;
+import com.provismet.proviorigins.content.registries.POModelLayerRegistry;
 
 import net.minecraft.client.model.Dilation;
 import net.minecraft.client.model.ModelPart;
@@ -32,11 +32,11 @@ public class CloneEntityModel<T extends CloneEntity> extends PlayerEntityModel<T
     }
 
     public static TexturedModelData getTexturedModelDataInner () {
-        return TexturedModelData.of(PlayerEntityModel.getModelData(ModelLayerRegistry.HAT_DILATION, 0.0f), 64, 32);
+        return TexturedModelData.of(PlayerEntityModel.getModelData(POModelLayerRegistry.HAT_DILATION, 0.0f), 64, 32);
     }
 
     public static TexturedModelData getTexturedModelDataOuter () {
-        return TexturedModelData.of(PlayerEntityModel.getModelData(ModelLayerRegistry.ARMOR_DILATION, 0.0f), 64, 32);
+        return TexturedModelData.of(PlayerEntityModel.getModelData(POModelLayerRegistry.ARMOR_DILATION, 0.0f), 64, 32);
     }
 
     @Override

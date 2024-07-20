@@ -2,7 +2,7 @@ package com.provismet.proviorigins.content.statusEffects;
 
 import java.util.UUID;
 
-import com.provismet.proviorigins.content.registries.StatusEffects;
+import com.provismet.proviorigins.content.registries.POStatusEffects;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -27,6 +27,6 @@ public class SleepEffect extends StatusEffect {
 
     @Override
     public void applyUpdateEffect (LivingEntity entity, int amplifier) {
-        if (!entity.hasStatusEffect(StatusEffects.ALERT)) entity.addStatusEffect(new StatusEffectInstance(StatusEffects.ALERT, 150));
+        if (!entity.hasStatusEffect(POStatusEffects.ALERT)) entity.addStatusEffect(new StatusEffectInstance(POStatusEffects.ALERT, 150));
     }
 }

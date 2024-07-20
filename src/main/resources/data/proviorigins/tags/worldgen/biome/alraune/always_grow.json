@@ -1,9 +1,0 @@
-{
-    "values": [
-        "minecraft:lush_caves",
-        {
-            "id": "terralith:cave/underground_jungle",
-            "required": false
-        }
-    ]
-}

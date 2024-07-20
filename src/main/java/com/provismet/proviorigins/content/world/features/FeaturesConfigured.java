@@ -1,7 +1,7 @@
 package com.provismet.proviorigins.content.world.features;
 
 import com.provismet.proviorigins.ProviOriginsMain;
-import com.provismet.proviorigins.content.registries.Blocks;
+import com.provismet.proviorigins.content.registries.POBlocks;
 
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
@@ -28,6 +28,6 @@ public class FeaturesConfigured {
     public static void buildFeatures (Registerable<ConfiguredFeature<?,?>> context) {
         register(context, LILY_OF_THE_VOID, Feature.FLOWER,
             new RandomPatchFeatureConfig(96, 7, 4,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.LILY_OF_THE_VOID)))));
+                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(POBlocks.LILY_OF_THE_VOID)))));
     }
 }

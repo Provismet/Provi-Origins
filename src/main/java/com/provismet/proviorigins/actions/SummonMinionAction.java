@@ -3,7 +3,7 @@ package com.provismet.proviorigins.actions;
 import java.util.function.Consumer;
 
 import com.provismet.proviorigins.content.entities.MinionEntity;
-import com.provismet.proviorigins.content.registries.Entities;
+import com.provismet.proviorigins.content.registries.POEntities;
 import com.provismet.proviorigins.powers.Powers;
 
 import io.github.apace100.apoli.data.ApoliDataTypes;
@@ -38,7 +38,7 @@ public class SummonMinionAction {
 
             final Consumer<Pair<Entity, Entity>> bientityAction = data.get(Powers.BIENTITY_ACTION);
 
-            MinionEntity minion = new MinionEntity(Entities.MINION, world);
+            MinionEntity minion = new MinionEntity(POEntities.MINION, world);
             minion.setOwner(living);
             minion.setTexture(texture);
             minion.setFollowOwner(shouldFollow);

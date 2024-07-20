@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.provismet.proviorigins.content.registries.StatusEffects;
+import com.provismet.proviorigins.content.registries.POStatusEffects;
 import com.provismet.proviorigins.powers.ActionOnCriticalHitPower;
 import com.provismet.proviorigins.powers.ActionOnGainExpPower;
 import com.provismet.proviorigins.powers.ActionOnGainLevelPower;
@@ -52,7 +52,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Inject(at=@At("RETURN"), method="getBlockBreakingSpeed", cancellable=true)
     private void preventBlockBreakWhenSleeping (BlockState block, CallbackInfoReturnable<Float> cir) {
         PlayerEntity player = (PlayerEntity)(Object)this;
-        if (player.hasStatusEffect(StatusEffects.SLEEP)) cir.setReturnValue(0f);
+        if (player.hasStatusEffect(POStatusEffects.SLEEP)) cir.setReturnValue(0f);
     }
 
     // Action On Gain Level Power

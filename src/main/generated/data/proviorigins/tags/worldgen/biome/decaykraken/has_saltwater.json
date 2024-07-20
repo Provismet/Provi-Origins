@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#proviorigins:decaykraken/irrelevant_salinity",
+      "required": false
+    },
+    "minecraft:stony_shore",
+    {
+      "id": "#c:beach",
+      "required": false
+    },
+    {
+      "id": "#c:ocean",
+      "required": false
+    },
+    {
+      "id": "terralith:alpha_islands",
+      "required": false
+    },
+    {
+      "id": "terralith:alpha_islands_winter",
+      "required": false
+    },
+    {
+      "id": "terralith:mirage_isles",
+      "required": false
+    }
+  ]
+}

@@ -2,7 +2,7 @@ package com.provismet.proviorigins.content.entities.renderers;
 
 import com.provismet.proviorigins.content.entities.CloneEntity;
 import com.provismet.proviorigins.content.entities.models.CloneEntityModel;
-import com.provismet.proviorigins.content.registries.ModelLayerRegistry;
+import com.provismet.proviorigins.content.registries.POModelLayerRegistry;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -23,10 +23,10 @@ public class CloneEntityRenderer<T extends CloneEntity> extends BipedEntityRende
     private static final Identifier DEFAULT_STEVE = new Identifier("minecraft", "textures/entity/steve.png");
 
     public CloneEntityRenderer (Context context, boolean slimArms) {
-        super(context, new CloneEntityModel<>(context.getPart(slimArms ? ModelLayerRegistry.CLONE_SLIM_MODEL_LAYER : ModelLayerRegistry.CLONE_MODEL_LAYER), slimArms), 0.5f);
+        super(context, new CloneEntityModel<>(context.getPart(slimArms ? POModelLayerRegistry.CLONE_SLIM_MODEL_LAYER : POModelLayerRegistry.CLONE_MODEL_LAYER), slimArms), 0.5f);
 
-        BipedEntityModel<T> inner = new BipedEntityModel<>(context.getPart(slimArms ? ModelLayerRegistry.CLONE_SLIM_INNER_LAYER : ModelLayerRegistry.CLONE_INNER_LAYER));
-        BipedEntityModel<T> outer = new BipedEntityModel<>(context.getPart(slimArms ? ModelLayerRegistry.CLONE_SLIM_OUTER_LAYER : ModelLayerRegistry.CLONE_OUTER_LAYER));
+        BipedEntityModel<T> inner = new BipedEntityModel<>(context.getPart(slimArms ? POModelLayerRegistry.CLONE_SLIM_INNER_LAYER : POModelLayerRegistry.CLONE_INNER_LAYER));
+        BipedEntityModel<T> outer = new BipedEntityModel<>(context.getPart(slimArms ? POModelLayerRegistry.CLONE_SLIM_OUTER_LAYER : POModelLayerRegistry.CLONE_OUTER_LAYER));
         this.addFeature(new ArmorFeatureRenderer<>(this, inner, outer, context.getModelManager()));
         this.addFeature(new StuckArrowsFeatureRenderer<>(context, this));
         this.addFeature(new StuckStingersFeatureRenderer<>(this));

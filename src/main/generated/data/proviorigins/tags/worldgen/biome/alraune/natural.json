@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#c:forest",
+      "required": false
+    },
+    {
+      "id": "#c:jungle",
+      "required": false
+    },
+    {
+      "id": "#c:floral",
+      "required": false
+    },
+    {
+      "id": "#c:vegetation_dense",
+      "required": false
+    },
+    {
+      "id": "#proviorigins:alraune/always_grow",
+      "required": false
+    }
+  ]
+}

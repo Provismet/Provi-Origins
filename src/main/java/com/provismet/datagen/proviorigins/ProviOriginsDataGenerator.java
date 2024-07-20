@@ -1,6 +1,5 @@
 package com.provismet.datagen.proviorigins;
 
-import com.provismet.proviorigins.content.world.WorldGenerator;
 import com.provismet.proviorigins.content.world.features.FeaturesConfigured;
 import com.provismet.proviorigins.content.world.features.FeaturesPlaced;
 
@@ -15,11 +14,19 @@ public class ProviOriginsDataGenerator implements DataGeneratorEntrypoint {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
         pack.addProvider(WorldGenerator::new);
         pack.addProvider(RecipeGenerator::new);
+        pack.addProvider(LanguageGenerator::new);
+        pack.addProvider(LanguageGeneratorUK::new);
+        pack.addProvider(ItemTagGenerator::new);
+        pack.addProvider(EntityTypeTagGenerator::new);
+        pack.addProvider(BlockTagGenerator::new);
+        pack.addProvider(BiomeTagGenerator::new);
+        pack.addProvider(LootTableGenerator::new);
+        pack.addProvider(ModelGenerator::new);
     }
     
     @Override
-    public void buildRegistry(RegistryBuilder registryBuilder) {
-        registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, FeaturesConfigured::buildFeatures); // VSCode says this line is an error in the editor, but the datagen gradle task does execute with no issue.
+    public void buildRegistry (RegistryBuilder registryBuilder) {
+        registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, FeaturesConfigured::buildFeatures);
         registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, FeaturesPlaced::buildPlacedFeatures);
     }
 }

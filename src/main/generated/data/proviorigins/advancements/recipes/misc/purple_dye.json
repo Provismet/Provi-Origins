@@ -34,9 +34,9 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_purple_dye",
-      "has_lily_of_the_void",
-      "has_the_recipe"
+      "has_lily_of_the_void"
     ]
   ],
   "rewards": {

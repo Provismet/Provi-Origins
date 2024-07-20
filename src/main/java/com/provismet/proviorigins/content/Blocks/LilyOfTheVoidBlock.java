@@ -1,10 +1,10 @@
 package com.provismet.proviorigins.content.blocks;
 
 import com.provismet.proviorigins.content.DamageTypes;
-import com.provismet.proviorigins.content.registries.Particles;
-import com.provismet.proviorigins.content.registries.StatusEffects;
-import com.provismet.proviorigins.extras.Tags;
+import com.provismet.proviorigins.content.registries.POParticles;
+import com.provismet.proviorigins.content.registries.POStatusEffects;
 
+import com.provismet.proviorigins.utility.tags.POBlockTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FlowerBlock;
 import net.minecraft.block.ShapeContext;
@@ -21,12 +21,12 @@ import net.minecraft.world.World;
 
 public class LilyOfTheVoidBlock extends FlowerBlock {
     public LilyOfTheVoidBlock (Settings settings) {
-        super(StatusEffects.VOID_CORRUPTION, 8, settings);
+        super(POStatusEffects.VOID_CORRUPTION, 8, settings);
     }
     
     @Override
     protected boolean canPlantOnTop (BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isIn(Tags.Blocks.VOID_PLANTABLE);
+        return floor.isIn(POBlockTags.VOID_PLANTABLE);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class LilyOfTheVoidBlock extends FlowerBlock {
         
         if (random.nextDouble() < 0.3) {
 
-            world.addParticle(Particles.LILY_PETAL,
+            world.addParticle(POParticles.LILY_PETAL,
                 x + random.nextDouble() / 5.0,
                 (double)pos.getY() + (0.5 - random.nextDouble()),
                 z + random.nextDouble() / 5.0,
@@ -54,7 +54,7 @@ public class LilyOfTheVoidBlock extends FlowerBlock {
         if (world.isClient || world.getDifficulty() == Difficulty.PEACEFUL) return;
 
         if (entity instanceof LivingEntity living && !living.isInvulnerableTo(living.getDamageSources().create(DamageTypes.VOID_CORRUPTION))) {
-            living.addStatusEffect(new StatusEffectInstance(StatusEffects.VOID_CORRUPTION, 50));
+            living.addStatusEffect(new StatusEffectInstance(POStatusEffects.VOID_CORRUPTION, 50));
         }
     }
 }

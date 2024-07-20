@@ -3,15 +3,15 @@
     "badges": [
         {
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "power.proviorigins.faemoth/faerie_dust.badge1"
+            "text": "power.proviorigins.faemoth/faerie_dust.badge.1"
         },
         {
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "power.proviorigins.faemoth/faerie_dust.badge2"
+            "text": "power.proviorigins.faemoth/faerie_dust.badge.2"
         },
         {
             "sprite": "origins:textures/gui/badge/info.png",
-            "text": "power.proviorigins.faemoth/faerie_dust.badge3"
+            "text": "power.proviorigins.faemoth/faerie_dust.badge.3"
         },
         {
             "type": "origins:crafting_recipe",

@@ -3,8 +3,8 @@ package com.provismet.proviorigins.powers;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.provismet.lilylib.util.MoreMath.RightAngledTriangle;
 import com.provismet.proviorigins.ProviOriginsMain;
-import com.provismet.proviorigins.extras.RightAngledTriangle;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.data.ApoliDataTypes;

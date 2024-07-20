@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#c:in_nether",
+      "required": false
+    },
+    {
+      "id": "#c:in_the_end",
+      "required": false
+    },
+    "minecraft:the_void",
+    "minecraft:mushroom_fields",
+    {
+      "id": "#terralith:skylands",
+      "required": false
+    }
+  ]
+}

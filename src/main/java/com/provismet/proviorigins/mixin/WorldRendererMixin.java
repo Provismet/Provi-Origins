@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.provismet.proviorigins.content.registries.StatusEffects;
+import com.provismet.proviorigins.content.registries.POStatusEffects;
 
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.WorldRenderer;
@@ -17,7 +17,7 @@ public abstract class WorldRendererMixin {
     @Inject(at=@At("RETURN"), method="hasBlindnessOrDarkness", cancellable=true)
     private void checkForSleep (Camera camera, CallbackInfoReturnable<Boolean> cir) {
         if (camera.getFocusedEntity() instanceof LivingEntity living) {
-            if (living.hasStatusEffect(StatusEffects.SLEEP)) cir.setReturnValue(true);
+            if (living.hasStatusEffect(POStatusEffects.SLEEP)) cir.setReturnValue(true);
         }
     }
 }

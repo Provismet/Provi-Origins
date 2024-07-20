@@ -4,7 +4,7 @@ import org.joml.Vector3f;
 
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.provismet.proviorigins.content.registries.Particles;
+import com.provismet.proviorigins.content.registries.POParticles;
 
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.particle.AbstractDustParticleEffect;
@@ -35,6 +35,6 @@ public class FlowerParticleEffect extends AbstractDustParticleEffect {
 
     @Override
     public ParticleType<FlowerParticleEffect> getType () {
-        return Particles.FLOWER;
+        return POParticles.FLOWER;
     }
 }

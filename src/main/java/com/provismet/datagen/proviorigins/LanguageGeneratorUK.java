@@ -1,0 +1,23 @@
+package com.provismet.datagen.proviorigins;
+
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+
+public class LanguageGeneratorUK extends FabricLanguageProvider {
+    protected LanguageGeneratorUK (FabricDataOutput dataOutput) {
+        super(dataOutput, "en_gb");
+    }
+
+    @Override
+    public void generateTranslations (TranslationBuilder translationBuilder) {
+        translationBuilder.add("item.proviorigins.crystalliser_icon", "Crystalliser Origin Icon");
+
+        LanguageGenerator.addTooltip(translationBuilder, "alraune", "super_fertiliser", "§8A super effective fertiliser.");
+
+        translationBuilder.add("power.proviorigins.drakling.chain_crafting.description", "You can craft chainmail armour.");
+        translationBuilder.add("power.proviorigins.drakling.weak_armour.description", "Your newfound strength allows you to wear stronger armour, but your bodily heat loosens the material and makes it weaker than normal.");
+        translationBuilder.add("power.proviorigins.jellysculk.catalyse.name", "Catalyser");
+        translationBuilder.add("power.proviorigins.alraune.summon_plant.badge.2", "Flower Sprites\n- Will take damage if not placed on plantable blocks such as dirt or grass.\n- Will die after 1200 ticks unless fed with a super fertiliser such as dragon breath.");
+        translationBuilder.add("power.proviorigins.crystalliser.name", "Crystalliser");
+    }
+}

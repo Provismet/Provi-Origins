@@ -6,6 +6,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 
 public class RendererRegistry {
     public static void register () {
-        EntityRendererRegistry.register(Entities.MINION, MinionEntityRenderer::new);
+        EntityRendererRegistry.register(POEntities.MINION, MinionEntityRenderer::new);
     }
 }

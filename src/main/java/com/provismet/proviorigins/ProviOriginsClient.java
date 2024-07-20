@@ -2,9 +2,9 @@ package com.provismet.proviorigins;
 
 import org.lwjgl.glfw.GLFW;
 
-import com.provismet.proviorigins.content.registries.BlockRenderLayers;
-import com.provismet.proviorigins.content.registries.ModelLayerRegistry;
-import com.provismet.proviorigins.content.registries.ParticleFactories;
+import com.provismet.proviorigins.content.registries.POBlockRenderLayers;
+import com.provismet.proviorigins.content.registries.POModelLayerRegistry;
+import com.provismet.proviorigins.content.registries.POParticleFactories;
 import com.provismet.proviorigins.content.registries.RendererRegistry;
 import com.provismet.proviorigins.extras.SleepFogModifier;
 
@@ -28,12 +28,12 @@ public class ProviOriginsClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient () {
-        ModelLayerRegistry.register();
+        POModelLayerRegistry.register();
         RendererRegistry.register();
-        BlockRenderLayers.register();
+        POBlockRenderLayers.register();
 
         BackgroundRenderer.FOG_MODIFIERS.add(0, new SleepFogModifier());
 
-        ParticleFactories.register();
+        POParticleFactories.register();
     }
 }

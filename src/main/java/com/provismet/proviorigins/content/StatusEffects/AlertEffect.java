@@ -1,6 +1,6 @@
 package com.provismet.proviorigins.content.statusEffects;
 
-import com.provismet.proviorigins.content.registries.StatusEffects;
+import com.provismet.proviorigins.content.registries.POStatusEffects;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -14,6 +14,6 @@ public class AlertEffect extends StatusEffect {
     @Override
     public void onApplied (LivingEntity entity, int amplifier) {
         super.onApplied(entity, amplifier);
-        if (entity.hasStatusEffect(StatusEffects.SLEEP)) entity.removeStatusEffect(StatusEffects.SLEEP);
+        if (entity.hasStatusEffect(POStatusEffects.SLEEP)) entity.removeStatusEffect(POStatusEffects.SLEEP);
     }
 }
