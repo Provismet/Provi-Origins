@@ -1,6 +1,6 @@
 {
-    "name": {"translate": "power.proviorigins.alraune/summon_plant.name"},
-    "description": {"translate": "power.proviorigins.alraune/summon_plant.description"},
+    "name": "power.proviorigins.alraune/summon_plant.name",
+    "description": "power.proviorigins.alraune/summon_plant.description",
     "type": "origins:multiple",
     "badges": [
         {

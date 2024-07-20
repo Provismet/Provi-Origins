@@ -84,6 +84,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
+    modImplementation "com.github.apace100:apoli:v${project.apoli_version}" // Older Origins doesn't use API for Apoli.
 	modCompileOnly "maven.modrinth:lambdynamiclights:${project.dynlights_version}"
 
     modImplementation "com.github.Provismet:LilyLib:${project.lilylib_version}"

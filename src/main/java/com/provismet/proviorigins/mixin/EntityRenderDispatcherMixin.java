@@ -56,7 +56,7 @@ public abstract class EntityRenderDispatcherMixin {
         if (entity instanceof CloneEntity clone) {
             if (clone.isOwned()) {
                 try {
-                    String modelType = MinecraftClient.getInstance().getNetworkHandler().getPlayerListEntry(clone.getOwnerUuid()).getSkinTextures().model().getName();
+                    String modelType = MinecraftClient.getInstance().getNetworkHandler().getPlayerListEntry(clone.getOwnerUuid()).getModel();
                     EntityRenderer<? super T> renderer = (EntityRenderer<? super T>) cloneRenderers.get(modelType);
                     cir.setReturnValue(renderer);
                 }
