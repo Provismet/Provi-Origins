@@ -33,13 +33,27 @@ version = project.mod_version + "+" + project.minecraft_version
 group = project.maven_group
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
-	maven {
-        name = "Ladysnake Libs"
+    mavenLocal()
+    mavenCentral()
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+
+        filter {
+            includeGroup "maven.modrinth"
+        }
+
+    }
+    maven {
+        name = "QuiltMC"
+        url = "https://maven.quiltmc.org/repository/release"
+    }
+    maven {
+        name = 'Ladysnake Mods'
         url = 'https://maven.ladysnake.org/releases'
     }
     maven {
@@ -54,34 +68,10 @@ repositories {
             includeGroup "com.jamieswhiteshirt"
         }
     }
-    maven {
-		url "https://masa.dy.fi/maven"
-	}
-    maven {
-        url "https://jitpack.io"
-    }
-    maven {
-        url "https://maven.shedaniel.me/"
-    }
-    maven {
-        url "https://maven.terraformersmc.com/"
-    }
-    maven {
-		name = "QuiltMC"
-		url = "https://maven.quiltmc.org/repository/release"
-	}
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = "Modrinth"
-                url = "https://api.modrinth.com/maven"
-            }
-        }
-        filter {
-            includeGroup "maven.modrinth"
-        }
-    }
-    mavenLocal()
+    maven { url "https://masa.dy.fi/maven" }
+    maven { url "https://jitpack.io" }
+    maven { url "https://maven.shedaniel.me/" }
+    maven { url "https://maven.terraformersmc.com/" }
 }
 
 dependencies {
