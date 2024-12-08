@@ -128,12 +128,12 @@ public class ActionOnDetectVibrationPower extends Power implements Vibrations {
 
         @Override
         public void accept (ServerWorld world, BlockPos pos, GameEvent event, Entity entity, Entity sourceEntity, float distance) {
-            if (sourceEntity != null && sourceEntity instanceof LivingEntity) {
+            if (sourceEntity instanceof LivingEntity) {
                 if (shouldExecuteFor(sourceEntity)) {
                     bientityAction.accept(new Pair<>(sourceEntity, entity));
                 }
             }
-            else if (entity != null && entity instanceof LivingEntity) {
+            else if (entity instanceof LivingEntity) {
                 if (shouldExecuteFor(entity)) {
                     bientityAction.accept(new Pair<>(entity, entity));
                 }

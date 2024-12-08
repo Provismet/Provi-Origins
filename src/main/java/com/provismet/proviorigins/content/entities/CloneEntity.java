@@ -67,8 +67,8 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
     private int maxTicks;
 
     private final MeleeAttackGoal MELEE_ATTACK = new MeleeAttackGoal(this, COMBAT_SPEED, false);
-    private final BowAttackGoal<CloneEntity> RANGED_ATTACK = new BowAttackGoal<CloneEntity>(this, COMBAT_SPEED, 20, SHOOTING_RANGE);
-    private final CrossbowAttackGoal<CloneEntity> CROSSBOW_ATTACK = new CrossbowAttackGoal<CloneEntity>(this, COMBAT_SPEED, SHOOTING_RANGE);
+    private final BowAttackGoal<CloneEntity> RANGED_ATTACK = new BowAttackGoal<>(this, COMBAT_SPEED, 20, SHOOTING_RANGE);
+    private final CrossbowAttackGoal<CloneEntity> CROSSBOW_ATTACK = new CrossbowAttackGoal<>(this, COMBAT_SPEED, SHOOTING_RANGE);
 
     private static final TrackedData<Optional<UUID>> OWNER_UUID = DataTracker.registerData(CloneEntity.class, TrackedDataHandlerRegistry.OPTIONAL_UUID);
     private static final TrackedData<Boolean> SITTING = DataTracker.registerData(CloneEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -114,7 +114,7 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
 
         this.targetSelector.add(0, new DefendOwnerGoal(this));
         this.targetSelector.add(1, new FightForOwnerGoal(this));
-        this.targetSelector.add(2, new RevengeGoal(this, new Class[0]));
+        this.targetSelector.add(2, new RevengeGoal(this));
     }
 
     public static DefaultAttributeContainer.Builder createCloneAttributes () {
@@ -167,16 +167,14 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
         return this.dataTracker.get(OWNER_UUID).isPresent();
     }
 
-    @Nullable
     @Override
-    public void setOwnerUUID (UUID uuid) {
+    public void setOwnerUUID (@Nullable UUID uuid) {
         if (uuid == null) this.dataTracker.set(OWNER_UUID, Optional.empty());
         else this.dataTracker.set(OWNER_UUID, Optional.of(uuid));
     }
 
-    @Nullable
     @Override
-    public void setOwner (LivingEntity owner) {
+    public void setOwner (@Nullable LivingEntity owner) {
         if (!(owner instanceof PlayerEntity)) return;
 
         ExtraTameable.super.setOwner(owner);
@@ -186,8 +184,7 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
     @Override
     public UUID getOwnerUuid () {
         Optional<UUID> uuid = this.dataTracker.get(OWNER_UUID);
-        if (uuid.isEmpty()) return null;
-        else return uuid.get();
+        return uuid.orElse(null);
     }
 
     @Nullable
@@ -314,7 +311,7 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
             (this.getScoreboardTeam() != null && target.getScoreboardTeam() != null && this.getScoreboardTeam().isEqual(target.getScoreboardTeam())))
                 return false;
         else if (target instanceof Tameable tameable) {
-            if (tameable.getOwner() == this.getOwner()) return false;
+            return tameable.getOwner() != this.getOwner();
         }
         return true;
     }

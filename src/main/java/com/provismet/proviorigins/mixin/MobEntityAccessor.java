@@ -10,5 +10,5 @@ import net.minecraft.item.ItemStack;
 @Mixin(MobEntity.class)
 public interface MobEntityAccessor {
     @Invoker("disablePlayerShield")
-    public void invokeDisablePlayerShield (PlayerEntity player, ItemStack mobStack, ItemStack playerStack);
+    void invokeDisablePlayerShield (PlayerEntity player, ItemStack mobStack, ItemStack playerStack);
 }

@@ -38,20 +38,20 @@ public class POItems {
 
     public static final BlockItem LILY_OF_THE_VOID = new BlockItem(POBlocks.LILY_OF_THE_VOID, new FabricItemSettings());
 
+    public static final Item ICON_LILY_OF_THE_VOID = registerItemIcon("lily_of_the_void");
+    public static final Item ICON_KRAKEN_OF_DECAY = registerItemIcon("kraken_of_decay");
+    public static final Item ICON_JELLY_SCULK = registerItemIcon("jelly");
+    public static final Item ICON_DRAKLING = registerItemIcon("drakling");
+    public static final Item ICON_DRAKE = registerItemIcon("drake");
+    public static final Item ICON_SPLINTER = registerItemIcon("splinter");
+    public static final Item ICON_FAERIE_MOTH = registerItemIcon("fae_moth");
+    public static final Item ICON_ALRAUNE = registerItemIcon("alraune");
+    public static final Item ICON_HOMUNCULUS = registerItemIcon("homunculus");
+    public static final Item ICON_CRYSTALLISER = registerItemIcon("crystalliser");
+
     public static void register () {
         register(SOUL_LAMP, "kraken_soul_lantern");
         register(SOLID_LANTERN, "solid_lantern");
         register(LILY_OF_THE_VOID, "lily_of_the_void", ItemGroups.NATURAL);
-
-        registerItemIcon("lily_of_the_void");
-        registerItemIcon("kraken_of_decay");
-        registerItemIcon("jelly");
-        registerItemIcon("drakling");
-        registerItemIcon("drake");
-        registerItemIcon("splinter");
-        registerItemIcon("fae_moth");
-        registerItemIcon("alraune");
-        registerItemIcon("homunculus");
-        registerItemIcon("crystalliser");
     }
 }

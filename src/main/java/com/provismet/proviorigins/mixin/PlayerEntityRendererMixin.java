@@ -26,9 +26,8 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
     protected PlayerEntityRendererMixin (Context ctx, PlayerEntityModel<AbstractClientPlayerEntity> model, float shadowRadius) {
         super(ctx, model, shadowRadius);
     }
-    
-    @SuppressWarnings("resource")
-    @Inject(at=@At("TAIL"), method="render")
+
+    @Inject(at=@At("TAIL"), method="render(Lnet/minecraft/client/network/AbstractClientPlayerEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V")
     public void addMirrors (AbstractClientPlayerEntity livingEntity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light, CallbackInfo info) {
         List<IllusionPower> mirrors = PowerHolderComponent.getPowers(livingEntity, IllusionPower.class);
         if (!mirrors.isEmpty()) {
@@ -44,7 +43,7 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
         }
     }
 
-    @Inject(at=@At("HEAD"), method="render")
+    @Inject(at=@At("HEAD"), method="render(Lnet/minecraft/client/network/AbstractClientPlayerEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V")
     public void displaceRider (AbstractClientPlayerEntity livingEntity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light, CallbackInfo info) {
         if (livingEntity.hasVehicle() && livingEntity.getVehicle() instanceof PlayerEntity mountPlayer) {
             matrixStack.translate(0, -(0.222222 * livingEntity.getHeight()), 0);

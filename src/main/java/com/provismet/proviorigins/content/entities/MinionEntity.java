@@ -119,9 +119,8 @@ public class MinionEntity extends MobEntity implements ExtraTameable, Temporary 
         }
     }
 
-    @Nullable
     @Override
-    public void setOwnerUUID (UUID uuid) {
+    public void setOwnerUUID (@Nullable UUID uuid) {
         if (uuid == null) this.dataTracker.set(OWNER_UUID, Optional.empty());
         else this.dataTracker.set(OWNER_UUID, Optional.of(uuid));
     }
@@ -130,8 +129,7 @@ public class MinionEntity extends MobEntity implements ExtraTameable, Temporary 
     @Override
     public UUID getOwnerUuid () {
         Optional<UUID> uuid = this.dataTracker.get(OWNER_UUID);
-        if (uuid.isEmpty()) return null;
-        else return uuid.get();
+        return uuid.orElse(null);
     }
 
     @Override

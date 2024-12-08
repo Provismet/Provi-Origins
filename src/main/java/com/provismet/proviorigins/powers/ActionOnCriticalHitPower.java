@@ -24,8 +24,8 @@ public class ActionOnCriticalHitPower extends Power {
     }
 
     public void tryAction (Entity target) {
-        if (bientityCondition == null || bientityCondition.test(new Pair<Entity,Entity>(this.entity, target))) {
-            bientityAction.accept(new Pair<Entity,Entity>(this.entity, target));
+        if (bientityCondition == null || bientityCondition.test(new Pair<>(this.entity, target))) {
+            bientityAction.accept(new Pair<>(this.entity, target));
         }
     }
 

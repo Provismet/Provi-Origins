@@ -26,8 +26,7 @@ public abstract class MobEntityRendererMixin extends LivingEntityRenderer<MobEnt
         super(ctx, model, shadowRadius);
     }
 
-    @SuppressWarnings("resource")
-    @Inject(at=@At("HEAD"), method="render")
+    @Inject(at=@At("HEAD"), method="render(Lnet/minecraft/entity/mob/MobEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V")
     public void addMirrors (MobEntity livingEntity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light, CallbackInfo info) {
         List<IllusionPower> mirrors = PowerHolderComponent.getPowers(livingEntity, IllusionPower.class);
         if (!mirrors.isEmpty()) {

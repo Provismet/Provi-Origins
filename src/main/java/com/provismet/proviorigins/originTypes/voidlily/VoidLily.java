@@ -1,6 +1,6 @@
 package com.provismet.proviorigins.originTypes.voidlily;
 
-public class VoidLily {    
+public abstract class VoidLily {
     /*
      * Mimicry Value Cheat Sheet
      *  0 : Normal (Poison on Hit)
