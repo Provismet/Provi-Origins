@@ -4,6 +4,7 @@ import java.util.EnumSet;
 import java.util.Optional;
 import java.util.UUID;
 
+import net.minecraft.server.world.ServerWorld;
 import org.jetbrains.annotations.Nullable;
 
 import com.provismet.proviorigins.extras.ExtraTameable;
@@ -86,8 +87,9 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
         this.updateWeaponGoals();
         this.setCanPickUpLoot(false);
 
-        if (this.getScoreboardTeam() == null && !(this.getOwner() == null) && this.getOwner().getScoreboardTeam() != null && this.getOwner().getScoreboardTeam() instanceof Team team) {
-            this.getServer().getScoreboard().addPlayerToTeam(this.getEntityName(), team);
+        if (this.getWorld() instanceof ServerWorld serverWorld && this.getScoreboardTeam() == null && this.getOwner() != null && this.getOwner().getScoreboardTeam() != null) {
+            Team team = this.getOwner().getScoreboardTeam();
+            serverWorld.getScoreboard().addScoreHolderToTeam(this.getNameForScoreboard(), team);
         }
 
         return data;

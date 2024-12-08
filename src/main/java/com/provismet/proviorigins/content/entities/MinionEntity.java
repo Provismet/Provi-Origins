@@ -3,6 +3,7 @@ package com.provismet.proviorigins.content.entities;
 import java.util.Optional;
 import java.util.UUID;
 
+import net.minecraft.server.world.ServerWorld;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 
@@ -78,8 +79,9 @@ public class MinionEntity extends MobEntity implements ExtraTameable, Temporary 
     public EntityData initialize (ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData, NbtCompound entityNbt) {
         EntityData data = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
 
-        if (this.getScoreboardTeam() == null && this.getOwner() != null && this.getOwner().getScoreboardTeam() != null && this.getOwner().getScoreboardTeam() instanceof Team team) {
-            this.getServer().getScoreboard().addPlayerToTeam(this.getEntityName(), team);
+        if (this.getWorld() instanceof ServerWorld serverWorld && this.getScoreboardTeam() == null && this.getOwner() != null && this.getOwner().getScoreboardTeam() != null) {
+            Team team = this.getOwner().getScoreboardTeam();
+            serverWorld.getScoreboard().addScoreHolderToTeam(this.getNameForScoreboard(), team);
         }
 
         return data;

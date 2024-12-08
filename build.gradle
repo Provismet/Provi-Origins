@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.6-SNAPSHOT'
+	id 'fabric-loom' version '1.9-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -49,14 +49,6 @@ repositories {
 
     }
     maven {
-        name = "QuiltMC"
-        url = "https://maven.quiltmc.org/repository/release"
-    }
-    maven {
-        name = 'Ladysnake Mods'
-        url = 'https://maven.ladysnake.org/releases'
-    }
-    maven {
         url = 'https://maven.cafeteria.dev'
         content {
             includeGroup 'net.adriantodt.fabricmc'
@@ -68,6 +60,9 @@ repositories {
             includeGroup "com.jamieswhiteshirt"
         }
     }
+    maven { url "https://maven.quiltmc.org/repository/release" }
+    maven { url "https://maven.ladysnake.org/releases" }
+    maven { url "https://maven.ladysnake.org/snapshots" }
     maven { url "https://masa.dy.fi/maven" }
     maven { url "https://jitpack.io" }
     maven { url "https://maven.shedaniel.me/" }
@@ -83,7 +78,7 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
+	modImplementation "io.github.apace100:origins-fabric:${project.origins_version}"
 	modCompileOnly "maven.modrinth:lambdynamiclights:${project.dynlights_version}"
 
     modImplementation "com.github.Provismet:LilyLib:${project.lilylib_version}"
@@ -123,6 +118,8 @@ jar {
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
+            version = project.mod_version + "-mc" + project.minecraft_version
+            artifactId = project.archives_base_name
 			from components.java
 		}
 	}
