@@ -14,7 +14,7 @@
     "issues": "https://github.com/Provismet/Provi-Origins/issues"
   },
 
-  "license": "Lily License",
+  "license": "Lily License v1.1",
   "icon": "assets/proviorigins/icon.png",
 
   "environment": "*",
