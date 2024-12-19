@@ -21,9 +21,9 @@ public abstract class EntityRendererMixin {
     @Inject(at=@At("HEAD"), method="getBlockLight", cancellable=true)
     public void makeEmissive (Entity entity, BlockPos pos, CallbackInfoReturnable<Integer> cir) {
         if (entity instanceof LivingEntity living) {
-            List<EmissivePower> emissives = PowerHolderComponent.getPowers(living, EmissivePower.class);
+            List<EmissivePower> emissives = PowerHolderComponent.getPowerTypes(living, EmissivePower.class);
             if (!emissives.isEmpty()) {
-                int max = emissives.get(0).light;
+                int max = emissives.getFirst().light;
                 for (EmissivePower p : emissives) {
                     if (p.light > max) max = p.light;
                 }

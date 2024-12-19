@@ -1,24 +1,44 @@
 package com.provismet.proviorigins.powers;
 
-import java.util.function.Consumer;
+import java.util.Optional;
 
+import com.provismet.proviorigins.registries.POPowerTypes;
+import com.provismet.proviorigins.utility.constants.FieldNames;
+import io.github.apace100.apoli.action.EntityAction;
+import io.github.apace100.apoli.condition.EntityCondition;
 import io.github.apace100.apoli.data.ApoliDataTypes;
-import io.github.apace100.apoli.power.Power;
-import io.github.apace100.apoli.power.PowerType;
-import io.github.apace100.apoli.power.factory.PowerFactory;
+import io.github.apace100.apoli.data.TypedDataObjectFactory;
+import io.github.apace100.apoli.power.PowerConfiguration;
+import io.github.apace100.apoli.power.type.PowerType;
 import io.github.apace100.apoli.util.Comparison;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
+import org.jetbrains.annotations.NotNull;
 
-public class ActionOnGainLevelPower extends Power {
-    private final Consumer<Entity> entityAction;
+public class ActionOnGainLevelPower extends PowerType {
+    private final EntityAction entityAction;
     private final Comparison comparison;
     private final int compareTo;
 
-    public ActionOnGainLevelPower (PowerType<?> type, LivingEntity entity, Consumer<Entity> entityAction, Comparison comparison, int compareTo) {
-        super(type, entity);
+    public static final TypedDataObjectFactory<ActionOnGainLevelPower> DATA_FACTORY = PowerType.createConditionedDataFactory(
+        new SerializableData()
+            .add(FieldNames.ENTITY_ACTION, EntityAction.DATA_TYPE)
+            .add(FieldNames.COMPARISON, ApoliDataTypes.COMPARISON, Comparison.GREATER_THAN_OR_EQUAL)
+            .add(FieldNames.COMPARE_TO, SerializableDataTypes.INT, 1),
+        (data, condition) -> new ActionOnGainLevelPower(
+            data.get(FieldNames.ENTITY_ACTION),
+            data.get(FieldNames.COMPARISON),
+            data.getInt(FieldNames.COMPARE_TO),
+            condition
+        ),
+        (powerType, data) -> data.instance()
+            .set(FieldNames.ENTITY_ACTION, powerType.entityAction)
+            .set(FieldNames.COMPARISON, powerType.comparison)
+            .set(FieldNames.COMPARE_TO, powerType.compareTo)
+    );
+
+    public ActionOnGainLevelPower (EntityAction entityAction, Comparison comparison, int compareTo, Optional<EntityCondition> condition) {
+        super(condition);
         this.entityAction = entityAction;
         this.comparison = comparison;
         this.compareTo = compareTo;
@@ -26,22 +46,12 @@ public class ActionOnGainLevelPower extends Power {
     
     public void execute (int experienceAmount) {
         if (this.comparison.compare(experienceAmount, compareTo)) {
-            this.entityAction.accept(this.entity);
+            this.entityAction.execute(this.getHolder());
         }
     }
 
-    @SuppressWarnings("rawtypes")
-    public static PowerFactory createPowerFactory () {
-        return new PowerFactory<>(Powers.identifier("action_on_gain_level"),
-            new SerializableData()
-                .add(Powers.ENTITY_ACTION, ApoliDataTypes.ENTITY_ACTION)
-                .add(Powers.COMPARISON, ApoliDataTypes.COMPARISON, Comparison.GREATER_THAN_OR_EQUAL)
-                .add(Powers.COMPARE_TO, SerializableDataTypes.INT, 1),
-            data -> (type, player) -> new ActionOnGainLevelPower(type, player,
-                data.get(Powers.ENTITY_ACTION),
-                data.get(Powers.COMPARISON),
-                data.getInt(Powers.COMPARE_TO)
-            )
-        ).allowCondition();
+    @Override
+    public @NotNull PowerConfiguration<?> getConfig () {
+        return POPowerTypes.ACTION_ON_GAIN_LEVEL;
     }
 }

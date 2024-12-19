@@ -1,40 +1,25 @@
 package com.provismet.proviorigins.conditions.bientity;
 
-import com.provismet.proviorigins.powers.Powers;
+import com.provismet.lilylib.util.Relations;
 
-import io.github.apace100.apoli.power.factory.condition.ConditionFactory;
-import io.github.apace100.calio.data.SerializableData;
+import com.provismet.proviorigins.registries.POBientityConditionTypes;
+import io.github.apace100.apoli.condition.ConditionConfiguration;
+import io.github.apace100.apoli.condition.type.BiEntityConditionType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.Tameable;
-import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.util.Pair;
+import org.jetbrains.annotations.NotNull;
 
-public class FriendlyCondition {
-    public static boolean condition (SerializableData.Instance data, Pair<Entity,Entity> pair) {
-        if (pair.getLeft() instanceof LivingEntity actor && pair.getRight() instanceof LivingEntity target) {
-            if (actor == target) return true;
-            if (actor instanceof Tameable tameable && tameable.getOwner() != null) {
-                if (tameable.getOwner() == target) return true; // One owns the other.
-                if (target instanceof Tameable tameable2 && tameable2.getOwner() != null) { // These next two are symmetrical conditions.
-                    if (tameable.getOwner() == tameable2.getOwner()) return true; // Same owner.
-                    if (FriendlyCondition.condition(data, new Pair<>(tameable.getOwner(), tameable2.getOwner()))) return true; // Owners are friendly to each other.
-                }
-                if (target == tameable.getOwner().getAttacker() || target == tameable.getOwner().getAttacking()) return false; // Help owner.
-            }
-            if (target instanceof Tameable tameable && tameable.getOwner() != null) {
-                if (tameable.getOwner() == actor) return true;
-                if (actor == tameable.getOwner().getAttacker() || actor == tameable.getOwner().getAttacking()) return false; // Help owner.
-            }
-            if (actor.getAttacker() == target || actor.getAttacking() == target || target.getAttacker() == actor || target.getAttacking() == actor) return false; // In combat with each other.
-            if (TeammateCondition.condition(data, pair)) return true;
-            if ((actor instanceof HostileEntity) != (target instanceof HostileEntity)) return false; // Only one is hostile.
-            return actor.getScoreboardTeam() == null && target.getScoreboardTeam() == null; // Neither is on a team.
+public class FriendlyCondition extends BiEntityConditionType {
+    @Override
+    public boolean test (Entity actor, Entity target) {
+        if (actor instanceof LivingEntity livingActor && target instanceof LivingEntity livingTarget) {
+            return Relations.isFriendly(livingActor, livingTarget);
         }
         return false;
     }
 
-    public static ConditionFactory<Pair<Entity,Entity>> getFactory () {
-        return new ConditionFactory<>(Powers.identifier("friendly"), new SerializableData(), FriendlyCondition::condition);
+    @Override
+    public @NotNull ConditionConfiguration<FriendlyCondition> getConfig () {
+        return POBientityConditionTypes.FRIENDLY;
     }
 }

@@ -26,7 +26,7 @@ public abstract class ProjectileEntityMixin extends Entity {
     @Inject(at=@At("HEAD"), method="onEntityHit")
     private void actionOnEvade (EntityHitResult hitResult, CallbackInfo info) {
         if (hitResult.getEntity() instanceof LivingEntity living) {
-            List<EvadeProjectilesPower> powers = PowerHolderComponent.getPowers(living, EvadeProjectilesPower.class);
+            List<EvadeProjectilesPower> powers = PowerHolderComponent.getPowerTypes(living, EvadeProjectilesPower.class);
             for (EvadeProjectilesPower powerInstance : powers) {
                 powerInstance.executeAction((ProjectileEntity)(Object)this);
             }

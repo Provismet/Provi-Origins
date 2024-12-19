@@ -4,14 +4,15 @@ import com.provismet.proviorigins.ProviOriginsMain;
 import com.provismet.proviorigins.content.blocks.LilyOfTheVoidBlock;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
 public class POBlocks {
-    public static final LilyOfTheVoidBlock LILY_OF_THE_VOID = new LilyOfTheVoidBlock(FabricBlockSettings.copy(net.minecraft.block.Blocks.LILY_OF_THE_VALLEY));
-    public static final Block POTTED_LILY_OF_THE_VOID = new FlowerPotBlock(LILY_OF_THE_VOID, FabricBlockSettings.copy(net.minecraft.block.Blocks.POTTED_LILY_OF_THE_VALLEY));
+    public static final LilyOfTheVoidBlock LILY_OF_THE_VOID = new LilyOfTheVoidBlock(AbstractBlock.Settings.copy(net.minecraft.block.Blocks.LILY_OF_THE_VALLEY));
+    public static final Block POTTED_LILY_OF_THE_VOID = new FlowerPotBlock(LILY_OF_THE_VOID, AbstractBlock.Settings.copy(net.minecraft.block.Blocks.POTTED_LILY_OF_THE_VALLEY));
 
     public static void register (Block block, String path) {
         Registry.register(Registries.BLOCK, ProviOriginsMain.identifier(path), block);

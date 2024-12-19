@@ -1,21 +1,39 @@
 package com.provismet.proviorigins.powers;
 
-import io.github.apace100.apoli.power.Power;
-import io.github.apace100.apoli.power.PowerType;
-import io.github.apace100.apoli.power.factory.PowerFactory;
+import com.provismet.proviorigins.registries.POPowerTypes;
+import io.github.apace100.apoli.condition.EntityCondition;
+import io.github.apace100.apoli.data.TypedDataObjectFactory;
+import io.github.apace100.apoli.power.PowerConfiguration;
+import io.github.apace100.apoli.power.type.PowerType;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
-import net.minecraft.entity.LivingEntity;
+import org.jetbrains.annotations.NotNull;
 
-public class ModifyDarknessPulsePower extends Power {
+import java.util.Optional;
+
+public class ModifyDarknessPulsePower extends PowerType {
     private static final String MULTIPLIER_LABEL = "multiplier";
     private static final String ADDITION_LABEL = "addition";
 
     private final float multiplier;
     private final float addition;
 
-    public ModifyDarknessPulsePower(PowerType<?> type, LivingEntity entity, float multiplier, float addition) {
-        super(type, entity);
+    public static final TypedDataObjectFactory<ModifyDarknessPulsePower> DATA_FACTORY = PowerType.createConditionedDataFactory(
+        new SerializableData()
+            .add(MULTIPLIER_LABEL, SerializableDataTypes.FLOAT, 1f)
+            .add(ADDITION_LABEL, SerializableDataTypes.FLOAT, 0f),
+        (data, condition) -> new ModifyDarknessPulsePower(
+            data.getFloat(MULTIPLIER_LABEL),
+            data.getFloat(ADDITION_LABEL),
+            condition
+        ),
+        (powerType, data) -> data.instance()
+            .set(MULTIPLIER_LABEL, powerType.multiplier)
+            .set(ADDITION_LABEL, powerType.addition)
+    );
+
+    public ModifyDarknessPulsePower (float multiplier, float addition, Optional<EntityCondition> condition) {
+        super(condition);
         this.multiplier = multiplier;
         this.addition = addition;
     }
@@ -24,16 +42,8 @@ public class ModifyDarknessPulsePower extends Power {
         return darknessModifier * this.multiplier + this.addition;
     }
 
-    @SuppressWarnings("rawtypes")
-    public static PowerFactory createPowerFactory () {
-        return new PowerFactory<>(Powers.identifier("modify_darkness_pulse"),
-            new SerializableData()
-                .add(MULTIPLIER_LABEL, SerializableDataTypes.FLOAT, 1f)
-                .add(ADDITION_LABEL, SerializableDataTypes.FLOAT, 0f),
-            data -> (type, player) -> new ModifyDarknessPulsePower(type, player,
-                data.getFloat(MULTIPLIER_LABEL),
-                data.getFloat(ADDITION_LABEL)
-            )
-        ).allowCondition();
+    @Override
+    public @NotNull PowerConfiguration<?> getConfig () {
+        return POPowerTypes.MODIFY_DARKNESS_PULSE;
     }
 }

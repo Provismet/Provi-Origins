@@ -30,7 +30,7 @@ public abstract class EntityMixin {
         if ((Object) this instanceof LivingEntity living) {
             if (!(living.getWorld() instanceof ServerWorld world)) return;
 
-            for (ActionOnDetectVibrationPower power : PowerHolderComponent.getPowers(living, ActionOnDetectVibrationPower.class)) {
+            for (ActionOnDetectVibrationPower power : PowerHolderComponent.getPowerTypes(living, ActionOnDetectVibrationPower.class)) {
                 callback.accept(power.eventHandler, world);
             }
         }
@@ -40,7 +40,7 @@ public abstract class EntityMixin {
     @ModifyVariable(at=@At("STORE"), ordinal=0, method="updatePassengerPosition(Lnet/minecraft/entity/Entity;Lnet/minecraft/entity/Entity$PositionUpdater;)V")
     private Vec3d adjustHeight (Vec3d position) {
         if ((Object) this instanceof LivingEntity living) {
-            List<ModifyPassengerHeightPower> powers = PowerHolderComponent.getPowers(living, ModifyPassengerHeightPower.class);
+            List<ModifyPassengerHeightPower> powers = PowerHolderComponent.getPowerTypes(living, ModifyPassengerHeightPower.class);
 
             if (!powers.isEmpty()) {
                 double offsetAdd = powers.get(0).offsetAdditive;
@@ -56,7 +56,7 @@ public abstract class EntityMixin {
     @Inject(at=@At("HEAD"), method="occludeVibrationSignals", cancellable=true)
     public void removeVibrations (CallbackInfoReturnable<Boolean> cir) {
         if ((Object)this instanceof LivingEntity livingEntity) {
-            if (!PowerHolderComponent.getPowers(livingEntity, OccludeVibrationsPower.class).isEmpty()) cir.setReturnValue(true);
+            if (!PowerHolderComponent.getPowerTypes(livingEntity, OccludeVibrationsPower.class).isEmpty()) cir.setReturnValue(true);
         }
     }
 }

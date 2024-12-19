@@ -1,6 +1,6 @@
 package com.provismet.proviorigins.content.blocks;
 
-import com.provismet.proviorigins.content.DamageTypes;
+import com.provismet.proviorigins.content.PODamageTypes;
 import com.provismet.proviorigins.content.registries.POParticles;
 import com.provismet.proviorigins.content.registries.POStatusEffects;
 
@@ -54,7 +54,7 @@ public class LilyOfTheVoidBlock extends FlowerBlock {
     public void onEntityCollision (BlockState state, World world, BlockPos pos, Entity entity) {
         if (world.isClient || world.getDifficulty() == Difficulty.PEACEFUL) return;
 
-        if (entity instanceof LivingEntity living && !living.isInvulnerableTo(living.getDamageSources().create(DamageTypes.VOID_CORRUPTION))) {
+        if (entity instanceof LivingEntity living && !living.isInvulnerableTo(PODamageTypes.VOID_CORRUPTION.createDamageSource(living.getDamageSources()))) {
             living.addStatusEffect(new StatusEffectInstance(POStatusEffects.VOID_CORRUPTION, 50));
         }
     }

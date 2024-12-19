@@ -56,28 +56,23 @@ public class MinionEntity extends MobEntity implements ExtraTameable, Temporary 
         this.setCustomNameVisible(false);
         this.maxLifeTime = 1200; // Default value, but will be immediately overridden by SummonMinionAction.
     }
-
-    @Override
-    public EntityView method_48926 () {
-        return this.getWorld();
-    }
     
     @Override
-    protected void initDataTracker () {
-        super.initDataTracker();
-        this.dataTracker.startTracking(OWNER_UUID, Optional.empty());
-        this.dataTracker.startTracking(TEXTURE_NAMESPACE, TEMPLATE_TEXTURE.getNamespace());
-        this.dataTracker.startTracking(TEXTURE_PATH, TEMPLATE_TEXTURE.getPath());
-        this.dataTracker.startTracking(FOLLOW_OWNER, false);
-        this.dataTracker.startTracking(FOLLOW_OWNER_OFFSET_X, 0f);
-        this.dataTracker.startTracking(FOLLOW_OWNER_OFFSET_Y, 0f);
-        this.dataTracker.startTracking(FOLLOW_OWNER_OFFSET_Z, 0f);
-        this.dataTracker.startTracking(SCALE, 1f);
+    protected void initDataTracker (DataTracker.Builder builder) {
+        super.initDataTracker(builder);
+        builder.add(OWNER_UUID, Optional.empty());
+        builder.add(TEXTURE_NAMESPACE, TEMPLATE_TEXTURE.getNamespace());
+        builder.add(TEXTURE_PATH, TEMPLATE_TEXTURE.getPath());
+        builder.add(FOLLOW_OWNER, false);
+        builder.add(FOLLOW_OWNER_OFFSET_X, 0f);
+        builder.add(FOLLOW_OWNER_OFFSET_Y, 0f);
+        builder.add(FOLLOW_OWNER_OFFSET_Z, 0f);
+        builder.add(SCALE, 1f);
     }
 
     @Override
-    public EntityData initialize (ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData, NbtCompound entityNbt) {
-        EntityData data = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    public EntityData initialize (ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData) {
+        EntityData data = super.initialize(world, difficulty, spawnReason, entityData);
 
         if (this.getWorld() instanceof ServerWorld serverWorld && this.getScoreboardTeam() == null && this.getOwner() != null && this.getOwner().getScoreboardTeam() != null) {
             Team team = this.getOwner().getScoreboardTeam();
@@ -146,7 +141,7 @@ public class MinionEntity extends MobEntity implements ExtraTameable, Temporary 
         try {
             this.setTexture(Identifier.tryParse(resourceLocation));            
         } catch (Exception e) {
-            ProviOriginsMain.LOGGER.error("Failed to apply texture " + resourceLocation + " to MinionEntity.", e);
+            ProviOriginsMain.LOGGER.error("Failed to apply texture {} to MinionEntity.", resourceLocation, e);
         }
     }
 
@@ -193,16 +188,6 @@ public class MinionEntity extends MobEntity implements ExtraTameable, Temporary 
     public void onTrackedDataSet (TrackedData<?> data) {
         if (SCALE.equals(data)) this.calculateDimensions();
         super.onTrackedDataSet(data);
-    }
-
-    @Override
-    public EntityDimensions getDimensions (EntityPose pose) {
-        return super.getDimensions(pose).scaled(this.getScale());
-    }
-
-    @Override
-    protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
-        return 0.5f * dimensions.height;
     }
 
     @Override
@@ -292,7 +277,7 @@ public class MinionEntity extends MobEntity implements ExtraTameable, Temporary 
     }
 
     @Override
-    public boolean canUsePortals () {
+    public boolean canUsePortals (boolean allowVehicles) {
         return false;
     }
 

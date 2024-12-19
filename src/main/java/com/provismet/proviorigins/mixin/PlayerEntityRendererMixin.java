@@ -29,9 +29,9 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
 
     @Inject(at=@At("TAIL"), method="render(Lnet/minecraft/client/network/AbstractClientPlayerEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V")
     public void addMirrors (AbstractClientPlayerEntity livingEntity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light, CallbackInfo info) {
-        List<IllusionPower> mirrors = PowerHolderComponent.getPowers(livingEntity, IllusionPower.class);
+        List<IllusionPower> mirrors = PowerHolderComponent.getPowerTypes(livingEntity, IllusionPower.class);
         if (!mirrors.isEmpty()) {
-            IllusionPower power = mirrors.get(0);
+            IllusionPower power = mirrors.getFirst();
             Vec3d[] offsets = power.getOffsets(MinecraftClient.getInstance().gameRenderer.getCamera().getPos());
 
             for (Vec3d offset : offsets) {
@@ -45,7 +45,7 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
 
     @Inject(at=@At("HEAD"), method="render(Lnet/minecraft/client/network/AbstractClientPlayerEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V")
     public void displaceRider (AbstractClientPlayerEntity livingEntity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light, CallbackInfo info) {
-        if (livingEntity.hasVehicle() && livingEntity.getVehicle() instanceof PlayerEntity mountPlayer) {
+        if (livingEntity.hasVehicle() && livingEntity.getVehicle() instanceof PlayerEntity) {
             matrixStack.translate(0, -(0.222222 * livingEntity.getHeight()), 0);
         }
     }

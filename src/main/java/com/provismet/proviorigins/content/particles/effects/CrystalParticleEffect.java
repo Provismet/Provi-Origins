@@ -1,5 +1,11 @@
 package com.provismet.proviorigins.content.particles.effects;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.network.RegistryByteBuf;
+import net.minecraft.network.codec.PacketCodec;
+import net.minecraft.network.codec.PacketCodecs;
+import net.minecraft.util.dynamic.Codecs;
 import org.joml.Vector3f;
 
 import com.mojang.brigadier.StringReader;
@@ -11,27 +17,21 @@ import net.minecraft.particle.AbstractDustParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleType;
 
-public class CrystalParticleEffect extends AbstractDustParticleEffect {
-    @SuppressWarnings("deprecation")
-    public static final ParticleEffect.Factory<CrystalParticleEffect> PARAMETERS_FACTORY = new ParticleEffect.Factory<CrystalParticleEffect>(){
+public record CrystalParticleEffect (Vector3f colour, float scale) implements ParticleEffect {
+    public static final MapCodec<CrystalParticleEffect> CODEC = RecordCodecBuilder.mapCodec(instance ->
+        instance.group(
+            Codecs.VECTOR_3F.fieldOf("colour").forGetter(effect -> effect.colour),
+            Codecs.POSITIVE_FLOAT.fieldOf("scale").forGetter(effect -> effect.scale)
+        ).apply(instance, CrystalParticleEffect::new)
+    );
 
-        @Override
-        public CrystalParticleEffect read (ParticleType<CrystalParticleEffect> particleType, StringReader stringReader) throws CommandSyntaxException {
-            Vector3f vector3f = AbstractDustParticleEffect.readColor(stringReader);
-            stringReader.expect(' ');
-            float f = stringReader.readFloat();
-            return new CrystalParticleEffect(vector3f, f);
-        }
-
-        @Override
-        public CrystalParticleEffect read (ParticleType<CrystalParticleEffect> particleType, PacketByteBuf packetByteBuf) {
-            return new CrystalParticleEffect(AbstractDustParticleEffect.readColor(packetByteBuf), packetByteBuf.readFloat());
-        }
-    };
-
-    public CrystalParticleEffect (Vector3f color, float scale) {
-        super(color, scale);
-    }
+    public static final PacketCodec<RegistryByteBuf, CrystalParticleEffect> PACKET_CODEC = PacketCodec.tuple(
+        PacketCodecs.VECTOR3F,
+        effect -> effect.colour,
+        PacketCodecs.FLOAT,
+        effect -> effect.scale,
+        CrystalParticleEffect::new
+    );
 
     @Override
     public ParticleType<CrystalParticleEffect> getType () {

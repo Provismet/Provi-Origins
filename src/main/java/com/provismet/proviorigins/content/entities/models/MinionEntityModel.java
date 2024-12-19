@@ -39,7 +39,7 @@ public class MinionEntityModel<T extends MinionEntity> extends EntityModel<T> {
 	}
 
 	@Override
-	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-		bone.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+	public void render (MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int colour) {
+		bone.render(matrices, vertices, light, overlay, colour);
 	}
 }

@@ -33,7 +33,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;addCritParticles(Lnet/minecraft/entity/Entity;)V", shift = At.Shift.AFTER), method = "attack(Lnet/minecraft/entity/Entity;)V")
     private void applyCritEffects (Entity target, CallbackInfo info) {
         PlayerEntity player = (PlayerEntity)(Object)this;
-        for (ActionOnCriticalHitPower critEffectPower : PowerHolderComponent.getPowers(player, ActionOnCriticalHitPower.class)) {
+        for (ActionOnCriticalHitPower critEffectPower : PowerHolderComponent.getPowerTypes(player, ActionOnCriticalHitPower.class)) {
             critEffectPower.tryAction(target);
         }
     }
@@ -43,7 +43,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     private boolean preventCrits (boolean shouldCrit) {
         if (shouldCrit) {
             PlayerEntity player = (PlayerEntity)(Object)this;
-            if (PowerHolderComponent.hasPower(player, PreventCriticalHitPower.class)) return false;
+            if (PowerHolderComponent.hasPowerType(player, PreventCriticalHitPower.class)) return false;
         }
         return shouldCrit;
     }
@@ -58,7 +58,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     // Action On Gain Level Power
     @Inject(at=@At("HEAD"), method="addExperienceLevels")
     private void executeOnLevel (int levels, CallbackInfo info) {
-        List<ActionOnGainLevelPower> powers = PowerHolderComponent.getPowers((PlayerEntity)(Object)this, ActionOnGainLevelPower.class);
+        List<ActionOnGainLevelPower> powers = PowerHolderComponent.getPowerTypes((PlayerEntity)(Object)this, ActionOnGainLevelPower.class);
         for (ActionOnGainLevelPower instance : powers) {
             instance.execute(levels);
         }
@@ -67,7 +67,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     // Action On Gain Experience Power
     @Inject(at=@At("HEAD"), method="addExperience")
     private void executeOnExp (int experience, CallbackInfo info) {
-        List<ActionOnGainExpPower> powers = PowerHolderComponent.getPowers((PlayerEntity)(Object)this, ActionOnGainExpPower.class);
+        List<ActionOnGainExpPower> powers = PowerHolderComponent.getPowerTypes((PlayerEntity)(Object)this, ActionOnGainExpPower.class);
         for (ActionOnGainExpPower instance : powers) {
             instance.execute(experience);
         }

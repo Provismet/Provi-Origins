@@ -4,7 +4,6 @@ import org.jetbrains.annotations.Nullable;
 
 import com.provismet.proviorigins.ProviOriginsMain;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -17,7 +16,7 @@ import net.minecraft.util.Rarity;
 
 public class POItems {
     private static Item registerItemIcon (String origin) {
-        return Registry.register(Registries.ITEM, ProviOriginsMain.identifier(origin + "_icon"), new Item(new FabricItemSettings().maxCount(64).rarity(Rarity.EPIC)));
+        return Registry.register(Registries.ITEM, ProviOriginsMain.identifier(origin + "_icon"), new Item(new Item.Settings().maxCount(64).rarity(Rarity.EPIC)));
     }
 
     private static void register (Item item, String path) {
@@ -33,10 +32,10 @@ public class POItems {
         }
     }
 
-    public static final Item SOUL_LAMP = new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE));
-    public static final Item SOLID_LANTERN = new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE));
+    public static final Item SOUL_LAMP = new Item(new Item.Settings().maxCount(1).rarity(Rarity.RARE));
+    public static final Item SOLID_LANTERN = new Item(new Item.Settings().maxCount(1).rarity(Rarity.RARE));
 
-    public static final BlockItem LILY_OF_THE_VOID = new BlockItem(POBlocks.LILY_OF_THE_VOID, new FabricItemSettings());
+    public static final BlockItem LILY_OF_THE_VOID = new BlockItem(POBlocks.LILY_OF_THE_VOID, new Item.Settings());
 
     public static final Item ICON_LILY_OF_THE_VOID = registerItemIcon("lily_of_the_void");
     public static final Item ICON_KRAKEN_OF_DECAY = registerItemIcon("kraken_of_decay");

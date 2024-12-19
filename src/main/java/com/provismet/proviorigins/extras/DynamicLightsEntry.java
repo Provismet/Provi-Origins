@@ -15,7 +15,7 @@ public class DynamicLightsEntry implements DynamicLightsInitializer {
     public void onInitializeDynamicLights () {
         DynamicLightHandlers.registerDynamicLightHandler(EntityType.PLAYER, entity -> {
             int light = 0;
-            List<EmissivePower> powers = PowerHolderComponent.getPowers(entity, EmissivePower.class);
+            List<EmissivePower> powers = PowerHolderComponent.getPowerTypes(entity, EmissivePower.class);
             for (EmissivePower power : powers) {
                 if (power.dynamicLight > light) light = power.dynamicLight;
             }
@@ -24,7 +24,7 @@ public class DynamicLightsEntry implements DynamicLightsInitializer {
 
         DynamicLightHandlers.registerDynamicLightHandler(POEntities.CLONE, entity -> {
             int light = 0;
-            List<EmissivePower> powers = PowerHolderComponent.getPowers(entity, EmissivePower.class);
+            List<EmissivePower> powers = PowerHolderComponent.getPowerTypes(entity, EmissivePower.class);
             for (EmissivePower power : powers) {
                 if (power.dynamicLight > light) light = power.dynamicLight;
             }
@@ -33,7 +33,7 @@ public class DynamicLightsEntry implements DynamicLightsInitializer {
 
         DynamicLightHandlers.registerDynamicLightHandler(POEntities.MINION, entity -> {
             int light = 0;
-            List<EmissivePower> powers = PowerHolderComponent.getPowers(entity, EmissivePower.class);
+            List<EmissivePower> powers = PowerHolderComponent.getPowerTypes(entity, EmissivePower.class);
             for (EmissivePower power : powers) {
                 if (power.dynamicLight > light) light = power.dynamicLight;
             }

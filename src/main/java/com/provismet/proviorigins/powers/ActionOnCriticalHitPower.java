@@ -1,42 +1,52 @@
 package com.provismet.proviorigins.powers;
 
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.Optional;
 
-import io.github.apace100.apoli.data.ApoliDataTypes;
-import io.github.apace100.apoli.power.Power;
-import io.github.apace100.apoli.power.PowerType;
-import io.github.apace100.apoli.power.factory.PowerFactory;
+import com.provismet.proviorigins.registries.POPowerTypes;
+import com.provismet.proviorigins.utility.ConditionUtil;
+import com.provismet.proviorigins.utility.constants.FieldNames;
+import io.github.apace100.apoli.action.BiEntityAction;
+import io.github.apace100.apoli.condition.BiEntityCondition;
+import io.github.apace100.apoli.condition.EntityCondition;
+import io.github.apace100.apoli.data.TypedDataObjectFactory;
+import io.github.apace100.apoli.power.PowerConfiguration;
+import io.github.apace100.apoli.power.type.PowerType;
 import io.github.apace100.calio.data.SerializableData;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.Pair;
+import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("rawtypes")
-public class ActionOnCriticalHitPower extends Power {
-    private final Consumer<Pair<Entity,Entity>> bientityAction;
-    private final Predicate<Pair<Entity,Entity>> bientityCondition;
+public class ActionOnCriticalHitPower extends PowerType {
+    private final BiEntityAction bientityAction;
+    private final Optional<BiEntityCondition> bientityCondition;
 
-    public ActionOnCriticalHitPower(PowerType<?> type, LivingEntity entity, Consumer<Pair<Entity,Entity>> bientityAction, Predicate<Pair<Entity,Entity>> bientityCondition) {
-        super(type, entity);
+    public ActionOnCriticalHitPower(BiEntityAction bientityAction, Optional<BiEntityCondition> bientityCondition, Optional<EntityCondition> condition) {
+        super(condition);
         this.bientityAction = bientityAction;
         this.bientityCondition = bientityCondition;
     }
 
     public void tryAction (Entity target) {
-        if (bientityCondition == null || bientityCondition.test(new Pair<>(this.entity, target))) {
-            bientityAction.accept(new Pair<>(this.entity, target));
+        if (ConditionUtil.emptyOrTest(this.bientityCondition, this.getHolder(), target)) {
+            bientityAction.execute(this.getHolder(), target);
         }
     }
 
-    public static PowerFactory createPowerFactory () {
-        return new PowerFactory<>(Powers.identifier("action_on_critical_hit"),
-            new SerializableData()
-                .add(Powers.BIENTITY_ACTION, ApoliDataTypes.BIENTITY_ACTION)
-                .add(Powers.BIENTITY_CONDITION, ApoliDataTypes.BIENTITY_CONDITION, null),
-                data -> (type, player) -> new ActionOnCriticalHitPower(type, player,
-                    data.get(Powers.BIENTITY_ACTION),
-                    data.get(Powers.BIENTITY_CONDITION)))
-                .allowCondition();
+    public static final TypedDataObjectFactory<ActionOnCriticalHitPower> DATA_FACTORY = PowerType.createConditionedDataFactory(
+        new SerializableData()
+            .add(FieldNames.BIENTITY_ACTION, BiEntityAction.DATA_TYPE)
+            .add(FieldNames.BIENTITY_CONDITION, BiEntityCondition.DATA_TYPE.optional(), Optional.empty()),
+        (data, condition) -> new ActionOnCriticalHitPower(
+            data.get(FieldNames.BIENTITY_ACTION),
+            data.get(FieldNames.BIENTITY_CONDITION),
+            condition
+        ),
+        (powerType, data) -> data.instance()
+            .set(FieldNames.BIENTITY_ACTION, powerType.bientityAction)
+            .set(FieldNames.BIENTITY_CONDITION, powerType.bientityCondition)
+    );
+
+    @Override
+    public @NotNull PowerConfiguration<?> getConfig () {
+        return POPowerTypes.ACTION_ON_CRITICAL_HIT;
     }
 }

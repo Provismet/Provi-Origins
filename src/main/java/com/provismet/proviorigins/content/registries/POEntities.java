@@ -5,8 +5,6 @@ import com.provismet.proviorigins.content.entities.CloneEntity;
 import com.provismet.proviorigins.content.entities.MinionEntity;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
-import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,7 +16,7 @@ public class POEntities {
         Registries.ENTITY_TYPE,
         ProviOriginsMain.identifier("player_clone"),
         EntityType.Builder.create(CloneEntity::new, SpawnGroup.MISC)
-            .setDimensions(PlayerEntity.STANDING_DIMENSIONS.width, PlayerEntity.STANDING_DIMENSIONS.height)
+            .dimensions(PlayerEntity.STANDING_DIMENSIONS.width(), PlayerEntity.STANDING_DIMENSIONS.height())
             .disableSummon()
             .build()
     );
@@ -27,7 +25,8 @@ public class POEntities {
         Registries.ENTITY_TYPE,
         ProviOriginsMain.identifier("minion"),
         EntityType.Builder.create(MinionEntity::new, SpawnGroup.MISC)
-            .setDimensions(0.5f, 0.5f)
+            .dimensions(0.5f, 0.5f)
+            .eyeHeight(0.25f)
             .disableSummon()
             .build()
     );

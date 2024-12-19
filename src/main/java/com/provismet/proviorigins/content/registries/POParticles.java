@@ -6,22 +6,22 @@ import com.provismet.proviorigins.content.particles.effects.FlowerParticleEffect
 import com.provismet.proviorigins.content.particles.effects.TelegraphParticleEffect;
 
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
-import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleType;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
 public class POParticles {
-    public static final DefaultParticleType LILY_PETAL = FabricParticleTypes.simple();
-    public static final DefaultParticleType SOUL_CIRCLE = FabricParticleTypes.simple(true);
-    public static final DefaultParticleType MAGIC_CIRCLE = FabricParticleTypes.simple();
+    public static final SimpleParticleType LILY_PETAL = FabricParticleTypes.simple();
+    public static final SimpleParticleType SOUL_CIRCLE = FabricParticleTypes.simple(true);
+    public static final SimpleParticleType MAGIC_CIRCLE = FabricParticleTypes.simple();
 
-    public static final ParticleType<FlowerParticleEffect> FLOWER = FabricParticleTypes.complex(FlowerParticleEffect.PARAMETERS_FACTORY);
-    public static final ParticleType<TelegraphParticleEffect> TELEGRAPH = FabricParticleTypes.complex(true, TelegraphParticleEffect.PARAMETERS_FACTORY);
-    public static final ParticleType<CrystalParticleEffect> CRYSTAL = FabricParticleTypes.complex(true, CrystalParticleEffect.PARAMETERS_FACTORY);
+    public static final ParticleType<FlowerParticleEffect> FLOWER = FabricParticleTypes.complex(FlowerParticleEffect.CODEC, FlowerParticleEffect.PACKET_CODEC);
+    public static final ParticleType<TelegraphParticleEffect> TELEGRAPH = FabricParticleTypes.complex(TelegraphParticleEffect.CODEC, TelegraphParticleEffect.PACKET_CODEC);
+    public static final ParticleType<CrystalParticleEffect> CRYSTAL = FabricParticleTypes.complex(CrystalParticleEffect.CODEC, CrystalParticleEffect.PACKET_CODEC);
 
-    private static void registerSimple (DefaultParticleType particle, String path) {
+    private static void registerSimple (SimpleParticleType particle, String path) {
         Registry.register(Registries.PARTICLE_TYPE, ProviOriginsMain.identifier(path), particle);
     }
 

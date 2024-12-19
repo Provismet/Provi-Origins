@@ -20,9 +20,9 @@ public class LightmapTextureManagerMixin {
     @ModifyVariable(method="update", at=@At("STORE"), ordinal=3)
     private float modifyDarknessPulse (float original) {
         if (MinecraftClient.getInstance().getCameraEntity() instanceof LivingEntity living) {
-            List<ModifyDarknessPulsePower> powers = PowerHolderComponent.getPowers(living, ModifyDarknessPulsePower.class);
+            List<ModifyDarknessPulsePower> powers = PowerHolderComponent.getPowerTypes(living, ModifyDarknessPulsePower.class);
             if (!powers.isEmpty()) {
-                return powers.get(0).apply(original);
+                return powers.getFirst().apply(original);
             }
         }
         return original;

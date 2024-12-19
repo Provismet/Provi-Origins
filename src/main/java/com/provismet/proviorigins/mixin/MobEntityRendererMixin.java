@@ -3,9 +3,6 @@ package com.provismet.proviorigins.mixin;
 import java.util.List;
 
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.provismet.proviorigins.powers.IllusionPower;
 
@@ -26,11 +23,12 @@ public abstract class MobEntityRendererMixin extends LivingEntityRenderer<MobEnt
         super(ctx, model, shadowRadius);
     }
 
-    @Inject(at=@At("HEAD"), method="render(Lnet/minecraft/entity/mob/MobEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V")
-    public void addMirrors (MobEntity livingEntity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light, CallbackInfo info) {
-        List<IllusionPower> mirrors = PowerHolderComponent.getPowers(livingEntity, IllusionPower.class);
+    @Override
+    public void render (MobEntity livingEntity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light) {
+        super.render(livingEntity, yaw, tickDelta, matrixStack, vertexConsumerProvider, light);
+        List<IllusionPower> mirrors = PowerHolderComponent.getPowerTypes(livingEntity, IllusionPower.class);
         if (!mirrors.isEmpty()) {
-            IllusionPower power = mirrors.get(0);
+            IllusionPower power = mirrors.getFirst();
             Vec3d[] offsets = power.getOffsets(MinecraftClient.getInstance().gameRenderer.getCamera().getPos());
 
             for (Vec3d offset : offsets) {

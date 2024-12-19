@@ -1,25 +1,24 @@
 package com.provismet.proviorigins.powers;
 
-import io.github.apace100.apoli.power.Power;
-import io.github.apace100.apoli.power.PowerType;
-import io.github.apace100.apoli.power.factory.PowerFactory;
-import io.github.apace100.calio.data.SerializableData;
-import net.minecraft.entity.LivingEntity;
+import com.provismet.proviorigins.registries.POPowerTypes;
+import io.github.apace100.apoli.condition.EntityCondition;
+import io.github.apace100.apoli.power.PowerConfiguration;
+import io.github.apace100.apoli.power.type.PowerType;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Optional;
 
 /*
  * Prevents the user from being affected by a potion cloud from splash or lingering potions.
  * Relies on the associated mixin.
  */
-@SuppressWarnings("rawtypes")
-public class PreventPotionCloudPower extends Power {
-    public PreventPotionCloudPower (PowerType<?> type, LivingEntity entity) {
-        super(type, entity);
+public class PreventPotionCloudPower extends PowerType {
+    public PreventPotionCloudPower (Optional<EntityCondition> condition) {
+        super(condition);
     }
 
-    public static PowerFactory createPowerFactory () {
-        return new PowerFactory<>(Powers.identifier("prevent_potion_cloud"),
-            new SerializableData(),
-            data -> (type, player) -> new PreventPotionCloudPower(type, player))
-            .allowCondition();
+    @Override
+    public @NotNull PowerConfiguration<?> getConfig () {
+        return POPowerTypes.PREVENT_POTION_CLOUD;
     }
 }

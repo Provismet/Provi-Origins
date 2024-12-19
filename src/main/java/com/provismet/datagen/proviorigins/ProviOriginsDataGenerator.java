@@ -1,5 +1,6 @@
 package com.provismet.datagen.proviorigins;
 
+import com.provismet.proviorigins.content.PODamageTypes;
 import com.provismet.proviorigins.content.world.features.FeaturesConfigured;
 import com.provismet.proviorigins.content.world.features.FeaturesPlaced;
 
@@ -20,6 +21,7 @@ public class ProviOriginsDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(EntityTypeTagGenerator::new);
         pack.addProvider(BlockTagGenerator::new);
         pack.addProvider(BiomeTagGenerator::new);
+        pack.addProvider(DamageTypeTagGenerator::new);
         pack.addProvider(LootTableGenerator::new);
         pack.addProvider(ModelGenerator::new);
     }
@@ -28,5 +30,6 @@ public class ProviOriginsDataGenerator implements DataGeneratorEntrypoint {
     public void buildRegistry (RegistryBuilder registryBuilder) {
         registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, FeaturesConfigured::buildFeatures);
         registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, FeaturesPlaced::buildPlacedFeatures);
+        registryBuilder.addRegistry(RegistryKeys.DAMAGE_TYPE, PODamageTypes::bootstrap);
     }
 }

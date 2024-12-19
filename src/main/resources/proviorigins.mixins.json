@@ -6,7 +6,6 @@
   "mixins": [
     "EntityMixin",
     "LivingEntityMixin",
-    "MobEntityAccessor",
     "PlayerEntityMixin",
     "ProjectileEntityMixin",
     "PersistentProjectileEntityMixin"

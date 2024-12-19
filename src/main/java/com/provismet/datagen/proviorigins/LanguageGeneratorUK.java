@@ -2,14 +2,17 @@ package com.provismet.datagen.proviorigins;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.registry.RegistryWrapper;
+
+import java.util.concurrent.CompletableFuture;
 
 public class LanguageGeneratorUK extends FabricLanguageProvider {
-    protected LanguageGeneratorUK (FabricDataOutput dataOutput) {
-        super(dataOutput, "en_gb");
+    protected LanguageGeneratorUK (FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(dataOutput, "en_gb", registryLookup);
     }
 
     @Override
-    public void generateTranslations (TranslationBuilder translationBuilder) {
+    public void generateTranslations (RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add("item.proviorigins.crystalliser_icon", "Crystalliser Origin Icon");
 
         LanguageGenerator.addTooltip(translationBuilder, "alraune", "super_fertiliser", "§8A super effective fertiliser.");

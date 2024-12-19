@@ -4,7 +4,7 @@ import com.provismet.proviorigins.content.registries.POEntities;
 import com.provismet.proviorigins.utility.tags.POEntityTypeTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalEntityTypeTags;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEntityTypeTags;
 import net.minecraft.entity.EntityType;
 import net.minecraft.registry.RegistryWrapper;
 

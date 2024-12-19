@@ -82,8 +82,8 @@ dependencies {
 	modImplementation "io.github.apace100:origins-fabric:${project.origins_version}"
 	modCompileOnly "maven.modrinth:lambdynamiclights:${project.dynlights_version}"
 
-    modImplementation "com.github.Provismet:LilyLib:${project.lilylib_version}"
-    include "com.github.Provismet:LilyLib:${project.lilylib_version}"
+    modImplementation "com.github.Provismet:lilylib:${project.lilylib_version}"
+    include "com.github.Provismet:lilylib:${project.lilylib_version}"
 }
 
 processResources {
@@ -95,7 +95,6 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
 	it.options.release = 21
 }
 

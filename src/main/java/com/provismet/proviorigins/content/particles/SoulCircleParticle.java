@@ -8,7 +8,7 @@ import net.minecraft.client.particle.ParticleTextureSheet;
 import net.minecraft.client.particle.SpriteBillboardParticle;
 import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.SimpleParticleType;
 
 public class SoulCircleParticle extends SpriteBillboardParticle {
     private static final float STARTING_SCALE = 0.42f;
@@ -39,7 +39,7 @@ public class SoulCircleParticle extends SpriteBillboardParticle {
     }
     
     @Environment(value=EnvType.CLIENT)
-    public static class Factory implements ParticleFactory<DefaultParticleType> {
+    public static class Factory implements ParticleFactory<SimpleParticleType> {
         private final SpriteProvider spriteProvider;
 
         public Factory (SpriteProvider spriteProvider) {
@@ -47,7 +47,7 @@ public class SoulCircleParticle extends SpriteBillboardParticle {
         }
 
         @Override
-        public Particle createParticle (DefaultParticleType defaultParticleType, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
+        public Particle createParticle (SimpleParticleType defaultParticleType, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
             SoulCircleParticle particle = new SoulCircleParticle(world, x, y, z);
             particle.setSprite(this.spriteProvider);
             return particle;

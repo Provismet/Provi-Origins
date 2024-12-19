@@ -3,7 +3,7 @@ package com.provismet.datagen.proviorigins;
 import com.provismet.proviorigins.utility.tags.POBiomeTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
@@ -20,21 +20,21 @@ public class BiomeTagGenerator extends FabricTagProvider<Biome> {
     @Override
     protected void configure (RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(POBiomeTags.HOT_UNDERGROUND)
-            .addOptionalTag(ConventionalBiomeTags.IN_NETHER)
+            .addOptionalTag(ConventionalBiomeTags.IS_NETHER)
             .addOptional(Identifier.of("terralith", "cave/thermal_caves"));
 
         getOrCreateTagBuilder(POBiomeTags.HAS_SALTWATER)
             .addOptionalTag(POBiomeTags.IRRELEVANT_SALINITY)
             .add(BiomeKeys.STONY_SHORE)
-            .addOptionalTag(ConventionalBiomeTags.BEACH)
-            .addOptionalTag(ConventionalBiomeTags.OCEAN)
+            .addOptionalTag(ConventionalBiomeTags.IS_BEACH)
+            .addOptionalTag(ConventionalBiomeTags.IS_OCEAN)
             .addOptional(Identifier.of("terralith", "alpha_islands"))
             .addOptional(Identifier.of("terralith", "alpha_islands_winter"))
             .addOptional(Identifier.of("terralith", "mirage_isles"));
 
         getOrCreateTagBuilder(POBiomeTags.IRRELEVANT_SALINITY)
-            .addOptionalTag(ConventionalBiomeTags.IN_NETHER)
-            .addOptionalTag(ConventionalBiomeTags.IN_THE_END)
+            .addOptionalTag(ConventionalBiomeTags.IS_NETHER)
+            .addOptionalTag(ConventionalBiomeTags.IS_END)
             .add(BiomeKeys.THE_VOID)
             .add(BiomeKeys.MUSHROOM_FIELDS)
             .addOptionalTag(Identifier.of("terralith", "skylands"));
@@ -53,10 +53,10 @@ public class BiomeTagGenerator extends FabricTagProvider<Biome> {
             .addOptional(Identifier.of("terralith", "cave/underground_jungle"));
 
         getOrCreateTagBuilder(POBiomeTags.NATURAL)
-            .addOptionalTag(ConventionalBiomeTags.FOREST)
-            .addOptionalTag(ConventionalBiomeTags.JUNGLE)
-            .addOptionalTag(ConventionalBiomeTags.FLORAL)
-            .addOptionalTag(ConventionalBiomeTags.VEGETATION_DENSE)
+            .addOptionalTag(ConventionalBiomeTags.IS_FOREST)
+            .addOptionalTag(ConventionalBiomeTags.IS_JUNGLE)
+            .addOptionalTag(ConventionalBiomeTags.IS_FLORAL)
+            .addOptionalTag(ConventionalBiomeTags.IS_VEGETATION_DENSE)
             .addOptionalTag(POBiomeTags.ALWAYS_GROW);
     }
 }

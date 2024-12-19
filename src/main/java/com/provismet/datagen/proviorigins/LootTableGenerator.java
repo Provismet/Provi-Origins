@@ -3,10 +3,13 @@ package com.provismet.datagen.proviorigins;
 import com.provismet.proviorigins.content.registries.POBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.registry.RegistryWrapper;
+
+import java.util.concurrent.CompletableFuture;
 
 public class LootTableGenerator extends FabricBlockLootTableProvider {
-    protected LootTableGenerator (FabricDataOutput dataOutput) {
-        super(dataOutput);
+    protected LootTableGenerator (FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(dataOutput, registryLookup);
     }
 
     @Override

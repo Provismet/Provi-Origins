@@ -32,7 +32,7 @@ public class ProviOriginsClient implements ClientModInitializer {
         RendererRegistry.register();
         POBlockRenderLayers.register();
 
-        BackgroundRenderer.FOG_MODIFIERS.add(0, new SleepFogModifier());
+        BackgroundRenderer.FOG_MODIFIERS.addFirst(new SleepFogModifier());
 
         POParticleFactories.register();
     }

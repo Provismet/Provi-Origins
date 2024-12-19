@@ -1,6 +1,6 @@
 package com.provismet.proviorigins.content.statusEffects;
 
-import com.provismet.proviorigins.content.DamageTypes;
+import com.provismet.proviorigins.content.PODamageTypes;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -17,7 +17,8 @@ public class VoidCorruption extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect (LivingEntity entity, int amplifier) {
-        entity.damage(entity.getDamageSources().create(DamageTypes.VOID_CORRUPTION), 1.5f + (0.5f * amplifier));
+    public boolean applyUpdateEffect (LivingEntity entity, int amplifier) {
+        entity.damage(PODamageTypes.VOID_CORRUPTION.createDamageSource(entity.getDamageSources()), 1.5f + (0.5f * amplifier));
+        return true;
     }
 }

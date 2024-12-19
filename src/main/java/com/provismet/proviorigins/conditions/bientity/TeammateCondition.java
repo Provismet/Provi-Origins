@@ -1,23 +1,25 @@
 package com.provismet.proviorigins.conditions.bientity;
 
-import com.provismet.proviorigins.powers.Powers;
+import com.provismet.proviorigins.registries.POBientityConditionTypes;
 
-import io.github.apace100.apoli.power.factory.condition.ConditionFactory;
-import io.github.apace100.calio.data.SerializableData;
+import io.github.apace100.apoli.condition.ConditionConfiguration;
+import io.github.apace100.apoli.condition.type.BiEntityConditionType;
 import net.minecraft.entity.Entity;
 import net.minecraft.scoreboard.AbstractTeam;
-import net.minecraft.util.Pair;
+import org.jetbrains.annotations.NotNull;
 
-public class TeammateCondition {
-    public static boolean condition (SerializableData.Instance data, Pair<Entity,Entity> pair) {
-        AbstractTeam actorTeam = pair.getLeft().getScoreboardTeam();
-        AbstractTeam targetTeam = pair.getRight().getScoreboardTeam();
+public class TeammateCondition extends BiEntityConditionType {
+    @Override
+    public boolean test (Entity actor, Entity target) {
+        AbstractTeam actorTeam = actor.getScoreboardTeam();
+        AbstractTeam targetTeam = target.getScoreboardTeam();
 
         if (actorTeam == null || targetTeam == null) return false;
         else return actorTeam.isEqual(targetTeam);
     }
 
-    public static ConditionFactory<Pair<Entity,Entity>> getFactory () {
-        return new ConditionFactory<>(Powers.identifier("teammate"), new SerializableData(), TeammateCondition::condition);
+    @Override
+    public @NotNull ConditionConfiguration<TeammateCondition> getConfig () {
+        return POBientityConditionTypes.TEAMMATE;
     }
 }

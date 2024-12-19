@@ -11,13 +11,13 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry.PendingParticleFactory;
-import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleType;
+import net.minecraft.particle.SimpleParticleType;
 
 @Environment(EnvType.CLIENT)
 public class POParticleFactories {
-    private static void registerDefaultParticleFactory (DefaultParticleType particleType, PendingParticleFactory<DefaultParticleType> constructor) {
+    private static void registerDefaultParticleFactory (SimpleParticleType particleType, PendingParticleFactory<SimpleParticleType> constructor) {
         ParticleFactoryRegistry.getInstance().register(particleType, constructor);
     }
 

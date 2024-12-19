@@ -1,20 +1,20 @@
 package com.provismet.proviorigins.conditions.entity;
 
-import com.provismet.proviorigins.powers.Powers;
-
-import io.github.apace100.apoli.power.factory.condition.ConditionFactory;
-import io.github.apace100.calio.data.SerializableData;
+import com.provismet.proviorigins.registries.POEntityConditionTypes;
+import io.github.apace100.apoli.condition.ConditionConfiguration;
+import io.github.apace100.apoli.condition.type.EntityConditionType;
 import net.minecraft.entity.Entity;
 import net.minecraft.world.GameRules;
+import org.jetbrains.annotations.NotNull;
 
-public class RegenGameruleCondition {
-    public static boolean condition (SerializableData.Instance data, Entity entity) {
+public class RegenGameruleCondition extends EntityConditionType {
+    @Override
+    public boolean test (Entity entity) {
         return entity.getWorld().getGameRules().get(GameRules.NATURAL_REGENERATION).get();
     }
 
-    public static ConditionFactory<Entity> getFactory () {
-        return new ConditionFactory<>(Powers.identifier("can_natural_regen"),
-            new SerializableData(), 
-            RegenGameruleCondition::condition);
+    @Override
+    public @NotNull ConditionConfiguration<RegenGameruleCondition> getConfig () {
+        return POEntityConditionTypes.REGEN_GAMERULE;
     }
 }

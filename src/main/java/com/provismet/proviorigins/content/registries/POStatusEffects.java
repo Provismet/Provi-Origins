@@ -9,17 +9,17 @@ import com.provismet.proviorigins.content.statusEffects.VoidCorruption;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 
 public class POStatusEffects {
-    public static final StatusEffect VOID_CORRUPTION = new VoidCorruption();
-    public static final StatusEffect UNTARGETABLE = new Untargetable();
-    public static final StatusEffect SLEEP = new SleepEffect();
-    public static final StatusEffect ALERT = new AlertEffect();
+    public static final RegistryEntry<StatusEffect> VOID_CORRUPTION = register("void_corruption", new VoidCorruption());
+    public static final RegistryEntry<StatusEffect> UNTARGETABLE = register("untargetable", new Untargetable());
+    public static final RegistryEntry<StatusEffect> SLEEP = register("sleep", new SleepEffect());
+    public static final RegistryEntry<StatusEffect> ALERT = register("alert", new AlertEffect());
 
-    public static void register () {
-        Registry.register(Registries.STATUS_EFFECT, ProviOriginsMain.identifier("void_corruption"), VOID_CORRUPTION);
-        Registry.register(Registries.STATUS_EFFECT, ProviOriginsMain.identifier("untargetable"), UNTARGETABLE);
-        Registry.register(Registries.STATUS_EFFECT, ProviOriginsMain.identifier("sleep"), SLEEP);
-        Registry.register(Registries.STATUS_EFFECT, ProviOriginsMain.identifier("alert"), ALERT);
+    private static RegistryEntry<StatusEffect> register (String name, StatusEffect effect) {
+        return Registry.registerReference(Registries.STATUS_EFFECT, ProviOriginsMain.identifier(name), effect);
     }
+
+    public static void init () {};
 }

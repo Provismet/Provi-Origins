@@ -1,11 +1,14 @@
 package com.provismet.proviorigins.mixin;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.provismet.proviorigins.content.registries.POStatusEffects;
+import com.provismet.proviorigins.registries.POPowerTypes;
 import com.provismet.proviorigins.utility.tags.PODamageTypeTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -30,16 +33,17 @@ import net.minecraft.world.World;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
     @Shadow
-    public abstract int getNextAirOnLand(int air);
+    protected abstract int getNextAirOnLand (int air);
 
     @Shadow
-    public abstract int getNextAirUnderwater(int air);
+    protected abstract int getNextAirUnderwater (int air);
 
     protected LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
 
     // Prevent Breathing Power
+    @Unique
     private void applyAir (DamageSource source) {
         this.setAir(this.getNextAirUnderwater(this.getAir()) - this.getNextAirOnLand(0));
         if (this.getAir() <= -20) {
@@ -52,9 +56,9 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(at=@At("TAIL"), method="tick")
     private void tick (CallbackInfo info) {
         LivingEntity living = (LivingEntity)(Object)this;
-        List<PreventBreathingPower> noBreathes = PowerHolderComponent.getPowers(living, PreventBreathingPower.class);
+        List<PreventBreathingPower> noBreathes = PowerHolderComponent.getPowerTypes(living, PreventBreathingPower.class);
         if (!noBreathes.isEmpty()) {
-            if (!living.hasStatusEffect(StatusEffects.WATER_BREATHING)) applyAir(noBreathes.get(0).getDamageSource());
+            if (!living.hasStatusEffect(StatusEffects.WATER_BREATHING)) applyAir(noBreathes.getFirst().getDamageSource());
             else {
                 for (PreventBreathingPower powerInstance : noBreathes) {
                     if (!powerInstance.respectWaterBreathing) {
@@ -69,7 +73,7 @@ public abstract class LivingEntityMixin extends Entity {
     // Prevent Potion Cloud Power
     @Inject(at=@At("RETURN"), method="isAffectedBySplashPotions", cancellable=true)
     private void canBeSplashed (CallbackInfoReturnable<Boolean> cir) {
-        List<PreventPotionCloudPower> noPots = PowerHolderComponent.getPowers((LivingEntity)(Object)this, PreventPotionCloudPower.class);
+        List<PreventPotionCloudPower> noPots = PowerHolderComponent.getPowerTypes((LivingEntity)(Object)this, PreventPotionCloudPower.class);
         cir.setReturnValue(noPots.isEmpty());
     }
 
@@ -103,7 +107,7 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(at=@At(value="INVOKE", target="Lnet/minecraft/entity/LivingEntity;damageShield(F)V", shift=At.Shift.AFTER), method="damage")
     private void disableShield (DamageSource source, float amount, CallbackInfoReturnable<Boolean> info) {
         if (source.isIn(PODamageTypeTags.DISABLES_SHIELDS) && (LivingEntity)(Object)this instanceof PlayerEntity player) {
-            player.disableShield(true);
+            player.disableShield();
         }
     }
 
@@ -118,7 +122,7 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(at=@At("HEAD"), method="damage", cancellable=true)
     private void actOnProjectile (DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         LivingEntity living = (LivingEntity)(Object)this;
-        if (source.isIn(DamageTypeTags.IS_PROJECTILE) && PowerHolderComponent.hasPower(living, EvadeProjectilesPower.class) && !living.isBlocking()) {
+        if (source.isIn(DamageTypeTags.IS_PROJECTILE) && PowerHolderComponent.hasPowerType(this, EvadeProjectilesPower.class) && !living.isBlocking()) {
             cir.setReturnValue(true); // This reports that damage was dealt, but prevents it from actually happening.
         }
     }
@@ -132,6 +136,6 @@ public abstract class LivingEntityMixin extends Entity {
     // Prevent Portal Powers
     @Inject(at=@At("RETURN"), method="canUsePortals", cancellable=true)
     private void cannotUsePortals (CallbackInfoReturnable<Boolean> cir) {
-        if (PowerHolderComponent.hasPower((LivingEntity)(Object)this, PreventPortalsPower.class)) cir.setReturnValue(false);
+        if (PowerHolderComponent.hasPowerType((LivingEntity)(Object)this, PreventPortalsPower.class)) cir.setReturnValue(false);
     }
 }

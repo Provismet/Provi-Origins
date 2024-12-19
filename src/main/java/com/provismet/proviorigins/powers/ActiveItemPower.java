@@ -1,37 +1,76 @@
 package com.provismet.proviorigins.powers;
 
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.Optional;
 
+import com.provismet.proviorigins.registries.POPowerTypes;
+import com.provismet.proviorigins.utility.ConditionUtil;
+import com.provismet.proviorigins.utility.constants.FieldNames;
+import io.github.apace100.apoli.action.EntityAction;
 import io.github.apace100.apoli.component.PowerHolderComponent;
+import io.github.apace100.apoli.condition.EntityCondition;
+import io.github.apace100.apoli.condition.ItemCondition;
 import io.github.apace100.apoli.data.ApoliDataTypes;
-import io.github.apace100.apoli.power.Active;
-import io.github.apace100.apoli.power.ActiveCooldownPower;
-import io.github.apace100.apoli.power.PowerType;
-import io.github.apace100.apoli.power.factory.PowerFactory;
+import io.github.apace100.apoli.data.TypedDataObjectFactory;
+import io.github.apace100.apoli.power.PowerConfiguration;
+import io.github.apace100.apoli.power.type.Active;
+import io.github.apace100.apoli.power.type.ActiveCooldownPowerType;
+import io.github.apace100.apoli.power.type.PowerType;
 import io.github.apace100.apoli.util.HudRender;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Pair;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("rawtypes")
-public class ActiveItemPower extends ActiveCooldownPower {
-    private final Consumer<Entity> entityAction;
-    private final Predicate<Pair<World, ItemStack>> itemCondition;
-    private final Predicate<Entity> consumeCondition;
+public class ActiveItemPower extends ActiveCooldownPowerType {
+    private static final String CONSUME_CONDITION_LABEL = "consume_condition";
+    private static final String CONSUME_AMOUNT_LABEL = "consume_amount";
+    private static final String SWING_ARM_LABEL = "swing_arm";
+
+    private final EntityAction entityAction;
+    private final ItemCondition itemCondition;
+    private final Optional<EntityCondition> consumeCondition;
     private final int consumeAmount;
     private final boolean shouldSwingArm;
 
-    public ActiveItemPower(PowerType<?> type, LivingEntity entity, int cooldownDuration, HudRender hudRender, Consumer<Entity> entityAction, Predicate<Pair<World, ItemStack>> itemCondition, Predicate<Entity> consumeCondition, int consumeAmount, boolean shouldSwingArm) {
-        super(type, entity, cooldownDuration, hudRender, entityAction);
+    public static final TypedDataObjectFactory<ActiveItemPower> DATA_FACTORY = PowerType.createConditionedDataFactory(
+        new SerializableData()
+            .add(FieldNames.ENTITY_ACTION, EntityAction.DATA_TYPE)
+            .add(FieldNames.ITEM_CONDITION, ItemCondition.DATA_TYPE)
+            .add(CONSUME_CONDITION_LABEL, EntityCondition.DATA_TYPE.optional(), Optional.empty())
+            .add(CONSUME_AMOUNT_LABEL, SerializableDataTypes.INT, 1)
+            .add(SWING_ARM_LABEL, SerializableDataTypes.BOOLEAN, true)
+            .add(FieldNames.COOLDOWN, SerializableDataTypes.INT, 1)
+            .add(FieldNames.HUD_RENDER, ApoliDataTypes.HUD_RENDER, HudRender.DONT_RENDER)
+            .add(FieldNames.KEY, ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, new Active.Key()),
+        (data, condition) -> new ActiveItemPower(
+            data.getInt(FieldNames.COOLDOWN),
+            data.get(FieldNames.HUD_RENDER),
+            data.get(FieldNames.KEY),
+            data.get(FieldNames.ENTITY_ACTION),
+            data.get(FieldNames.ITEM_CONDITION),
+            data.get(CONSUME_CONDITION_LABEL),
+            data.getInt(CONSUME_AMOUNT_LABEL),
+            data.getBoolean(SWING_ARM_LABEL),
+            condition
+        ),
+        (powerType, data) -> data.instance()
+            .set(FieldNames.ENTITY_ACTION, powerType.entityAction)
+            .set(FieldNames.ITEM_CONDITION, powerType.itemCondition)
+            .set(CONSUME_CONDITION_LABEL, powerType.consumeCondition)
+            .set(CONSUME_AMOUNT_LABEL, powerType.consumeAmount)
+            .set(SWING_ARM_LABEL, powerType.shouldSwingArm)
+            .set(FieldNames.COOLDOWN, powerType.getCooldown())
+            .set(FieldNames.HUD_RENDER, powerType.getRenderSettings())
+            .set(FieldNames.KEY, powerType.getKey())
+    );
+
+    public ActiveItemPower (int cooldownDuration, HudRender hudRender, Key key, EntityAction entityAction, ItemCondition itemCondition, Optional<EntityCondition> consumeCondition, int consumeAmount, boolean shouldSwingArm, Optional<EntityCondition> condition) {
+        super(hudRender, cooldownDuration, key, condition);
         this.entityAction = entityAction;
         this.itemCondition = itemCondition;
         this.consumeCondition = consumeCondition;
@@ -40,56 +79,37 @@ public class ActiveItemPower extends ActiveCooldownPower {
     }
 
     @Override
+    public @NotNull PowerConfiguration<?> getConfig () {
+        return POPowerTypes.ACTIVE_ITEM;
+    }
+
+    @Override
     public void onUse () {
         if (this.canUse()) {
-            Pair<World, ItemStack> mainhand = new Pair<>(this.entity.getWorld(), this.entity.getEquippedStack(EquipmentSlot.MAINHAND));
-            Pair<World, ItemStack> offhand = new Pair<>(this.entity.getWorld(), this.entity.getEquippedStack(EquipmentSlot.OFFHAND));
+            World world = this.getHolder().getWorld();
+            ItemStack mainhand = this.getHolder().getEquippedStack(EquipmentSlot.MAINHAND);
+            ItemStack offhand = this.getHolder().getEquippedStack(EquipmentSlot.OFFHAND);
 
-            if (this.itemCondition.test(mainhand) && mainhand.getRight().getCount() >= this.consumeAmount) {
-                perform(Hand.MAIN_HAND, mainhand.getRight());
+            if (this.itemCondition.test(world, mainhand) && mainhand.getCount() >= this.consumeAmount) {
+                this.perform(Hand.MAIN_HAND, mainhand);
             }
-            else if (this.itemCondition.test(offhand) && offhand.getRight().getCount() >= this.consumeAmount) {
+            else if (this.itemCondition.test(world, offhand) && offhand.getCount() >= this.consumeAmount) {
                 // If multiple of this power exist on one entity, avoid double using items.
-                List<ActiveItemPower> activeItemPowers = PowerHolderComponent.getPowers(this.entity, ActiveItemPower.class);
+                List<ActiveItemPower> activeItemPowers = PowerHolderComponent.getPowerTypes(this.getHolder(), ActiveItemPower.class);
                 for (ActiveItemPower powerInstance : activeItemPowers) {
-                    if (powerInstance.itemCondition.test(mainhand) && getKey().equals(powerInstance.getKey())) return;
+                    if (powerInstance.itemCondition.test(world, mainhand) && this.getKey().equals(powerInstance.getKey())) return;
                 }
-                perform(Hand.OFF_HAND, offhand.getRight());
+                this.perform(Hand.OFF_HAND, offhand);
             }
         }
     }
 
     private void perform (Hand hand, ItemStack itemStack) {
-        if (this.shouldSwingArm) this.entity.swingHand(hand, true);
-        if ((this.consumeCondition == null || this.consumeCondition.test(this.entity)) &&
-            !(this.entity instanceof PlayerEntity && ((PlayerEntity)this.entity).isCreative()))
-                itemStack.decrement(this.consumeAmount);
-        use();
-        this.entityAction.accept(this.entity);
-    }
-    
-    public static PowerFactory createPowerFactory () {
-        return new PowerFactory<>(Powers.identifier("active_item"),
-        new SerializableData()
-            .add(Powers.ENTITY_ACTION, ApoliDataTypes.ENTITY_ACTION)
-            .add(Powers.ITEM_CONDITION, ApoliDataTypes.ITEM_CONDITION)
-            .add("consume_condition", ApoliDataTypes.ENTITY_CONDITION, null)
-            .add("consume_amount", SerializableDataTypes.INT, 1)
-            .add("swing_arm", SerializableDataTypes.BOOLEAN, true)
-            .add(Powers.COOLDOWN, SerializableDataTypes.INT, 1)
-            .add(Powers.HUD_RENDER, ApoliDataTypes.HUD_RENDER, HudRender.DONT_RENDER)
-            .add(Powers.KEY, ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, new Active.Key()),
-            data -> (type, player) -> {
-                ActiveItemPower power = new ActiveItemPower(type, player,
-                    data.getInt(Powers.COOLDOWN),
-                    data.get(Powers.HUD_RENDER),
-                    data.get(Powers.ENTITY_ACTION),
-                    data.get(Powers.ITEM_CONDITION),
-                    data.get("consume_condition"),
-                    data.getInt("consume_amount"),
-                    data.getBoolean("swing_arm"));
-                power.setKey(data.get(Powers.KEY));
-                return power;
-        }).allowCondition();
+        if (this.shouldSwingArm) this.getHolder().swingHand(hand, true);
+        if (ConditionUtil.emptyOrTest(this.consumeCondition, this.getHolder()) && !(this.getHolder() instanceof PlayerEntity player && player.isCreative())) {
+            itemStack.decrement(this.consumeAmount);
+        }
+        this.use();
+        this.entityAction.execute(this.getHolder());
     }
 }

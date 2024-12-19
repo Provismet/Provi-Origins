@@ -6,15 +6,18 @@ import com.provismet.proviorigins.content.registries.POStatusEffects;
 import com.provismet.proviorigins.utility.OriginList;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.registry.RegistryWrapper;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.concurrent.CompletableFuture;
+
 public class LanguageGenerator extends FabricLanguageProvider {
-    protected LanguageGenerator (FabricDataOutput dataOutput) {
-        super(dataOutput);
+    protected LanguageGenerator (FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(dataOutput, registryLookup);
     }
 
     @Override
-    public void generateTranslations (TranslationBuilder translationBuilder) {
+    public void generateTranslations (RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add("category.proviorigins.keys", "Provi's Origins Extra Keys");
         translationBuilder.add("key.proviorigins.tertiary_active", "Active Skill (Tertiary)");
         translationBuilder.add("key.proviorigins.quaternary_active", "Active Skill (Quaternary)");
@@ -25,10 +28,10 @@ public class LanguageGenerator extends FabricLanguageProvider {
         translationBuilder.add(POItems.SOLID_LANTERN, "Lantern");
         translationBuilder.add(POItems.SOUL_LAMP, "Soul Lantern");
 
-        translationBuilder.add(POStatusEffects.VOID_CORRUPTION, "Void Corruption");
-        translationBuilder.add(POStatusEffects.UNTARGETABLE, "Illusive");
-        translationBuilder.add(POStatusEffects.SLEEP, "Sleeping");
-        translationBuilder.add(POStatusEffects.ALERT, "Alert");
+        translationBuilder.add(POStatusEffects.VOID_CORRUPTION.value(), "Void Corruption");
+        translationBuilder.add(POStatusEffects.UNTARGETABLE.value(), "Illusive");
+        translationBuilder.add(POStatusEffects.SLEEP.value(), "Sleeping");
+        translationBuilder.add(POStatusEffects.ALERT.value(), "Alert");
 
         addOrigin(translationBuilder, OriginList.LILY_OF_THE_VOID.fullName, "Lily of the Void", "Grown from a lily rooted upon the skybox, you are connected both to nature and to oblivion.");
         addOrigin(translationBuilder, OriginList.KRAKEN_OF_DECAY.fullName, "Kraken of Decay", "A vagrant kraken strays from death, still grasping onto its remnant power.");

@@ -7,7 +7,7 @@ import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleFactory;
 import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.util.math.MathHelper;
 
 public class MagicCircleParticle extends FlatParticle {
@@ -46,7 +46,7 @@ public class MagicCircleParticle extends FlatParticle {
     }
 
     @Environment(value=EnvType.CLIENT)
-    public static class Factory implements ParticleFactory<DefaultParticleType> {
+    public static class Factory implements ParticleFactory<SimpleParticleType> {
         private final SpriteProvider spriteProvider;
 
         public Factory (SpriteProvider spriteProvider) {
@@ -54,7 +54,7 @@ public class MagicCircleParticle extends FlatParticle {
         }
 
         @Override
-        public Particle createParticle (DefaultParticleType defaultParticleType, ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
+        public Particle createParticle (SimpleParticleType defaultParticleType, ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
             return new MagicCircleParticle(clientWorld, x, y, z, this.spriteProvider);
         }
     }

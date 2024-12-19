@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
-import com.provismet.proviorigins.powers.Powers;
+import com.provismet.proviorigins.registries.POBientityActionTypes;
 
-import io.github.apace100.apoli.power.factory.action.ActionFactory;
+import io.github.apace100.apoli.action.ActionConfiguration;
+import io.github.apace100.apoli.action.type.BiEntityActionType;
+import io.github.apace100.apoli.data.TypedDataObjectFactory;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.Entity;
@@ -14,9 +16,9 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.registry.Registries;
-import net.minecraft.util.Pair;
+import org.jetbrains.annotations.NotNull;
 
-public class StatusTransferAction {
+public class StatusTransferAction extends BiEntityActionType {
     private static final String STATUS_TYPE_LABEL = "status_types";
     private static final String EFFECTS_LABEL = "effects";
     private static final String CLEANSE_SELF_LABEL = "cleanse_self";
@@ -29,49 +31,72 @@ public class StatusTransferAction {
         StatusEffectCategory.HARMFUL, "harmful"
     );
 
-    public static void action (SerializableData.Instance data, Pair<Entity, Entity> bientity) {
-        if (!(bientity.getLeft() instanceof LivingEntity) || !(bientity.getRight() instanceof LivingEntity) || bientity.getLeft().getWorld().isClient()) return;
-        
-        final List<String> statusTypes = data.get(STATUS_TYPE_LABEL);
-        final List<String> effectTypes = data.get(EFFECTS_LABEL);
-        final boolean cleanse = data.getBoolean(CLEANSE_SELF_LABEL);
-        final double amplifierMultiplier = data.getDouble(AMPLIFIER_MODIFIER_LABEL);
-        final double durationMultiplier = data.getDouble(DURATION_MODIFIER_LABEL);
+    private final List<String> statusCategories;
+    private final List<String> statusTypes;
+    private final boolean cleanseSelf;
+    private final double amplifierMultiplier;
+    private final double durationMultiplier;
 
-        LivingEntity actor = (LivingEntity)bientity.getLeft();
-        LivingEntity target = (LivingEntity)bientity.getRight();
+    public static final TypedDataObjectFactory<StatusTransferAction> DATA_FACTORY = TypedDataObjectFactory.simple(
+        new SerializableData()
+            .add(STATUS_TYPE_LABEL, SerializableDataTypes.STRINGS, List.of())
+            .add(EFFECTS_LABEL, SerializableDataTypes.STRINGS, List.of())
+            .add(CLEANSE_SELF_LABEL, SerializableDataTypes.BOOLEAN)
+            .add(AMPLIFIER_MODIFIER_LABEL, SerializableDataTypes.DOUBLE, 1.0)
+            .add(DURATION_MODIFIER_LABEL, SerializableDataTypes.DOUBLE, 1.0),
+        data -> new StatusTransferAction(
+            data.get(STATUS_TYPE_LABEL),
+            data.get(EFFECTS_LABEL),
+            data.getBoolean(CLEANSE_SELF_LABEL),
+            data.getDouble(AMPLIFIER_MODIFIER_LABEL),
+            data.getDouble(DURATION_MODIFIER_LABEL)
+        ),
+        (actionType, data) -> data.instance()
+            .set(STATUS_TYPE_LABEL, actionType.statusCategories)
+            .set(EFFECTS_LABEL, actionType.statusTypes)
+            .set(CLEANSE_SELF_LABEL, actionType.cleanseSelf)
+            .set(AMPLIFIER_MODIFIER_LABEL, actionType.amplifierMultiplier)
+            .set(DURATION_MODIFIER_LABEL, actionType.durationMultiplier)
+    );
 
-        List<StatusEffectInstance> effects = actor.getStatusEffects().stream().filter(
-            effect -> {
-                if (statusTypes != null && statusTypes.contains(CATEGORIES.get(effect.getEffectType().getCategory()))) return true;
-                if (effectTypes != null && effectTypes.contains(Registries.STATUS_EFFECT.getId(effect.getEffectType()).toString())) return true;
-                return false;
-            }
-        ).toList();
+    public StatusTransferAction (List<String> statusCategories, List<String> statusTypes, boolean cleanseSelf, double amplifierMultiplier, double durationMultiplier) {
+        this.statusCategories = statusCategories;
+        this.statusTypes = statusTypes;
+        this.cleanseSelf = cleanseSelf;
+        this.amplifierMultiplier = amplifierMultiplier;
+        this.durationMultiplier = durationMultiplier;
+    }
+
+    @Override
+    public void execute (Entity actor, Entity target) {
+        if (!(actor instanceof LivingEntity livingActor) || !(target instanceof LivingEntity livingTarget) || actor.getWorld().isClient) return;
+
+        List<StatusEffectInstance> effects = livingActor.getStatusEffects()
+            .stream()
+            .filter(
+                effect -> {
+                    if (!this.statusCategories.isEmpty() && this.statusCategories.contains(CATEGORIES.get(effect.getEffectType().value().getCategory()))) return true;
+                    return !this.statusTypes.isEmpty() && this.statusTypes.contains(Registries.STATUS_EFFECT.getId(effect.getEffectType().value()).toString());
+                }
+            ).toList();
         
         for (StatusEffectInstance instance : effects) {
-            if (cleanse) actor.removeStatusEffect(instance.getEffectType());
+            if (this.cleanseSelf) livingActor.removeStatusEffect(instance.getEffectType());
             
             StatusEffectInstance newInstance = new StatusEffectInstance(
                 instance.getEffectType(),
-                (int)(instance.getDuration() * durationMultiplier),
-                (int)(instance.getAmplifier() * amplifierMultiplier),
+                (int)(instance.getDuration() * this.durationMultiplier),
+                (int)(instance.getAmplifier() * this.amplifierMultiplier),
                 instance.isAmbient(),
                 instance.shouldShowParticles(),
                 instance.shouldShowIcon()
             );
-            target.addStatusEffect(newInstance, actor);
+            livingTarget.addStatusEffect(newInstance, livingActor);
         }
     }
 
-    public static ActionFactory<Pair<Entity, Entity>> createBientityActionFactory () {
-        return new ActionFactory<>(Powers.identifier("transfer_status"),
-            new SerializableData()
-                .add(STATUS_TYPE_LABEL, SerializableDataTypes.STRINGS, null)
-                .add(EFFECTS_LABEL, SerializableDataTypes.STRINGS, null)
-                .add(CLEANSE_SELF_LABEL, SerializableDataTypes.BOOLEAN)
-                .add(AMPLIFIER_MODIFIER_LABEL, SerializableDataTypes.DOUBLE, 1.0)
-                .add(DURATION_MODIFIER_LABEL, SerializableDataTypes.DOUBLE, 1.0),
-            StatusTransferAction::action);
+    @Override
+    public @NotNull ActionConfiguration<StatusTransferAction> getConfig () {
+        return POBientityActionTypes.STATUS_TRANSFER;
     }
 }

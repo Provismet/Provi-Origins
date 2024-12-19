@@ -1,30 +1,56 @@
 package com.provismet.proviorigins.powers;
 
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.Optional;
 
-import io.github.apace100.apoli.data.ApoliDataTypes;
-import io.github.apace100.apoli.power.Power;
-import io.github.apace100.apoli.power.PowerType;
-import io.github.apace100.apoli.power.factory.PowerFactory;
+import com.provismet.proviorigins.registries.POPowerTypes;
+import com.provismet.proviorigins.utility.ConditionUtil;
+import com.provismet.proviorigins.utility.constants.FieldNames;
+import io.github.apace100.apoli.action.BiEntityAction;
+import io.github.apace100.apoli.action.EntityAction;
+import io.github.apace100.apoli.condition.BiEntityCondition;
+import io.github.apace100.apoli.condition.EntityCondition;
+import io.github.apace100.apoli.data.TypedDataObjectFactory;
+import io.github.apace100.apoli.power.PowerConfiguration;
+import io.github.apace100.apoli.power.type.PowerType;
 import io.github.apace100.calio.data.SerializableData;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.util.Pair;
+import org.jetbrains.annotations.NotNull;
 
-public class EvadeProjectilesPower extends Power {
+public class EvadeProjectilesPower extends PowerType {
     private static final String PROJECTILE_ACTION_LABEL = "projectile_action";
     private static final String PROJECTILE_CONDITION_LABEL = "projectile_condition";
 
-    private final Consumer<Entity> entityAction;
-    private final Consumer<Pair<Entity,Entity>> bientityAction;
-    private final Predicate<Pair<Entity,Entity>> bientityCondition;
-    private final Consumer<Pair<Entity,Entity>> projectileAction;
-    private final Predicate<Pair<Entity,Entity>> projectileCondition;
+    private final Optional<EntityAction> entityAction;
+    private final Optional<BiEntityAction> bientityAction;
+    private final Optional<BiEntityCondition> bientityCondition;
+    private final Optional<BiEntityAction> projectileAction;
+    private final Optional<BiEntityCondition> projectileCondition;
 
-    public EvadeProjectilesPower(PowerType<?> type, LivingEntity entity, Consumer<Entity> entityAction, Consumer<Pair<Entity,Entity>> bientityAction, Predicate<Pair<Entity,Entity>> bientityCondition, Consumer<Pair<Entity,Entity>> projectileAction, Predicate<Pair<Entity,Entity>> projectileCondition) {
-        super(type, entity);
+    public static final TypedDataObjectFactory<EvadeProjectilesPower> DATA_FACTORY = PowerType.createConditionedDataFactory(
+        new SerializableData()
+            .add(FieldNames.ENTITY_ACTION, EntityAction.DATA_TYPE.optional(), Optional.empty())
+            .add(FieldNames.BIENTITY_ACTION, BiEntityAction.DATA_TYPE.optional(), Optional.empty())
+            .add(FieldNames.BIENTITY_CONDITION, BiEntityCondition.DATA_TYPE.optional(), Optional.empty())
+            .add(PROJECTILE_ACTION_LABEL, BiEntityAction.DATA_TYPE.optional(), Optional.empty())
+            .add(PROJECTILE_CONDITION_LABEL, BiEntityCondition.DATA_TYPE.optional(), Optional.empty()),
+        (data, condition) -> new EvadeProjectilesPower(
+            data.get(FieldNames.ENTITY_ACTION),
+            data.get(FieldNames.BIENTITY_ACTION),
+            data.get(FieldNames.BIENTITY_CONDITION),
+            data.get(PROJECTILE_ACTION_LABEL),
+            data.get(PROJECTILE_CONDITION_LABEL),
+            condition
+        ),
+        (powerType, data) -> data.instance()
+            .set(FieldNames.ENTITY_ACTION, powerType.entityAction)
+            .set(FieldNames.BIENTITY_ACTION, powerType.bientityAction)
+            .set(FieldNames.BIENTITY_CONDITION, powerType.bientityCondition)
+            .set(PROJECTILE_ACTION_LABEL, powerType.projectileAction)
+            .set(PROJECTILE_CONDITION_LABEL, powerType.projectileCondition)
+    );
+
+    public EvadeProjectilesPower(Optional<EntityAction> entityAction, Optional<BiEntityAction> bientityAction, Optional<BiEntityCondition> bientityCondition, Optional<BiEntityAction> projectileAction, Optional<BiEntityCondition> projectileCondition, Optional<EntityCondition> condition) {
+        super(condition);
         this.entityAction = entityAction;
         this.bientityAction = bientityAction;
         this.bientityCondition = bientityCondition;
@@ -33,37 +59,21 @@ public class EvadeProjectilesPower extends Power {
     }
     
     public void executeAction (ProjectileEntity projectile) {
-        if (this.entityAction != null) this.entityAction.accept(this.entity);
+        this.entityAction.ifPresent(action -> action.execute(this.getHolder()));
 
         if (projectile.getOwner() != null) {
-            Pair<Entity,Entity> sourcePair = new Pair<Entity,Entity>(projectile.getOwner(), this.entity);
-            if (this.bientityCondition == null || this.bientityCondition.test(sourcePair)) {
-                if (this.bientityAction != null) this.bientityAction.accept(sourcePair);
+            if (ConditionUtil.emptyOrTest(this.bientityCondition, projectile.getOwner(), this.getHolder())) {
+                this.bientityAction.ifPresent(action -> action.execute(projectile.getOwner(), this.getHolder()));
             }
         }
 
-        Pair<Entity,Entity> projectilePair = new Pair<Entity,Entity>(projectile, this.entity);
-        if (this.projectileCondition == null || this.projectileCondition.test(projectilePair)) {
-            if (this.projectileAction != null) this.projectileAction.accept(projectilePair);
+        if (ConditionUtil.emptyOrTest(this.projectileCondition, projectile, this.getHolder())) {
+            this.projectileAction.ifPresent(action -> action.execute(projectile, this.getHolder()));
         }
     }
 
-    @SuppressWarnings("rawtypes")
-    public static PowerFactory createPowerFactory () {
-        return new PowerFactory<>(Powers.identifier("evade_projectiles"),
-            new SerializableData()
-                .add(Powers.ENTITY_ACTION, ApoliDataTypes.ENTITY_ACTION, null)
-                .add(Powers.BIENTITY_ACTION, ApoliDataTypes.BIENTITY_ACTION, null)
-                .add(Powers.BIENTITY_CONDITION, ApoliDataTypes.BIENTITY_CONDITION, null)
-                .add(PROJECTILE_ACTION_LABEL, ApoliDataTypes.BIENTITY_ACTION, null)
-                .add(PROJECTILE_CONDITION_LABEL, ApoliDataTypes.BIENTITY_CONDITION, null),
-            data -> (type, player) -> new EvadeProjectilesPower(type, player,
-                data.get(Powers.ENTITY_ACTION),
-                data.get(Powers.BIENTITY_ACTION),
-                data.get(Powers.BIENTITY_CONDITION),
-                data.get(PROJECTILE_ACTION_LABEL),
-                data.get(PROJECTILE_CONDITION_LABEL)
-            )
-        ).allowCondition();
+    @Override
+    public @NotNull PowerConfiguration<?> getConfig () {
+        return POPowerTypes.EVADE_PROJECTILES;
     }
 }

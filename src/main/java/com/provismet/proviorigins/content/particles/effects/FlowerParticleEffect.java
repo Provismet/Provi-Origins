@@ -1,37 +1,33 @@
 package com.provismet.proviorigins.content.particles.effects;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.network.RegistryByteBuf;
+import net.minecraft.network.codec.PacketCodec;
+import net.minecraft.network.codec.PacketCodecs;
+import net.minecraft.util.dynamic.Codecs;
 import org.joml.Vector3f;
 
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.provismet.proviorigins.content.registries.POParticles;
 
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.particle.AbstractDustParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleType;
 
-public class FlowerParticleEffect extends AbstractDustParticleEffect {
-    @SuppressWarnings("deprecation")
-    public static final ParticleEffect.Factory<FlowerParticleEffect> PARAMETERS_FACTORY = new ParticleEffect.Factory<FlowerParticleEffect>(){
+public record FlowerParticleEffect (Vector3f colour, float scale) implements ParticleEffect {
+    public static final MapCodec<FlowerParticleEffect> CODEC = RecordCodecBuilder.mapCodec(instance ->
+        instance.group(
+            Codecs.VECTOR_3F.fieldOf("colour").forGetter(effect -> effect.colour),
+            Codecs.POSITIVE_FLOAT.fieldOf("scale").forGetter(effect -> effect.scale)
+        ).apply(instance, FlowerParticleEffect::new)
+    );
 
-        @Override
-        public FlowerParticleEffect read (ParticleType<FlowerParticleEffect> particleType, StringReader stringReader) throws CommandSyntaxException {
-            Vector3f vector3f = AbstractDustParticleEffect.readColor(stringReader);
-            stringReader.expect(' ');
-            float f = stringReader.readFloat();
-            return new FlowerParticleEffect(vector3f, f);
-        }
-
-        @Override
-        public FlowerParticleEffect read (ParticleType<FlowerParticleEffect> particleType, PacketByteBuf packetByteBuf) {
-            return new FlowerParticleEffect(AbstractDustParticleEffect.readColor(packetByteBuf), packetByteBuf.readFloat());
-        }
-    };
-
-    public FlowerParticleEffect(Vector3f color, float scale) {
-        super(color, scale);
-    }
+    public static final PacketCodec<RegistryByteBuf, FlowerParticleEffect> PACKET_CODEC = PacketCodec.tuple(
+        PacketCodecs.VECTOR3F,
+        effect -> effect.colour,
+        PacketCodecs.FLOAT,
+        effect -> effect.scale,
+        FlowerParticleEffect::new
+    );
 
     @Override
     public ParticleType<FlowerParticleEffect> getType () {

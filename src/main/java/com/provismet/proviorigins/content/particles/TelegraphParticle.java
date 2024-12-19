@@ -24,13 +24,13 @@ public class TelegraphParticle<T extends TelegraphParticleEffect> extends FlatPa
         super(clientWorld, x, y, z, spriteProvider);
         this.setSpriteForAge(this.spriteProvider);
         this.scale = 0f;
-        this.red = particleEffect.getColour().x();
-        this.green = particleEffect.getColour().y();
-        this.blue = particleEffect.getColour().z();
-        this.alpha = particleEffect.getAlpha();
+        this.red = particleEffect.colour().x();
+        this.green = particleEffect.colour().y();
+        this.blue = particleEffect.colour().z();
+        this.alpha = particleEffect.alpha();
         this.staticAlpha = alpha;
-        this.maxScale = particleEffect.getScale();
-        this.maxAge = particleEffect.getDuration();
+        this.maxScale = particleEffect.scale();
+        this.maxAge = particleEffect.duration();
         this.prevScale = this.scale;
     }
 
@@ -60,7 +60,7 @@ public class TelegraphParticle<T extends TelegraphParticleEffect> extends FlatPa
 
         @Override
         public Particle createParticle (TelegraphParticleEffect particleEffect, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-            return new TelegraphParticle<TelegraphParticleEffect>(world, x, y, z, particleEffect, spriteProvider);
+            return new TelegraphParticle<>(world, x, y, z, particleEffect, spriteProvider);
         }
         
     }

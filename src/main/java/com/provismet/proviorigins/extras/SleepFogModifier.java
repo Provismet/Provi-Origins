@@ -8,10 +8,11 @@ import net.minecraft.client.render.BackgroundRenderer.StatusEffectFogModifier;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.registry.entry.RegistryEntry;
 
 public class SleepFogModifier implements StatusEffectFogModifier {
     @Override
-    public StatusEffect getStatusEffect () {
+    public RegistryEntry<StatusEffect> getStatusEffect () {
         return POStatusEffects.SLEEP;
     }
 

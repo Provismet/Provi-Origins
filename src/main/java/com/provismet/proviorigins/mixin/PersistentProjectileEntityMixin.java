@@ -25,7 +25,7 @@ public abstract class PersistentProjectileEntityMixin extends ProjectileEntity {
     @Inject(at=@At(value="INVOKE", target="Lnet/minecraft/entity/Entity;damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", shift=At.Shift.AFTER), method="onEntityHit", cancellable=true)
     private void ignoreProjectile (EntityHitResult hitResult, CallbackInfo info) {
         if (hitResult.getEntity() instanceof LivingEntity living) {
-            if (PowerHolderComponent.hasPower(living, EvadeProjectilesPower.class)) {
+            if (PowerHolderComponent.hasPowerType(living, EvadeProjectilesPower.class)) {
                 info.cancel();
             }
         }

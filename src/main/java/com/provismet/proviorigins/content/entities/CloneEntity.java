@@ -12,7 +12,6 @@ import com.provismet.proviorigins.extras.Temporary;
 
 import net.minecraft.entity.CrossbowUser;
 import net.minecraft.entity.EntityData;
-import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
@@ -35,7 +34,6 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.entity.projectile.PersistentProjectileEntity.PickupPermission;
 import net.minecraft.item.ItemStack;
@@ -48,7 +46,6 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.world.EntityView;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -80,10 +77,10 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
         this.experiencePoints = 0;
         this.maxTicks = 1200;
     }
-    
+
     @Override
-    public EntityData initialize (ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData, NbtCompound entityNbt) {
-        EntityData data = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    public EntityData initialize (ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData) {
+        EntityData data = super.initialize(world, difficulty, spawnReason, entityData);
         this.updateWeaponGoals();
         this.setCanPickUpLoot(false);
 
@@ -96,11 +93,11 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
     }
 
     @Override
-    protected void initDataTracker () {
-        super.initDataTracker();
-        this.dataTracker.startTracking(OWNER_UUID, Optional.empty());
-        this.dataTracker.startTracking(SITTING, false);
-        this.dataTracker.startTracking(CHARGING, false);
+    protected void initDataTracker (DataTracker.Builder builder) {
+        super.initDataTracker(builder);
+        builder.add(OWNER_UUID, Optional.empty());
+        builder.add(SITTING, false);
+        builder.add(CHARGING, false);
     }
 
     @Override
@@ -205,7 +202,7 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
         }
 
         ItemStack arrowType = this.getProjectileType(this.getStackInHand(ProjectileUtil.getHandPossiblyHolding(this, Items.BOW)));
-        PersistentProjectileEntity persistentProjectileEntity = ProjectileUtil.createArrowProjectile(this, arrowType, pullProgress);
+        PersistentProjectileEntity persistentProjectileEntity = ProjectileUtil.createArrowProjectile(this, arrowType, pullProgress, this.getMainHandStack());
         persistentProjectileEntity.pickupType = PickupPermission.DISALLOWED;
 
         double xDirection = target.getX() - this.getX();
@@ -226,15 +223,6 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
     @Override
     public void setCharging (boolean isCharging) {
         this.dataTracker.set(CHARGING, isCharging);
-    }
-
-    @Override
-    public void shoot (LivingEntity target, ItemStack crossbow, ProjectileEntity projectile, float multiShotSpray) {
-        projectile.setOwner(this.getOwner());
-        if (projectile instanceof PersistentProjectileEntity persistent) {
-            persistent.pickupType = PickupPermission.DISALLOWED;
-        }
-        this.shoot(this, target, projectile, multiShotSpray, 1.6f);
     }
 
     @Override
@@ -294,15 +282,9 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
     }
 
     protected PersistentProjectileEntity createArrowProjectile (ItemStack arrow, float damageModifier) {
-        PersistentProjectileEntity projectile = ProjectileUtil.createArrowProjectile(this, arrow, damageModifier);
+        PersistentProjectileEntity projectile = ProjectileUtil.createArrowProjectile(this, arrow, damageModifier, this.getMainHandStack());
         projectile.pickupType = PickupPermission.DISALLOWED;
         return projectile;
-    }
-
-    @Override
-    public EntityGroup getGroup() {
-        if (this.getOwner() != null) return this.getOwner().getGroup();
-        else return super.getGroup();
     }
 
     @Override
@@ -341,17 +323,12 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
     }
 
     @Override
-    public EntityView method_48926 () {
-        return getWorld();
-    }
-
-    @Override
     public void setMaxLifetime (int ticks) {
         this.maxTicks = ticks;
     }
 
     @Override
-    public boolean canUsePortals () {
+    public boolean canUsePortals (boolean allowVehicles) {
         return false;
     }
     

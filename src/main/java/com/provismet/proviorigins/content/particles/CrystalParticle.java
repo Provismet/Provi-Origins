@@ -5,19 +5,25 @@ import com.provismet.proviorigins.content.particles.effects.CrystalParticleEffec
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.AbstractDustParticle;
+import net.minecraft.client.particle.AnimatedParticle;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleFactory;
 import net.minecraft.client.particle.ParticleTextureSheet;
 import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.world.ClientWorld;
 
-public class CrystalParticle extends AbstractDustParticle<CrystalParticleEffect> {
+public class CrystalParticle extends AnimatedParticle {
     private final float rotationSpeed;
 
     protected CrystalParticle (ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, CrystalParticleEffect parameters, SpriteProvider spriteProvider) {
-        super(world, x, y, z, velocityX, velocityY, velocityZ, parameters, spriteProvider);
+        super(world, x, y, z, spriteProvider, 0);
         this.rotationSpeed = (float)Math.toRadians(random.nextDouble() * (random.nextBoolean() ? 2.5 : -2.5));
-        this.maxAge /= 1.5f;
+
+        this.maxAge = (int)(10 * this.random.nextDouble()) + 10;
+        this.scale = parameters.scale();
+        this.red = parameters.colour().x();
+        this.green = parameters.colour().y();
+        this.blue = parameters.colour().z();
     }
     
     @Override
