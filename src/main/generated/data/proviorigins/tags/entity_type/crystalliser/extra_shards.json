@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:player",
+    "proviorigins:player_clone",
+    {
+      "id": "#c:bosses",
+      "required": false
+    }
+  ]
+}

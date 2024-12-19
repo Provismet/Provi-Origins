@@ -1,0 +1,11 @@
+{
+  "values": [
+    {
+      "id": "#c:bosses",
+      "required": false
+    },
+    "minecraft:ghast",
+    "minecraft:phantom",
+    "minecraft:warden"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:bedrock",
+    "minecraft:respawn_anchor",
+    {
+      "id": "#minecraft:portals",
+      "required": false
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 {
   "values": [
     {
-      "id": "#c:is_nether",
+      "id": "#minecraft:flowers",
       "required": false
     },
     {
-      "id": "terralith:cave/thermal_caves",
+      "id": "#minecraft:saplings",
       "required": false
     }
   ]

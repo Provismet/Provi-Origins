@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "proviorigins:kraken_soul_lantern"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:soul_lantern"
+  }
+}

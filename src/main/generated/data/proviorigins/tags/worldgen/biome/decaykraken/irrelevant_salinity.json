@@ -1,12 +1,11 @@
 {
-  "replace": false,
   "values": [
     {
-      "id": "#c:in_nether",
+      "id": "#c:is_nether",
       "required": false
     },
     {
-      "id": "#c:in_the_end",
+      "id": "#c:is_end",
       "required": false
     },
     "minecraft:the_void",

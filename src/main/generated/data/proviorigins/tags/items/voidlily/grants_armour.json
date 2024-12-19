@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    {
-      "id": "#minecraft:logs_that_burn",
-      "required": false
-    }
-  ]
-}

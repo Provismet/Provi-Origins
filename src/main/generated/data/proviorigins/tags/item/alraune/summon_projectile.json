@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:wither_rose",
+    {
+      "id": "#proviorigins:voidlily/grants_corruption",
+      "required": false
+    }
+  ]
+}

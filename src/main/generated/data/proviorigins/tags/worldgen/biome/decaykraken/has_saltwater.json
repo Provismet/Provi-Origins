@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     {
       "id": "#proviorigins:decaykraken/irrelevant_salinity",
@@ -7,11 +6,11 @@
     },
     "minecraft:stony_shore",
     {
-      "id": "#c:beach",
+      "id": "#c:is_beach",
       "required": false
     },
     {
-      "id": "#c:ocean",
+      "id": "#c:is_ocean",
       "required": false
     },
     {

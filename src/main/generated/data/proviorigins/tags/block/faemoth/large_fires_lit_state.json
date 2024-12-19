@@ -1,0 +1,9 @@
+{
+  "values": [
+    {
+      "id": "#proviorigins:decaykraken/soul_fires_lit_state",
+      "required": false
+    },
+    "minecraft:campfire"
+  ]
+}

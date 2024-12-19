@@ -17,6 +17,7 @@ public class ProviOriginsDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(RecipeGenerator::new);
         pack.addProvider(LanguageGenerator::new);
         pack.addProvider(LanguageGeneratorUK::new);
+        pack.addProvider(DamageTypeGenerator::new);
         pack.addProvider(ItemTagGenerator::new);
         pack.addProvider(EntityTypeTagGenerator::new);
         pack.addProvider(BlockTagGenerator::new);

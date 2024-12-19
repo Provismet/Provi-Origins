@@ -1,0 +1,17 @@
+{
+  "values": [
+    "minecraft:pitcher_plant",
+    "minecraft:poppy",
+    "minecraft:azure_bluet",
+    "minecraft:sunflower",
+    "minecraft:peony",
+    {
+      "id": "betterend:tenanea_flowers",
+      "required": false
+    },
+    {
+      "id": "betterend:twisted_umbrella_moss",
+      "required": false
+    }
+  ]
+}

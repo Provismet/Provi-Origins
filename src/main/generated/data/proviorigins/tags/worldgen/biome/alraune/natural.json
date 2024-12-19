@@ -1,20 +1,19 @@
 {
-  "replace": false,
   "values": [
     {
-      "id": "#c:forest",
+      "id": "#c:is_forest",
       "required": false
     },
     {
-      "id": "#c:jungle",
+      "id": "#c:is_jungle",
       "required": false
     },
     {
-      "id": "#c:floral",
+      "id": "#c:is_floral",
       "required": false
     },
     {
-      "id": "#c:vegetation_dense",
+      "id": "#c:is_dense_vegetation",
       "required": false
     },
     {
