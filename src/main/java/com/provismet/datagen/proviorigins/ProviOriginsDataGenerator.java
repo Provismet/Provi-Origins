@@ -25,6 +25,7 @@ public class ProviOriginsDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(DamageTypeTagGenerator::new);
         pack.addProvider(LootTableGenerator::new);
         pack.addProvider(ModelGenerator::new);
+        pack.addProvider(PowerGenerator::new);
     }
     
     @Override
