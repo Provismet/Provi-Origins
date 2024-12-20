@@ -60,7 +60,7 @@ public class ActionOnDetectVibrationPower extends PowerType implements Vibration
         this.callback = new VibrationCallback();
         this.listenerData = new ListenerData();
 
-        this.setTicking(true);
+        this.setTicking();
     }
 
     public static final TypedDataObjectFactory<ActionOnDetectVibrationPower> DATA_FACTORY = PowerType.createConditionedDataFactory(
