@@ -8,6 +8,8 @@
         "origins:more_exhaustion",
         "extrade:humanoid"
     ],
-    "icon": "proviorigins:homunculus_icon",
+    "icon": {
+        "id": "proviorigins:homunculus_icon"
+    },
     "impact": 1
 }

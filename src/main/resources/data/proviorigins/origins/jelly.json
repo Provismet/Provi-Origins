@@ -16,6 +16,8 @@
         "proviorigins:common/ignore_darkness_pulse",
         "extrade:fungifloral"
     ],
-    "icon": "proviorigins:jelly_icon",
+    "icon": {
+        "id": "proviorigins:jelly_icon"
+    },
     "impact": 3
 }

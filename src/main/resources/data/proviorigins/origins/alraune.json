@@ -21,6 +21,8 @@
         "proviorigins:alraune/plap_plap_give_pitcher_pod",
         "extrade:fungifloral"
     ],
-    "icon": "proviorigins:alraune_icon",
+    "icon": {
+        "id": "proviorigins:alraune_icon"
+    },
     "impact": 2
 }

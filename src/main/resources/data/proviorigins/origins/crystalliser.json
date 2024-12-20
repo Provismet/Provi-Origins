@@ -10,6 +10,8 @@
         "proviorigins:common/no_bows",
         "extrade:outerworldly"
     ],
-    "icon": "proviorigins:crystalliser_icon",
+    "icon": {
+        "id": "proviorigins:crystalliser_icon"
+    },
     "impact": 2
 }

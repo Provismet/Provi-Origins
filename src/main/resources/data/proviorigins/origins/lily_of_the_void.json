@@ -35,6 +35,8 @@
 		"proviorigins:voidlily/plap_plap_get_bonemealed",
 		"extrade:fungifloral"
 	],
-	"icon": "proviorigins:lily_of_the_void_icon",
+	"icon": {
+		"id": "proviorigins:lily_of_the_void_icon"
+	},
 	"impact": 3
 }

@@ -26,6 +26,8 @@
 		"proviorigins:decaykraken/slow_on_land",
 		"proviorigins:decaykraken/drop_ink_on_death"
 	],
-	"icon": "proviorigins:kraken_of_decay_icon",
+	"icon": {
+		"id": "proviorigins:kraken_of_decay_icon"
+	},
 	"impact": 3
 }

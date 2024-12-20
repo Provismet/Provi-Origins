@@ -12,6 +12,8 @@
         "proviorigins:drakling/dragon_evolution",
         "extrade:beastly"
     ],
-    "icon": "proviorigins:drakling_icon",
+    "icon": {
+        "id": "proviorigins:drakling_icon"
+    },
     "impact": 2
 }
