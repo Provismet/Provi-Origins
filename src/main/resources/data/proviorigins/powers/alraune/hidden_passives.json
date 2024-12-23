@@ -6,7 +6,14 @@
         "type": "origins:particle",
         "particle": {
             "type": "proviorigins:flower",
-            "params": "0.71 0.84 0.96 1"
+            "params": {
+                "colour": [
+                    0.71,
+                    0.84,
+                    0.96
+                ],
+                "scale": 1.0
+            }
         },
         "spread": {
             "x": 0.25,
@@ -21,7 +28,14 @@
         "type": "origins:particle",
         "particle": {
             "type": "proviorigins:flower",
-            "params": "0.95 0.33 0.35 1"
+            "params": {
+                "colour": [
+                    0.95,
+                    0.33,
+                    0.35
+                ],
+                "scale": 1.0
+            }
         },
         "spread": {
             "x": 0.25,
@@ -36,7 +50,14 @@
         "type": "origins:particle",
         "particle": {
             "type": "proviorigins:flower",
-            "params": "0.98 0.71 0.3 1"
+            "params": {
+                "colour": [
+                    0.98,
+                    0.71,
+                    0.3
+                ],
+                "scale": 1.0
+            }
         },
         "spread": {
             "x": 0.25,
