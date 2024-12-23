@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.mojang.serialization.JsonOps;
 import io.github.apace100.apoli.data.TypedDataObjectFactory;
 import io.github.apace100.apoli.power.type.PowerType;
+import io.github.apace100.apoli.power.type.meta.MultiplePowerType;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.origins.badge.Badge;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -14,6 +15,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.DataWriter;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Pair;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  * Data Generator for Origins/Apoli powers.
  *
- * <p><b>This generator is a work in progress! It does not yet support {@code origins:multiple} and Apoli is still in alpha! </b></p>
+ * <p><b>This generator should be considered experimental. It works(tm), but is not perfect.</b></p>
  */
 public abstract class POPowerProvider implements DataProvider {
     protected final FabricDataOutput output;
@@ -67,6 +69,10 @@ public abstract class POPowerProvider implements DataProvider {
         return this.output.resolvePath(DataOutput.OutputType.DATA_PACK).resolve(path.getNamespace()).resolve(path.getPath());
     }
 
+    private static JsonElement createJSON (SerializableData.Instance data, RegistryWrapper.WrapperLookup lookup, JsonObject originalElement) {
+        return data.serializableData().encode(data, lookup.getOps(JsonOps.INSTANCE), JsonOps.INSTANCE.mapBuilder()).build(originalElement).getOrThrow();
+    }
+
     protected static class PowerCollector {
         private final Map<Identifier, PowerContainer> mappedPowers = new HashMap<>();
 
@@ -90,21 +96,86 @@ public abstract class POPowerProvider implements DataProvider {
         }
 
         public PowerCollector add (Identifier id, PowerType powerType, boolean hidden, List<Badge> badges) {
+            return this.add(id, new StandardPower(powerType), hidden, badges);
+        }
+
+        public PowerCollector add (Identifier id, PowerJson jsonProvider) {
+            return this.add(id, jsonProvider, false, List.of());
+        }
+
+        public PowerCollector add (Identifier id, PowerJson jsonProvider, List<Badge> badges) {
+            return this.add(id, jsonProvider, false, badges);
+        }
+
+        public PowerCollector add (Identifier id, PowerJson jsonProvider, boolean hidden) {
+            return this.add(id, jsonProvider, hidden, List.of());
+        }
+
+        public PowerCollector add (Identifier id, PowerJson jsonProvider, boolean hidden, List<Badge> badges) {
             if (!id.getPath().startsWith("powers/")) id = id.withPrefixedPath("powers/");
             if (!id.getPath().endsWith(".json")) id = id.withSuffixedPath(".json");
 
-            this.mappedPowers.put(id, new PowerContainer(powerType, hidden, badges));
+            this.mappedPowers.put(id, new PowerContainer(jsonProvider, hidden, badges));
             return this;
         }
     }
 
-    private record PowerContainer (PowerType powerType, boolean hidden, List<Badge> badges) {
+    protected interface PowerJson {
+        JsonElement build (RegistryWrapper.WrapperLookup wrapperLookup, JsonObject baseElement);
+        PowerType getType ();
+    }
+
+    public record StandardPower (PowerType powerType) implements PowerJson {
+        @Override
+        public JsonElement build (RegistryWrapper.WrapperLookup wrapperLookup, JsonObject baseElement) {
+            TypedDataObjectFactory<PowerType> factory = (TypedDataObjectFactory<PowerType>)this.powerType.getConfig().dataFactory();
+            SerializableData.Instance dataInstance = factory.toData(this.powerType);
+            return POPowerProvider.createJSON(dataInstance, wrapperLookup, baseElement);
+        }
+
+        @Override
+        public PowerType getType () {
+            return this.powerType;
+        }
+    }
+
+    public static class MultiplePower implements PowerJson {
+        private final List<Pair<String, PowerType>> powers = new ArrayList<>();
+        private final PowerType multipleType = new MultiplePowerType();
+
+        @Override
+        public JsonElement build (RegistryWrapper.WrapperLookup wrapperLookup, JsonObject baseElement) {
+            for (Pair<String, PowerType> power : this.powers) {
+                String name = power.getLeft();
+                PowerType type = power.getRight();
+
+                TypedDataObjectFactory<PowerType> factory = (TypedDataObjectFactory<PowerType>)type.getConfig().dataFactory();
+                SerializableData.Instance dataInstance = factory.toData(type);
+                JsonObject newPower = new JsonObject();
+                newPower.addProperty("type", type.getConfig().id().toString());
+                baseElement.add(name, POPowerProvider.createJSON(dataInstance, wrapperLookup, newPower));
+            }
+            return baseElement;
+        }
+
+        @Override
+        public PowerType getType () {
+            return this.multipleType;
+        }
+
+        public MultiplePower add (String name, PowerType powerType) {
+            this.powers.add(new Pair<>(name, powerType));
+            return this;
+        }
+    }
+
+    private record PowerContainer (PowerJson power, boolean hidden, List<Badge> badges) {
         public JsonElement constructJSON (RegistryWrapper.WrapperLookup wrapperLookup) {
             JsonObject json = new JsonObject();
 
             if (this.hidden) json.addProperty("hidden", true);
 
-            json.addProperty("type", this.powerType.getConfig().id().toString());
+            json.addProperty("type", this.power.getType().getConfig().id().toString());
 
             if (!this.badges.isEmpty()) {
                 JsonArray badgeArray = new JsonArray();
@@ -114,32 +185,13 @@ public abstract class POPowerProvider implements DataProvider {
                     badgeJson.addProperty("type", badge.getBadgeFactory().id().toString());
 
                     SerializableData.Instance badgeInstance = badge.getBadgeFactory().toData(badge);
-                    badgeArray.add(
-                        badgeInstance.serializableData()
-                            .encode(
-                                badgeInstance,
-                                wrapperLookup.getOps(JsonOps.INSTANCE),
-                                JsonOps.INSTANCE.mapBuilder()
-                            )
-                            .build(badgeJson)
-                            .getOrThrow()
-                    );
+                    badgeArray.add(POPowerProvider.createJSON(badgeInstance, wrapperLookup, badgeJson));
                 }
 
                 json.add("badges", badgeArray);
             }
 
-            TypedDataObjectFactory<PowerType> factory = (TypedDataObjectFactory<PowerType>)this.powerType.getConfig().dataFactory();
-            SerializableData.Instance dataInstance = factory.toData(this.powerType);
-
-            return dataInstance.serializableData()
-                .encode(
-                    dataInstance,
-                    wrapperLookup.getOps(JsonOps.INSTANCE),
-                    JsonOps.INSTANCE.mapBuilder()
-                )
-                .build(json)
-                .getOrThrow();
+            return this.power.build(wrapperLookup, json);
         }
     }
 }
