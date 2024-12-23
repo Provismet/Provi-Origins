@@ -72,6 +72,12 @@
         "entity_action": {
             "type": "origins:execute_command",
             "command": "scoreboard players set @s jellysculk_counter 0"
+        },
+        "damage_condition": {
+            "type": "origins:attacker",
+            "entity_condition": {
+                "type": "origins:exists"
+            }
         }
     },
 
