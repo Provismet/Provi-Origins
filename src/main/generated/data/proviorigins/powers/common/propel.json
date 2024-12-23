@@ -1,0 +1,63 @@
+{
+  "type": "apoli:active_self",
+  "badges": [
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "text": {
+        "type": "translatable",
+        "translate": "origins.gui.badge.active"
+      }
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.decaykraken/propulsion.badge"
+      }
+    }
+  ],
+  "cooldown": 1,
+  "entity_action": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "apoli:spawn_particles",
+        "count": 30,
+        "force": false,
+        "offset_x": 0.0,
+        "offset_y": 0.0,
+        "offset_z": 0.0,
+        "particle": {
+          "type": "minecraft:squid_ink"
+        },
+        "speed": 0.25,
+        "spread": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "type": "apoli:play_sound",
+        "category": "PLAYERS",
+        "pitch": 1.0,
+        "sound": "proviorigins:origin.decaykraken.ink",
+        "volume": 1.0
+      }
+    ]
+  },
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": false,
+    "sprite_location": "apoli:textures/gui/resource_bar.png"
+  },
+  "key": {
+    "continuous": false,
+    "key": "none"
+  }
+}
