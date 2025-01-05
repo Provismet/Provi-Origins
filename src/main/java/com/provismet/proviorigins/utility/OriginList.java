@@ -50,7 +50,7 @@ public abstract class OriginList {
             return String.format("%s/%s", this.dataName, path);
         }
 
-        public Identifier getDataId (String path) {
+        public Identifier identifier (String path) {
             return ProviOriginsMain.identifier(this.getDataPath(path));
         }
 
