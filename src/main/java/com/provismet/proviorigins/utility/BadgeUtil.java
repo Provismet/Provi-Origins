@@ -9,6 +9,10 @@ public interface BadgeUtil {
         return new TooltipBadge(BadgeTextures.COST, text);
     }
 
+    static TooltipBadge dragon () {
+        return BadgeUtil.dragon(Text.translatable("power.proviorigins.common/kill_dragon.badge"));
+    }
+
     static TooltipBadge dragon (Text text) {
         return new TooltipBadge(BadgeTextures.DRAGON, text);
     }
