@@ -146,7 +146,6 @@ publishMods {
         requires("origins")
         optional("extrade-origins-addon")
         optional("lambdynamiclights")
-        optional("pehkui")
     }
 
     curseforge {
@@ -162,7 +161,6 @@ publishMods {
         requires("origins")
         optional("extrade-origins-addon")
         optional("lambdynamiclights")
-        optional("pehkui")
     }
 }
 
