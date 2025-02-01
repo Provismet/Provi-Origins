@@ -47,8 +47,7 @@
   },
 
   "recommends": {
-    "extrade-origins-addon": "*",
-    "pehkui": "*"
+    "extrade-origins-addon": "*"
   },
 
   "custom": {
