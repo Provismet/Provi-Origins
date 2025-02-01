@@ -73,7 +73,7 @@ public abstract class POPowerProvider implements DataProvider {
         return data.serializableData().encode(data, lookup.getOps(JsonOps.INSTANCE), JsonOps.INSTANCE.mapBuilder()).build(originalElement).getOrThrow();
     }
 
-    protected static class PowerCollector {
+    public static class PowerCollector {
         private final Map<Identifier, PowerContainer> mappedPowers = new HashMap<>();
 
         /**
@@ -84,43 +84,59 @@ public abstract class POPowerProvider implements DataProvider {
          * @return This collector.
          */
         public PowerCollector add (Identifier id, PowerType powerType) {
-            return this.add(id, powerType, false, List.of());
+            return this.add(id, powerType, false, List.of(), null, null);
         }
 
         public PowerCollector add (Identifier id, PowerType powerType, List<Badge> badges) {
-            return this.add(id, powerType, false, badges);
+            return this.add(id, powerType, false, badges, null, null);
         }
 
         public PowerCollector add (Identifier id, PowerType powerType, boolean hidden) {
-            return this.add(id, powerType, hidden, List.of());
+            return this.add(id, powerType, hidden, List.of(), null, null);
         }
 
-        public PowerCollector add (Identifier id, PowerType powerType, boolean hidden, List<Badge> badges) {
-            return this.add(id, new StandardPower(powerType), hidden, badges);
+        public PowerCollector add (Identifier id, PowerType powerType, String name, String description) {
+            return this.add(id, powerType, false, List.of(), name, description);
+        }
+
+        public PowerCollector add (Identifier id, PowerType powerType, List<Badge> badges, String name, String description) {
+            return this.add(id, powerType, false, badges, name, description);
+        }
+
+        public PowerCollector add (Identifier id, PowerType powerType, boolean hidden, List<Badge> badges, String name, String description) {
+            return this.add(id, new StandardPower(powerType), hidden, badges, name, description);
         }
 
         public PowerCollector add (Identifier id, PowerJson jsonProvider) {
-            return this.add(id, jsonProvider, false, List.of());
+            return this.add(id, jsonProvider, false, List.of(), null, null);
         }
 
         public PowerCollector add (Identifier id, PowerJson jsonProvider, List<Badge> badges) {
-            return this.add(id, jsonProvider, false, badges);
+            return this.add(id, jsonProvider, false, badges, null, null);
         }
 
         public PowerCollector add (Identifier id, PowerJson jsonProvider, boolean hidden) {
-            return this.add(id, jsonProvider, hidden, List.of());
+            return this.add(id, jsonProvider, hidden, List.of(), null, null);
         }
 
-        public PowerCollector add (Identifier id, PowerJson jsonProvider, boolean hidden, List<Badge> badges) {
+        public PowerCollector add (Identifier id, PowerJson jsonProvider, String name, String description) {
+            return this.add(id, jsonProvider, false, List.of(), name, description);
+        }
+
+        public PowerCollector add (Identifier id, PowerJson jsonProvider, List<Badge> badges, String name, String description) {
+            return this.add(id, jsonProvider, false, badges, name, description);
+        }
+
+        public PowerCollector add (Identifier id, PowerJson jsonProvider, boolean hidden, List<Badge> badges, String name, String description) {
             if (!id.getPath().startsWith("powers/")) id = id.withPrefixedPath("powers/");
             if (!id.getPath().endsWith(".json")) id = id.withSuffixedPath(".json");
 
-            this.mappedPowers.put(id, new PowerContainer(jsonProvider, hidden, badges));
+            this.mappedPowers.put(id, new PowerContainer(jsonProvider, hidden, badges, name, description));
             return this;
         }
     }
 
-    protected interface PowerJson {
+    public interface PowerJson {
         JsonElement build (RegistryWrapper.WrapperLookup wrapperLookup, JsonObject baseElement);
         PowerType getType ();
     }
@@ -139,7 +155,8 @@ public abstract class POPowerProvider implements DataProvider {
         }
     }
 
-    public static class MultiplePower implements PowerJson {
+    public static class MultiplePowerJsonBuilder implements PowerJson {
+        private final List<Pair<String, JsonObject>> json = new ArrayList<>();
         private final List<Pair<String, PowerType>> powers = new ArrayList<>();
         private final PowerType multipleType = new MultiplePowerType();
 
@@ -155,6 +172,11 @@ public abstract class POPowerProvider implements DataProvider {
                 newPower.addProperty("type", type.getConfig().id().toString());
                 baseElement.add(name, POPowerProvider.createJSON(dataInstance, wrapperLookup, newPower));
             }
+            for (Pair<String, JsonObject> jsonPair : this.json) {
+                String name = jsonPair.getLeft();
+                JsonObject jsonObject = jsonPair.getRight();
+                baseElement.add(name, jsonObject);
+            }
             return baseElement;
         }
 
@@ -163,17 +185,32 @@ public abstract class POPowerProvider implements DataProvider {
             return this.multipleType;
         }
 
-        public MultiplePower add (String name, PowerType powerType) {
+        public MultiplePowerJsonBuilder add (String name, PowerType powerType) {
             this.powers.add(new Pair<>(name, powerType));
+            return this;
+        }
+
+        public MultiplePowerJsonBuilder add (String name, JsonObject json) {
+            this.json.add(new Pair<>(name, json));
             return this;
         }
     }
 
-    private record PowerContainer (PowerJson power, boolean hidden, List<Badge> badges) {
+    private record PowerContainer (PowerJson power, boolean hidden, List<Badge> badges, String name, String description) {
         public JsonElement constructJSON (RegistryWrapper.WrapperLookup wrapperLookup) {
             JsonObject json = new JsonObject();
 
             if (this.hidden) json.addProperty("hidden", true);
+            if (this.name != null) {
+                JsonObject nameObject = new JsonObject();
+                nameObject.addProperty("translate", this.name);
+                json.add("name", nameObject);
+            }
+            if (this.description != null) {
+                JsonObject descriptionObject = new JsonObject();
+                descriptionObject.addProperty("translate", this.description);
+                json.add("description", descriptionObject);
+            }
 
             json.addProperty("type", this.power.getType().getConfig().id().toString());
 
