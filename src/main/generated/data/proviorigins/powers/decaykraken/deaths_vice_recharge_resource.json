@@ -1,0 +1,15 @@
+{
+  "type": "apoli:resource",
+  "hidden": true,
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": false,
+    "sprite_location": "apoli:textures/gui/resource_bar.png"
+  },
+  "max": 4,
+  "min": 0,
+  "start_value": 0
+}

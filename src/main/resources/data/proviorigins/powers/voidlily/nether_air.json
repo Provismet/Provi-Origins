@@ -1,8 +1,0 @@
-{
-    "type": "proviorigins:prevent_breathing",
-    "damage_type": "proviorigins:bad_dimension",
-    "condition": {
-        "type": "origins:dimension",
-        "dimension": "the_nether"
-    }
-}

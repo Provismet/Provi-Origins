@@ -1,0 +1,10 @@
+{
+  "type": "apoli:prevent_item_use",
+  "item_condition": {
+    "type": "apoli:ingredient",
+    "ingredient": [
+      "#c:tools/bow"
+    ],
+    "inverted": false
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "type": "apoli:multiple",
+  "badges": [
+    {
+      "type": "origins:keybind",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "text": "origins.gui.badge.active"
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.splinter.distortion.badge"
+      }
+    }
+  ],
+  "activate_skill": {
+    "type": "apoli:action_on_key_press",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 34,
+      "comparison": "GREATER_THAN_OR_EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:splinter/mana"
+    },
+    "cooldown": 1,
+    "entity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:area_of_effect",
+          "bientity_action": {
+            "type": "apoli:target_action",
+            "action": {
+              "type": "apoli:apply_effect",
+              "effects": [
+                {
+                  "ambient": false,
+                  "amplifier": 0,
+                  "duration": 60,
+                  "id": "minecraft:blindness",
+                  "show_icon": true,
+                  "show_particles": true
+                }
+              ]
+            }
+          },
+          "bientity_condition": {
+            "type": "apoli:all_of",
+            "conditions": [
+              {
+                "type": "proviorigins:friendly",
+                "inverted": true
+              },
+              {
+                "type": "apoli:owner",
+                "inverted": true
+              }
+            ],
+            "inverted": false
+          },
+          "include_actor": false,
+          "radius": 6.0,
+          "shape": "CUBE"
+        },
+        {
+          "type": "apoli:apply_effect",
+          "effects": [
+            {
+              "ambient": false,
+              "amplifier": 0,
+              "duration": 80,
+              "id": "proviorigins:untargetable",
+              "show_icon": true,
+              "show_particles": true
+            }
+          ]
+        },
+        {
+          "type": "apoli:trigger_cooldown",
+          "power": "proviorigins:splinter/distortion_internal_cooldown"
+        },
+        {
+          "type": "apoli:change_resource",
+          "change": -34,
+          "operation": "ADD",
+          "resource": "proviorigins:splinter/mana"
+        },
+        {
+          "type": "apoli:area_of_effect",
+          "bientity_action": {
+            "type": "apoli:target_action",
+            "action": {
+              "type": "apoli:trigger_cooldown",
+              "power": "proviorigins:splinter/distortion_internal_cooldown"
+            }
+          },
+          "bientity_condition": {
+            "type": "apoli:all_of",
+            "conditions": [
+              {
+                "type": "apoli:owner",
+                "inverted": false
+              },
+              {
+                "type": "apoli:target_condition",
+                "condition": {
+                  "type": "apoli:entity_type",
+                  "entity_type": "proviorigins:player_clone",
+                  "inverted": false
+                },
+                "inverted": false
+              },
+              {
+                "type": "apoli:target_condition",
+                "condition": {
+                  "type": "apoli:power",
+                  "inverted": false,
+                  "power": "proviorigins:splinter/distortion"
+                },
+                "inverted": false
+              }
+            ],
+            "inverted": false
+          },
+          "include_actor": false,
+          "radius": 32.0,
+          "shape": "CUBE"
+        }
+      ]
+    },
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "key": {
+      "continuous": false,
+      "id": "key.origins.secondary_active"
+    }
+  },
+  "illusion_spread": {
+    "type": "proviorigins:illusioner_mirror",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 1,
+      "comparison": "GREATER_THAN_OR_EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:splinter/distortion_internal_cooldown"
+    },
+    "distance": 0.0125,
+    "illusion_spread": "LINE",
+    "layers": 2,
+    "resource": "proviorigins:splinter/distortion_internal_cooldown"
+  },
+  "internal_cooldown": {
+    "type": "apoli:cooldown",
+    "cooldown": 160,
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    }
+  }
+}

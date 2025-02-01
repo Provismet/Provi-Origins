@@ -1,0 +1,96 @@
+{
+  "type": "apoli:multiple",
+  "apply_wither": {
+    "type": "apoli:action_on_hit",
+    "bientity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:target_action",
+          "action": {
+            "type": "apoli:apply_effect",
+            "effects": [
+              {
+                "ambient": false,
+                "amplifier": 1,
+                "duration": 120,
+                "id": "minecraft:wither",
+                "show_icon": true,
+                "show_particles": true
+              }
+            ]
+          }
+        },
+        {
+          "type": "apoli:actor_action",
+          "action": {
+            "type": "apoli:change_resource",
+            "change": -86,
+            "operation": "ADD",
+            "resource": "proviorigins:decaykraken/deaths_vice"
+          }
+        }
+      ]
+    },
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 1029,
+      "comparison": "GREATER_THAN_OR_EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:decaykraken/deaths_vice"
+    },
+    "cooldown": 1,
+    "damage_condition": {
+      "type": "apoli:in_tag",
+      "inverted": false,
+      "tag": "minecraft:is_player_attack"
+    },
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    }
+  },
+  "badges": [
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.decaykraken.wither_hit.badge"
+      }
+    }
+  ],
+  "particle_effect": {
+    "type": "apoli:particle",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 1029,
+      "comparison": "GREATER_THAN_OR_EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:decaykraken/deaths_vice"
+    },
+    "count": 1,
+    "force": false,
+    "frequency": 6,
+    "offset": {
+      "x": 0.5,
+      "y": 0.5,
+      "z": 0.5
+    },
+    "particle": {
+      "type": "minecraft:sculk_soul"
+    },
+    "speed": 0.0,
+    "spread": {
+      "x": 0.5,
+      "y": 0.5,
+      "z": 0.5
+    },
+    "visible_in_first_person": false,
+    "visible_while_invisible": false
+  }
+}

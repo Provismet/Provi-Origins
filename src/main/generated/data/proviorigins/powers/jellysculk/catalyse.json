@@ -1,0 +1,73 @@
+{
+  "type": "proviorigins:action_on_gain_experience",
+  "compare_to": 1,
+  "comparison": "GREATER_THAN_OR_EQUAL",
+  "entity_action": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "apoli:block_action_at",
+        "block_action": {
+          "type": "apoli:area_of_effect",
+          "block_action": {
+            "type": "apoli:random_chance",
+            "chance": 0.2,
+            "success_action": {
+              "type": "apoli:add_block",
+              "block": "minecraft:sculk_vein[down=true,east=false,north=false,south=false,up=false,waterlogged=false,west=false]"
+            }
+          },
+          "block_condition": {
+            "type": "apoli:all_of",
+            "conditions": [
+              {
+                "type": "apoli:in_tag",
+                "inverted": false,
+                "tag": "minecraft:sculk_replaceable"
+              },
+              {
+                "type": "apoli:offset",
+                "condition": {
+                  "type": "apoli:in_tag",
+                  "inverted": false,
+                  "tag": "minecraft:air"
+                },
+                "inverted": false,
+                "offset": {
+                  "x": 0,
+                  "y": 1,
+                  "z": 0
+                }
+              }
+            ],
+            "inverted": false
+          },
+          "radius": 4,
+          "shape": "SPHERE"
+        }
+      },
+      {
+        "type": "apoli:spawn_particles",
+        "count": 3,
+        "force": false,
+        "offset": {
+          "x": 0.0,
+          "y": 0.15,
+          "z": 0.0
+        },
+        "particle": {
+          "type": "minecraft:sculk_charge",
+          "params": {
+            "roll": 0.0
+          }
+        },
+        "speed": 0.0,
+        "spread": {
+          "x": 0.5,
+          "y": 0.0,
+          "z": 0.5
+        }
+      }
+    ]
+  }
+}

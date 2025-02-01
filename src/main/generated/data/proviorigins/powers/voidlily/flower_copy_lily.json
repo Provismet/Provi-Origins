@@ -1,0 +1,235 @@
+{
+  "type": "apoli:multiple",
+  "consume": {
+    "type": "proviorigins:active_item",
+    "consume_amount": 1,
+    "cooldown": 1,
+    "entity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:change_resource",
+          "change": 13,
+          "operation": "SET",
+          "resource": "proviorigins:voidlily/flower_copy__resource"
+        },
+        {
+          "type": "apoli:change_resource",
+          "change": 300,
+          "operation": "SET",
+          "resource": "proviorigins:voidlily/flower_copy_lily_hud"
+        },
+        {
+          "type": "apoli:play_sound",
+          "category": "PLAYERS",
+          "pitch": 2.0,
+          "sound": "proviorigins:origin.voidlily.mimic",
+          "volume": 1.0
+        },
+        {
+          "type": "apoli:emit_game_event",
+          "event": "minecraft:equip"
+        }
+      ]
+    },
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:voidlily/grants_corruption"
+      ],
+      "inverted": false
+    },
+    "key": {
+      "continuous": false,
+      "id": "key.origins.primary_active"
+    },
+    "swing_arm": true
+  },
+  "description": {
+    "translate": "power.proviorigins.voidlily.floral_mimicry.description"
+  },
+  "hud": {
+    "type": "apoli:resource",
+    "hud_render": {
+      "bar_index": 13,
+      "condition": {
+        "type": "apoli:resource",
+        "compare_to": 13,
+        "comparison": "EQUAL",
+        "inverted": false,
+        "resource": "proviorigins:voidlily/flower_copy__resource"
+      },
+      "icon_index": 13,
+      "inverted": false,
+      "order": 0,
+      "should_render": true,
+      "sprite_location": "proviorigins:textures/gui/resources/voidlily_extra_resources.png"
+    },
+    "max": 300,
+    "min": 0,
+    "min_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:change_resource",
+          "change": 0,
+          "operation": "SET",
+          "resource": "proviorigins:voidlily/flower_copy__resource"
+        },
+        {
+          "type": "apoli:change_resource",
+          "change": 300,
+          "operation": "SET",
+          "resource": "proviorigins:voidlily/flower_copy_lily_hud"
+        }
+      ]
+    },
+    "start_value": 300
+  },
+  "name": {
+    "translate": "power.proviorigins.voidlily.floral_mimicry.name"
+  },
+  "particles": {
+    "type": "apoli:particle",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 13,
+      "comparison": "EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:voidlily/flower_copy__resource"
+    },
+    "count": 1,
+    "force": false,
+    "frequency": 8,
+    "offset": {
+      "x": 0.5,
+      "y": 0.5,
+      "z": 0.5
+    },
+    "particle": {
+      "type": "proviorigins:flower",
+      "params": {
+        "colour": [
+          0.965,
+          0.965,
+          0.965
+        ],
+        "scale": 1.0
+      }
+    },
+    "speed": 0.0,
+    "spread": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "visible_in_first_person": false,
+    "visible_while_invisible": false
+  },
+  "particles2": {
+    "type": "apoli:particle",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 13,
+      "comparison": "EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:voidlily/flower_copy__resource"
+    },
+    "count": 1,
+    "force": false,
+    "frequency": 8,
+    "offset": {
+      "x": 0.5,
+      "y": 0.5,
+      "z": 0.5
+    },
+    "particle": {
+      "type": "proviorigins:flower",
+      "params": {
+        "colour": [
+          0.494,
+          0.051,
+          0.706
+        ],
+        "scale": 1.0
+      }
+    },
+    "speed": 0.0,
+    "spread": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "visible_in_first_person": false,
+    "visible_while_invisible": false
+  },
+  "passive": {
+    "type": "apoli:action_on_hit",
+    "bientity_action": {
+      "type": "apoli:target_action",
+      "action": {
+        "type": "apoli:apply_effect",
+        "effects": [
+          {
+            "ambient": false,
+            "amplifier": 0,
+            "duration": 120,
+            "id": "proviorigins:void_corruption",
+            "show_icon": true,
+            "show_particles": true
+          }
+        ]
+      }
+    },
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 13,
+      "comparison": "EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:voidlily/flower_copy__resource"
+    },
+    "cooldown": 1,
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    }
+  },
+  "tooltip": {
+    "type": "apoli:tooltip",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 13,
+      "comparison": "EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:voidlily/flower_copy__resource"
+    },
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:voidlily/grants_corruption"
+      ],
+      "inverted": false
+    },
+    "order": 0,
+    "resolve": false,
+    "texts": [
+      {
+        "type": "translatable",
+        "translate": "tooltip.proviorigins.voidlily.grants_corruption"
+      }
+    ],
+    "tick_rate": 20
+  }
+}

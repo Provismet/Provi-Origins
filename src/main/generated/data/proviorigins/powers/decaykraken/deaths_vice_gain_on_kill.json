@@ -1,0 +1,18 @@
+{
+  "type": "apoli:self_action_on_kill",
+  "cooldown": 1,
+  "entity_action": {
+    "type": "apoli:change_resource",
+    "change": 85,
+    "operation": "ADD",
+    "resource": "proviorigins:decaykraken/deaths_vice"
+  },
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": false,
+    "sprite_location": "apoli:textures/gui/resource_bar.png"
+  }
+}

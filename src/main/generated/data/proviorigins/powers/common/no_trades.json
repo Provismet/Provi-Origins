@@ -1,0 +1,17 @@
+{
+  "type": "apoli:prevent_entity_use",
+  "action_result": "FAIL",
+  "bientity_condition": {
+    "type": "apoli:target_condition",
+    "condition": {
+      "type": "apoli:in_tag",
+      "inverted": false,
+      "tag": "proviorigins:common/can_trade"
+    },
+    "inverted": false
+  },
+  "hands": [
+    "MAIN_HAND",
+    "OFF_HAND"
+  ]
+}

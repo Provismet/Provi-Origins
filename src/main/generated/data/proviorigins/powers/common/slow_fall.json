@@ -1,0 +1,50 @@
+{
+  "type": "apoli:multiple",
+  "cancel_momentum": {
+    "type": "apoli:action_on_key_press",
+    "condition": {
+      "type": "apoli:fall_distance",
+      "compare_to": 0.0,
+      "comparison": "GREATER_THAN",
+      "inverted": false
+    },
+    "cooldown": 1,
+    "entity_action": {
+      "type": "apoli:add_velocity",
+      "set": true,
+      "space": "WORLD",
+      "velocity": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "key": {
+      "continuous": false,
+      "id": "key.sneak"
+    }
+  },
+  "slow_falling": {
+    "type": "apoli:modify_falling",
+    "condition": {
+      "type": "apoli:sneaking",
+      "inverted": false
+    },
+    "modifiers": [
+      {
+        "amount": 0.01,
+        "operation": "apoli:set_total"
+      }
+    ],
+    "take_fall_damage": false,
+    "velocity": 0.01
+  }
+}

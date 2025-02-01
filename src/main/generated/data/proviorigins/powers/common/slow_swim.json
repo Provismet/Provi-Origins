@@ -1,0 +1,12 @@
+{
+  "type": "apoli:attribute",
+  "modifiers": [
+    {
+      "amount": -0.5,
+      "attribute": "additionalentityattributes:generic.water_speed",
+      "id": "proviorigins:common/slow_swim",
+      "operation": "ADD_MULTIPLIED_BASE"
+    }
+  ],
+  "update_health": false
+}

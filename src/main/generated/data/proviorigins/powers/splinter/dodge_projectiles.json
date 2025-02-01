@@ -1,0 +1,83 @@
+{
+  "type": "apoli:multiple",
+  "badges": [
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.splinter.dodge_projectiles.badge"
+      }
+    }
+  ],
+  "dodge": {
+    "type": "proviorigins:evade_projectiles",
+    "condition": {
+      "type": "apoli:any_of",
+      "conditions": [
+        {
+          "type": "apoli:resource",
+          "compare_to": 1,
+          "comparison": "GREATER_THAN_OR_EQUAL",
+          "inverted": false,
+          "resource": "proviorigins:splinter/dodge_projectiles_internal_cooldown"
+        },
+        {
+          "type": "apoli:all_of",
+          "conditions": [
+            {
+              "type": "apoli:sneaking",
+              "inverted": false
+            },
+            {
+              "type": "apoli:resource",
+              "compare_to": 34,
+              "comparison": "GREATER_THAN_OR_EQUAL",
+              "inverted": false,
+              "resource": "proviorigins:splinter/mana"
+            }
+          ],
+          "inverted": false
+        }
+      ],
+      "inverted": false
+    },
+    "entity_action": {
+      "type": "apoli:if_else",
+      "condition": {
+        "type": "apoli:resource",
+        "compare_to": 0,
+        "comparison": "EQUAL",
+        "inverted": false,
+        "resource": "proviorigins:splinter/dodge_projectiles_internal_cooldown"
+      },
+      "if_action": {
+        "type": "apoli:sequence",
+        "actions": [
+          {
+            "type": "apoli:trigger_cooldown",
+            "power": "proviorigins:splinter/dodge_projectiles_internal_cooldown"
+          },
+          {
+            "type": "apoli:change_resource",
+            "change": -34,
+            "operation": "ADD",
+            "resource": "proviorigins:splinter/mana"
+          }
+        ]
+      }
+    }
+  },
+  "internal_cooldown": {
+    "type": "apoli:cooldown",
+    "cooldown": 15,
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    }
+  }
+}

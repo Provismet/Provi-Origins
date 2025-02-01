@@ -1,0 +1,180 @@
+{
+  "type": "apoli:multiple",
+  "apply_countdown": {
+    "type": "apoli:action_over_time",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 3,
+      "comparison": "LESS_THAN",
+      "inverted": false,
+      "resource": "proviorigins:faemoth/stacking_passive_countdown"
+    },
+    "entity_action": {
+      "type": "apoli:change_resource",
+      "change": 1,
+      "operation": "ADD",
+      "resource": "proviorigins:faemoth/stacking_passive_countdown"
+    },
+    "falling_action": {
+      "type": "apoli:change_resource",
+      "change": 0,
+      "operation": "SET",
+      "resource": "proviorigins:faemoth/stacking_passive_countdown"
+    },
+    "interval": 25
+  },
+  "countdown": {
+    "type": "apoli:resource",
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "max": 3,
+    "max_action": {
+      "type": "apoli:change_resource",
+      "change": -1,
+      "operation": "ADD",
+      "resource": "proviorigins:faemoth/stacking_passive_stacks"
+    },
+    "min": 0,
+    "start_value": 0
+  },
+  "first_ring": {
+    "type": "apoli:action_over_time",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 1,
+      "comparison": "GREATER_THAN_OR_EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:faemoth/stacking_passive_stacks"
+    },
+    "entity_action": {
+      "type": "proviorigins:particle_ring",
+      "count": 1,
+      "offset_x": 0.0,
+      "offset_y": 0.0,
+      "offset_z": 0.0,
+      "on_ground": true,
+      "particle": {
+        "type": "minecraft:dust",
+        "params": {
+          "color": [
+            0.196,
+            1.0,
+            0.196
+          ],
+          "scale": 1.0
+        }
+      },
+      "radius": 1.0,
+      "space": "LOCAL",
+      "speed": 0.0,
+      "step_size": 5.0
+    },
+    "interval": 5
+  },
+  "hidden": true,
+  "second_ring": {
+    "type": "apoli:action_over_time",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 2,
+      "comparison": "GREATER_THAN_OR_EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:faemoth/stacking_passive_stacks"
+    },
+    "entity_action": {
+      "type": "proviorigins:particle_ring",
+      "count": 1,
+      "offset_x": 0.0,
+      "offset_y": 0.0,
+      "offset_z": 0.0,
+      "on_ground": true,
+      "particle": {
+        "type": "minecraft:dust",
+        "params": {
+          "color": [
+            1.0,
+            0.639,
+            0.0
+          ],
+          "scale": 1.0
+        }
+      },
+      "radius": 1.5,
+      "space": "LOCAL",
+      "speed": 0.0,
+      "step_size": 4.0
+    },
+    "interval": 5
+  },
+  "stacks": {
+    "type": "apoli:resource",
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "max": 3,
+    "max_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:apply_effect",
+          "effects": [
+            {
+              "ambient": false,
+              "amplifier": 0,
+              "duration": 100,
+              "id": "proviorigins:sleep",
+              "show_icon": true,
+              "show_particles": true
+            }
+          ]
+        },
+        {
+          "type": "proviorigins:particle_ring",
+          "count": 1,
+          "offset_x": 0.0,
+          "offset_y": 0.0,
+          "offset_z": 0.0,
+          "on_ground": true,
+          "particle": {
+            "type": "minecraft:dust",
+            "params": {
+              "color": [
+                1.0,
+                0.0,
+                0.0
+              ],
+              "scale": 1.0
+            }
+          },
+          "radius": 2.0,
+          "space": "LOCAL",
+          "speed": 0.0,
+          "step_size": 3.0
+        },
+        {
+          "type": "apoli:revoke_power",
+          "power": "proviorigins:faemoth/stacking_passive",
+          "source": "proviorigins:faemoth"
+        }
+      ]
+    },
+    "min": 0,
+    "min_action": {
+      "type": "apoli:revoke_power",
+      "power": "proviorigins:faemoth/stacking_passive",
+      "source": "proviorigins:faemoth"
+    },
+    "start_value": 1
+  }
+}

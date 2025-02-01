@@ -1,0 +1,10 @@
+{
+  "type": "proviorigins:emissive",
+  "condition": {
+    "type": "apoli:submerged_in",
+    "fluid": "minecraft:water",
+    "inverted": false
+  },
+  "dynamic_light": 15,
+  "light": 15
+}

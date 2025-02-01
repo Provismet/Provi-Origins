@@ -1,0 +1,11 @@
+{
+  "type": "apoli:multiple",
+  "occulude": {
+    "type": "proviorigins:occlude_vibrations"
+  },
+  "prevent_most": {
+    "type": "apoli:prevent_game_event",
+    "event_tag": "minecraft:vibrations",
+    "events": []
+  }
+}

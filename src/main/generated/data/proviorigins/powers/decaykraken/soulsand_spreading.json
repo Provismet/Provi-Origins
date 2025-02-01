@@ -1,0 +1,30 @@
+{
+  "type": "apoli:self_action_on_kill",
+  "condition": {
+    "type": "apoli:on_block",
+    "block_condition": {
+      "type": "apoli:block",
+      "block": "minecraft:coarse_dirt",
+      "inverted": false
+    },
+    "inverted": false
+  },
+  "cooldown": 1,
+  "entity_action": {
+    "type": "apoli:execute_command",
+    "command": "setblock ~ ~-1 ~ minecraft:soul_sand"
+  },
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": false,
+    "sprite_location": "apoli:textures/gui/resource_bar.png"
+  },
+  "target_condition": {
+    "type": "apoli:in_tag",
+    "inverted": false,
+    "tag": "minecraft:undead"
+  }
+}

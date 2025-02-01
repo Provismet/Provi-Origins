@@ -1,9 +1,0 @@
-{
-    "type": "proviorigins:emissive",
-    "light": 15,
-    "dynamic_light": 15,
-    "condition": {
-        "type": "origins:submerged_in",
-        "fluid": "minecraft:water"
-    }
-}

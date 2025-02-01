@@ -1,0 +1,12 @@
+{
+  "type": "apoli:attribute",
+  "modifiers": [
+    {
+      "amount": -10.0,
+      "attribute": "minecraft:generic.max_health",
+      "id": "proviorigins:common/brittle",
+      "operation": "ADD_VALUE"
+    }
+  ],
+  "update_health": true
+}

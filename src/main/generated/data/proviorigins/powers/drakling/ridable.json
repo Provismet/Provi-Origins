@@ -1,0 +1,89 @@
+{
+  "type": "apoli:multiple",
+  "badges": [
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/badge/info.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.drakling.ridable.badge.1"
+      }
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.drakling.ridable.badge.2"
+      }
+    }
+  ],
+  "force_mount": {
+    "type": "apoli:action_on_entity_use",
+    "action_result": "SUCCESS",
+    "bientity_action": {
+      "type": "apoli:invert",
+      "action": {
+        "type": "apoli:mount"
+      }
+    },
+    "bientity_condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:target_condition",
+          "condition": {
+            "type": "apoli:all_of",
+            "conditions": [
+              {
+                "type": "apoli:entity_type",
+                "entity_type": "minecraft:player",
+                "inverted": false
+              },
+              {
+                "type": "apoli:passenger",
+                "compare_to": 0,
+                "comparison": "EQUAL",
+                "inverted": false
+              }
+            ],
+            "inverted": false
+          },
+          "inverted": false
+        },
+        {
+          "type": "apoli:undirected",
+          "condition": {
+            "type": "apoli:attacker",
+            "inverted": false
+          },
+          "inverted": true
+        }
+      ],
+      "inverted": false
+    },
+    "condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:sneaking",
+          "inverted": false
+        },
+        {
+          "type": "apoli:riding",
+          "inverted": true
+        }
+      ],
+      "inverted": false
+    },
+    "hands": [
+      "MAIN_HAND",
+      "OFF_HAND"
+    ],
+    "held_item_condition": {
+      "type": "apoli:empty",
+      "inverted": false
+    },
+    "priority": 0
+  }
+}

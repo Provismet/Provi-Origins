@@ -1,0 +1,68 @@
+{
+  "type": "apoli:action_over_time",
+  "entity_action": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "proviorigins:particle_ring",
+        "count": 1,
+        "offset_x": 0.0,
+        "offset_y": 0.25,
+        "offset_z": 0.0,
+        "on_ground": true,
+        "particle": {
+          "type": "proviorigins:flower",
+          "params": {
+            "colour": [
+              0.8,
+              0.25,
+              0.8
+            ],
+            "scale": 0.75
+          }
+        },
+        "radius": 16.0,
+        "space": "LOCAL",
+        "speed": 0.0,
+        "step_size": 1.5
+      },
+      {
+        "type": "proviorigins:closest_bientity",
+        "bientity_action": {
+          "type": "proviorigins:fire_projectile",
+          "count": 1,
+          "divergence": 1.0,
+          "entity_type": "minecraft:arrow",
+          "speed": 1.75,
+          "tag": {}
+        },
+        "bientity_condition": {
+          "type": "apoli:all_of",
+          "conditions": [
+            {
+              "type": "apoli:target_condition",
+              "condition": {
+                "type": "apoli:living",
+                "inverted": false
+              },
+              "inverted": false
+            },
+            {
+              "type": "proviorigins:friendly",
+              "inverted": true
+            },
+            {
+              "type": "proviorigins:can_see_any",
+              "fluid_handling": "NONE",
+              "inverted": false,
+              "shape_type": "COLLIDER"
+            }
+          ],
+          "inverted": false
+        },
+        "distance": 16.0
+      }
+    ]
+  },
+  "interval": 40
+}

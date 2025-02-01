@@ -1,0 +1,69 @@
+{
+  "type": "apoli:multiple",
+  "boost": {
+    "type": "apoli:action_on_key_press",
+    "condition": {
+      "type": "apoli:fall_flying",
+      "inverted": false
+    },
+    "cooldown": 150,
+    "entity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:play_sound",
+          "category": "PLAYERS",
+          "pitch": 1.0,
+          "sound": "proviorigins:origin.drakling.flap",
+          "volume": 1.0
+        },
+        {
+          "type": "apoli:emit_game_event",
+          "event": "minecraft:flap"
+        },
+        {
+          "type": "proviorigins:particle_ring",
+          "count": 1,
+          "offset_x": 0.0,
+          "offset_y": 0.0,
+          "offset_z": 0.0,
+          "on_ground": false,
+          "particle": {
+            "type": "minecraft:explosion"
+          },
+          "radius": 5.0,
+          "space": "LOCAL",
+          "speed": 0.0,
+          "step_size": 20.0
+        },
+        {
+          "type": "apoli:add_velocity",
+          "set": false,
+          "space": "LOCAL",
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 2.0
+          }
+        }
+      ]
+    },
+    "hud_render": {
+      "bar_index": 4,
+      "icon_index": 4,
+      "inverted": false,
+      "order": 0,
+      "should_render": true,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "key": {
+      "continuous": false,
+      "id": "key.origins.primary_active"
+    }
+  },
+  "elytra": {
+    "type": "apoli:elytra_flight",
+    "render_elytra": true,
+    "texture_location": "proviorigins:textures/entity/drakling_wings.png"
+  }
+}

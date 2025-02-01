@@ -1,0 +1,108 @@
+{
+  "type": "apoli:multiple",
+  "growth": {
+    "type": "apoli:stacking_status_effect",
+    "condition": {
+      "type": "apoli:any_of",
+      "conditions": [
+        {
+          "type": "apoli:block_in_radius",
+          "block_condition": {
+            "type": "apoli:in_tag",
+            "inverted": false,
+            "tag": "proviorigins:voidlily/void_touching"
+          },
+          "compare_to": 1,
+          "comparison": "GREATER_THAN_OR_EQUAL",
+          "inverted": false,
+          "radius": 4,
+          "shape": "CUBE"
+        },
+        {
+          "type": "apoli:block_in_radius",
+          "block_condition": {
+            "type": "apoli:in_tag",
+            "inverted": false,
+            "tag": "proviorigins:voidlily/weakly_void_touching"
+          },
+          "compare_to": 4,
+          "comparison": "GREATER_THAN_OR_EQUAL",
+          "inverted": false,
+          "radius": 4,
+          "shape": "CUBE"
+        },
+        {
+          "type": "apoli:dimension",
+          "dimension": "minecraft:the_end",
+          "inverted": false
+        }
+      ],
+      "inverted": false
+    },
+    "duration_per_stack": 30,
+    "effects": [
+      {
+        "ambient": true,
+        "amplifier": 0,
+        "duration": 30,
+        "id": "minecraft:strength",
+        "show_icon": true,
+        "show_particles": false
+      },
+      {
+        "ambient": true,
+        "amplifier": 0,
+        "duration": 30,
+        "id": "minecraft:water_breathing",
+        "show_icon": true,
+        "show_particles": false
+      },
+      {
+        "ambient": true,
+        "amplifier": 0,
+        "duration": 30,
+        "id": "minecraft:speed",
+        "show_icon": true,
+        "show_particles": false
+      },
+      {
+        "ambient": true,
+        "amplifier": 0,
+        "duration": 30,
+        "id": "minecraft:saturation",
+        "show_icon": true,
+        "show_particles": false
+      }
+    ],
+    "max_stacks": 1,
+    "min_stacks": -1,
+    "tick_rate": 20
+  },
+  "particles": {
+    "type": "apoli:particle",
+    "condition": {
+      "type": "apoli:power_active",
+      "inverted": false,
+      "power": "proviorigins:voidlily/void_growth_growth"
+    },
+    "count": 1,
+    "force": false,
+    "frequency": 8,
+    "offset": {
+      "x": 0.45,
+      "y": 0.5,
+      "z": 0.45
+    },
+    "particle": {
+      "type": "proviorigins:lily_petal"
+    },
+    "speed": 0.0,
+    "spread": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "visible_in_first_person": false,
+    "visible_while_invisible": false
+  }
+}

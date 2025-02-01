@@ -1,0 +1,250 @@
+{
+  "type": "apoli:multiple",
+  "burn": {
+    "type": "apoli:action_over_time",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 0,
+      "comparison": "LESS_THAN_OR_EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:common/dried_up_hydrate"
+    },
+    "entity_action": {
+      "type": "apoli:set_on_fire",
+      "duration": 5.0
+    },
+    "interval": 20
+  },
+  "drinking": {
+    "type": "apoli:action_on_item_use",
+    "entity_action": {
+      "type": "apoli:change_resource",
+      "change": 30,
+      "operation": "SET",
+      "resource": "proviorigins:common/dried_up_hydrate"
+    },
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:common/hydration"
+      ],
+      "inverted": false
+    },
+    "priority": 0,
+    "trigger": "FINISH"
+  },
+  "dry": {
+    "type": "apoli:action_over_time",
+    "entity_action": {
+      "type": "apoli:if_else_list",
+      "actions": [
+        {
+          "action": {
+            "type": "apoli:change_resource",
+            "change": 30,
+            "operation": "SET",
+            "resource": "proviorigins:common/dried_up_hydrate"
+          },
+          "condition": {
+            "type": "apoli:any_of",
+            "conditions": [
+              {
+                "type": "apoli:gamemode",
+                "gamemode": "CREATIVE",
+                "inverted": false
+              },
+              {
+                "type": "apoli:gamemode",
+                "gamemode": "SPECTATOR",
+                "inverted": false
+              }
+            ],
+            "inverted": false
+          }
+        },
+        {
+          "action": {
+            "type": "apoli:change_resource",
+            "change": 5,
+            "operation": "ADD",
+            "resource": "proviorigins:common/dried_up_hydrate"
+          },
+          "condition": {
+            "type": "apoli:any_of",
+            "conditions": [
+              {
+                "type": "apoli:fluid_height",
+                "compare_to": 0.0,
+                "comparison": "GREATER_THAN",
+                "fluid": "minecraft:water",
+                "inverted": false
+              },
+              {
+                "type": "apoli:in_rain",
+                "inverted": false
+              }
+            ],
+            "inverted": false
+          }
+        },
+        {
+          "action": {
+            "type": "apoli:change_resource",
+            "change": -1,
+            "operation": "ADD",
+            "resource": "proviorigins:common/dried_up_hydrate"
+          },
+          "condition": {
+            "type": "apoli:any_of",
+            "conditions": [
+              {
+                "type": "apoli:all_of",
+                "conditions": [
+                  {
+                    "type": "apoli:biome",
+                    "condition": {
+                      "type": "apoli:temperature",
+                      "compare_to": 1.5,
+                      "comparison": "GREATER_THAN",
+                      "inverted": false
+                    },
+                    "inverted": false
+                  },
+                  {
+                    "type": "apoli:exposed_to_sun",
+                    "inverted": false
+                  }
+                ],
+                "inverted": false
+              },
+              {
+                "type": "apoli:biome",
+                "condition": {
+                  "type": "apoli:in_tag",
+                  "inverted": false,
+                  "tag": "proviorigins:common/hot_underground"
+                },
+                "inverted": false
+              }
+            ],
+            "inverted": false
+          }
+        },
+        {
+          "action": {
+            "type": "apoli:change_resource",
+            "change": 1,
+            "operation": "ADD",
+            "resource": "proviorigins:common/dried_up_hydrate"
+          },
+          "condition": {
+            "type": "apoli:constant",
+            "inverted": false,
+            "value": true
+          }
+        }
+      ]
+    },
+    "interval": 20
+  },
+  "hydrate": {
+    "type": "apoli:resource",
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "max": 30,
+    "min": 0,
+    "start_value": 30
+  },
+  "overlay1": {
+    "type": "apoli:overlay",
+    "blue": 0.0,
+    "condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:resource",
+          "compare_to": 20,
+          "comparison": "LESS_THAN_OR_EQUAL",
+          "inverted": false,
+          "resource": "proviorigins:common/dried_up_hydrate"
+        },
+        {
+          "type": "apoli:resource",
+          "compare_to": 10,
+          "comparison": "GREATER_THAN",
+          "inverted": false,
+          "resource": "proviorigins:common/dried_up_hydrate"
+        }
+      ],
+      "inverted": false
+    },
+    "draw_mode": "NAUSEA",
+    "draw_phase": "BELOW_HUD",
+    "green": 0.41,
+    "hide_with_hud": true,
+    "priority": 0,
+    "red": 1.0,
+    "sprite": "minecraft:textures/misc/nausea.png",
+    "strength": 0.3,
+    "visible_in_third_person": false
+  },
+  "overlay2": {
+    "type": "apoli:overlay",
+    "blue": 0.0,
+    "condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:resource",
+          "compare_to": 10,
+          "comparison": "LESS_THAN_OR_EQUAL",
+          "inverted": false,
+          "resource": "proviorigins:common/dried_up_hydrate"
+        },
+        {
+          "type": "apoli:resource",
+          "compare_to": 5,
+          "comparison": "GREATER_THAN",
+          "inverted": false,
+          "resource": "proviorigins:common/dried_up_hydrate"
+        }
+      ],
+      "inverted": false
+    },
+    "draw_mode": "NAUSEA",
+    "draw_phase": "BELOW_HUD",
+    "green": 0.3,
+    "hide_with_hud": true,
+    "priority": 0,
+    "red": 1.0,
+    "sprite": "minecraft:textures/misc/nausea.png",
+    "strength": 0.45,
+    "visible_in_third_person": false
+  },
+  "overlay3": {
+    "type": "apoli:overlay",
+    "blue": 0.0,
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 5,
+      "comparison": "LESS_THAN_OR_EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:common/dried_up_hydrate"
+    },
+    "draw_mode": "NAUSEA",
+    "draw_phase": "BELOW_HUD",
+    "green": 0.0,
+    "hide_with_hud": true,
+    "priority": 0,
+    "red": 1.0,
+    "sprite": "minecraft:textures/misc/nausea.png",
+    "strength": 0.6,
+    "visible_in_third_person": false
+  }
+}

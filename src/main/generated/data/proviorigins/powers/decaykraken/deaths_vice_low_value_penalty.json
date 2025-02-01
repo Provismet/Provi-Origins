@@ -1,0 +1,32 @@
+{
+  "type": "apoli:stacking_status_effect",
+  "condition": {
+    "type": "apoli:resource",
+    "compare_to": 256,
+    "comparison": "LESS_THAN",
+    "inverted": false,
+    "resource": "proviorigins:decaykraken/deaths_vice"
+  },
+  "duration_per_stack": 30,
+  "effects": [
+    {
+      "ambient": true,
+      "amplifier": 0,
+      "duration": 30,
+      "id": "minecraft:weakness",
+      "show_icon": true,
+      "show_particles": true
+    },
+    {
+      "ambient": true,
+      "amplifier": 0,
+      "duration": 30,
+      "id": "minecraft:slowness",
+      "show_icon": true,
+      "show_particles": true
+    }
+  ],
+  "max_stacks": 1,
+  "min_stacks": -1,
+  "tick_rate": 10
+}

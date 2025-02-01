@@ -1,0 +1,85 @@
+{
+  "type": "apoli:action_over_time",
+  "entity_action": {
+    "type": "apoli:if_else_list",
+    "actions": [
+      {
+        "action": {
+          "type": "apoli:change_resource",
+          "change": -3,
+          "operation": "ADD",
+          "resource": "proviorigins:decaykraken/deaths_vice"
+        },
+        "condition": {
+          "type": "apoli:resource",
+          "compare_to": 0,
+          "comparison": "EQUAL",
+          "inverted": false,
+          "resource": "proviorigins:decaykraken/deaths_vice_recharge_resource"
+        }
+      },
+      {
+        "action": {
+          "type": "apoli:change_resource",
+          "change": 3,
+          "operation": "ADD",
+          "resource": "proviorigins:decaykraken/deaths_vice"
+        },
+        "condition": {
+          "type": "apoli:resource",
+          "compare_to": 1,
+          "comparison": "EQUAL",
+          "inverted": false,
+          "resource": "proviorigins:decaykraken/deaths_vice_recharge_resource"
+        }
+      },
+      {
+        "action": {
+          "type": "apoli:change_resource",
+          "change": 8,
+          "operation": "ADD",
+          "resource": "proviorigins:decaykraken/deaths_vice"
+        },
+        "condition": {
+          "type": "apoli:resource",
+          "compare_to": 2,
+          "comparison": "EQUAL",
+          "inverted": false,
+          "resource": "proviorigins:decaykraken/deaths_vice_recharge_resource"
+        }
+      },
+      {
+        "action": {
+          "type": "apoli:change_resource",
+          "change": 16,
+          "operation": "ADD",
+          "resource": "proviorigins:decaykraken/deaths_vice"
+        },
+        "condition": {
+          "type": "apoli:resource",
+          "compare_to": 3,
+          "comparison": "EQUAL",
+          "inverted": false,
+          "resource": "proviorigins:decaykraken/deaths_vice_recharge_resource"
+        }
+      },
+      {
+        "action": {
+          "type": "apoli:change_resource",
+          "change": 38,
+          "operation": "ADD",
+          "resource": "proviorigins:decaykraken/deaths_vice"
+        },
+        "condition": {
+          "type": "apoli:resource",
+          "compare_to": 4,
+          "comparison": "EQUAL",
+          "inverted": false,
+          "resource": "proviorigins:decaykraken/deaths_vice_recharge_resource"
+        }
+      }
+    ]
+  },
+  "hidden": true,
+  "interval": 20
+}

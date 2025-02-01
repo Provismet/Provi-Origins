@@ -1,0 +1,12 @@
+{
+  "type": "apoli:attribute",
+  "modifiers": [
+    {
+      "amount": -0.25,
+      "attribute": "minecraft:generic.armor",
+      "id": "proviorigins:drakling/weak_natural_armour",
+      "operation": "ADD_MULTIPLIED_BASE"
+    }
+  ],
+  "update_health": false
+}

@@ -1,0 +1,21 @@
+{
+  "type": "apoli:action_on_callback",
+  "entity_action_respawned": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "apoli:change_resource",
+        "change": 0,
+        "operation": "SET",
+        "resource": "proviorigins:splinter/mana"
+      },
+      {
+        "type": "apoli:change_resource",
+        "change": 0,
+        "operation": "SET",
+        "resource": "proviorigins:splinter/concentration"
+      }
+    ]
+  },
+  "hidden": true
+}

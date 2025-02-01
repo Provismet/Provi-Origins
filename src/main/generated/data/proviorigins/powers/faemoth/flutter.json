@@ -1,0 +1,83 @@
+{
+  "type": "apoli:action_on_key_press",
+  "badges": [
+    {
+      "type": "origins:keybind",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "text": "origins.gui.badge.active"
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.faemoth.flutter.badge"
+      }
+    }
+  ],
+  "condition": {
+    "type": "apoli:all_of",
+    "conditions": [
+      {
+        "type": "proviorigins:client_server",
+        "client": false,
+        "inverted": false,
+        "server": true
+      },
+      {
+        "type": "apoli:resource",
+        "compare_to": 17,
+        "comparison": "GREATER_THAN_OR_EQUAL",
+        "inverted": false,
+        "resource": "proviorigins:faemoth/faerie_dust"
+      },
+      {
+        "type": "apoli:on_block",
+        "inverted": true
+      },
+      {
+        "type": "apoli:creative_flying",
+        "inverted": true
+      },
+      {
+        "type": "apoli:fall_flying",
+        "inverted": true
+      },
+      {
+        "type": "apoli:submerged_in",
+        "fluid": "proviorigins:prevents_double_jump",
+        "inverted": true
+      }
+    ],
+    "inverted": false
+  },
+  "cooldown": 1,
+  "entity_action": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "proviorigins:double_jump",
+        "reset_fall_height": true,
+        "velocity": 0.5
+      },
+      {
+        "type": "apoli:change_resource",
+        "change": -17,
+        "operation": "ADD",
+        "resource": "proviorigins:faemoth/faerie_dust"
+      }
+    ]
+  },
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": false,
+    "sprite_location": "apoli:textures/gui/resource_bar.png"
+  },
+  "key": {
+    "continuous": false,
+    "id": "key.jump"
+  }
+}

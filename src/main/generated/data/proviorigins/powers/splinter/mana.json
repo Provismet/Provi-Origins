@@ -1,0 +1,15 @@
+{
+  "type": "apoli:resource",
+  "hidden": true,
+  "hud_render": {
+    "bar_index": 1,
+    "icon_index": 1,
+    "inverted": true,
+    "order": 0,
+    "should_render": true,
+    "sprite_location": "proviorigins:textures/gui/resources/extra_resources.png"
+  },
+  "max": 119,
+  "min": 0,
+  "start_value": 119
+}

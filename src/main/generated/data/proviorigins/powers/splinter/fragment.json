@@ -1,0 +1,83 @@
+{
+  "type": "apoli:action_on_key_press",
+  "badges": [
+    {
+      "type": "origins:keybind",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "text": "origins.gui.badge.active"
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/badge/info.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.splinter.fragment.badge.1"
+      }
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.splinter.fragment.badge.2"
+      }
+    }
+  ],
+  "condition": {
+    "type": "apoli:resource",
+    "compare_to": 1,
+    "comparison": "GREATER_THAN_OR_EQUAL",
+    "inverted": false,
+    "resource": "proviorigins:splinter/concentration"
+  },
+  "cooldown": 1,
+  "entity_action": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "proviorigins:summon_clone",
+        "bientity_action": {
+          "type": "apoli:target_action",
+          "action": {
+            "type": "apoli:sequence",
+            "actions": [
+              {
+                "type": "apoli:grant_power",
+                "power": "proviorigins:splinter/distortion",
+                "source": "proviorigins:splinter/fragment"
+              },
+              {
+                "type": "apoli:grant_power",
+                "power": "proviorigins:common/brittle",
+                "source": "proviorigins:splinter/fragment"
+              }
+            ]
+          }
+        },
+        "can_attack": true,
+        "can_sit": true,
+        "follow_owner": true,
+        "inherit_enchantments": true,
+        "inherit_equipment": true
+      },
+      {
+        "type": "apoli:change_resource",
+        "change": -1,
+        "operation": "ADD",
+        "resource": "proviorigins:splinter/concentration"
+      }
+    ]
+  },
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": false,
+    "sprite_location": "apoli:textures/gui/resource_bar.png"
+  },
+  "key": {
+    "continuous": false,
+    "id": "key.origins.primary_active"
+  }
+}

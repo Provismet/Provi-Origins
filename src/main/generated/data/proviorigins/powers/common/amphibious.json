@@ -1,0 +1,22 @@
+{
+  "type": "apoli:stacking_status_effect",
+  "condition": {
+    "type": "apoli:submerged_in",
+    "fluid": "minecraft:water",
+    "inverted": false
+  },
+  "duration_per_stack": 40,
+  "effects": [
+    {
+      "ambient": true,
+      "amplifier": 0,
+      "duration": 40,
+      "id": "minecraft:water_breathing",
+      "show_icon": false,
+      "show_particles": false
+    }
+  ],
+  "max_stacks": 1,
+  "min_stacks": -1,
+  "tick_rate": 10
+}

@@ -1,0 +1,22 @@
+{
+  "type": "apoli:prevent_block_selection",
+  "block_condition": {
+    "type": "apoli:all_of",
+    "conditions": [
+      {
+        "type": "apoli:in_tag",
+        "inverted": false,
+        "tag": "proviorigins:alraune/foliage"
+      },
+      {
+        "type": "proviorigins:can_collide",
+        "inverted": true
+      }
+    ],
+    "inverted": false
+  },
+  "condition": {
+    "type": "apoli:sneaking",
+    "inverted": true
+  }
+}

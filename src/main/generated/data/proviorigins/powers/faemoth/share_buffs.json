@@ -1,0 +1,109 @@
+{
+  "type": "apoli:action_on_key_press",
+  "badges": [
+    {
+      "type": "origins:keybind",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "text": "origins.gui.badge.active"
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.faemoth.share_buffs.badge"
+      }
+    }
+  ],
+  "condition": {
+    "type": "apoli:resource",
+    "compare_to": 60,
+    "comparison": "GREATER_THAN_OR_EQUAL",
+    "inverted": false,
+    "resource": "proviorigins:faemoth/faerie_dust"
+  },
+  "cooldown": 1,
+  "entity_action": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "apoli:spawn_particles",
+        "count": 30,
+        "force": true,
+        "offset": {
+          "x": 0.0,
+          "y": 0.3,
+          "z": 0.0
+        },
+        "particle": {
+          "type": "minecraft:firework"
+        },
+        "speed": 0.0,
+        "spread": {
+          "x": 8.0,
+          "y": 0.4,
+          "z": 8.0
+        }
+      },
+      {
+        "type": "apoli:spawn_particles",
+        "count": 1,
+        "force": true,
+        "offset": {
+          "x": 0.0,
+          "y": 0.01,
+          "z": 0.0
+        },
+        "particle": {
+          "type": "proviorigins:magic_circle"
+        },
+        "speed": 0.0,
+        "spread": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "type": "apoli:area_of_effect",
+        "bientity_action": {
+          "type": "proviorigins:transfer_status",
+          "amplifier_multiplier": 1.0,
+          "cleanse_self": false,
+          "duration_multiplier": 1.0,
+          "effects": [
+            "minecraft:speed",
+            "minecraft:regeneration",
+            "minecraft:strength"
+          ],
+          "status_types": []
+        },
+        "bientity_condition": {
+          "type": "proviorigins:friendly",
+          "inverted": false
+        },
+        "include_actor": false,
+        "radius": 8.0,
+        "shape": "SPHERE"
+      },
+      {
+        "type": "apoli:change_resource",
+        "change": -60,
+        "operation": "ADD",
+        "resource": "proviorigins:faemoth/faerie_dust"
+      }
+    ]
+  },
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": false,
+    "sprite_location": "apoli:textures/gui/resource_bar.png"
+  },
+  "key": {
+    "continuous": false,
+    "id": "key.origins.primary_active"
+  }
+}

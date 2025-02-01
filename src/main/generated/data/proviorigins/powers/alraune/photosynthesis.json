@@ -1,0 +1,39 @@
+{
+  "type": "apoli:action_over_time",
+  "condition": {
+    "type": "apoli:exposed_to_sun",
+    "inverted": false
+  },
+  "entity_action": {
+    "type": "apoli:if_else_list",
+    "actions": [
+      {
+        "action": {
+          "type": "apoli:feed",
+          "nutrition": 1,
+          "saturation": 0.0
+        },
+        "condition": {
+          "type": "apoli:food_level",
+          "compare_to": 20,
+          "comparison": "GREATER_THAN",
+          "inverted": false
+        }
+      },
+      {
+        "action": {
+          "type": "apoli:feed",
+          "nutrition": 1,
+          "saturation": 1.0
+        },
+        "condition": {
+          "type": "apoli:saturation_level",
+          "compare_to": 6.0,
+          "comparison": "LESS_THAN",
+          "inverted": false
+        }
+      }
+    ]
+  },
+  "interval": 20
+}

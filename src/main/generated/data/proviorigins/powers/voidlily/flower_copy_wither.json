@@ -1,0 +1,193 @@
+{
+  "type": "apoli:multiple",
+  "consume": {
+    "type": "proviorigins:active_item",
+    "consume_amount": 1,
+    "cooldown": 1,
+    "entity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:change_resource",
+          "change": 8,
+          "operation": "SET",
+          "resource": "proviorigins:voidlily/flower_copy__resource"
+        },
+        {
+          "type": "apoli:change_resource",
+          "change": 600,
+          "operation": "SET",
+          "resource": "proviorigins:voidlily/flower_copy_wither_hud"
+        },
+        {
+          "type": "apoli:play_sound",
+          "category": "PLAYERS",
+          "pitch": 2.0,
+          "sound": "proviorigins:origin.voidlily.mimic",
+          "volume": 1.0
+        },
+        {
+          "type": "apoli:emit_game_event",
+          "event": "minecraft:equip"
+        }
+      ]
+    },
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:voidlily/grants_wither"
+      ],
+      "inverted": false
+    },
+    "key": {
+      "continuous": false,
+      "id": "key.origins.primary_active"
+    },
+    "swing_arm": true
+  },
+  "hidden": true,
+  "hud": {
+    "type": "apoli:resource",
+    "hud_render": {
+      "bar_index": 8,
+      "condition": {
+        "type": "apoli:resource",
+        "compare_to": 8,
+        "comparison": "EQUAL",
+        "inverted": false,
+        "resource": "proviorigins:voidlily/flower_copy__resource"
+      },
+      "icon_index": 8,
+      "inverted": false,
+      "order": 0,
+      "should_render": true,
+      "sprite_location": "proviorigins:textures/gui/resources/voidlily_extra_resources.png"
+    },
+    "max": 600,
+    "min": 0,
+    "min_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:change_resource",
+          "change": 0,
+          "operation": "SET",
+          "resource": "proviorigins:voidlily/flower_copy__resource"
+        },
+        {
+          "type": "apoli:change_resource",
+          "change": 600,
+          "operation": "SET",
+          "resource": "proviorigins:voidlily/flower_copy_wither_hud"
+        }
+      ]
+    },
+    "start_value": 600
+  },
+  "particles": {
+    "type": "apoli:particle",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 8,
+      "comparison": "EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:voidlily/flower_copy__resource"
+    },
+    "count": 1,
+    "force": false,
+    "frequency": 4,
+    "offset": {
+      "x": 0.5,
+      "y": 0.5,
+      "z": 0.5
+    },
+    "particle": {
+      "type": "proviorigins:flower",
+      "params": {
+        "colour": [
+          0.2,
+          0.2,
+          0.2
+        ],
+        "scale": 1.0
+      }
+    },
+    "speed": 0.0,
+    "spread": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "visible_in_first_person": false,
+    "visible_while_invisible": false
+  },
+  "passive": {
+    "type": "apoli:action_on_hit",
+    "bientity_action": {
+      "type": "apoli:target_action",
+      "action": {
+        "type": "apoli:apply_effect",
+        "effects": [
+          {
+            "ambient": false,
+            "amplifier": 0,
+            "duration": 120,
+            "id": "minecraft:wither",
+            "show_icon": true,
+            "show_particles": true
+          }
+        ]
+      }
+    },
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 8,
+      "comparison": "EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:voidlily/flower_copy__resource"
+    },
+    "cooldown": 1,
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    }
+  },
+  "tooltip": {
+    "type": "apoli:tooltip",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 8,
+      "comparison": "EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:voidlily/flower_copy__resource"
+    },
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:voidlily/grants_wither"
+      ],
+      "inverted": false
+    },
+    "order": 0,
+    "resolve": false,
+    "texts": [
+      {
+        "type": "translatable",
+        "translate": "tooltip.proviorigins.voidlily.grants_wither"
+      }
+    ],
+    "tick_rate": 20
+  }
+}

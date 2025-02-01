@@ -1,0 +1,43 @@
+{
+  "type": "apoli:action_when_damage_taken",
+  "condition": {
+    "type": "apoli:relative_health",
+    "compare_to": 0.0,
+    "comparison": "LESS_THAN_OR_EQUAL",
+    "inverted": false
+  },
+  "cooldown": 1,
+  "entity_action": {
+    "type": "apoli:spawn_particles",
+    "count": 32,
+    "force": false,
+    "offset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "particle": {
+      "type": "minecraft:block",
+      "params": {
+        "block_state": {
+          "Name": "proviorigins:lily_of_the_void"
+        }
+      }
+    },
+    "speed": 5.0,
+    "spread": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    }
+  },
+  "hidden": true,
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": false,
+    "sprite_location": "apoli:textures/gui/resource_bar.png"
+  }
+}

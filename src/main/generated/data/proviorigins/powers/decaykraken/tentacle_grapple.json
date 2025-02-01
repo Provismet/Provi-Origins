@@ -1,0 +1,167 @@
+{
+  "type": "apoli:action_on_key_press",
+  "badges": [
+    {
+      "type": "origins:keybind",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "text": "origins.gui.badge.active"
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.decaykraken.tentacle_grapple.badge"
+      }
+    }
+  ],
+  "condition": {
+    "type": "apoli:resource",
+    "compare_to": 256,
+    "comparison": "GREATER_THAN_OR_EQUAL",
+    "inverted": false,
+    "resource": "proviorigins:decaykraken/deaths_vice"
+  },
+  "cooldown": 1,
+  "entity_action": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "apoli:if_else",
+        "condition": {
+          "type": "apoli:submerged_in",
+          "fluid": "minecraft:water",
+          "inverted": false
+        },
+        "else_action": {
+          "type": "apoli:raycast",
+          "bientity_action": {
+            "type": "apoli:sequence",
+            "actions": [
+              {
+                "type": "apoli:add_velocity",
+                "reference": "POSITION",
+                "set": false,
+                "velocity": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": -2.0
+                }
+              },
+              {
+                "type": "apoli:target_action",
+                "action": {
+                  "type": "apoli:apply_effect",
+                  "effects": [
+                    {
+                      "ambient": false,
+                      "amplifier": 1,
+                      "duration": 120,
+                      "id": "minecraft:slowness",
+                      "show_icon": true,
+                      "show_particles": true
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "block": true,
+          "command_along_ray": "particle minecraft:squid_ink",
+          "command_along_ray_only_on_hit": false,
+          "command_step": 0.333,
+          "distance": 12.0,
+          "entity": true,
+          "fluid_handling": "NONE",
+          "hit_action": {
+            "type": "apoli:raycast",
+            "block": true,
+            "command_along_ray": "particle minecraft:sonic_boom",
+            "command_along_ray_only_on_hit": false,
+            "command_step": 1.0,
+            "distance": 12.0,
+            "entity": true,
+            "fluid_handling": "NONE",
+            "shape_type": "OUTLINE",
+            "space": "LOCAL"
+          },
+          "shape_type": "COLLIDER",
+          "space": "LOCAL"
+        },
+        "if_action": {
+          "type": "apoli:raycast",
+          "bientity_action": {
+            "type": "apoli:sequence",
+            "actions": [
+              {
+                "type": "apoli:add_velocity",
+                "reference": "POSITION",
+                "set": false,
+                "velocity": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": -2.0
+                }
+              },
+              {
+                "type": "apoli:target_action",
+                "action": {
+                  "type": "apoli:apply_effect",
+                  "effects": [
+                    {
+                      "ambient": false,
+                      "amplifier": 0,
+                      "duration": 120,
+                      "id": "minecraft:slowness",
+                      "show_icon": true,
+                      "show_particles": true
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "block": true,
+          "command_along_ray": "particle minecraft:glow_squid_ink",
+          "command_along_ray_only_on_hit": false,
+          "command_step": 0.333,
+          "distance": 12.0,
+          "entity": true,
+          "fluid_handling": "NONE",
+          "hit_action": {
+            "type": "apoli:raycast",
+            "block": true,
+            "command_along_ray": "particle minecraft:sonic_boom",
+            "command_along_ray_only_on_hit": false,
+            "command_step": 1.0,
+            "distance": 12.0,
+            "entity": true,
+            "fluid_handling": "NONE",
+            "shape_type": "OUTLINE",
+            "space": "LOCAL"
+          },
+          "shape_type": "COLLIDER",
+          "space": "LOCAL"
+        }
+      },
+      {
+        "type": "apoli:change_resource",
+        "change": -256,
+        "operation": "ADD",
+        "resource": "proviorigins:decaykraken/deaths_vice"
+      }
+    ]
+  },
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": false,
+    "sprite_location": "apoli:textures/gui/resource_bar.png"
+  },
+  "key": {
+    "continuous": false,
+    "id": "key.proviorigins.tertiary_active"
+  }
+}

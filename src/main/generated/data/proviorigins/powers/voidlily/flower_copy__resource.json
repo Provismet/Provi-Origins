@@ -1,0 +1,31 @@
+{
+  "type": "apoli:resource",
+  "hidden": true,
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": false,
+    "sprite_location": "apoli:textures/gui/resource_bar.png"
+  },
+  "max": 14,
+  "min": 0,
+  "min_action": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "apoli:play_sound",
+        "category": "PLAYERS",
+        "pitch": 2.0,
+        "sound": "proviorigins:origin.voidlily.mimic_end",
+        "volume": 1.0
+      },
+      {
+        "type": "apoli:emit_game_event",
+        "event": "minecraft:equip"
+      }
+    ]
+  },
+  "start_value": 0
+}

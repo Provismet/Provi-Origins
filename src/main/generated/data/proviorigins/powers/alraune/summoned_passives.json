@@ -1,0 +1,332 @@
+{
+  "type": "apoli:multiple",
+  "flammable": {
+    "type": "apoli:modify_damage_taken",
+    "damage_condition": {
+      "type": "apoli:in_tag",
+      "inverted": false,
+      "tag": "minecraft:is_fire"
+    },
+    "modifiers": [
+      {
+        "amount": 1.0,
+        "operation": "apoli:multiply_base_additive"
+      }
+    ]
+  },
+  "hidden": true,
+  "increase_lifespan": {
+    "type": "apoli:action_on_being_used",
+    "action_result": "SUCCESS",
+    "bientity_action": {
+      "type": "apoli:target_action",
+      "action": {
+        "type": "apoli:sequence",
+        "actions": [
+          {
+            "type": "apoli:spawn_particles",
+            "count": 12,
+            "force": false,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "particle": {
+              "type": "minecraft:happy_villager"
+            },
+            "speed": 0.0,
+            "spread": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.5
+            }
+          },
+          {
+            "type": "apoli:play_sound",
+            "category": "PLAYERS",
+            "pitch": 1.0,
+            "sound": "minecraft:item.bone_meal.use",
+            "volume": 1.0
+          },
+          {
+            "type": "proviorigins:set_summon_max_life_ticks",
+            "amount": -1
+          }
+        ]
+      }
+    },
+    "hands": [
+      "MAIN_HAND",
+      "OFF_HAND"
+    ],
+    "held_item_action": {
+      "type": "apoli:consume",
+      "amount": 1
+    },
+    "held_item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:alraune/super_fertiliser"
+      ],
+      "inverted": false
+    },
+    "priority": 0
+  },
+  "is_bonemealed": {
+    "type": "apoli:resource",
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "max": 1,
+    "min": 0,
+    "start_value": 0
+  },
+  "need_sunlight": {
+    "type": "apoli:damage_over_time",
+    "condition": {
+      "type": "apoli:any_of",
+      "conditions": [
+        {
+          "type": "apoli:on_block",
+          "block_condition": {
+            "type": "apoli:in_tag",
+            "inverted": false,
+            "tag": "minecraft:dirt"
+          },
+          "inverted": false
+        },
+        {
+          "type": "apoli:all_of",
+          "conditions": [
+            {
+              "type": "apoli:biome",
+              "condition": {
+                "type": "apoli:in_tag",
+                "inverted": false,
+                "tag": "proviorigins:alraune/always_grow"
+              },
+              "inverted": true
+            },
+            {
+              "type": "apoli:resource",
+              "compare_to": 0,
+              "comparison": "EQUAL",
+              "inverted": false,
+              "resource": "proviorigins:alraune/summoned_passives_is_bonemealed"
+            },
+            {
+              "type": "apoli:any_of",
+              "conditions": [
+                {
+                  "type": "apoli:all_of",
+                  "conditions": [
+                    {
+                      "type": "apoli:biome",
+                      "condition": {
+                        "type": "apoli:in_tag",
+                        "inverted": false,
+                        "tag": "proviorigins:alraune/natural"
+                      },
+                      "inverted": true
+                    },
+                    {
+                      "type": "apoli:exposed_to_sun",
+                      "inverted": true
+                    }
+                  ],
+                  "inverted": false
+                },
+                {
+                  "type": "apoli:all_of",
+                  "conditions": [
+                    {
+                      "type": "apoli:biome",
+                      "condition": {
+                        "type": "apoli:in_tag",
+                        "inverted": false,
+                        "tag": "proviorigins:alraune/natural"
+                      },
+                      "inverted": false
+                    },
+                    {
+                      "type": "apoli:exposed_to_sky",
+                      "inverted": true
+                    }
+                  ],
+                  "inverted": false
+                }
+              ],
+              "inverted": false
+            }
+          ],
+          "inverted": false
+        }
+      ],
+      "inverted": false
+    },
+    "damage": 4.0,
+    "damage_easy": 4.0,
+    "damage_type": "minecraft:generic",
+    "interval": 30,
+    "onset_delay": 30,
+    "protection_effectiveness": 0.0
+  },
+  "particles1": {
+    "type": "apoli:particle",
+    "count": 1,
+    "force": false,
+    "frequency": 6,
+    "offset": {
+      "x": 0.0,
+      "y": 0.5,
+      "z": 0.0
+    },
+    "particle": {
+      "type": "proviorigins:flower",
+      "params": {
+        "colour": [
+          0.71,
+          0.84,
+          0.96
+        ],
+        "scale": 1.0
+      }
+    },
+    "speed": 0.0,
+    "spread": {
+      "x": 0.25,
+      "y": 0.25,
+      "z": 0.25
+    },
+    "visible_in_first_person": false,
+    "visible_while_invisible": false
+  },
+  "particles2": {
+    "type": "apoli:particle",
+    "count": 1,
+    "force": false,
+    "frequency": 6,
+    "offset": {
+      "x": 0.0,
+      "y": 0.5,
+      "z": 0.0
+    },
+    "particle": {
+      "type": "proviorigins:flower",
+      "params": {
+        "colour": [
+          0.95,
+          0.33,
+          0.35
+        ],
+        "scale": 1.0
+      }
+    },
+    "speed": 0.0,
+    "spread": {
+      "x": 0.25,
+      "y": 0.25,
+      "z": 0.25
+    },
+    "visible_in_first_person": false,
+    "visible_while_invisible": false
+  },
+  "particles3": {
+    "type": "apoli:particle",
+    "count": 1,
+    "force": false,
+    "frequency": 6,
+    "offset": {
+      "x": 0.0,
+      "y": 0.5,
+      "z": 0.0
+    },
+    "particle": {
+      "type": "proviorigins:flower",
+      "params": {
+        "colour": [
+          0.98,
+          0.71,
+          0.3
+        ],
+        "scale": 1.0
+      }
+    },
+    "speed": 0.0,
+    "spread": {
+      "x": 0.25,
+      "y": 0.25,
+      "z": 0.25
+    },
+    "visible_in_first_person": false,
+    "visible_while_invisible": false
+  },
+  "renewable": {
+    "type": "apoli:action_on_being_used",
+    "action_result": "SUCCESS",
+    "bientity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:target_action",
+          "action": {
+            "type": "apoli:spawn_particles",
+            "count": 12,
+            "force": false,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "particle": {
+              "type": "minecraft:happy_villager"
+            },
+            "speed": 0.0,
+            "spread": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.5
+            }
+          }
+        },
+        {
+          "type": "apoli:target_action",
+          "action": {
+            "type": "apoli:play_sound",
+            "category": "PLAYERS",
+            "pitch": 1.0,
+            "sound": "minecraft:item.bone_meal.use",
+            "volume": 1.0
+          }
+        },
+        {
+          "type": "apoli:target_action",
+          "action": {
+            "type": "apoli:change_resource",
+            "change": 1,
+            "operation": "SET",
+            "resource": "proviorigins:alraune/summoned_passives_is_bonemealed"
+          }
+        }
+      ]
+    },
+    "hands": [
+      "MAIN_HAND",
+      "OFF_HAND"
+    ],
+    "held_item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "minecraft:bone_meal"
+      ],
+      "inverted": false
+    },
+    "priority": 0
+  }
+}

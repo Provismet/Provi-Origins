@@ -1,0 +1,131 @@
+{
+  "type": "apoli:multiple",
+  "charging": {
+    "type": "apoli:action_over_time",
+    "entity_action": {
+      "type": "apoli:if_else_list",
+      "actions": [
+        {
+          "action": {
+            "type": "apoli:change_resource",
+            "change": -2,
+            "operation": "ADD",
+            "resource": "proviorigins:faemoth/faerie_dust"
+          },
+          "condition": {
+            "type": "apoli:exposed_to_sun",
+            "inverted": false
+          }
+        },
+        {
+          "action": {
+            "type": "apoli:change_resource",
+            "change": 6,
+            "operation": "ADD",
+            "resource": "proviorigins:faemoth/faerie_dust"
+          },
+          "condition": {
+            "type": "apoli:block_in_radius",
+            "block_condition": {
+              "type": "apoli:any_of",
+              "conditions": [
+                {
+                  "type": "apoli:in_tag",
+                  "inverted": false,
+                  "tag": "proviorigins:faemoth/large_fires"
+                },
+                {
+                  "type": "apoli:all_of",
+                  "conditions": [
+                    {
+                      "type": "apoli:in_tag",
+                      "inverted": false,
+                      "tag": "proviorigins:faemoth/large_fires_lit_state"
+                    },
+                    {
+                      "type": "apoli:block_state",
+                      "inverted": false,
+                      "property": "lit",
+                      "value": true
+                    }
+                  ],
+                  "inverted": false
+                },
+                {
+                  "type": "apoli:all_of",
+                  "conditions": [
+                    {
+                      "type": "apoli:in_tag",
+                      "inverted": false,
+                      "tag": "proviorigins:faemoth/large_fires_fire_state"
+                    },
+                    {
+                      "type": "apoli:block_state",
+                      "inverted": false,
+                      "property": "fire",
+                      "value": true
+                    }
+                  ],
+                  "inverted": false
+                }
+              ],
+              "inverted": false
+            },
+            "compare_to": 0,
+            "comparison": "GREATER_THAN",
+            "inverted": false,
+            "radius": 4,
+            "shape": "SPHERE"
+          }
+        },
+        {
+          "action": {
+            "type": "apoli:change_resource",
+            "change": 2,
+            "operation": "ADD",
+            "resource": "proviorigins:faemoth/faerie_dust"
+          },
+          "condition": {
+            "type": "proviorigins:entity_in_radius",
+            "compare_to": 0,
+            "comparison": "GREATER_THAN",
+            "entity_condition": {
+              "type": "apoli:equipped_item",
+              "equipment_slot": "HAND",
+              "inverted": false,
+              "item_condition": {
+                "type": "apoli:ingredient",
+                "ingredient": [
+                  "#proviorigins:faemoth/light_sources"
+                ],
+                "inverted": false
+              }
+            },
+            "include_self": true,
+            "inverted": false,
+            "radius": 4.0
+          }
+        }
+      ]
+    },
+    "interval": 20
+  },
+  "hidden": true,
+  "special_lantern": {
+    "type": "apoli:recipe",
+    "priority": 0,
+    "recipe": {
+      "type": "minecraft:crafting_shapeless",
+      "category": "misc",
+      "ingredients": [
+        {
+          "item": "minecraft:lantern"
+        }
+      ],
+      "result": {
+        "count": 1,
+        "id": "proviorigins:solid_lantern"
+      }
+    }
+  }
+}

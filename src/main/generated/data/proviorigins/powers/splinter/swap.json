@@ -1,0 +1,136 @@
+{
+  "type": "apoli:action_on_key_press",
+  "badges": [
+    {
+      "type": "origins:keybind",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "text": "origins.gui.badge.active"
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.splinter.swap.badge"
+      }
+    }
+  ],
+  "condition": {
+    "type": "apoli:resource",
+    "compare_to": 34,
+    "comparison": "GREATER_THAN_OR_EQUAL",
+    "inverted": false,
+    "resource": "proviorigins:splinter/mana"
+  },
+  "cooldown": 1,
+  "entity_action": {
+    "type": "apoli:if_else",
+    "condition": {
+      "type": "apoli:sneaking",
+      "inverted": false
+    },
+    "else_action": {
+      "type": "apoli:raycast",
+      "bientity_action": {
+        "type": "apoli:sequence",
+        "actions": [
+          {
+            "type": "proviorigins:swap_positions",
+            "reset_fall_height": true,
+            "reset_velocity": true
+          },
+          {
+            "type": "apoli:actor_action",
+            "action": {
+              "type": "apoli:change_resource",
+              "change": -34,
+              "operation": "ADD",
+              "resource": "proviorigins:splinter/mana"
+            }
+          }
+        ]
+      },
+      "bientity_condition": {
+        "type": "apoli:all_of",
+        "conditions": [
+          {
+            "type": "apoli:owner",
+            "inverted": false
+          },
+          {
+            "type": "apoli:target_condition",
+            "condition": {
+              "type": "apoli:entity_type",
+              "entity_type": "proviorigins:player_clone",
+              "inverted": false
+            },
+            "inverted": false
+          }
+        ],
+        "inverted": false
+      },
+      "block": false,
+      "command_along_ray_only_on_hit": false,
+      "command_step": 1.0,
+      "distance": 32.0,
+      "entity": true,
+      "fluid_handling": "ANY",
+      "shape_type": "OUTLINE",
+      "space": "WORLD"
+    },
+    "if_action": {
+      "type": "proviorigins:farthest_bientity",
+      "bientity_action": {
+        "type": "apoli:sequence",
+        "actions": [
+          {
+            "type": "proviorigins:swap_positions",
+            "reset_fall_height": true,
+            "reset_velocity": true
+          },
+          {
+            "type": "apoli:actor_action",
+            "action": {
+              "type": "apoli:change_resource",
+              "change": -34,
+              "operation": "ADD",
+              "resource": "proviorigins:splinter/concentration"
+            }
+          }
+        ]
+      },
+      "bientity_condition": {
+        "type": "apoli:all_of",
+        "conditions": [
+          {
+            "type": "apoli:owner",
+            "inverted": false
+          },
+          {
+            "type": "apoli:target_condition",
+            "condition": {
+              "type": "apoli:entity_type",
+              "entity_type": "proviorigins:player_clone",
+              "inverted": false
+            },
+            "inverted": false
+          }
+        ],
+        "inverted": false
+      },
+      "distance": 32.0
+    }
+  },
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": false,
+    "sprite_location": "apoli:textures/gui/resource_bar.png"
+  },
+  "key": {
+    "continuous": false,
+    "id": "key.proviorigins.tertiary_active"
+  }
+}

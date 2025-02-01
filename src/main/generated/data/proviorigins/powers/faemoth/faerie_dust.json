@@ -1,0 +1,58 @@
+{
+  "type": "apoli:resource",
+  "badges": [
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/badge/info.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.faemoth.faerie_dust.badge.1"
+      }
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/badge/info.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.faemoth.faerie_dust.badge.2"
+      }
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/badge/info.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.faemoth.faerie_dust.badge.3"
+      }
+    },
+    {
+      "type": "origins:crafting_recipe",
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "id": "proviorigins:faemoth/qol_lantern_example",
+        "ingredients": [
+          {
+            "item": "minecraft:lantern"
+          }
+        ],
+        "result": {
+          "count": 1,
+          "id": "proviorigins:solid_lantern"
+        }
+      },
+      "sprite": "origins:textures/gui/badge/recipe.png"
+    }
+  ],
+  "hud_render": {
+    "bar_index": 2,
+    "icon_index": 2,
+    "inverted": false,
+    "order": 0,
+    "should_render": true,
+    "sprite_location": "proviorigins:textures/gui/resources/extra_resources.png"
+  },
+  "max": 120,
+  "min": 0,
+  "start_value": 120
+}

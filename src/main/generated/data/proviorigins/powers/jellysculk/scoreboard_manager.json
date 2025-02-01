@@ -1,0 +1,8 @@
+{
+  "type": "apoli:action_on_callback",
+  "entity_action_gained": {
+    "type": "apoli:execute_command",
+    "command": "scoreboard objectives add jellysculk_counter dummy"
+  },
+  "hidden": true
+}

@@ -1,0 +1,14 @@
+{
+  "type": "apoli:modify_break_speed",
+  "block_condition": {
+    "type": "apoli:in_tag",
+    "inverted": false,
+    "tag": "proviorigins:jellysculk/sculk"
+  },
+  "modifiers": [
+    {
+      "amount": 10.0,
+      "operation": "apoli:multiply_base_multiplicative"
+    }
+  ]
+}

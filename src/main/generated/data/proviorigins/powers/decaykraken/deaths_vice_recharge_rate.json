@@ -1,0 +1,218 @@
+{
+  "type": "apoli:multiple",
+  "badges": [
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/badge/info.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.decaykraken.deaths_vice_recharge_rate.badge"
+      }
+    },
+    {
+      "type": "origins:crafting_recipe",
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "equipment",
+        "id": "proviorigins:decaykraken/qol_lantern",
+        "ingredients": [
+          {
+            "item": "minecraft:soul_lantern"
+          }
+        ],
+        "result": {
+          "count": 1,
+          "id": "proviorigins:kraken_soul_lantern"
+        }
+      },
+      "sprite": "origins:textures/gui/badge/recipe.png"
+    }
+  ],
+  "resource_adjust": {
+    "type": "apoli:action_over_time",
+    "entity_action": {
+      "type": "apoli:if_else_list",
+      "actions": [
+        {
+          "action": {
+            "type": "apoli:if_else_list",
+            "actions": [
+              {
+                "action": {
+                  "type": "apoli:change_resource",
+                  "change": 2,
+                  "operation": "SET",
+                  "resource": "proviorigins:decaykraken/deaths_vice_recharge_resource"
+                },
+                "condition": {
+                  "type": "apoli:dimension",
+                  "dimension": "minecraft:the_nether",
+                  "inverted": true
+                }
+              },
+              {
+                "action": {
+                  "type": "apoli:change_resource",
+                  "change": 4,
+                  "operation": "SET",
+                  "resource": "proviorigins:decaykraken/deaths_vice_recharge_resource"
+                },
+                "condition": {
+                  "type": "apoli:biome",
+                  "condition": {
+                    "type": "apoli:in_tag",
+                    "inverted": false,
+                    "tag": "proviorigins:decaykraken/soul_collector"
+                  },
+                  "inverted": false
+                }
+              },
+              {
+                "action": {
+                  "type": "apoli:change_resource",
+                  "change": 3,
+                  "operation": "SET",
+                  "resource": "proviorigins:decaykraken/deaths_vice_recharge_resource"
+                },
+                "condition": {
+                  "type": "apoli:constant",
+                  "inverted": false,
+                  "value": true
+                }
+              }
+            ]
+          },
+          "condition": {
+            "type": "apoli:block_in_radius",
+            "block_condition": {
+              "type": "apoli:any_of",
+              "conditions": [
+                {
+                  "type": "apoli:in_tag",
+                  "inverted": false,
+                  "tag": "proviorigins:decaykraken/soul_fires"
+                },
+                {
+                  "type": "apoli:all_of",
+                  "conditions": [
+                    {
+                      "type": "apoli:in_tag",
+                      "inverted": false,
+                      "tag": "proviorigins:decaykraken/soul_fires_lit_state"
+                    },
+                    {
+                      "type": "apoli:block_state",
+                      "inverted": false,
+                      "property": "lit",
+                      "value": true
+                    }
+                  ],
+                  "inverted": false
+                }
+              ],
+              "inverted": false
+            },
+            "compare_to": 0,
+            "comparison": "GREATER_THAN",
+            "inverted": false,
+            "radius": 5,
+            "shape": "CUBE"
+          }
+        },
+        {
+          "action": {
+            "type": "apoli:if_else_list",
+            "actions": [
+              {
+                "action": {
+                  "type": "apoli:change_resource",
+                  "change": 1,
+                  "operation": "SET",
+                  "resource": "proviorigins:decaykraken/deaths_vice_recharge_resource"
+                },
+                "condition": {
+                  "type": "apoli:dimension",
+                  "dimension": "minecraft:the_nether",
+                  "inverted": true
+                }
+              },
+              {
+                "action": {
+                  "type": "apoli:change_resource",
+                  "change": 3,
+                  "operation": "SET",
+                  "resource": "proviorigins:decaykraken/deaths_vice_recharge_resource"
+                },
+                "condition": {
+                  "type": "apoli:biome",
+                  "condition": {
+                    "type": "apoli:in_tag",
+                    "inverted": false,
+                    "tag": "proviorigins:decaykraken/soul_collector"
+                  },
+                  "inverted": false
+                }
+              },
+              {
+                "action": {
+                  "type": "apoli:change_resource",
+                  "change": 2,
+                  "operation": "SET",
+                  "resource": "proviorigins:decaykraken/deaths_vice_recharge_resource"
+                },
+                "condition": {
+                  "type": "apoli:constant",
+                  "inverted": false,
+                  "value": true
+                }
+              }
+            ]
+          },
+          "condition": {
+            "type": "apoli:equipped_item",
+            "equipment_slot": "HAND",
+            "inverted": false,
+            "item_condition": {
+              "type": "apoli:ingredient",
+              "ingredient": [
+                "#proviorigins:decaykraken/soul_carry"
+              ],
+              "inverted": false
+            }
+          }
+        },
+        {
+          "action": {
+            "type": "apoli:change_resource",
+            "change": 0,
+            "operation": "SET",
+            "resource": "proviorigins:decaykraken/deaths_vice_recharge_resource"
+          },
+          "condition": {
+            "type": "apoli:constant",
+            "inverted": false,
+            "value": true
+          }
+        }
+      ]
+    },
+    "interval": 20
+  },
+  "special_lantern": {
+    "type": "apoli:recipe",
+    "priority": 0,
+    "recipe": {
+      "type": "minecraft:crafting_shapeless",
+      "category": "equipment",
+      "ingredients": [
+        {
+          "item": "minecraft:soul_lantern"
+        }
+      ],
+      "result": {
+        "count": 1,
+        "id": "proviorigins:kraken_soul_lantern"
+      }
+    }
+  }
+}

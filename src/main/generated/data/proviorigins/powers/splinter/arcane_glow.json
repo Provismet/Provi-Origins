@@ -1,0 +1,27 @@
+{
+  "type": "apoli:multiple",
+  "high_emit": {
+    "type": "proviorigins:emissive",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 80,
+      "comparison": "GREATER_THAN_OR_EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:splinter/mana"
+    },
+    "dynamic_light": 7,
+    "light": 15
+  },
+  "mid_emit": {
+    "type": "proviorigins:emissive",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 40,
+      "comparison": "GREATER_THAN_OR_EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:splinter/mana"
+    },
+    "dynamic_light": 3,
+    "light": 7
+  }
+}

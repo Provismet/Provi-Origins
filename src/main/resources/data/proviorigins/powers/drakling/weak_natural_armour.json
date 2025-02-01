@@ -1,9 +1,0 @@
-{
-    "type": "origins:attribute",
-    "modifier": {
-        "name": "Molten Metal",
-        "attribute": "minecraft:generic.armor",
-        "value": -0.25,
-        "operation": "multiply_base"
-    }
-}

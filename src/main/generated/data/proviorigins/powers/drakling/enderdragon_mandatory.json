@@ -1,0 +1,28 @@
+{
+  "type": "apoli:action_over_time",
+  "condition": {
+    "type": "apoli:all_of",
+    "conditions": [
+      {
+        "type": "apoli:dimension",
+        "dimension": "minecraft:the_end",
+        "inverted": false
+      },
+      {
+        "type": "apoli:command",
+        "command": "execute if entity @e[type=minecraft:ender_dragon,distance=128..]",
+        "compare_to": 1,
+        "comparison": "GREATER_THAN_OR_EQUAL",
+        "inverted": false
+      }
+    ],
+    "inverted": false
+  },
+  "entity_action": {
+    "type": "apoli:change_resource",
+    "change": -11,
+    "operation": "ADD",
+    "resource": "proviorigins:drakling/short_flight_flight_bar"
+  },
+  "interval": 20
+}

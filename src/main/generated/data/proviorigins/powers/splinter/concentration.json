@@ -1,0 +1,15 @@
+{
+  "type": "apoli:resource",
+  "hidden": true,
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 1,
+    "should_render": true,
+    "sprite_location": "proviorigins:textures/gui/resources/splinter_clone_resource.png"
+  },
+  "max": 2,
+  "min": 0,
+  "start_value": 2
+}

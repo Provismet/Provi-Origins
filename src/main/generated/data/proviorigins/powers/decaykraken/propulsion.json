@@ -1,0 +1,176 @@
+{
+  "type": "apoli:action_on_key_press",
+  "badges": [
+    {
+      "type": "origins:keybind",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "text": "origins.gui.badge.active"
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.decaykraken.propulsion.badge"
+      }
+    }
+  ],
+  "condition": {
+    "type": "apoli:resource",
+    "compare_to": 171,
+    "comparison": "GREATER_THAN_OR_EQUAL",
+    "inverted": false,
+    "resource": "proviorigins:decaykraken/deaths_vice"
+  },
+  "cooldown": 1,
+  "entity_action": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "apoli:spawn_particles",
+        "count": 30,
+        "force": false,
+        "offset": {
+          "x": 0.5,
+          "y": 0.5,
+          "z": 0.5
+        },
+        "particle": {
+          "type": "minecraft:squid_ink"
+        },
+        "speed": 0.25,
+        "spread": {
+          "x": 0.5,
+          "y": 0.5,
+          "z": 0.5
+        }
+      },
+      {
+        "type": "apoli:play_sound",
+        "category": "PLAYERS",
+        "pitch": 1.0,
+        "sound": "proviorigins:origin.decaykraken.ink",
+        "volume": 1.0
+      },
+      {
+        "type": "apoli:emit_game_event",
+        "event": "minecraft:splash"
+      },
+      {
+        "type": "apoli:area_of_effect",
+        "bientity_action": {
+          "type": "apoli:target_action",
+          "action": {
+            "type": "apoli:apply_effect",
+            "effects": [
+              {
+                "ambient": false,
+                "amplifier": 0,
+                "duration": 30,
+                "id": "minecraft:blindness",
+                "show_icon": true,
+                "show_particles": true
+              }
+            ]
+          }
+        },
+        "include_actor": false,
+        "radius": 3.0,
+        "shape": "SPHERE"
+      },
+      {
+        "type": "apoli:if_else_list",
+        "actions": [
+          {
+            "action": {
+              "type": "apoli:add_velocity",
+              "set": false,
+              "space": "LOCAL",
+              "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.1
+              }
+            },
+            "condition": {
+              "type": "apoli:fall_flying",
+              "inverted": false
+            }
+          },
+          {
+            "action": {
+              "type": "apoli:sequence",
+              "actions": [
+                {
+                  "type": "apoli:add_velocity",
+                  "set": false,
+                  "space": "LOCAL",
+                  "velocity": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 1.5
+                  }
+                },
+                {
+                  "type": "proviorigins:particle_ring",
+                  "count": 1,
+                  "offset_x": 0.0,
+                  "offset_y": 1.0,
+                  "offset_z": -0.5,
+                  "on_ground": false,
+                  "particle": {
+                    "type": "minecraft:squid_ink"
+                  },
+                  "radius": 4.0,
+                  "space": "LOCAL",
+                  "speed": 0.0,
+                  "step_size": 10.0
+                }
+              ]
+            },
+            "condition": {
+              "type": "apoli:submerged_in",
+              "fluid": "minecraft:water",
+              "inverted": false
+            }
+          },
+          {
+            "action": {
+              "type": "apoli:add_velocity",
+              "set": false,
+              "space": "LOCAL",
+              "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.5
+              }
+            },
+            "condition": {
+              "type": "apoli:constant",
+              "inverted": false,
+              "value": true
+            }
+          }
+        ]
+      },
+      {
+        "type": "apoli:change_resource",
+        "change": -171,
+        "operation": "ADD",
+        "resource": "proviorigins:decaykraken/deaths_vice"
+      }
+    ]
+  },
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": false,
+    "sprite_location": "apoli:textures/gui/resource_bar.png"
+  },
+  "key": {
+    "continuous": false,
+    "id": "key.origins.primary_active"
+  }
+}

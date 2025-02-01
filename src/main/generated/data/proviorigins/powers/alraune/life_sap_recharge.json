@@ -1,0 +1,11 @@
+{
+  "type": "apoli:action_over_time",
+  "entity_action": {
+    "type": "apoli:change_resource",
+    "change": 1,
+    "operation": "ADD",
+    "resource": "proviorigins:alraune/life_sap"
+  },
+  "hidden": true,
+  "interval": 500
+}

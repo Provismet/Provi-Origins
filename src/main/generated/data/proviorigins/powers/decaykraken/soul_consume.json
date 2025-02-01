@@ -1,0 +1,189 @@
+{
+  "type": "apoli:multiple",
+  "badges": [
+    {
+      "type": "origins:keybind",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "text": "origins.gui.badge.active"
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.decaykraken.soul_consume.badge"
+      }
+    }
+  ],
+  "max_souls": {
+    "type": "proviorigins:active_item",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 1200,
+      "comparison": "LESS_THAN",
+      "inverted": false,
+      "resource": "proviorigins:decaykraken/deaths_vice"
+    },
+    "consume_amount": 1,
+    "cooldown": 1,
+    "entity_action": {
+      "type": "apoli:change_resource",
+      "change": 1200,
+      "operation": "ADD",
+      "resource": "proviorigins:decaykraken/deaths_vice"
+    },
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:decaykraken/max_consume"
+      ],
+      "inverted": false
+    },
+    "key": {
+      "continuous": false,
+      "id": "key.proviorigins.quaternary_active"
+    },
+    "swing_arm": true
+  },
+  "max_tooltip": {
+    "type": "apoli:tooltip",
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:decaykraken/max_consume"
+      ],
+      "inverted": false
+    },
+    "order": 0,
+    "resolve": false,
+    "texts": [
+      {
+        "type": "translatable",
+        "translate": "tooltip.proviorigins.decaykraken.max_soul"
+      }
+    ],
+    "tick_rate": 20
+  },
+  "medium_souls": {
+    "type": "proviorigins:active_item",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 1200,
+      "comparison": "LESS_THAN",
+      "inverted": false,
+      "resource": "proviorigins:decaykraken/deaths_vice"
+    },
+    "consume_amount": 1,
+    "cooldown": 1,
+    "entity_action": {
+      "type": "apoli:change_resource",
+      "change": 171,
+      "operation": "ADD",
+      "resource": "proviorigins:decaykraken/deaths_vice"
+    },
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:decaykraken/medium_consume"
+      ],
+      "inverted": false
+    },
+    "key": {
+      "continuous": false,
+      "id": "key.proviorigins.quaternary_active"
+    },
+    "swing_arm": true
+  },
+  "medium_tooltip": {
+    "type": "apoli:tooltip",
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:decaykraken/medium_consume"
+      ],
+      "inverted": false
+    },
+    "order": 0,
+    "resolve": false,
+    "texts": [
+      {
+        "type": "translatable",
+        "translate": "tooltip.proviorigins.decaykraken.medium_soul"
+      }
+    ],
+    "tick_rate": 20
+  },
+  "weak_souls": {
+    "type": "proviorigins:active_item",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 1200,
+      "comparison": "LESS_THAN",
+      "inverted": false,
+      "resource": "proviorigins:decaykraken/deaths_vice"
+    },
+    "consume_amount": 1,
+    "cooldown": 1,
+    "entity_action": {
+      "type": "apoli:change_resource",
+      "change": 42,
+      "operation": "ADD",
+      "resource": "proviorigins:decaykraken/deaths_vice"
+    },
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:decaykraken/weak_consume"
+      ],
+      "inverted": false
+    },
+    "key": {
+      "continuous": false,
+      "id": "key.proviorigins.quaternary_active"
+    },
+    "swing_arm": true
+  },
+  "weak_tooltip": {
+    "type": "apoli:tooltip",
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:decaykraken/weak_consume"
+      ],
+      "inverted": false
+    },
+    "order": 0,
+    "resolve": false,
+    "texts": [
+      {
+        "type": "translatable",
+        "translate": "tooltip.proviorigins.decaykraken.weak_soul"
+      }
+    ],
+    "tick_rate": 20
+  }
+}

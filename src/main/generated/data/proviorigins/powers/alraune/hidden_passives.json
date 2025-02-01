@@ -1,0 +1,113 @@
+{
+  "type": "apoli:multiple",
+  "fertiliser": {
+    "type": "apoli:tooltip",
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:alraune/super_fertiliser"
+      ],
+      "inverted": false
+    },
+    "order": 0,
+    "resolve": false,
+    "texts": [
+      {
+        "type": "translatable",
+        "translate": "tooltip.proviorigins.alraune.super_fertiliser"
+      }
+    ],
+    "tick_rate": 20
+  },
+  "hidden": true,
+  "particles1": {
+    "type": "apoli:particle",
+    "count": 1,
+    "force": false,
+    "frequency": 6,
+    "offset": {
+      "x": 0.0,
+      "y": 0.1,
+      "z": 0.0
+    },
+    "particle": {
+      "type": "proviorigins:flower",
+      "params": {
+        "colour": [
+          0.71,
+          0.84,
+          0.96
+        ],
+        "scale": 1.0
+      }
+    },
+    "speed": 0.0,
+    "spread": {
+      "x": 0.25,
+      "y": 0.25,
+      "z": 0.25
+    },
+    "visible_in_first_person": false,
+    "visible_while_invisible": false
+  },
+  "particles2": {
+    "type": "apoli:particle",
+    "count": 1,
+    "force": false,
+    "frequency": 7,
+    "offset": {
+      "x": 0.0,
+      "y": 0.1,
+      "z": 0.0
+    },
+    "particle": {
+      "type": "proviorigins:flower",
+      "params": {
+        "colour": [
+          0.95,
+          0.33,
+          0.35
+        ],
+        "scale": 1.0
+      }
+    },
+    "speed": 0.0,
+    "spread": {
+      "x": 0.25,
+      "y": 0.25,
+      "z": 0.25
+    },
+    "visible_in_first_person": false,
+    "visible_while_invisible": false
+  },
+  "particles3": {
+    "type": "apoli:particle",
+    "count": 1,
+    "force": false,
+    "frequency": 8,
+    "offset": {
+      "x": 0.0,
+      "y": 0.1,
+      "z": 0.0
+    },
+    "particle": {
+      "type": "proviorigins:flower",
+      "params": {
+        "colour": [
+          0.98,
+          0.71,
+          0.3
+        ],
+        "scale": 1.0
+      }
+    },
+    "speed": 0.0,
+    "spread": {
+      "x": 0.25,
+      "y": 0.25,
+      "z": 0.25
+    },
+    "visible_in_first_person": false,
+    "visible_while_invisible": false
+  }
+}

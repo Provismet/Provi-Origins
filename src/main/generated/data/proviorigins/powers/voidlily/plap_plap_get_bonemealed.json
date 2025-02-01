@@ -1,0 +1,75 @@
+{
+  "type": "apoli:action_on_being_used",
+  "action_result": "SUCCESS",
+  "bientity_action": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "apoli:target_action",
+        "action": {
+          "type": "apoli:spawn_particles",
+          "count": 12,
+          "force": false,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "particle": {
+            "type": "minecraft:happy_villager"
+          },
+          "speed": 0.0,
+          "spread": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      },
+      {
+        "type": "apoli:target_action",
+        "action": {
+          "type": "apoli:play_sound",
+          "category": "PLAYERS",
+          "pitch": 1.0,
+          "sound": "minecraft:item.bone_meal.use",
+          "volume": 1.0
+        }
+      },
+      {
+        "type": "apoli:random_chance",
+        "chance": 0.404,
+        "success_action": {
+          "type": "apoli:actor_action",
+          "action": {
+            "type": "apoli:spawn_entity",
+            "entity_type": "minecraft:item",
+            "tag": {
+              "Item": {
+                "Count": 1,
+                "id": "proviorigins:lily_of_the_void"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "hands": [
+    "MAIN_HAND",
+    "OFF_HAND"
+  ],
+  "held_item_action": {
+    "type": "apoli:consume",
+    "amount": 1
+  },
+  "held_item_condition": {
+    "type": "apoli:ingredient",
+    "ingredient": [
+      "minecraft:bone_meal"
+    ],
+    "inverted": false
+  },
+  "hidden": true,
+  "priority": 0
+}

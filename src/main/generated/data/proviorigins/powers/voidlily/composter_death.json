@@ -1,0 +1,35 @@
+{
+  "type": "apoli:action_over_time",
+  "condition": {
+    "type": "apoli:in_block",
+    "block_condition": {
+      "type": "apoli:block",
+      "block": "minecraft:composter",
+      "inverted": false
+    },
+    "inverted": false
+  },
+  "hidden": true,
+  "interval": 20,
+  "rising_action": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "apoli:block_action_at",
+        "block_action": {
+          "type": "apoli:modify_block_state",
+          "change": 7,
+          "cycle": false,
+          "operation": "SET",
+          "property": "level"
+        }
+      },
+      {
+        "type": "apoli:damage",
+        "amount": 1000.0,
+        "damage_type": "proviorigins:compost",
+        "modifiers": []
+      }
+    ]
+  }
+}

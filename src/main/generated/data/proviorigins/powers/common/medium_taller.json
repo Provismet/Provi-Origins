@@ -1,0 +1,12 @@
+{
+  "type": "apoli:attribute",
+  "modifiers": [
+    {
+      "amount": 0.25,
+      "attribute": "minecraft:generic.scale",
+      "id": "proviorigins:common/medium_taller",
+      "operation": "ADD_MULTIPLIED_BASE"
+    }
+  ],
+  "update_health": false
+}

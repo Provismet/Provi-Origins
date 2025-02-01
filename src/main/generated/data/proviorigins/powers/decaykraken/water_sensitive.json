@@ -1,0 +1,71 @@
+{
+  "type": "apoli:multiple",
+  "badges": [
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/badge/info.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.decaykraken.water_sensitive.badge.1"
+      }
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/badge/star.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.decaykraken.water_sensitive.badge.2"
+      }
+    }
+  ],
+  "fresh_damage": {
+    "type": "apoli:damage_over_time",
+    "condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:biome",
+          "condition": {
+            "type": "apoli:in_tag",
+            "inverted": true,
+            "tag": "proviorigins:decaykraken/has_saltwater"
+          },
+          "inverted": false
+        },
+        {
+          "type": "apoli:fluid_height",
+          "compare_to": 0.0,
+          "comparison": "GREATER_THAN",
+          "fluid": "minecraft:water",
+          "inverted": false
+        }
+      ],
+      "inverted": false
+    },
+    "damage": 3.0,
+    "damage_easy": 3.0,
+    "damage_type": "proviorigins:freshwater",
+    "interval": 20,
+    "onset_delay": 30,
+    "protection_effectiveness": 0.4,
+    "protection_enchantment": "origins:water_protection"
+  },
+  "warning_overlay": {
+    "type": "apoli:overlay",
+    "blue": 0.3,
+    "condition": {
+      "type": "apoli:power_active",
+      "inverted": false,
+      "power": "proviorigins:decaykraken/water_sensitive_fresh_damage"
+    },
+    "draw_mode": "NAUSEA",
+    "draw_phase": "BELOW_HUD",
+    "green": 0.7,
+    "hide_with_hud": true,
+    "priority": 0,
+    "red": 0.3,
+    "sprite": "minecraft:textures/misc/nausea.png",
+    "strength": 0.6,
+    "visible_in_third_person": false
+  }
+}

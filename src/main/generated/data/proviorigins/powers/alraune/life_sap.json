@@ -1,0 +1,14 @@
+{
+  "type": "apoli:resource",
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": true,
+    "sprite_location": "proviorigins:textures/gui/resources/alraune_life_sap_resource.png"
+  },
+  "max": 5,
+  "min": 0,
+  "start_value": 5
+}

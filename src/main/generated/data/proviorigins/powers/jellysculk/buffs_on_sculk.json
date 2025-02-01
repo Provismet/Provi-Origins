@@ -1,0 +1,41 @@
+{
+  "type": "apoli:stacking_status_effect",
+  "condition": {
+    "type": "apoli:any_of",
+    "conditions": [
+      {
+        "type": "apoli:on_block",
+        "block_condition": {
+          "type": "apoli:in_tag",
+          "inverted": false,
+          "tag": "proviorigins:jellysculk/sculk"
+        },
+        "inverted": false
+      },
+      {
+        "type": "apoli:in_block",
+        "block_condition": {
+          "type": "apoli:in_tag",
+          "inverted": false,
+          "tag": "proviorigins:jellysculk/sculk"
+        },
+        "inverted": false
+      }
+    ],
+    "inverted": false
+  },
+  "duration_per_stack": 20,
+  "effects": [
+    {
+      "ambient": true,
+      "amplifier": 0,
+      "duration": 100,
+      "id": "minecraft:speed",
+      "show_icon": false,
+      "show_particles": false
+    }
+  ],
+  "max_stacks": 5,
+  "min_stacks": -1,
+  "tick_rate": 20
+}

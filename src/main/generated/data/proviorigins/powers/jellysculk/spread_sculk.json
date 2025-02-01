@@ -1,0 +1,98 @@
+{
+  "type": "apoli:multiple",
+  "badges": [
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.jellysculk.spread_sculk.badge"
+      }
+    }
+  ],
+  "spread_sculk": {
+    "type": "apoli:action_on_block_use",
+    "action_result": "SUCCESS",
+    "block_action": {
+      "type": "apoli:delay",
+      "action": {
+        "type": "apoli:set_block",
+        "block": "minecraft:sculk"
+      },
+      "ticks": 1
+    },
+    "block_condition": {
+      "type": "apoli:in_tag",
+      "inverted": false,
+      "tag": "minecraft:sculk_replaceable"
+    },
+    "condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:sneaking",
+          "inverted": false
+        },
+        {
+          "type": "apoli:xp_points",
+          "compare_to": 2,
+          "comparison": "GREATER_THAN_OR_EQUAL",
+          "inverted": false
+        }
+      ],
+      "inverted": false
+    },
+    "directions": [
+      "DOWN",
+      "UP",
+      "NORTH",
+      "SOUTH",
+      "WEST",
+      "EAST"
+    ],
+    "entity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:trigger_cooldown",
+          "power": "proviorigins:jellysculk/spread_sculk_timer"
+        },
+        {
+          "type": "apoli:execute_command",
+          "command": "experience add @s -2 points"
+        },
+        {
+          "type": "apoli:play_sound",
+          "category": "PLAYERS",
+          "pitch": 1.0,
+          "sound": "minecraft:block.sculk.spread",
+          "volume": 1.0
+        }
+      ]
+    },
+    "hands": [
+      "MAIN_HAND"
+    ],
+    "held_item_condition": {
+      "type": "apoli:empty",
+      "inverted": false
+    },
+    "priority": 0,
+    "use_phases": [
+      "BLOCK",
+      "ITEM"
+    ]
+  },
+  "timer": {
+    "type": "apoli:cooldown",
+    "cooldown": 30,
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    }
+  }
+}

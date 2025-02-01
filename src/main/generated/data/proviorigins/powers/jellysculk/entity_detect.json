@@ -1,0 +1,192 @@
+{
+  "type": "apoli:multiple",
+  "badges": [
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/badge/info.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.jellysculk.entity_detect.badge"
+      }
+    }
+  ],
+  "cannot_see_others": {
+    "type": "apoli:prevent_entity_render",
+    "bientity_condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:owner",
+          "inverted": true
+        },
+        {
+          "type": "apoli:distance",
+          "compare_to": 0.1,
+          "comparison": "GREATER_THAN_OR_EQUAL",
+          "inverted": false
+        },
+        {
+          "type": "proviorigins:teammate",
+          "inverted": true
+        }
+      ],
+      "inverted": false
+    },
+    "entity_condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:living",
+          "inverted": false
+        },
+        {
+          "type": "apoli:power",
+          "inverted": true,
+          "power": "proviorigins:jellysculk/is_detected"
+        },
+        {
+          "type": "apoli:in_tag",
+          "inverted": true,
+          "tag": "proviorigins:jellysculk/bypass_detection_check"
+        }
+      ],
+      "inverted": false
+    }
+  },
+  "detection": {
+    "type": "proviorigins:action_on_detect_vibration",
+    "bientity_action": {
+      "type": "apoli:actor_action",
+      "action": {
+        "type": "apoli:execute_command",
+        "command": "scoreboard players set @s jellysculk_counter 0"
+      }
+    },
+    "bientity_condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:undirected",
+          "condition": {
+            "type": "apoli:owner",
+            "inverted": false
+          },
+          "inverted": true
+        },
+        {
+          "type": "apoli:actor_condition",
+          "condition": {
+            "type": "apoli:in_tag",
+            "inverted": false,
+            "tag": "proviorigins:jellysculk/bypass_detection_check"
+          },
+          "inverted": true
+        }
+      ],
+      "inverted": false
+    },
+    "game_event_tag": "minecraft:warden_can_listen",
+    "max_delay": 0,
+    "min_delay": 0,
+    "range": 24
+  },
+  "on_hit": {
+    "type": "apoli:action_on_hit",
+    "bientity_action": {
+      "type": "apoli:target_action",
+      "action": {
+        "type": "apoli:execute_command",
+        "command": "scoreboard players set @s jellysculk_counter 0"
+      }
+    },
+    "cooldown": 1,
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    }
+  },
+  "scoreboard_vision": {
+    "type": "apoli:entity_glow",
+    "bientity_condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:owner",
+          "inverted": true
+        },
+        {
+          "type": "apoli:distance",
+          "compare_to": 112.0,
+          "comparison": "LESS_THAN_OR_EQUAL",
+          "inverted": false
+        }
+      ],
+      "inverted": false
+    },
+    "blue": 1.0,
+    "entity_condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:living",
+          "inverted": false
+        },
+        {
+          "type": "apoli:in_tag",
+          "inverted": true,
+          "tag": "proviorigins:jellysculk/always_visible"
+        }
+      ],
+      "inverted": false
+    },
+    "green": 1.0,
+    "red": 1.0,
+    "use_teams": true
+  },
+  "tamed_sight": {
+    "type": "apoli:entity_glow",
+    "bientity_condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:owner",
+          "inverted": false
+        },
+        {
+          "type": "apoli:distance",
+          "compare_to": 112.0,
+          "comparison": "LESS_THAN_OR_EQUAL",
+          "inverted": false
+        }
+      ],
+      "inverted": false
+    },
+    "blue": 0.0,
+    "green": 1.0,
+    "red": 0.0,
+    "use_teams": true
+  },
+  "when_hit": {
+    "type": "apoli:action_when_hit",
+    "bientity_action": {
+      "type": "apoli:actor_action",
+      "action": {
+        "type": "apoli:execute_command",
+        "command": "scoreboard players set @s jellysculk_counter 0"
+      }
+    },
+    "cooldown": 1,
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    }
+  }
+}

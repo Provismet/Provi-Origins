@@ -1,0 +1,98 @@
+{
+  "type": "apoli:multiple",
+  "body": {
+    "type": "apoli:recipe",
+    "priority": 0,
+    "recipe": {
+      "type": "minecraft:crafting_shaped",
+      "category": "equipment",
+      "key": {
+        "c": {
+          "item": "minecraft:chain"
+        },
+        "n": {
+          "item": "minecraft:iron_nugget"
+        }
+      },
+      "pattern": [
+        "c c",
+        "nnn",
+        "ccc"
+      ],
+      "result": {
+        "count": 1,
+        "id": "minecraft:chainmail_chestplate"
+      }
+    }
+  },
+  "boots": {
+    "type": "apoli:recipe",
+    "priority": 0,
+    "recipe": {
+      "type": "minecraft:crafting_shaped",
+      "category": "equipment",
+      "key": {
+        "n": {
+          "item": "minecraft:iron_nugget"
+        }
+      },
+      "pattern": [
+        "n n",
+        "n n"
+      ],
+      "result": {
+        "count": 1,
+        "id": "minecraft:chainmail_boots"
+      }
+    }
+  },
+  "head": {
+    "type": "apoli:recipe",
+    "priority": 0,
+    "recipe": {
+      "type": "minecraft:crafting_shaped",
+      "category": "equipment",
+      "key": {
+        "c": {
+          "item": "minecraft:chain"
+        },
+        "n": {
+          "item": "minecraft:iron_nugget"
+        }
+      },
+      "pattern": [
+        "cnc",
+        "n n"
+      ],
+      "result": {
+        "count": 1,
+        "id": "minecraft:chainmail_helmet"
+      }
+    }
+  },
+  "legs": {
+    "type": "apoli:recipe",
+    "priority": 0,
+    "recipe": {
+      "type": "minecraft:crafting_shaped",
+      "category": "equipment",
+      "key": {
+        "c": {
+          "item": "minecraft:chain"
+        },
+        "n": {
+          "item": "minecraft:iron_nugget"
+        }
+      },
+      "pattern": [
+        "ccc",
+        "n n",
+        "n n"
+      ],
+      "result": {
+        "count": 1,
+        "id": "minecraft:chainmail_leggings"
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "proviorigins:prevent_breathing",
+  "condition": {
+    "type": "apoli:dimension",
+    "dimension": "minecraft:the_nether",
+    "inverted": false
+  },
+  "damage_type": "proviorigins:bad_dimension",
+  "respect_water_breathing": true
+}

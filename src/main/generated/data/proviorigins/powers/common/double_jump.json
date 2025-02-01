@@ -1,0 +1,117 @@
+{
+  "type": "apoli:multiple",
+  "double_jump": {
+    "type": "apoli:action_on_key_press",
+    "condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "proviorigins:client_server",
+          "client": false,
+          "inverted": false,
+          "server": true
+        },
+        {
+          "type": "apoli:resource",
+          "compare_to": 0,
+          "comparison": "EQUAL",
+          "inverted": false,
+          "resource": "proviorigins:common/double_jump_jump_cooldown"
+        },
+        {
+          "type": "apoli:on_block",
+          "inverted": true
+        },
+        {
+          "type": "apoli:any_of",
+          "conditions": [
+            {
+              "type": "proviorigins:velocity_y",
+              "compare_to": -0.1,
+              "comparison": "LESS_THAN",
+              "inverted": false
+            },
+            {
+              "type": "proviorigins:velocity_y",
+              "compare_to": 0.1,
+              "comparison": "GREATER_THAN",
+              "inverted": false
+            }
+          ],
+          "inverted": false
+        },
+        {
+          "type": "apoli:creative_flying",
+          "inverted": true
+        },
+        {
+          "type": "apoli:fall_flying",
+          "inverted": true
+        },
+        {
+          "type": "apoli:submerged_in",
+          "fluid": "proviorigins:prevents_double_jump",
+          "inverted": true
+        }
+      ],
+      "inverted": false
+    },
+    "cooldown": 1,
+    "entity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "proviorigins:double_jump",
+          "reset_fall_height": true,
+          "velocity": 0.75
+        },
+        {
+          "type": "apoli:change_resource",
+          "change": 1,
+          "operation": "SET",
+          "resource": "proviorigins:common/double_jump_jump_cooldown"
+        }
+      ]
+    },
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "key": {
+      "continuous": false,
+      "id": "key.jump"
+    }
+  },
+  "jump_cooldown": {
+    "type": "apoli:resource",
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "max": 1,
+    "min": 0,
+    "start_value": 0
+  },
+  "reset_cooldown_on_landing": {
+    "type": "apoli:action_over_time",
+    "condition": {
+      "type": "apoli:on_block",
+      "inverted": false
+    },
+    "interval": 5,
+    "rising_action": {
+      "type": "apoli:change_resource",
+      "change": 0,
+      "operation": "SET",
+      "resource": "proviorigins:common/double_jump_jump_cooldown"
+    }
+  }
+}

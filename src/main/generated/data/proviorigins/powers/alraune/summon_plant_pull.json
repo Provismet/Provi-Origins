@@ -1,0 +1,120 @@
+{
+  "type": "apoli:multiple",
+  "hidden": true,
+  "summon": {
+    "type": "proviorigins:active_item",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 0,
+      "comparison": "GREATER_THAN",
+      "inverted": false,
+      "resource": "proviorigins:alraune/life_sap"
+    },
+    "consume_amount": 1,
+    "cooldown": 1,
+    "entity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "proviorigins:summon_minion",
+          "bientity_action": {
+            "type": "apoli:sequence",
+            "actions": [
+              {
+                "type": "apoli:target_action",
+                "action": {
+                  "type": "apoli:grant_power",
+                  "power": "proviorigins:alraune/summoned_passives",
+                  "source": "proviorigins:alraune/summon_plant_turret"
+                }
+              },
+              {
+                "type": "apoli:if_else",
+                "condition": {
+                  "type": "apoli:actor_condition",
+                  "condition": {
+                    "type": "apoli:advancement",
+                    "advancement": "minecraft:end/kill_dragon",
+                    "inverted": false
+                  },
+                  "inverted": false
+                },
+                "else_action": {
+                  "type": "apoli:target_action",
+                  "action": {
+                    "type": "apoli:grant_power",
+                    "power": "proviorigins:alraune/summoned_pull",
+                    "source": "proviorigins:alraune/summon_plant_turret"
+                  }
+                },
+                "if_action": {
+                  "type": "apoli:target_action",
+                  "action": {
+                    "type": "apoli:grant_power",
+                    "power": "proviorigins:alraune/summoned_pull_upgrade",
+                    "source": "proviorigins:alraune/summon_plant_turret"
+                  }
+                }
+              }
+            ]
+          },
+          "follow_offset": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "follow_owner": false,
+          "invulnerable": false,
+          "max_life_ticks": 1200,
+          "scale": 2.0,
+          "texture": "proviorigins:textures/entity/pull_minion.png"
+        },
+        {
+          "type": "apoli:change_resource",
+          "change": -1,
+          "operation": "ADD",
+          "resource": "proviorigins:alraune/life_sap"
+        }
+      ]
+    },
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:alraune/summon_pull"
+      ],
+      "inverted": false
+    },
+    "key": {
+      "continuous": false,
+      "id": "key.origins.primary_active"
+    },
+    "swing_arm": true
+  },
+  "tooltip": {
+    "type": "apoli:tooltip",
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:alraune/summon_pull"
+      ],
+      "inverted": false
+    },
+    "order": 0,
+    "resolve": false,
+    "texts": [
+      {
+        "type": "translatable",
+        "translate": "tooltip.proviorigins.alraune.summons_pull"
+      }
+    ],
+    "tick_rate": 20
+  }
+}

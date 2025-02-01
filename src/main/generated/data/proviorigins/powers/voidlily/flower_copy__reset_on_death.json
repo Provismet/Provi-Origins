@@ -1,0 +1,10 @@
+{
+  "type": "apoli:action_on_callback",
+  "entity_action_respawned": {
+    "type": "apoli:change_resource",
+    "change": 0,
+    "operation": "SET",
+    "resource": "proviorigins:voidlily/flower_copy__resource"
+  },
+  "hidden": true
+}

@@ -12,7 +12,6 @@
         "proviorigins:common/brittle",
         "proviorigins:common/no_crits",
         "origins:no_shield",
-        "proviorigins:splinter/reset_resources",
         "extrade:arcane"
     ],
     "icon": {

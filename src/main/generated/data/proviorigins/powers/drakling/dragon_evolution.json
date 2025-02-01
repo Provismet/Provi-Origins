@@ -1,0 +1,448 @@
+{
+  "type": "apoli:multiple",
+  "evolution_bar": {
+    "type": "apoli:resource",
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "max": 30,
+    "max_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:execute_command",
+          "command": "tellraw @p {\"text\": \"Drakling \", \"extra\": [{\"selector\": \"@s\", \"color\": \"red\"}, {\"text\": \" has evolved into a Drake.\"}]}"
+        },
+        {
+          "type": "apoli:execute_command",
+          "command": "origin set @s origins:origin proviorigins:drake"
+        }
+      ]
+    },
+    "min": 0,
+    "start_value": 0
+  },
+  "tooltip": {
+    "type": "apoli:tooltip",
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "minecraft:dragon_head"
+      ],
+      "inverted": false
+    },
+    "order": 0,
+    "resolve": false,
+    "texts": [
+      {
+        "type": "translatable",
+        "translate": "tooltip.proviorigins.drakling.dragon_head"
+      }
+    ],
+    "tick_rate": 20
+  },
+  "trigger": {
+    "type": "apoli:action_over_time",
+    "condition": {
+      "type": "apoli:equipped_item",
+      "equipment_slot": "HEAD",
+      "inverted": false,
+      "item_condition": {
+        "type": "apoli:ingredient",
+        "ingredient": [
+          "minecraft:dragon_head"
+        ],
+        "inverted": false
+      }
+    },
+    "entity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:change_resource",
+          "change": 1,
+          "operation": "ADD",
+          "resource": "proviorigins:drakling/dragon_evolution_evolution_bar"
+        },
+        {
+          "type": "apoli:if_else_list",
+          "actions": [
+            {
+              "action": {
+                "type": "apoli:nothing"
+              },
+              "condition": {
+                "type": "apoli:equipped_item",
+                "equipment_slot": "HEAD",
+                "inverted": true,
+                "item_condition": {
+                  "type": "apoli:ingredient",
+                  "ingredient": [
+                    "minecraft:dragon_head"
+                  ],
+                  "inverted": false
+                }
+              }
+            },
+            {
+              "action": {
+                "type": "apoli:sequence",
+                "actions": [
+                  {
+                    "type": "apoli:trigger_cooldown",
+                    "power": "proviorigins:drakling/dragon_evolution_evolution_bar"
+                  },
+                  {
+                    "type": "apoli:modify_inventory",
+                    "inventory_type": "INVENTORY",
+                    "item_action": {
+                      "type": "apoli:modify",
+                      "modifier": "proviorigins:apply_curses"
+                    },
+                    "process_mode": "STACKS",
+                    "slots": [
+                      "armor.head"
+                    ]
+                  },
+                  {
+                    "type": "apoli:apply_effect",
+                    "effects": [
+                      {
+                        "ambient": true,
+                        "amplifier": 6,
+                        "duration": 800,
+                        "id": "minecraft:resistance",
+                        "show_icon": false,
+                        "show_particles": false
+                      },
+                      {
+                        "ambient": true,
+                        "amplifier": 6,
+                        "duration": 600,
+                        "id": "minecraft:slowness",
+                        "show_icon": false,
+                        "show_particles": false
+                      },
+                      {
+                        "ambient": true,
+                        "amplifier": 6,
+                        "duration": 600,
+                        "id": "minecraft:blindness",
+                        "show_icon": false,
+                        "show_particles": false
+                      },
+                      {
+                        "ambient": true,
+                        "amplifier": 6,
+                        "duration": 600,
+                        "id": "minecraft:mining_fatigue",
+                        "show_icon": false,
+                        "show_particles": false
+                      },
+                      {
+                        "ambient": true,
+                        "amplifier": 6,
+                        "duration": 600,
+                        "id": "minecraft:weakness",
+                        "show_icon": false,
+                        "show_particles": false
+                      },
+                      {
+                        "ambient": true,
+                        "amplifier": 6,
+                        "duration": 800,
+                        "id": "minecraft:regeneration",
+                        "show_icon": false,
+                        "show_particles": false
+                      },
+                      {
+                        "ambient": true,
+                        "amplifier": 6,
+                        "duration": 600,
+                        "id": "minecraft:levitation",
+                        "show_icon": false,
+                        "show_particles": false
+                      }
+                    ]
+                  }
+                ]
+              },
+              "condition": {
+                "type": "apoli:resource",
+                "compare_to": 1,
+                "comparison": "EQUAL",
+                "inverted": false,
+                "resource": "proviorigins:drakling/dragon_evolution_evolution_bar"
+              }
+            },
+            {
+              "action": {
+                "type": "apoli:revoke_power",
+                "power": "proviorigins:drakling/short_flight",
+                "source": "proviorigins:drakling/drakling"
+              },
+              "condition": {
+                "type": "apoli:resource",
+                "compare_to": 2,
+                "comparison": "EQUAL",
+                "inverted": false,
+                "resource": "proviorigins:drakling/dragon_evolution_evolution_bar"
+              }
+            },
+            {
+              "action": {
+                "type": "apoli:sequence",
+                "actions": [
+                  {
+                    "type": "apoli:play_sound",
+                    "category": "PLAYERS",
+                    "pitch": 1.0,
+                    "sound": "proviorigins:origin.drakling.evolve",
+                    "volume": 1.0
+                  },
+                  {
+                    "type": "apoli:spawn_particles",
+                    "count": 50,
+                    "force": true,
+                    "offset": {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "z": 0.5
+                    },
+                    "particle": {
+                      "type": "minecraft:totem_of_undying"
+                    },
+                    "speed": 1.0,
+                    "spread": {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "z": 0.5
+                    }
+                  },
+                  {
+                    "type": "apoli:execute_command",
+                    "command": "title @s title {\"text\":\"You shall be reborn...\", \"bold\":true, \"color\":\"red\"}"
+                  }
+                ]
+              },
+              "condition": {
+                "type": "apoli:resource",
+                "compare_to": 5,
+                "comparison": "EQUAL",
+                "inverted": false,
+                "resource": "proviorigins:drakling/dragon_evolution_evolution_bar"
+              }
+            },
+            {
+              "action": {
+                "type": "apoli:sequence",
+                "actions": [
+                  {
+                    "type": "apoli:play_sound",
+                    "category": "PLAYERS",
+                    "pitch": 1.0,
+                    "sound": "proviorigins:origin.drakling.evolve",
+                    "volume": 1.0
+                  },
+                  {
+                    "type": "apoli:spawn_particles",
+                    "count": 50,
+                    "force": true,
+                    "offset": {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "z": 0.5
+                    },
+                    "particle": {
+                      "type": "minecraft:totem_of_undying"
+                    },
+                    "speed": 1.0,
+                    "spread": {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "z": 0.5
+                    }
+                  },
+                  {
+                    "type": "apoli:execute_command",
+                    "command": "title @s title {\"text\":\"Our bones...\", \"bold\":true, \"color\":\"red\"}"
+                  }
+                ]
+              },
+              "condition": {
+                "type": "apoli:resource",
+                "compare_to": 10,
+                "comparison": "EQUAL",
+                "inverted": false,
+                "resource": "proviorigins:drakling/dragon_evolution_evolution_bar"
+              }
+            },
+            {
+              "action": {
+                "type": "apoli:sequence",
+                "actions": [
+                  {
+                    "type": "apoli:play_sound",
+                    "category": "PLAYERS",
+                    "pitch": 1.0,
+                    "sound": "proviorigins:origin.drakling.evolve",
+                    "volume": 1.0
+                  },
+                  {
+                    "type": "apoli:spawn_particles",
+                    "count": 50,
+                    "force": true,
+                    "offset": {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "z": 0.5
+                    },
+                    "particle": {
+                      "type": "minecraft:totem_of_undying"
+                    },
+                    "speed": 1.0,
+                    "spread": {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "z": 0.5
+                    }
+                  },
+                  {
+                    "type": "apoli:execute_command",
+                    "command": "title @s title {\"text\":\"Our flesh...\", \"bold\":true, \"color\":\"red\"}"
+                  }
+                ]
+              },
+              "condition": {
+                "type": "apoli:resource",
+                "compare_to": 15,
+                "comparison": "EQUAL",
+                "inverted": false,
+                "resource": "proviorigins:drakling/dragon_evolution_evolution_bar"
+              }
+            },
+            {
+              "action": {
+                "type": "apoli:sequence",
+                "actions": [
+                  {
+                    "type": "apoli:play_sound",
+                    "category": "PLAYERS",
+                    "pitch": 1.0,
+                    "sound": "proviorigins:origin.drakling.evolve",
+                    "volume": 1.0
+                  },
+                  {
+                    "type": "apoli:spawn_particles",
+                    "count": 50,
+                    "force": true,
+                    "offset": {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "z": 0.5
+                    },
+                    "particle": {
+                      "type": "minecraft:totem_of_undying"
+                    },
+                    "speed": 1.0,
+                    "spread": {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "z": 0.5
+                    }
+                  },
+                  {
+                    "type": "apoli:execute_command",
+                    "command": "title @s title {\"text\":\"They are melding onto you.\", \"bold\":true, \"color\":\"red\"}"
+                  }
+                ]
+              },
+              "condition": {
+                "type": "apoli:resource",
+                "compare_to": 20,
+                "comparison": "EQUAL",
+                "inverted": false,
+                "resource": "proviorigins:drakling/dragon_evolution_evolution_bar"
+              }
+            },
+            {
+              "action": {
+                "type": "apoli:sequence",
+                "actions": [
+                  {
+                    "type": "apoli:play_sound",
+                    "category": "PLAYERS",
+                    "pitch": 1.0,
+                    "sound": "proviorigins:origin.drakling.evolve",
+                    "volume": 1.0
+                  },
+                  {
+                    "type": "apoli:spawn_particles",
+                    "count": 50,
+                    "force": true,
+                    "offset": {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "z": 0.5
+                    },
+                    "particle": {
+                      "type": "minecraft:totem_of_undying"
+                    },
+                    "speed": 1.0,
+                    "spread": {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "z": 0.5
+                    }
+                  },
+                  {
+                    "type": "apoli:execute_command",
+                    "command": "title @s title {\"text\":\"Now take our power...\", \"bold\":true, \"color\":\"red\"}"
+                  }
+                ]
+              },
+              "condition": {
+                "type": "apoli:resource",
+                "compare_to": 25,
+                "comparison": "EQUAL",
+                "inverted": false,
+                "resource": "proviorigins:drakling/dragon_evolution_evolution_bar"
+              }
+            },
+            {
+              "action": {
+                "type": "apoli:sequence",
+                "actions": [
+                  {
+                    "type": "apoli:play_sound",
+                    "category": "PLAYERS",
+                    "pitch": 1.0,
+                    "sound": "proviorigins:origin.drakling.birth",
+                    "volume": 1.0
+                  },
+                  {
+                    "type": "apoli:execute_command",
+                    "command": "title @s title {\"text\":\"AND FLY.\", \"bold\":true, \"color\":\"red\"}"
+                  }
+                ]
+              },
+              "condition": {
+                "type": "apoli:resource",
+                "compare_to": 28,
+                "comparison": "EQUAL",
+                "inverted": false,
+                "resource": "proviorigins:drakling/dragon_evolution_evolution_bar"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "interval": 20
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "type": "proviorigins:action_on_critical_hit",
+  "badges": [
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/badge/info.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.faemoth.crit_passive.badge.1"
+      }
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.faemoth.crit_passive.badge.2"
+      }
+    }
+  ],
+  "bientity_action": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "apoli:target_action",
+        "action": {
+          "type": "apoli:if_else",
+          "condition": {
+            "type": "apoli:all_of",
+            "conditions": [
+              {
+                "type": "apoli:living",
+                "inverted": false
+              },
+              {
+                "type": "apoli:power",
+                "inverted": false,
+                "power": "proviorigins:faemoth/stacking_passive"
+              }
+            ],
+            "inverted": false
+          },
+          "else_action": {
+            "type": "apoli:grant_power",
+            "power": "proviorigins:faemoth/stacking_passive",
+            "source": "proviorigins:faemoth"
+          },
+          "if_action": {
+            "type": "apoli:sequence",
+            "actions": [
+              {
+                "type": "apoli:change_resource",
+                "change": 1,
+                "operation": "ADD",
+                "resource": "proviorigins:faemoth/stacking_passive_stacks"
+              },
+              {
+                "type": "apoli:change_resource",
+                "change": 0,
+                "operation": "SET",
+                "resource": "proviorigins:faemoth/stacking_passive_countdown"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "apoli:actor_action",
+        "action": {
+          "type": "apoli:change_resource",
+          "change": -26,
+          "operation": "ADD",
+          "resource": "proviorigins:faemoth/faerie_dust"
+        }
+      }
+    ]
+  },
+  "bientity_condition": {
+    "type": "apoli:target_condition",
+    "condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:status_effect",
+          "effect": "proviorigins:sleep",
+          "inverted": true,
+          "max_amplifier": 2147483647,
+          "max_duration": 2147483647,
+          "min_amplifier": 0,
+          "min_duration": -1
+        },
+        {
+          "type": "apoli:status_effect",
+          "effect": "proviorigins:alert",
+          "inverted": true,
+          "max_amplifier": 2147483647,
+          "max_duration": 2147483647,
+          "min_amplifier": 0,
+          "min_duration": -1
+        }
+      ],
+      "inverted": false
+    },
+    "inverted": false
+  },
+  "condition": {
+    "type": "apoli:all_of",
+    "conditions": [
+      {
+        "type": "apoli:resource",
+        "compare_to": 26,
+        "comparison": "GREATER_THAN_OR_EQUAL",
+        "inverted": false,
+        "resource": "proviorigins:faemoth/faerie_dust"
+      },
+      {
+        "type": "apoli:equipped_item",
+        "equipment_slot": "MAINHAND",
+        "inverted": false,
+        "item_condition": {
+          "type": "apoli:ingredient",
+          "ingredient": [
+            "#minecraft:swords"
+          ],
+          "inverted": false
+        }
+      }
+    ],
+    "inverted": false
+  }
+}

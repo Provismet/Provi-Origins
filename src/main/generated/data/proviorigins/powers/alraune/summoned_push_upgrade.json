@@ -1,0 +1,101 @@
+{
+  "type": "apoli:action_over_time",
+  "entity_action": {
+    "type": "apoli:sequence",
+    "actions": [
+      {
+        "type": "proviorigins:particle_ring",
+        "count": 1,
+        "offset_x": 0.0,
+        "offset_y": 0.25,
+        "offset_z": 0.0,
+        "on_ground": true,
+        "particle": {
+          "type": "proviorigins:flower",
+          "params": {
+            "colour": [
+              0.5,
+              0.8,
+              0.0
+            ],
+            "scale": 0.75
+          }
+        },
+        "radius": 6.0,
+        "space": "LOCAL",
+        "speed": 0.0,
+        "step_size": 3.0
+      },
+      {
+        "type": "apoli:spawn_particles",
+        "count": 1,
+        "force": false,
+        "offset": {
+          "x": 0.0,
+          "y": 0.1,
+          "z": 0.0
+        },
+        "particle": {
+          "type": "proviorigins:telegraph",
+          "params": {
+            "alpha": 0.75,
+            "colour": [
+              0.5,
+              0.8,
+              0.0
+            ],
+            "duration": 30,
+            "scale": 6.0
+          }
+        },
+        "speed": 0.0,
+        "spread": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "type": "apoli:area_of_effect",
+        "bientity_action": {
+          "type": "apoli:add_velocity",
+          "reference": "POSITION",
+          "set": false,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 2.0
+          }
+        },
+        "bientity_condition": {
+          "type": "apoli:all_of",
+          "conditions": [
+            {
+              "type": "apoli:target_condition",
+              "condition": {
+                "type": "apoli:living",
+                "inverted": false
+              },
+              "inverted": false
+            },
+            {
+              "type": "proviorigins:friendly",
+              "inverted": true
+            },
+            {
+              "type": "proviorigins:can_see_any",
+              "fluid_handling": "NONE",
+              "inverted": false,
+              "shape_type": "COLLIDER"
+            }
+          ],
+          "inverted": false
+        },
+        "include_actor": false,
+        "radius": 4.0,
+        "shape": "SPHERE"
+      }
+    ]
+  },
+  "interval": 30
+}

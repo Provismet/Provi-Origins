@@ -1,0 +1,46 @@
+{
+  "type": "apoli:multiple",
+  "heal_when_full": {
+    "type": "apoli:action_over_time",
+    "condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:food_level",
+          "compare_to": 17,
+          "comparison": "GREATER_THAN_OR_EQUAL",
+          "inverted": false
+        },
+        {
+          "type": "apoli:relative_health",
+          "compare_to": 1.0,
+          "comparison": "LESS_THAN",
+          "inverted": false
+        },
+        {
+          "type": "proviorigins:can_natural_regen",
+          "inverted": false
+        }
+      ],
+      "inverted": false
+    },
+    "entity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:heal",
+          "amount": 1.0
+        },
+        {
+          "type": "apoli:exhaust",
+          "amount": 6.0
+        }
+      ]
+    },
+    "interval": 80
+  },
+  "hidden": true,
+  "no_regen": {
+    "type": "apoli:disable_regen"
+  }
+}

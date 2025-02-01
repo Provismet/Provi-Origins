@@ -1,0 +1,10 @@
+{
+  "type": "apoli:action_on_callback",
+  "entity_action_respawned": {
+    "type": "apoli:change_resource",
+    "change": 2,
+    "operation": "SET",
+    "resource": "proviorigins:decaykraken/deaths_vice"
+  },
+  "hidden": true
+}

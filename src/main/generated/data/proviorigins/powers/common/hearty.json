@@ -1,0 +1,12 @@
+{
+  "type": "apoli:attribute",
+  "modifiers": [
+    {
+      "amount": 4.0,
+      "attribute": "minecraft:generic.max_health",
+      "id": "proviorigins:common/hearty",
+      "operation": "ADD_VALUE"
+    }
+  ],
+  "update_health": true
+}

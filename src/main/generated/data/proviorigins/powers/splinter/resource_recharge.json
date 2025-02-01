@@ -1,0 +1,23 @@
+{
+  "type": "apoli:multiple",
+  "recharge_concentration": {
+    "type": "apoli:action_over_time",
+    "entity_action": {
+      "type": "apoli:change_resource",
+      "change": 1,
+      "operation": "ADD",
+      "resource": "proviorigins:splinter/concentration"
+    },
+    "interval": 600
+  },
+  "recharge_mana": {
+    "type": "apoli:action_over_time",
+    "entity_action": {
+      "type": "apoli:change_resource",
+      "change": 1,
+      "operation": "ADD",
+      "resource": "proviorigins:splinter/mana"
+    },
+    "interval": 10
+  }
+}

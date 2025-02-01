@@ -1,0 +1,12 @@
+{
+  "type": "apoli:attribute",
+  "modifiers": [
+    {
+      "amount": -0.26,
+      "attribute": "minecraft:generic.scale",
+      "id": "proviorigins:common/smaller",
+      "operation": "ADD_VALUE"
+    }
+  ],
+  "update_health": false
+}

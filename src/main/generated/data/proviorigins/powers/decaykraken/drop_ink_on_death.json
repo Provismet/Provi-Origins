@@ -1,0 +1,35 @@
+{
+  "type": "apoli:action_when_damage_taken",
+  "condition": {
+    "type": "apoli:relative_health",
+    "compare_to": 0.0,
+    "comparison": "LESS_THAN_OR_EQUAL",
+    "inverted": false
+  },
+  "cooldown": 1,
+  "entity_action": {
+    "type": "apoli:if_else",
+    "condition": {
+      "type": "apoli:submerged_in",
+      "fluid": "minecraft:water",
+      "inverted": false
+    },
+    "else_action": {
+      "type": "apoli:execute_command",
+      "command": "summon minecraft:item ~ ~ ~ {Item:{id:\"minecraft:ink_sac\",Count:1b}}"
+    },
+    "if_action": {
+      "type": "apoli:execute_command",
+      "command": "summon minecraft:item ~ ~ ~ {Item:{id:\"minecraft:glow_ink_sac\",Count:1b}}"
+    }
+  },
+  "hidden": true,
+  "hud_render": {
+    "bar_index": 0,
+    "icon_index": 0,
+    "inverted": false,
+    "order": 0,
+    "should_render": false,
+    "sprite_location": "apoli:textures/gui/resource_bar.png"
+  }
+}

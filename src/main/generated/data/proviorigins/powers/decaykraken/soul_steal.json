@@ -1,0 +1,250 @@
+{
+  "type": "apoli:multiple",
+  "activate_laser": {
+    "type": "apoli:action_on_key_press",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 256,
+      "comparison": "GREATER_THAN_OR_EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:decaykraken/deaths_vice"
+    },
+    "cooldown": 1,
+    "entity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:change_resource",
+          "change": 1,
+          "operation": "SET",
+          "resource": "proviorigins:decaykraken/soul_steal_charging"
+        },
+        {
+          "type": "apoli:change_resource",
+          "change": -256,
+          "operation": "ADD",
+          "resource": "proviorigins:decaykraken/deaths_vice"
+        }
+      ]
+    },
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "key": {
+      "continuous": false,
+      "id": "key.origins.secondary_active"
+    }
+  },
+  "apply_charge": {
+    "type": "apoli:action_over_time",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 0,
+      "comparison": "GREATER_THAN",
+      "inverted": false,
+      "resource": "proviorigins:decaykraken/soul_steal_charging"
+    },
+    "entity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:if_else_list",
+          "actions": [
+            {
+              "action": {
+                "type": "apoli:play_sound",
+                "category": "PLAYERS",
+                "pitch": 1.25,
+                "sound": "proviorigins:origin.decaykraken.bide",
+                "volume": 0.7
+              },
+              "condition": {
+                "type": "apoli:resource",
+                "compare_to": 1,
+                "comparison": "EQUAL",
+                "inverted": false,
+                "resource": "proviorigins:decaykraken/soul_steal_charging"
+              }
+            },
+            {
+              "action": {
+                "type": "apoli:play_sound",
+                "category": "PLAYERS",
+                "pitch": 1.5,
+                "sound": "proviorigins:origin.decaykraken.bide",
+                "volume": 0.7
+              },
+              "condition": {
+                "type": "apoli:resource",
+                "compare_to": 2,
+                "comparison": "EQUAL",
+                "inverted": false,
+                "resource": "proviorigins:decaykraken/soul_steal_charging"
+              }
+            },
+            {
+              "action": {
+                "type": "apoli:play_sound",
+                "category": "PLAYERS",
+                "pitch": 1.75,
+                "sound": "proviorigins:origin.decaykraken.bide",
+                "volume": 0.7
+              },
+              "condition": {
+                "type": "apoli:resource",
+                "compare_to": 3,
+                "comparison": "EQUAL",
+                "inverted": false,
+                "resource": "proviorigins:decaykraken/soul_steal_charging"
+              }
+            },
+            {
+              "action": {
+                "type": "apoli:play_sound",
+                "category": "PLAYERS",
+                "pitch": 2.0,
+                "sound": "proviorigins:origin.decaykraken.bide",
+                "volume": 0.7
+              },
+              "condition": {
+                "type": "apoli:resource",
+                "compare_to": 4,
+                "comparison": "EQUAL",
+                "inverted": false,
+                "resource": "proviorigins:decaykraken/soul_steal_charging"
+              }
+            }
+          ]
+        },
+        {
+          "type": "apoli:raycast",
+          "block": true,
+          "command_along_ray": "particle proviorigins:soul_circle",
+          "command_along_ray_only_on_hit": false,
+          "command_step": 0.333,
+          "distance": 8.0,
+          "entity": true,
+          "fluid_handling": "ANY",
+          "shape_type": "OUTLINE",
+          "space": "LOCAL"
+        },
+        {
+          "type": "apoli:change_resource",
+          "change": 1,
+          "operation": "SET",
+          "resource": "proviorigins:decaykraken/soul_steal_charging"
+        }
+      ]
+    },
+    "interval": 10
+  },
+  "badges": [
+    {
+      "type": "origins:keybind",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "text": "origins.gui.badge.active"
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.decaykraken.soul_steal.badge"
+      }
+    }
+  ],
+  "charging": {
+    "type": "apoli:resource",
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "max": 5,
+    "max_action": {
+      "type": "apoli:raycast",
+      "before_action": {
+        "type": "apoli:change_resource",
+        "change": 0,
+        "operation": "SET",
+        "resource": "proviorigins:decaykraken/soul_steal_charging"
+      },
+      "bientity_action": {
+        "type": "apoli:sequence",
+        "actions": [
+          {
+            "type": "apoli:actor_action",
+            "action": {
+              "type": "apoli:heal",
+              "amount": 5.0
+            }
+          },
+          {
+            "type": "apoli:damage",
+            "amount": 4.0,
+            "damage_type": "proviorigins:kraken_soul_steal",
+            "modifiers": []
+          },
+          {
+            "type": "apoli:target_action",
+            "action": {
+              "type": "apoli:spawn_particles",
+              "count": 3,
+              "force": false,
+              "offset": {
+                "x": 0.5,
+                "y": 0.5,
+                "z": 0.5
+              },
+              "particle": {
+                "type": "minecraft:sculk_soul"
+              },
+              "speed": 0.0,
+              "spread": {
+                "x": 0.5,
+                "y": 0.5,
+                "z": 0.5
+              }
+            }
+          },
+          {
+            "type": "apoli:target_action",
+            "action": {
+              "type": "apoli:play_sound",
+              "category": "PLAYERS",
+              "pitch": 1.0,
+              "sound": "proviorigins:origin.decaykraken.soul_steal",
+              "volume": 1.0
+            }
+          }
+        ]
+      },
+      "bientity_condition": {
+        "type": "apoli:target_condition",
+        "condition": {
+          "type": "apoli:living",
+          "inverted": false
+        },
+        "inverted": false
+      },
+      "block": true,
+      "command_along_ray_only_on_hit": false,
+      "command_step": 1.0,
+      "distance": 8.0,
+      "entity": true,
+      "fluid_handling": "ANY",
+      "shape_type": "OUTLINE",
+      "space": "WORLD"
+    },
+    "min": 0,
+    "start_value": 0
+  }
+}

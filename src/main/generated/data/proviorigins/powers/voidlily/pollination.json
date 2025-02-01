@@ -1,0 +1,43 @@
+{
+  "type": "apoli:action_over_time",
+  "entity_action": {
+    "type": "apoli:area_of_effect",
+    "bientity_action": {
+      "type": "apoli:actor_action",
+      "action": {
+        "type": "apoli:apply_effect",
+        "effects": [
+          {
+            "ambient": true,
+            "amplifier": 0,
+            "duration": 310,
+            "id": "minecraft:saturation",
+            "show_icon": true,
+            "show_particles": true
+          },
+          {
+            "ambient": true,
+            "amplifier": 0,
+            "duration": 40,
+            "id": "minecraft:blindness",
+            "show_icon": true,
+            "show_particles": true
+          }
+        ]
+      }
+    },
+    "bientity_condition": {
+      "type": "apoli:target_condition",
+      "condition": {
+        "type": "apoli:entity_type",
+        "entity_type": "minecraft:bee",
+        "inverted": false
+      },
+      "inverted": false
+    },
+    "include_actor": false,
+    "radius": 3.0,
+    "shape": "SPHERE"
+  },
+  "interval": 10
+}

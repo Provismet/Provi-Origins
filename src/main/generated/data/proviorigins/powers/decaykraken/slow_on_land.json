@@ -1,0 +1,12 @@
+{
+  "type": "apoli:attribute",
+  "modifiers": [
+    {
+      "amount": -0.2,
+      "attribute": "minecraft:generic.movement_speed",
+      "id": "proviorigins:decaykraken/slow_on_land",
+      "operation": "ADD_MULTIPLIED_BASE"
+    }
+  ],
+  "update_health": false
+}

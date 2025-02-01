@@ -1,0 +1,133 @@
+{
+  "type": "apoli:multiple",
+  "consume": {
+    "type": "proviorigins:active_item",
+    "consume_amount": 0,
+    "consume_condition": {
+      "type": "apoli:constant",
+      "inverted": false,
+      "value": false
+    },
+    "cooldown": 1,
+    "entity_action": {
+      "type": "apoli:sequence",
+      "actions": [
+        {
+          "type": "apoli:emit_game_event",
+          "event": "minecraft:equip"
+        },
+        {
+          "type": "proviorigins:raycast_teleport",
+          "allow_lava": false,
+          "allow_water": false,
+          "destination": "on_top",
+          "distance": 80.0,
+          "fluid_handling": "NONE",
+          "shape_type": "COLLIDER",
+          "success_action": {
+            "type": "apoli:sequence",
+            "actions": [
+              {
+                "type": "apoli:spawn_particles",
+                "count": 32,
+                "force": false,
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.5,
+                  "z": 0.0
+                },
+                "particle": {
+                  "type": "minecraft:portal"
+                },
+                "speed": 0.0,
+                "spread": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              {
+                "type": "apoli:play_sound",
+                "category": "PLAYERS",
+                "pitch": 1.0,
+                "sound": "proviorigins:origin.voidlily.teleport",
+                "volume": 1.0
+              },
+              {
+                "type": "apoli:if_else",
+                "condition": {
+                  "type": "apoli:equipped_item",
+                  "equipment_slot": "MAINHAND",
+                  "inverted": false,
+                  "item_condition": {
+                    "type": "apoli:ingredient",
+                    "ingredient": [
+                      "#proviorigins:voidlily/grants_teleport"
+                    ],
+                    "inverted": false
+                  }
+                },
+                "else_action": {
+                  "type": "apoli:equipped_item_action",
+                  "equipment_slot": "OFFHAND",
+                  "item_action": {
+                    "type": "apoli:consume",
+                    "amount": 1
+                  }
+                },
+                "if_action": {
+                  "type": "apoli:equipped_item_action",
+                  "equipment_slot": "MAINHAND",
+                  "item_action": {
+                    "type": "apoli:consume",
+                    "amount": 1
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:voidlily/grants_teleport"
+      ],
+      "inverted": false
+    },
+    "key": {
+      "continuous": false,
+      "id": "key.origins.primary_active"
+    },
+    "swing_arm": true
+  },
+  "hidden": true,
+  "tooltip": {
+    "type": "apoli:tooltip",
+    "item_condition": {
+      "type": "apoli:ingredient",
+      "ingredient": [
+        "#proviorigins:voidlily/grants_teleport"
+      ],
+      "inverted": false
+    },
+    "order": 0,
+    "resolve": false,
+    "texts": [
+      {
+        "type": "translatable",
+        "translate": "tooltip.proviorigins.voidlily.grants_teleport"
+      }
+    ],
+    "tick_rate": 20
+  }
+}

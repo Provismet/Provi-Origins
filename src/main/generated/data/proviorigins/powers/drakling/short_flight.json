@@ -1,0 +1,55 @@
+{
+  "type": "apoli:multiple",
+  "elytra": {
+    "type": "apoli:elytra_flight",
+    "render_elytra": true,
+    "texture_location": "proviorigins:textures/entity/drakling_wings.png"
+  },
+  "flight_bar": {
+    "type": "apoli:resource",
+    "hud_render": {
+      "bar_index": 4,
+      "icon_index": 4,
+      "inverted": false,
+      "order": 0,
+      "should_render": true,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "max": 45,
+    "min": 0,
+    "start_value": 45
+  },
+  "flight_drain": {
+    "type": "apoli:action_over_time",
+    "entity_action": {
+      "type": "apoli:if_else",
+      "condition": {
+        "type": "apoli:fall_flying",
+        "inverted": false
+      },
+      "else_action": {
+        "type": "apoli:change_resource",
+        "change": 1,
+        "operation": "ADD",
+        "resource": "proviorigins:drakling/short_flight_flight_bar"
+      },
+      "if_action": {
+        "type": "apoli:change_resource",
+        "change": -1,
+        "operation": "ADD",
+        "resource": "proviorigins:drakling/short_flight_flight_bar"
+      }
+    },
+    "interval": 20
+  },
+  "locked_elyta": {
+    "type": "apoli:prevent_elytra_flight",
+    "condition": {
+      "type": "apoli:resource",
+      "compare_to": 0,
+      "comparison": "EQUAL",
+      "inverted": false,
+      "resource": "proviorigins:drakling/short_flight_flight_bar"
+    }
+  }
+}
