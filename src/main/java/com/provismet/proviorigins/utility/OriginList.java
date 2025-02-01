@@ -54,6 +54,10 @@ public abstract class OriginList {
             return ProviOriginsMain.identifier(this.getDataPath(path));
         }
 
+        public Identifier originIdentifier () {
+            return ProviOriginsMain.identifier(this.dataName);
+        }
+
         private static OriginEntry of (String fullName, String dataName) {
             return new OriginEntry(fullName, dataName);
         }
