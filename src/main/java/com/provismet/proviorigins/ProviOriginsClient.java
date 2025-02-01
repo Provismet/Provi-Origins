@@ -1,5 +1,6 @@
 package com.provismet.proviorigins;
 
+import com.provismet.proviorigins.utility.KeyUtil;
 import org.lwjgl.glfw.GLFW;
 
 import com.provismet.proviorigins.content.registries.POBlockRenderLayers;
@@ -14,16 +15,18 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.render.BackgroundRenderer;
 
 public class ProviOriginsClient implements ClientModInitializer {
+    public static final String KEY_CATEGORY = "category.proviorigins.keys";
+
     public static KeyBinding tertiaryActive = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-        "key.proviorigins.tertiary_active",
+        KeyUtil.ACTIVE_TERTIARY,
         GLFW.GLFW_KEY_UNKNOWN,
-        "category.proviorigins.keys"
+        KEY_CATEGORY
     ));
 
     public static KeyBinding quaternaryActive = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-        "key.proviorigins.quaternary_active",
+        KeyUtil.ACTIVE_QUATERNARY,
         GLFW.GLFW_KEY_UNKNOWN,
-        "category.proviorigins.keys"
+        KEY_CATEGORY
     ));
 
     @Override
