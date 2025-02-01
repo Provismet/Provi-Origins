@@ -475,7 +475,7 @@ public abstract class Alraune {
             PowerNames.Alraune.SUMMON_PLANT_AOE,
             Alraune.createAlrauneSummon(FlowerMinion.AOE),
             List.of(
-                BadgeUtil.active(),
+                BadgeUtil.presetActive(KeyUtil.ACTIVE_PRIMARY),
                 BadgeUtil.cost(summonPlant, 1),
                 BadgeUtil.info(summonPlant, 2),
                 BadgeUtil.info(summonPlant, 3),

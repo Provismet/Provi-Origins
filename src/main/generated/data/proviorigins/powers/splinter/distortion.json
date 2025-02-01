@@ -1,20 +1,5 @@
 {
   "type": "apoli:multiple",
-  "badges": [
-    {
-      "type": "origins:keybind",
-      "sprite": "origins:textures/gui/badge/active.png",
-      "text": "origins.gui.badge.active"
-    },
-    {
-      "type": "origins:tooltip",
-      "sprite": "proviorigins:textures/gui/badge/cost.png",
-      "text": {
-        "type": "translatable",
-        "translate": "power.proviorigins.splinter.distortion.badge"
-      }
-    }
-  ],
   "activate_skill": {
     "type": "apoli:action_on_key_press",
     "condition": {
@@ -143,6 +128,22 @@
       "id": "key.origins.secondary_active"
     }
   },
+  "badges": [
+    {
+      "type": "proviorigins:preset_keybind",
+      "keybind": "key.origins.secondary_active",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "translation": "origins.gui.badge.active"
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "proviorigins:textures/gui/badge/cost.png",
+      "text": {
+        "type": "translatable",
+        "translate": "power.proviorigins.splinter.distortion.badge"
+      }
+    }
+  ],
   "illusion_spread": {
     "type": "proviorigins:illusioner_mirror",
     "condition": {

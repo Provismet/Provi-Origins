@@ -47,4 +47,12 @@ public interface KeyUtil {
     static KeyBindingReference quaternary (boolean continuous) {
         return KeyUtil.create(ACTIVE_QUATERNARY, continuous);
     }
+
+    static KeyBindingReference sneak () {
+        return KeyUtil.sneak(false);
+    }
+
+    static KeyBindingReference sneak (boolean continuous) {
+        return KeyUtil.create("key.sneak", continuous);
+    }
 }

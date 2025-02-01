@@ -1,5 +1,10 @@
 {
   "type": "apoli:multiple",
+  "adjust_passenger": {
+    "type": "proviorigins:modify_passenger_height",
+    "offset_add": 0.9,
+    "offset_multiply": 0.0
+  },
   "badges": [
     {
       "type": "origins:tooltip",
@@ -10,14 +15,68 @@
       }
     },
     {
-      "type": "origins:tooltip",
+      "type": "proviorigins:preset_keybind",
+      "keybind": "key.sneak",
       "sprite": "origins:textures/gui/badge/active.png",
-      "text": {
-        "type": "translatable",
-        "translate": "power.proviorigins.drakling.ridable.badge.2"
-      }
+      "translation": "power.proviorigins.drakling.ridable.badge.2"
     }
   ],
+  "cannot_hurt_passenger": {
+    "type": "apoli:modify_damage_dealt",
+    "bientity_condition": {
+      "type": "apoli:invert",
+      "condition": {
+        "type": "apoli:riding_recursive",
+        "inverted": false
+      },
+      "inverted": false
+    },
+    "modifiers": [
+      {
+        "amount": 0.0,
+        "operation": "apoli:set_total"
+      }
+    ]
+  },
+  "cannot_use_passenger": {
+    "type": "apoli:prevent_entity_use",
+    "action_result": "FAIL",
+    "bientity_condition": {
+      "type": "apoli:invert",
+      "condition": {
+        "type": "apoli:riding_recursive",
+        "inverted": false
+      },
+      "inverted": false
+    },
+    "hands": [
+      "MAIN_HAND",
+      "OFF_HAND"
+    ]
+  },
+  "end_ride": {
+    "type": "apoli:action_on_key_press",
+    "cooldown": 1,
+    "entity_action": {
+      "type": "apoli:passenger_action",
+      "entity_action": {
+        "type": "apoli:dismount"
+      },
+      "recursive": false
+    },
+    "hud_render": {
+      "bar_index": 0,
+      "icon_index": 0,
+      "inverted": false,
+      "order": 0,
+      "should_render": false,
+      "sprite_location": "apoli:textures/gui/resource_bar.png"
+    },
+    "key": {
+      "continuous": false,
+      "id": "key.sneak"
+    }
+  },
   "force_mount": {
     "type": "apoli:action_on_entity_use",
     "action_result": "SUCCESS",
@@ -84,6 +143,46 @@
       "type": "apoli:empty",
       "inverted": false
     },
+    "priority": 0
+  },
+  "mount": {
+    "type": "apoli:action_on_being_used",
+    "action_result": "SUCCESS",
+    "bientity_action": {
+      "type": "apoli:mount"
+    },
+    "bientity_condition": {
+      "type": "apoli:all_of",
+      "conditions": [
+        {
+          "type": "apoli:actor_condition",
+          "condition": {
+            "type": "apoli:passenger",
+            "compare_to": 0,
+            "comparison": "EQUAL",
+            "inverted": false
+          },
+          "inverted": false
+        },
+        {
+          "type": "apoli:undirected",
+          "condition": {
+            "type": "apoli:attacker",
+            "inverted": false
+          },
+          "inverted": true
+        }
+      ],
+      "inverted": false
+    },
+    "condition": {
+      "type": "apoli:riding",
+      "inverted": true
+    },
+    "hands": [
+      "MAIN_HAND",
+      "OFF_HAND"
+    ],
     "priority": 0
   }
 }

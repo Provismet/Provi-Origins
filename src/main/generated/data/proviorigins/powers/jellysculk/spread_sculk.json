@@ -2,12 +2,10 @@
   "type": "apoli:multiple",
   "badges": [
     {
-      "type": "origins:tooltip",
+      "type": "proviorigins:preset_keybind",
+      "keybind": "key.use",
       "sprite": "origins:textures/gui/badge/active.png",
-      "text": {
-        "type": "translatable",
-        "translate": "power.proviorigins.jellysculk.spread_sculk.badge"
-      }
+      "translation": "power.proviorigins.jellysculk.spread_sculk.badge"
     }
   ],
   "spread_sculk": {

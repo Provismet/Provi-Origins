@@ -633,7 +633,7 @@ public abstract class DecayKraken {
                     )
                 ),
             List.of(
-                BadgeUtil.active(),
+                BadgeUtil.presetActive(KeyUtil.ACTIVE_QUATERNARY),
                 BadgeUtil.cost(PowerNames.DecayKraken.SOUL_CONSUME)
             )
         );
@@ -793,7 +793,7 @@ public abstract class DecayKraken {
                     )
                 ),
             List.of(
-                BadgeUtil.active(),
+                BadgeUtil.presetActive(KeyUtil.ACTIVE_SECONDARY),
                 BadgeUtil.cost(PowerNames.DecayKraken.SOUL_STEAL)
             )
         );

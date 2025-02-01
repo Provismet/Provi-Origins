@@ -292,7 +292,7 @@ public abstract class JellySculk {
                 )
             ),
             List.of(
-                BadgeUtil.active(PowerNames.JellySculk.CREATE_SENSOR)
+                BadgeUtil.presetActive(PowerNames.JellySculk.CREATE_SENSOR, "key.use")
             )
         );
     }
@@ -527,7 +527,7 @@ public abstract class JellySculk {
                     new CooldownPowerType(30, HudRender.DONT_RENDER, Optional.empty())
                 ),
             List.of(
-                BadgeUtil.active(PowerNames.JellySculk.SPREAD_SCULK)
+                BadgeUtil.presetActive(PowerNames.JellySculk.SPREAD_SCULK, "key.use")
             )
         );
     }

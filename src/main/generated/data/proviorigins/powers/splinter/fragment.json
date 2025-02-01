@@ -7,12 +7,10 @@
       "text": "origins.gui.badge.active"
     },
     {
-      "type": "origins:tooltip",
-      "sprite": "origins:textures/gui/badge/info.png",
-      "text": {
-        "type": "translatable",
-        "translate": "power.proviorigins.splinter.fragment.badge.1"
-      }
+      "type": "proviorigins:preset_keybind",
+      "keybind": "key.use",
+      "sprite": "origins:textures/gui/badge/active.png",
+      "translation": "power.proviorigins.splinter.fragment.badge.1"
     },
     {
       "type": "origins:tooltip",

@@ -2,9 +2,10 @@
   "type": "apoli:multiple",
   "badges": [
     {
-      "type": "origins:keybind",
+      "type": "proviorigins:preset_keybind",
+      "keybind": "key.origins.primary_active",
       "sprite": "origins:textures/gui/badge/active.png",
-      "text": "origins.gui.badge.active"
+      "translation": "origins.gui.badge.active"
     },
     {
       "type": "origins:tooltip",

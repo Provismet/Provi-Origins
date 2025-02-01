@@ -1,25 +1,25 @@
 {
-  "required": true,
-  "minVersion": "0.8",
-  "package": "com.provismet.proviorigins.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "mixins": [
-    "EntityMixin",
-    "LivingEntityMixin",
-    "PlayerEntityMixin",
-    "ProjectileEntityMixin",
-    "PersistentProjectileEntityMixin"
-  ],
-  "client": [
-    "EntityRendererMixin",
-    "MobEntityRendererMixin",
-    "PlayerEntityRendererMixin",
-    "EntityRenderDispatcherMixin",
-    "LivingEntityRendererAccessor",
-    "WorldRendererMixin",
-    "LightmapTextureManagerMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
+    "required": true,
+    "minVersion": "0.8",
+    "package": "com.provismet.proviorigins.mixin",
+    "compatibilityLevel": "JAVA_21",
+    "mixins": [
+        "EntityMixin",
+        "LivingEntityMixin",
+        "PersistentProjectileEntityMixin",
+        "PlayerEntityMixin",
+        "ProjectileEntityMixin"
+    ],
+    "client": [
+        "EntityRenderDispatcherMixin",
+        "EntityRendererMixin",
+        "LightmapTextureManagerMixin",
+        "LivingEntityRendererAccessor",
+        "MobEntityRendererMixin",
+        "PlayerEntityRendererMixin",
+        "WorldRendererMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
   }
 }

@@ -226,7 +226,7 @@ public abstract class Splinter {
                     )
                 ),
             List.of(
-                BadgeUtil.active(),
+                BadgeUtil.presetActive(KeyUtil.ACTIVE_SECONDARY),
                 BadgeUtil.cost(PowerNames.Splinter.DISTORTION)
             )
         );
@@ -337,7 +337,7 @@ public abstract class Splinter {
             ),
             List.of(
                 BadgeUtil.active(),
-                BadgeUtil.info(PowerNames.Splinter.FRAGMENT, 1),
+                BadgeUtil.presetActive(PowerNames.Splinter.FRAGMENT, 1, "key.use"),
                 BadgeUtil.cost(PowerNames.Splinter.FRAGMENT, 2)
             )
         );

@@ -1,5 +1,6 @@
 package com.provismet.proviorigins;
 
+import com.provismet.proviorigins.registries.POBadgeFactories;
 import com.provismet.proviorigins.registries.POBientityActionTypes;
 import com.provismet.proviorigins.registries.POBientityConditionTypes;
 import com.provismet.proviorigins.registries.POBlockConditionTypes;
@@ -39,6 +40,7 @@ public class ProviOriginsMain implements ModInitializer {
 
         WorldGen.generateWorldGen();
 
+        POBadgeFactories.init();
         POPowerTypes.init();
         POBlockConditionTypes.init();
         POEntityActionTypes.init();

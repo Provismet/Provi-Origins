@@ -6,6 +6,7 @@ import com.provismet.datagen.proviorigins.provider.POPowerProvider;
 import com.provismet.proviorigins.ProviOriginsMain;
 import com.provismet.proviorigins.actions.entity.ParticleRingAction;
 import com.provismet.proviorigins.content.registries.POSounds;
+import com.provismet.proviorigins.powers.ModifyPassengerHeightPower;
 import com.provismet.proviorigins.utility.BadgeUtil;
 import com.provismet.proviorigins.utility.KeyUtil;
 import com.provismet.proviorigins.utility.OriginList;
@@ -14,13 +15,16 @@ import io.github.apace100.apoli.action.EntityAction;
 import io.github.apace100.apoli.action.type.EntityActionType;
 import io.github.apace100.apoli.action.type.bientity.MountBiEntityActionType;
 import io.github.apace100.apoli.action.type.bientity.meta.InvertBiEntityActionType;
+import io.github.apace100.apoli.action.type.bientity.meta.SequenceBiEntityActionType;
 import io.github.apace100.apoli.action.type.entity.AddVelocityEntityActionType;
 import io.github.apace100.apoli.action.type.entity.ApplyEffectEntityActionType;
 import io.github.apace100.apoli.action.type.entity.ChangeResourceEntityActionType;
+import io.github.apace100.apoli.action.type.entity.DismountEntityActionType;
 import io.github.apace100.apoli.action.type.entity.EmitGameEventEntityActionType;
 import io.github.apace100.apoli.action.type.entity.EquippedItemActionEntityActionType;
 import io.github.apace100.apoli.action.type.entity.ExecuteCommandEntityActionType;
 import io.github.apace100.apoli.action.type.entity.ModifyInventoryEntityActionType;
+import io.github.apace100.apoli.action.type.entity.PassengerActionEntityActionType;
 import io.github.apace100.apoli.action.type.entity.PlaySoundEntityActionType;
 import io.github.apace100.apoli.action.type.entity.RevokePowerEntityActionType;
 import io.github.apace100.apoli.action.type.entity.SpawnParticlesEntityActionType;
@@ -34,7 +38,10 @@ import io.github.apace100.apoli.action.type.item.ModifyItemActionType;
 import io.github.apace100.apoli.action.type.meta.IfElseListMetaActionType;
 import io.github.apace100.apoli.condition.EntityCondition;
 import io.github.apace100.apoli.condition.type.bientity.AttackerBiEntityConditionType;
+import io.github.apace100.apoli.condition.type.bientity.RidingRecursiveBiEntityConditionType;
+import io.github.apace100.apoli.condition.type.bientity.meta.ActorConditionBiEntityConditionType;
 import io.github.apace100.apoli.condition.type.bientity.meta.AllOfBiEntityConditionType;
+import io.github.apace100.apoli.condition.type.bientity.meta.InvertBiEntityConditionType;
 import io.github.apace100.apoli.condition.type.bientity.meta.TargetConditionBiEntityConditionType;
 import io.github.apace100.apoli.condition.type.bientity.meta.UndirectedBiEntityConditionType;
 import io.github.apace100.apoli.condition.type.entity.CommandEntityConditionType;
@@ -50,14 +57,17 @@ import io.github.apace100.apoli.condition.type.entity.meta.AllOfEntityConditionT
 import io.github.apace100.apoli.condition.type.item.EmptyItemConditionType;
 import io.github.apace100.apoli.condition.type.item.IngredientItemConditionType;
 import io.github.apace100.apoli.power.PowerReference;
+import io.github.apace100.apoli.power.type.ActionOnBeingUsedPowerType;
 import io.github.apace100.apoli.power.type.ActionOnCallbackPowerType;
 import io.github.apace100.apoli.power.type.ActionOnEntityUsePowerType;
 import io.github.apace100.apoli.power.type.ActionOnKeyPressPowerType;
 import io.github.apace100.apoli.power.type.ActionOverTimePowerType;
 import io.github.apace100.apoli.power.type.AttributePowerType;
 import io.github.apace100.apoli.power.type.ElytraFlightPowerType;
+import io.github.apace100.apoli.power.type.ModifyDamageDealtPowerType;
 import io.github.apace100.apoli.power.type.PowerType;
 import io.github.apace100.apoli.power.type.PreventElytraFlightPowerType;
+import io.github.apace100.apoli.power.type.PreventEntityUsePowerType;
 import io.github.apace100.apoli.power.type.RecipePowerType;
 import io.github.apace100.apoli.power.type.ResourcePowerType;
 import io.github.apace100.apoli.power.type.TooltipPowerType;
@@ -67,6 +77,8 @@ import io.github.apace100.apoli.util.HudRender;
 import io.github.apace100.apoli.util.InventoryUtil;
 import io.github.apace100.apoli.util.ResourceOperation;
 import io.github.apace100.apoli.util.Space;
+import io.github.apace100.apoli.util.modifier.Modifier;
+import io.github.apace100.apoli.util.modifier.ModifierOperation;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -528,10 +540,91 @@ public abstract class Drakling {
                             ).createCondition()
                         )
                     )
+                ).add(
+                    "mount",
+                    new ActionOnBeingUsedPowerType(
+                        Optional.of(new MountBiEntityActionType().createAction()),
+                        Optional.of(
+                            new AllOfBiEntityConditionType(
+                                List.of(
+                                    new ActorConditionBiEntityConditionType(
+                                        new PassengerEntityConditionType(
+                                            Optional.empty(),
+                                            Comparison.EQUAL, 0
+                                        ).createCondition()
+                                    ).createCondition(),
+                                    new UndirectedBiEntityConditionType(
+                                        new AttackerBiEntityConditionType().createCondition()
+                                    ).createCondition(true)
+                                )
+                            ).createCondition()
+                        ),
+                        Optional.empty(),
+                        Optional.empty(),
+                        Optional.empty(),
+                        Optional.empty(),
+                        EnumSet.allOf(Hand.class),
+                        ActionResult.SUCCESS,
+                        0,
+                        Optional.of(new RidingEntityConditionType(Optional.empty()).createCondition(true))
+                    )
+                ).add(
+                    "end_ride",
+                    new ActionOnKeyPressPowerType(
+                        new PassengerActionEntityActionType(
+                            Optional.of(new DismountEntityActionType().createAction()),
+                            Optional.empty(),
+                            Optional.empty(),
+                            false
+                        ).createAction(),
+                        HudRender.DONT_RENDER,
+                        1,
+                        KeyUtil.sneak(),
+                        Optional.empty()
+                    )
+                ).add(
+                    "cannot_use_passenger",
+                    new PreventEntityUsePowerType(
+                        Optional.empty(),
+                        Optional.of(
+                            new InvertBiEntityConditionType(
+                                new RidingRecursiveBiEntityConditionType().createCondition()
+                            ).createCondition()
+                        ),
+                        Optional.empty(),
+                        Optional.empty(),
+                        Optional.empty(),
+                        Optional.empty(),
+                        EnumSet.allOf(Hand.class),
+                        Optional.empty()
+                    )
+                ).add(
+                    "cannot_hurt_passenger",
+                    new ModifyDamageDealtPowerType(
+                        Optional.empty(),
+                        Optional.empty(),
+                        Optional.empty(),
+                        Optional.empty(),
+                        Optional.of(
+                            new InvertBiEntityConditionType(
+                                new RidingRecursiveBiEntityConditionType().createCondition()
+                            ).createCondition()
+                        ),
+                        Optional.empty(),
+                        List.of(Modifier.of(ModifierOperation.SET_TOTAL, 0)),
+                        Optional.empty()
+                    )
+                ).add(
+                    "adjust_passenger",
+                    new ModifyPassengerHeightPower(
+                        0.9,
+                        0,
+                        Optional.empty()
+                    )
                 ),
             List.of(
                 BadgeUtil.info(PowerNames.Drakling.RIDABLE, 1),
-                BadgeUtil.active(PowerNames.Drakling.RIDABLE, 2)
+                BadgeUtil.presetActive(PowerNames.Drakling.RIDABLE, 2, "key.sneak")
             )
         );
     }

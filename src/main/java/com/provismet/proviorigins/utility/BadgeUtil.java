@@ -1,5 +1,6 @@
 package com.provismet.proviorigins.utility;
 
+import com.provismet.proviorigins.badge.PresetKeybindBadge;
 import com.provismet.proviorigins.utility.constants.BadgeTextures;
 import io.github.apace100.origins.badge.CraftingRecipeBadge;
 import io.github.apace100.origins.badge.KeybindBadge;
@@ -79,7 +80,7 @@ public interface BadgeUtil {
     }
 
     static KeybindBadge active () {
-        return new KeybindBadge(BadgeTextures.Baseline.ACTIVE, "origins.gui.badge.active");
+        return new KeybindBadge(BadgeTextures.Baseline.ACTIVE, PresetKeybindBadge.DEFAULT_TRANSLATION);
     }
 
     static TooltipBadge active (String translationKey) {
@@ -92,6 +93,26 @@ public interface BadgeUtil {
 
     static TooltipBadge active (Identifier powerId, int index) {
         return BadgeUtil.active(PowerUtil.getBadgeTranslationKey(powerId, index));
+    }
+
+    static PresetKeybindBadge presetActive (String keybind) {
+        return BadgeUtil.presetActive(PresetKeybindBadge.DEFAULT_TRANSLATION, keybind);
+    }
+
+    static PresetKeybindBadge presetActive (String translationKey, String keybind) {
+        return BadgeUtil.presetActive(BadgeTextures.Baseline.ACTIVE, translationKey, keybind);
+    }
+
+    static PresetKeybindBadge presetActive (Identifier spriteId, String translationKey, String keybind) {
+        return new PresetKeybindBadge(spriteId, translationKey, keybind);
+    }
+
+    static PresetKeybindBadge presetActive (Identifier powerId, String keybind) {
+        return BadgeUtil.presetActive(PowerUtil.getBadgeTranslationKey(powerId), keybind);
+    }
+
+    static PresetKeybindBadge presetActive (Identifier powerId, int index, String keybind) {
+        return BadgeUtil.presetActive(PowerUtil.getBadgeTranslationKey(powerId, index), keybind);
     }
 
     static CraftingRecipeBadge crafting (RecipeEntry<CraftingRecipe> recipe) {
