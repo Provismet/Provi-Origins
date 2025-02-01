@@ -3,6 +3,7 @@ package com.provismet.datagen.proviorigins.power;
 import com.provismet.datagen.proviorigins.PowerGenerator;
 import com.provismet.datagen.proviorigins.constants.PowerNames;
 import com.provismet.datagen.proviorigins.provider.POPowerProvider;
+import com.provismet.extrade_oa.EDPowerNames;
 import com.provismet.proviorigins.actions.bientity.FireProjectileAction;
 import com.provismet.proviorigins.actions.entity.ActOnClosestEntityAction;
 import com.provismet.proviorigins.actions.entity.ParticleRingAction;
@@ -69,6 +70,7 @@ import io.github.apace100.apoli.power.type.ActionOnCallbackPowerType;
 import io.github.apace100.apoli.power.type.ActionOverTimePowerType;
 import io.github.apace100.apoli.power.type.DamageOverTimePowerType;
 import io.github.apace100.apoli.power.type.ModifyDamageTakenPowerType;
+import io.github.apace100.apoli.power.type.ModifyTypeTagPowerType;
 import io.github.apace100.apoli.power.type.ParticlePowerType;
 import io.github.apace100.apoli.power.type.PowerType;
 import io.github.apace100.apoli.power.type.PreventBlockSelectionPowerType;
@@ -89,8 +91,10 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.DamageTypeTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -499,7 +503,6 @@ public abstract class Alraune {
     }
 
     private static void buildSummonedPassives (POPowerProvider.PowerCollector collector) {
-        // TODO: Add fungifloral to summon.
         collector.add(
             PowerNames.Alraune.SUMMONED_PASSIVES,
             new POPowerProvider.MultiplePowerJsonBuilder()
@@ -511,6 +514,12 @@ public abstract class Alraune {
                         HudRender.DONT_RENDER,
                         0, 1,
                         0
+                    )
+                ).add(
+                    "fungifloral",
+                    new ModifyTypeTagPowerType(
+                        TagKey.of(RegistryKeys.ENTITY_TYPE, EDPowerNames.FUNGIFLORAL),
+                        Optional.empty()
                     )
                 ).add(
                     "renewable",

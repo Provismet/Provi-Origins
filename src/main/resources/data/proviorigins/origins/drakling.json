@@ -10,7 +10,7 @@
         "origins:more_kinetic_damage",
         "proviorigins:drakling/enderdragon_mandatory",
         "proviorigins:drakling/dragon_evolution",
-        "extrade:beastly"
+        "extra-damage-enchantments:beastly"
     ],
     "icon": {
         "id": "proviorigins:drakling_icon"

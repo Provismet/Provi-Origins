@@ -82,6 +82,8 @@ dependencies {
 	modImplementation "io.github.apace100:origins-fabric:${project.origins_version}"
 	modCompileOnly "maven.modrinth:lambdynamiclights:${project.dynlights_version}"
 
+    modImplementation "com.github.Provismet:extrade-origins-addon:${project.extrade_oa_version}"
+
     modImplementation "com.github.Provismet:lilylib:${project.lilylib_version}"
     include "com.github.Provismet:lilylib:${project.lilylib_version}"
 }

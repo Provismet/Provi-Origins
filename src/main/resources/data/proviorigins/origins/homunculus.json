@@ -6,7 +6,7 @@
         "proviorigins:common/no_trades",
         "proviorigins:common/angry_golems",
         "origins:more_exhaustion",
-        "extrade:humanoid"
+        "extra-damage-enchantments:humanoid"
     ],
     "icon": {
         "id": "proviorigins:homunculus_icon"

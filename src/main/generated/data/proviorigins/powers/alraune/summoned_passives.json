@@ -14,6 +14,10 @@
       }
     ]
   },
+  "fungifloral": {
+    "type": "apoli:modify_type_tag",
+    "tag": "extra-damage-enchantments:fungifloral"
+  },
   "hidden": true,
   "increase_lifespan": {
     "type": "apoli:action_on_being_used",

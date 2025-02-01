@@ -8,7 +8,7 @@
         "proviorigins:common/brittle",
         "origins:water_vulnerability",
         "proviorigins:common/no_bows",
-        "extrade:outerworldly"
+        "extra-damage-enchantments:outerworldly"
     ],
     "icon": {
         "id": "proviorigins:crystalliser_icon"

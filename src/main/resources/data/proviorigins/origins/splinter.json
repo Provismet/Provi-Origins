@@ -12,7 +12,7 @@
         "proviorigins:common/brittle",
         "proviorigins:common/no_crits",
         "origins:no_shield",
-        "extrade:arcane"
+        "extra-damage-enchantments:arcane"
     ],
     "icon": {
         "id": "proviorigins:splinter_icon"

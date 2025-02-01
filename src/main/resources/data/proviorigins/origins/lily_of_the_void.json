@@ -33,7 +33,7 @@
 		"proviorigins:voidlily/death_particles",
 		"proviorigins:common/ignore_corruption",
 		"proviorigins:voidlily/plap_plap_get_bonemealed",
-		"extrade:fungifloral"
+		"extra-damage-enchantments:fungifloral"
 	],
 	"icon": {
 		"id": "proviorigins:lily_of_the_void_icon"

@@ -14,7 +14,7 @@
         "proviorigins:jellysculk/debuffs_off_sculk",
         "proviorigins:common/brittle",
         "proviorigins:common/ignore_darkness_pulse",
-        "extrade:fungifloral"
+        "extra-damage-enchantments:fungifloral"
     ],
     "icon": {
         "id": "proviorigins:jelly_icon"
