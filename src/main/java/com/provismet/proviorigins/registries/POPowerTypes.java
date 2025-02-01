@@ -43,7 +43,7 @@ public abstract class POPowerTypes {
     public static final PowerConfiguration<PreventPotionCloudPower> PREVENT_POTION_CLOUD = register("prevent_potion_cloud", PreventPotionCloudPower::new);
 
     private static <T extends PowerType> PowerConfiguration<T> register (String name, TypedDataObjectFactory<T> factory) {
-        return OriginsPowerTypes.register(PowerConfiguration.dataFactory(ProviOriginsMain.identifier(name), factory));
+        return OriginsPowerTypes.register(PowerConfiguration.of(ProviOriginsMain.identifier(name), factory));
     }
 
     private static <T extends PowerType> PowerConfiguration<T> register (String name, Function<Optional<EntityCondition>, T> constructor) {
