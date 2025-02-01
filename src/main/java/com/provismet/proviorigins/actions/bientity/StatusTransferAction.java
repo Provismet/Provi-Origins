@@ -7,11 +7,11 @@ import com.google.common.collect.ImmutableMap;
 import com.provismet.proviorigins.registries.POBientityActionTypes;
 
 import io.github.apace100.apoli.action.ActionConfiguration;
+import io.github.apace100.apoli.action.context.BiEntityActionContext;
 import io.github.apace100.apoli.action.type.BiEntityActionType;
 import io.github.apace100.apoli.data.TypedDataObjectFactory;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -68,8 +68,8 @@ public class StatusTransferAction extends BiEntityActionType {
     }
 
     @Override
-    public void execute (Entity actor, Entity target) {
-        if (!(actor instanceof LivingEntity livingActor) || !(target instanceof LivingEntity livingTarget) || actor.getWorld().isClient) return;
+    public void accept (BiEntityActionContext context) {
+        if (!(context.actor() instanceof LivingEntity livingActor) || !(context.target() instanceof LivingEntity livingTarget) || context.actor().getWorld().isClient) return;
 
         List<StatusEffectInstance> effects = livingActor.getStatusEffects()
             .stream()

@@ -7,6 +7,7 @@ import com.provismet.proviorigins.utility.constants.FieldNames;
 
 import io.github.apace100.apoli.action.ActionConfiguration;
 import io.github.apace100.apoli.action.BiEntityAction;
+import io.github.apace100.apoli.action.context.EntityActionContext;
 import io.github.apace100.apoli.action.type.EntityActionType;
 import io.github.apace100.apoli.condition.BiEntityCondition;
 import io.github.apace100.apoli.data.TypedDataObjectFactory;
@@ -43,15 +44,15 @@ public class ActOnClosestEntityAction extends EntityActionType {
     }
 
     @Override
-    protected void execute (Entity entity) {
-        List<Entity> others = entity.getWorld().getOtherEntities(entity, entity.getBoundingBox().expand(distance));
+    public void accept (EntityActionContext context) {
+        List<Entity> others = context.entity().getWorld().getOtherEntities(context.entity(), context.entity().getBoundingBox().expand(distance));
         Entity closest = null;
 
         for (Entity other : others) {
-            if (this.condition.test(entity, other) && (closest == null || entity.distanceTo(other) < entity.distanceTo(closest))) closest = other;
+            if (this.condition.test(context.entity(), other) && (closest == null || context.entity().distanceTo(other) < context.entity().distanceTo(closest))) closest = other;
         }
 
-        if (closest != null) this.action.execute(entity, closest);
+        if (closest != null) this.action.execute(context.entity(), closest);
     }
 
     @Override

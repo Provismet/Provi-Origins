@@ -8,13 +8,13 @@ import com.provismet.proviorigins.utility.constants.FieldNames;
 
 import io.github.apace100.apoli.action.ActionConfiguration;
 import io.github.apace100.apoli.action.EntityAction;
+import io.github.apace100.apoli.action.context.EntityActionContext;
 import io.github.apace100.apoli.action.type.EntityActionType;
 import io.github.apace100.apoli.data.TypedDataObjectFactory;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataType;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.block.pattern.CachedBlockPosition;
-import net.minecraft.entity.Entity;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -88,32 +88,32 @@ public class RaycastTeleportAction extends EntityActionType {
     }
 
     @Override
-    public void execute (Entity entity) {
-        Vec3d start = new Vec3d(entity.getX(), entity.getEyeY(), entity.getZ());
-        Vec3d direction = entity.getRotationVec(1);
+    public void accept (EntityActionContext context) {
+        Vec3d start = new Vec3d(context.entity().getX(), context.entity().getEyeY(), context.entity().getZ());
+        Vec3d direction = context.entity().getRotationVec(1);
         Vec3d end = start.add(direction.multiply(this.distance));
 
-        BlockHitResult blockHit = entity.getWorld().raycast(new RaycastContext(start, end, shapeType, fluidHandling, entity));
+        BlockHitResult blockHit = context.entity().getWorld().raycast(new RaycastContext(start, end, this.shapeType, this.fluidHandling, context.entity()));
         if (blockHit.getType() != HitResult.Type.MISS) {
-            if (destination.equals(DIRECT)) {
-                entity.fallDistance = 0f;
-                entity.setPosition(blockHit.getPos());
-                successAction.ifPresent(entityAction -> entityAction.execute(entity));
+            if (this.destination.equals(DIRECT)) {
+                context.entity().fallDistance = 0f;
+                context.entity().setPosition(blockHit.getPos());
+                this.successAction.ifPresent(entityAction -> entityAction.execute(context.entity()));
             }
             else if (destination.equals(ON_TOP)) {
-                CachedBlockPosition upByOne = new CachedBlockPosition(entity.getWorld(), blockHit.getBlockPos().add(0, 1, 0), true);
-                CachedBlockPosition upByTwo = new CachedBlockPosition(entity.getWorld(), blockHit.getBlockPos().add(0, 2, 0), true);
+                CachedBlockPosition upByOne = new CachedBlockPosition(context.entity().getWorld(), blockHit.getBlockPos().add(0, 1, 0), true);
+                CachedBlockPosition upByTwo = new CachedBlockPosition(context.entity().getWorld(), blockHit.getBlockPos().add(0, 2, 0), true);
 
-                if (isValid(upByOne, allowWater, allowLava) && isValid(upByTwo, allowWater, allowLava)) {
-                    entity.fallDistance = 0f;
-                    entity.setPosition(blockHit.getBlockPos().getX() + 0.5, blockHit.getBlockPos().getY() + 1, blockHit.getBlockPos().getZ() + 0.5);
-                    successAction.ifPresent(entityAction -> entityAction.execute(entity));
+                if (isValid(upByOne, this.allowWater, this.allowLava) && isValid(upByTwo, this.allowWater, this.allowLava)) {
+                    context.entity().fallDistance = 0f;
+                    context.entity().setPosition(blockHit.getBlockPos().getX() + 0.5, blockHit.getBlockPos().getY() + 1, blockHit.getBlockPos().getZ() + 0.5);
+                    this.successAction.ifPresent(entityAction -> entityAction.execute(context.entity()));
                 }
-                else failureAction.ifPresent(entityAction -> entityAction.execute(entity));
+                else this.failureAction.ifPresent(entityAction -> entityAction.execute(context.entity()));
             }
             else ProviOriginsMain.LOGGER.warn("Invalid teleport destination attempted.");
         }
-        else failureAction.ifPresent(entityAction -> entityAction.execute(entity));
+        else this.failureAction.ifPresent(entityAction -> entityAction.execute(context.entity()));
     }
 
     private static boolean isValid (CachedBlockPosition block, boolean allowWater, boolean allowLava) {

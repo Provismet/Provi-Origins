@@ -10,12 +10,12 @@ import com.provismet.proviorigins.utility.constants.FieldNames;
 
 import io.github.apace100.apoli.action.ActionConfiguration;
 import io.github.apace100.apoli.action.BiEntityAction;
+import io.github.apace100.apoli.action.context.EntityActionContext;
 import io.github.apace100.apoli.action.type.EntityActionType;
 import io.github.apace100.apoli.data.TypedDataObjectFactory;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.player.PlayerEntity;
@@ -72,8 +72,8 @@ public class SummonCloneAction extends EntityActionType {
     }
 
     @Override
-    public void execute (Entity entity) {
-        if (entity instanceof PlayerEntity player) {
+    public void accept (EntityActionContext context) {
+        if (context.entity() instanceof PlayerEntity player) {
             CloneEntity clone = summon(player, this.canSit, this.followOwner, this.canAttack, this.inheritEquipment, this.inheritEnchantments);
             if (clone != null) this.action.ifPresent(biEntityAction -> biEntityAction.execute(player, clone));
         }

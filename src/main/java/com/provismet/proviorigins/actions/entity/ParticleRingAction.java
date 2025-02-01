@@ -2,6 +2,7 @@ package com.provismet.proviorigins.actions.entity;
 
 import com.provismet.proviorigins.registries.POEntityActionTypes;
 import io.github.apace100.apoli.action.ActionConfiguration;
+import io.github.apace100.apoli.action.context.EntityActionContext;
 import io.github.apace100.apoli.action.type.EntityActionType;
 import io.github.apace100.apoli.data.TypedDataObjectFactory;
 import org.jetbrains.annotations.NotNull;
@@ -13,7 +14,6 @@ import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.util.Space;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
-import net.minecraft.entity.Entity;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.MathHelper;
@@ -90,16 +90,16 @@ public class ParticleRingAction extends EntityActionType {
     }
 
     @Override
-    protected void execute (Entity entity) {
+    public void accept (EntityActionContext context) {
         Vector3f offsetCopy = new Vector3f(this.offset.x, this.offset.y, this.offset.z);
-        this.space.toGlobal(offsetCopy, entity);
-        Vec3d initial = entity.getPos();
+        this.space.toGlobal(offsetCopy, context.entity());
+        Vec3d initial = context.entity().getPos();
         initial = initial.add(offsetCopy.x, offsetCopy.y, offsetCopy.z);
 
-        final float pitchRadians = (MathHelper.PI / 2) - (entity.getPitch() / MathHelper.DEGREES_PER_RADIAN);
-        final float yawRadians = -entity.getHeadYaw() / MathHelper.DEGREES_PER_RADIAN;
+        final float pitchRadians = (MathHelper.PI / 2) - (context.entity().getPitch() / MathHelper.DEGREES_PER_RADIAN);
+        final float yawRadians = -context.entity().getHeadYaw() / MathHelper.DEGREES_PER_RADIAN;
 
-        ServerWorld sWorld = (ServerWorld)entity.getWorld();
+        ServerWorld sWorld = (ServerWorld)context.entity().getWorld();
         for (float angle = 0; angle < 2 * MathHelper.PI; angle += this.step) {
             Vec3d point = initial.add(this.radius * MathHelper.sin(angle), 0.0, this.radius * MathHelper.cos(angle));
 

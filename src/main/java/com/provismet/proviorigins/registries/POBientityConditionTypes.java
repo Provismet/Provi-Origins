@@ -1,9 +1,9 @@
 package com.provismet.proviorigins.registries;
 
 import com.provismet.proviorigins.ProviOriginsMain;
-import com.provismet.proviorigins.conditions.bientity.CanSeeCondition;
-import com.provismet.proviorigins.conditions.bientity.FriendlyCondition;
-import com.provismet.proviorigins.conditions.bientity.TeammateCondition;
+import com.provismet.proviorigins.conditions.bientity.CanSeeBiEntityConditionType;
+import com.provismet.proviorigins.conditions.bientity.FriendlyBiEntityConditionType;
+import com.provismet.proviorigins.conditions.bientity.TeammateBiEntityConditionType;
 import io.github.apace100.apoli.condition.ConditionConfiguration;
 import io.github.apace100.apoli.condition.type.BiEntityConditionType;
 import io.github.apace100.apoli.condition.type.BiEntityConditionTypes;
@@ -12,9 +12,9 @@ import io.github.apace100.apoli.data.TypedDataObjectFactory;
 import java.util.function.Supplier;
 
 public abstract class POBientityConditionTypes {
-    public static final ConditionConfiguration<CanSeeCondition> CAN_SEE = register("can_see_any", CanSeeCondition.DATA_FACTORY);
-    public static final ConditionConfiguration<FriendlyCondition> FRIENDLY = register("friendly", FriendlyCondition::new);
-    public static final ConditionConfiguration<TeammateCondition> TEAMMATE = register("teammate", TeammateCondition::new);
+    public static final ConditionConfiguration<CanSeeBiEntityConditionType> CAN_SEE = register("can_see_any", CanSeeBiEntityConditionType.DATA_FACTORY);
+    public static final ConditionConfiguration<FriendlyBiEntityConditionType> FRIENDLY = register("friendly", FriendlyBiEntityConditionType::new);
+    public static final ConditionConfiguration<TeammateBiEntityConditionType> TEAMMATE = register("teammate", TeammateBiEntityConditionType::new);
 
     private static <T extends BiEntityConditionType> ConditionConfiguration<T> register (String name, TypedDataObjectFactory<T> factory) {
         return BiEntityConditionTypes.register(ConditionConfiguration.of(ProviOriginsMain.identifier(name), factory));

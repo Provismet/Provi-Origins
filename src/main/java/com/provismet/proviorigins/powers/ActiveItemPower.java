@@ -13,10 +13,10 @@ import io.github.apace100.apoli.condition.ItemCondition;
 import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.data.TypedDataObjectFactory;
 import io.github.apace100.apoli.power.PowerConfiguration;
-import io.github.apace100.apoli.power.type.Active;
 import io.github.apace100.apoli.power.type.ActiveCooldownPowerType;
 import io.github.apace100.apoli.power.type.PowerType;
 import io.github.apace100.apoli.util.HudRender;
+import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.EquipmentSlot;
@@ -46,7 +46,7 @@ public class ActiveItemPower extends ActiveCooldownPowerType {
             .add(SWING_ARM_LABEL, SerializableDataTypes.BOOLEAN, true)
             .add(FieldNames.COOLDOWN, SerializableDataTypes.INT, 1)
             .add(FieldNames.HUD_RENDER, ApoliDataTypes.HUD_RENDER, HudRender.DONT_RENDER)
-            .add(FieldNames.KEY, ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, new Active.Key()),
+            .add(FieldNames.KEY, ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, KeyBindingReference.NONE),
         (data, condition) -> new ActiveItemPower(
             data.getInt(FieldNames.COOLDOWN),
             data.get(FieldNames.HUD_RENDER),
@@ -69,7 +69,7 @@ public class ActiveItemPower extends ActiveCooldownPowerType {
             .set(FieldNames.KEY, powerType.getKey())
     );
 
-    public ActiveItemPower (int cooldownDuration, HudRender hudRender, Key key, EntityAction entityAction, ItemCondition itemCondition, Optional<EntityCondition> consumeCondition, int consumeAmount, boolean shouldSwingArm, Optional<EntityCondition> condition) {
+    public ActiveItemPower (int cooldownDuration, HudRender hudRender, KeyBindingReference key, EntityAction entityAction, ItemCondition itemCondition, Optional<EntityCondition> consumeCondition, int consumeAmount, boolean shouldSwingArm, Optional<EntityCondition> condition) {
         super(hudRender, cooldownDuration, key, condition);
         this.entityAction = entityAction;
         this.itemCondition = itemCondition;

@@ -9,11 +9,11 @@ import com.provismet.proviorigins.utility.constants.FieldNames;
 
 import io.github.apace100.apoli.action.ActionConfiguration;
 import io.github.apace100.apoli.action.BiEntityAction;
+import io.github.apace100.apoli.action.context.EntityActionContext;
 import io.github.apace100.apoli.action.type.EntityActionType;
 import io.github.apace100.apoli.data.TypedDataObjectFactory;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.server.world.ServerWorld;
@@ -76,8 +76,9 @@ public class SummonMinionAction extends EntityActionType {
         this.postSummonAction = postSummonAction;
     }
 
-    public void execute (Entity entity) {
-        if (entity instanceof LivingEntity living && living.getWorld() instanceof ServerWorld world) {
+    @Override
+    public void accept (EntityActionContext context) {
+        if (context.entity() instanceof LivingEntity living && living.getWorld() instanceof ServerWorld world) {
             MinionEntity minion = new MinionEntity(POEntities.MINION, world);
             minion.setOwner(living);
             minion.setTexture(this.texture);
@@ -92,7 +93,7 @@ public class SummonMinionAction extends EntityActionType {
 
             minion.refreshPositionAndAngles(minionPosition.getX(), minionPosition.getY(), minionPosition.getZ(), living.getHeadYaw(), living.getPitch());
             minion.initialize(world, world.getLocalDifficulty(living.getBlockPos()), SpawnReason.REINFORCEMENT, null);
-            minion.setCustomName(Text.of("Minion of " + entity.getName().getString()));
+            minion.setCustomName(Text.of("Minion of " + context.entity().getName().getString()));
             minion.setMaxLifetime(this.lifetime);
 
             living.getWorld().spawnEntity(minion);

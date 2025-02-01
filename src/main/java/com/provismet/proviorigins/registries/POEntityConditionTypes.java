@@ -1,11 +1,11 @@
 package com.provismet.proviorigins.registries;
 
 import com.provismet.proviorigins.ProviOriginsMain;
-import com.provismet.proviorigins.conditions.entity.ClientServerCondition;
-import com.provismet.proviorigins.conditions.entity.EntityInRadiusCondition;
-import com.provismet.proviorigins.conditions.entity.HasTeamCondition;
-import com.provismet.proviorigins.conditions.entity.RegenGameruleCondition;
-import com.provismet.proviorigins.conditions.entity.VelocityYCondition;
+import com.provismet.proviorigins.conditions.entity.ClientServerEntityConditionType;
+import com.provismet.proviorigins.conditions.entity.EntityInRadiusEntityConditionType;
+import com.provismet.proviorigins.conditions.entity.HasTeamEntityConditionType;
+import com.provismet.proviorigins.conditions.entity.RegenGameruleEntityConditionType;
+import com.provismet.proviorigins.conditions.entity.VelocityYEntityConditionType;
 import io.github.apace100.apoli.condition.ConditionConfiguration;
 import io.github.apace100.apoli.condition.type.EntityConditionType;
 import io.github.apace100.apoli.condition.type.EntityConditionTypes;
@@ -14,11 +14,11 @@ import io.github.apace100.apoli.data.TypedDataObjectFactory;
 import java.util.function.Supplier;
 
 public abstract class POEntityConditionTypes {
-    public static final ConditionConfiguration<ClientServerCondition> CLIENT_SERVER = register("client_server", ClientServerCondition.DATA_FACTORY);
-    public static final ConditionConfiguration<EntityInRadiusCondition> ENTITY_IN_RADIUS = register("entity_in_radius", EntityInRadiusCondition.DATA_FACTORY);
-    public static final ConditionConfiguration<HasTeamCondition> HAS_TEAM = register("has_team", HasTeamCondition::new);
-    public static final ConditionConfiguration<RegenGameruleCondition> REGEN_GAMERULE = register("can_natural_regen", RegenGameruleCondition::new);
-    public static final ConditionConfiguration<VelocityYCondition> VELOCITY_Y = register("velocity_y", VelocityYCondition.DATA_FACTORY);
+    public static final ConditionConfiguration<ClientServerEntityConditionType> CLIENT_SERVER = register("client_server", ClientServerEntityConditionType.DATA_FACTORY);
+    public static final ConditionConfiguration<EntityInRadiusEntityConditionType> ENTITY_IN_RADIUS = register("entity_in_radius", EntityInRadiusEntityConditionType.DATA_FACTORY);
+    public static final ConditionConfiguration<HasTeamEntityConditionType> HAS_TEAM = register("has_team", HasTeamEntityConditionType::new);
+    public static final ConditionConfiguration<RegenGameruleEntityConditionType> REGEN_GAMERULE = register("can_natural_regen", RegenGameruleEntityConditionType::new);
+    public static final ConditionConfiguration<VelocityYEntityConditionType> VELOCITY_Y = register("velocity_y", VelocityYEntityConditionType.DATA_FACTORY);
 
     private static <T extends EntityConditionType> ConditionConfiguration<T> register (String name, TypedDataObjectFactory<T> factory) {
         return EntityConditionTypes.register(ConditionConfiguration.of(ProviOriginsMain.identifier(name), factory));

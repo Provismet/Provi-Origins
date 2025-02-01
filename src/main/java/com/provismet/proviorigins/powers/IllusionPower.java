@@ -9,12 +9,11 @@ import com.provismet.proviorigins.ProviOriginsMain;
 
 import com.provismet.proviorigins.registries.POPowerTypes;
 import com.provismet.proviorigins.utility.constants.FieldNames;
-import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.condition.EntityCondition;
 import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.data.TypedDataObjectFactory;
-import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerConfiguration;
+import io.github.apace100.apoli.power.PowerReference;
 import io.github.apace100.apoli.power.type.CooldownPowerType;
 import io.github.apace100.apoli.power.type.PowerType;
 import io.github.apace100.apoli.power.type.VariableIntPowerType;
@@ -32,8 +31,8 @@ public class IllusionPower extends PowerType {
     private final double distance;
     private final int count;
     private final SpreadType spreadType;
-    private final Optional<Power> resourceName;
-    private PowerType resource;
+    private final Optional<PowerReference> resourceName;
+    private PowerType resourcePowerType = null;
 
     private final List<Polar> randomSpreads;
 
@@ -42,7 +41,7 @@ public class IllusionPower extends PowerType {
             .add(DISTANCE_LABEL, SerializableDataTypes.DOUBLE)
             .add(COUNT_LABEL, SerializableDataTypes.INT)
             .add(MIRROR_TYPE_LABEL, SerializableDataTypes.STRING)
-            .add(FieldNames.RESOURCE, Power.DATA_TYPE.optional(), Optional.empty()),
+            .add(FieldNames.RESOURCE, ApoliDataTypes.POWER_REFERENCE.optional(), Optional.empty()),
         (data, condition) -> new IllusionPower(
             data.getDouble(DISTANCE_LABEL),
             data.getInt(COUNT_LABEL),
@@ -57,7 +56,7 @@ public class IllusionPower extends PowerType {
             .set(FieldNames.RESOURCE, powerType.resourceName)
     );
 
-    public IllusionPower (double distance, int count, String spreadType, Optional<Power> resourceType, Optional<EntityCondition> condition) {
+    public IllusionPower (double distance, int count, String spreadType, Optional<PowerReference> resourceType, Optional<EntityCondition> condition) {
         super(condition);
         this.distance = distance;
         this.count = count;
@@ -74,27 +73,16 @@ public class IllusionPower extends PowerType {
         }
         this.spreadType = temp;
     }
-
-    private void getResource () {
-        if (this.resource == null && this.resourceName.isPresent()) {
-            PowerType power = null;
-            Optional<PowerHolderComponent> optionalComponent = PowerHolderComponent.getOptional(this.getHolder());
-            if (optionalComponent.isPresent()) {
-                power = optionalComponent.get().getPowerType(this.resourceName.get());
-            }
-
-            if (power instanceof VariableIntPowerType || power instanceof CooldownPowerType) this.resource = power;
-            else this.resource = null;
-        }
-    }
     
     private double getDistance () {
-        this.getResource();
+        if (this.resourcePowerType == null && this.resourceName.isPresent()) {
+            this.resourcePowerType = this.resourceName.get().getNullablePowerType(this.getHolder());
+        }
 
-        return switch (this.resource) {
+        return switch (this.resourcePowerType) {
             case VariableIntPowerType rPower -> this.distance * (double) rPower.getValue();
             case CooldownPowerType cPower -> this.distance * (double) cPower.getRemainingTicks();
-            default -> this.distance;
+            case null, default -> this.distance;
         };
     }
 

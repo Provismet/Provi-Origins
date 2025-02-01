@@ -7,6 +7,7 @@ import com.provismet.proviorigins.utility.constants.FieldNames;
 
 import io.github.apace100.apoli.action.ActionConfiguration;
 import io.github.apace100.apoli.action.EntityAction;
+import io.github.apace100.apoli.action.context.BiEntityActionContext;
 import io.github.apace100.apoli.action.type.BiEntityActionType;
 import io.github.apace100.apoli.data.TypedDataObjectFactory;
 import io.github.apace100.apoli.util.MiscUtil;
@@ -68,13 +69,13 @@ public class FireProjectileAction extends BiEntityActionType {
     }
 
     @Override
-    public void execute (Entity actor, Entity target) {
-        if (actor.getWorld().isClient) return;
-        final ServerWorld serverWorld = (ServerWorld)actor.getWorld();
+    public void accept (BiEntityActionContext context) {
+        if (context.actor().getWorld().isClient) return;
+        final ServerWorld serverWorld = (ServerWorld)context.actor().getWorld();
 
-        final double dx = target.getX() - actor.getX();
-        final double dy = target.getEyeY() - actor.getEyeY();
-        final double dz = target.getZ() - actor.getZ();
+        final double dx = context.target().getX() - context.actor().getX();
+        final double dy = context.target().getEyeY() - context.actor().getEyeY();
+        final double dz = context.target().getZ() - context.actor().getZ();
 
         Vec3d projectileDirection = (new Vec3d(dx, dy, dz)).normalize();
 
@@ -83,16 +84,16 @@ public class FireProjectileAction extends BiEntityActionType {
                 serverWorld,
                 this.entityType,
                 this.entityNbt,
-                actor.getPos().add(0, actor.getEyeHeight(actor.getPose()), 0),
-                actor.getYaw(),
-                actor.getPitch()
+                context.actor().getPos().add(0, context.actor().getEyeHeight(context.actor().getPose()), 0),
+                context.actor().getYaw(),
+                context.actor().getPitch()
             );
             if (opt$entityToSpawn.isEmpty()) return;
 
             Entity entityToSpawn = opt$entityToSpawn.get();
 
             if (entityToSpawn instanceof ProjectileEntity projectileToSpawn) {
-                projectileToSpawn.setOwner(actor);
+                projectileToSpawn.setOwner(context.actor());
                 projectileToSpawn.setVelocity(projectileDirection.x, projectileDirection.y, projectileDirection.z, this.speed, this.divergence);
             }
             else {

@@ -10,6 +10,7 @@ import com.provismet.proviorigins.utility.constants.FieldNames;
 import io.github.apace100.apoli.condition.BiEntityCondition;
 import io.github.apace100.apoli.condition.ConditionConfiguration;
 import io.github.apace100.apoli.condition.EntityCondition;
+import io.github.apace100.apoli.condition.context.EntityConditionContext;
 import io.github.apace100.apoli.condition.type.EntityConditionType;
 import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.data.TypedDataObjectFactory;
@@ -20,7 +21,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.math.Box;
 import org.jetbrains.annotations.NotNull;
 
-public class EntityInRadiusCondition extends EntityConditionType {
+public class EntityInRadiusEntityConditionType extends EntityConditionType {
     private static final String INCLUDE_SELF = "include_self";
 
     private final double radius;
@@ -30,7 +31,7 @@ public class EntityInRadiusCondition extends EntityConditionType {
     private final Optional<EntityCondition> entityCondition;
     private final Optional<BiEntityCondition> biEntityCondition;
 
-    public static final TypedDataObjectFactory<EntityInRadiusCondition> DATA_FACTORY = TypedDataObjectFactory.simple(
+    public static final TypedDataObjectFactory<EntityInRadiusEntityConditionType> DATA_FACTORY = TypedDataObjectFactory.simple(
         new SerializableData()
             .add(FieldNames.ENTITY_CONDITION, EntityCondition.DATA_TYPE.optional(), Optional.empty())
             .add(FieldNames.BIENTITY_CONDITION, BiEntityCondition.DATA_TYPE.optional(), Optional.empty())
@@ -38,7 +39,7 @@ public class EntityInRadiusCondition extends EntityConditionType {
             .add(INCLUDE_SELF, SerializableDataTypes.BOOLEAN, true)
             .add(FieldNames.COMPARISON, ApoliDataTypes.COMPARISON, Comparison.GREATER_THAN_OR_EQUAL)
             .add(FieldNames.COMPARE_TO, SerializableDataTypes.INT, 1),
-        data -> new EntityInRadiusCondition(
+        data -> new EntityInRadiusEntityConditionType(
             data.getDouble(FieldNames.RADIUS),
             data.get(FieldNames.COMPARISON),
             data.getInt(FieldNames.COMPARE_TO),
@@ -55,7 +56,7 @@ public class EntityInRadiusCondition extends EntityConditionType {
             .set(FieldNames.BIENTITY_CONDITION, conditionType.biEntityCondition)
     );
 
-    public EntityInRadiusCondition (double radius, Comparison comparisonType, int compareTo, boolean includeSelf, Optional<EntityCondition> entityCondition, Optional<BiEntityCondition> biEntityCondition) {
+    public EntityInRadiusEntityConditionType (double radius, Comparison comparisonType, int compareTo, boolean includeSelf, Optional<EntityCondition> entityCondition, Optional<BiEntityCondition> biEntityCondition) {
         this.radius = radius;
         this.comparisonType = comparisonType;
         this.compareTo = compareTo;
@@ -65,10 +66,10 @@ public class EntityInRadiusCondition extends EntityConditionType {
     }
 
     @Override
-    public boolean test (Entity entity) {
+    public boolean test (EntityConditionContext context) {
         int count = 0;
         int stopAt = -1;
-        List<Entity> others = entity.getWorld().getOtherEntities(entity, Box.from(entity.getPos()).expand(radius));
+        List<Entity> others = context.entity().getWorld().getOtherEntities(context.entity(), Box.from(context.entity().getPos()).expand(radius));
 
         switch(this.comparisonType) {
             case EQUAL:
@@ -87,13 +88,13 @@ public class EntityInRadiusCondition extends EntityConditionType {
                 break;
         }
 
-        if (this.includeSelf && this.entityCondition.isPresent() && this.entityCondition.get().test(entity)) {
+        if (this.includeSelf && this.entityCondition.isPresent() && this.entityCondition.get().test(context.entity())) {
             ++count;
             if (count == stopAt) return this.comparisonType.compare(count, compareTo);
         }
 
         for (Entity other : others) {
-            if (ConditionUtil.emptyOrTest(this.entityCondition, other) && ConditionUtil.emptyOrTest(this.biEntityCondition, entity, other)) {
+            if (ConditionUtil.emptyOrTest(this.entityCondition, other) && ConditionUtil.emptyOrTest(this.biEntityCondition, context.entity(), other)) {
                 ++count;
                 if (count == stopAt) break;
             }
@@ -103,7 +104,7 @@ public class EntityInRadiusCondition extends EntityConditionType {
     }
 
     @Override
-    public @NotNull ConditionConfiguration<EntityInRadiusCondition> getConfig () {
+    public @NotNull ConditionConfiguration<EntityInRadiusEntityConditionType> getConfig () {
         return POEntityConditionTypes.ENTITY_IN_RADIUS;
     }
 }

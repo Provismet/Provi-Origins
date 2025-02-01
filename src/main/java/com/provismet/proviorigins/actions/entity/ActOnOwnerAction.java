@@ -8,11 +8,11 @@ import com.provismet.proviorigins.utility.constants.FieldNames;
 
 import io.github.apace100.apoli.action.ActionConfiguration;
 import io.github.apace100.apoli.action.BiEntityAction;
+import io.github.apace100.apoli.action.context.EntityActionContext;
 import io.github.apace100.apoli.action.type.EntityActionType;
 import io.github.apace100.apoli.condition.BiEntityCondition;
 import io.github.apace100.apoli.data.TypedDataObjectFactory;
 import io.github.apace100.calio.data.SerializableData;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.Tameable;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,9 +39,9 @@ public class ActOnOwnerAction extends EntityActionType {
     }
 
     @Override
-    protected void execute (Entity entity) {
-        if (entity instanceof Tameable tameable && tameable.getOwner() != null) {
-            if (ConditionUtil.emptyOrTest(this.condition, entity, tameable.getOwner())) this.action.execute(entity, tameable.getOwner());
+    public void accept (EntityActionContext context) {
+        if (context.entity() instanceof Tameable tameable && tameable.getOwner() != null) {
+            if (ConditionUtil.emptyOrTest(this.condition, context.entity(), tameable.getOwner())) this.action.execute(context.entity(), tameable.getOwner());
         }
     }
 
