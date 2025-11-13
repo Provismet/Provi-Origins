@@ -31,7 +31,7 @@ public class IllusionPower extends Power {
     private final PowerType<?> resourceName;
     private Power resource;
 
-    private List<Polar> randomSpreads;
+    private final List<Polar> randomSpreads;
 
     public IllusionPower (PowerType<?> type, LivingEntity entity, double distance, int count, String spreadType, PowerType<?> resourceType) {
         super(type, entity);
@@ -76,14 +76,11 @@ public class IllusionPower extends Power {
     }
 
     public Vec3d[] getOffsets (Vec3d viewer) {
-        switch (this.spreadType) {
-            case LINE:
-                return getOffsetsLine(viewer);
-            case SPREAD:
-                return getOffsetsSpread();
-            default:
-                return new Vec3d[0];
-        }
+        return switch (this.spreadType) {
+            case LINE -> getOffsetsLine(viewer);
+            case SPREAD -> getOffsetsSpread();
+            default -> new Vec3d[0];
+        };
     }
 
     public Vec3d[] getOffsetsLine (Vec3d viewer) {
@@ -103,7 +100,7 @@ public class IllusionPower extends Power {
     }
 
     public Vec3d[] getOffsetsSpread () {
-        if (this.randomSpreads.size() == 0) {
+        if (this.randomSpreads.isEmpty()) {
             for (int i = 0; i < this.count; ++i) {
                 this.randomSpreads.add(new Polar(
                     MathHelper.nextFloat(this.entity.getRandom(), 0, MathHelper.PI * 2),
@@ -125,7 +122,7 @@ public class IllusionPower extends Power {
     @Override
     public boolean isActive() {
         boolean output = super.isActive();
-        if (!output && this.randomSpreads.size() != 0) this.randomSpreads.clear();
+        if (!output && !this.randomSpreads.isEmpty()) this.randomSpreads.clear();
         return output;
     }
 
@@ -149,14 +146,6 @@ public class IllusionPower extends Power {
         LINE,
         SPREAD;
     }
-    
-    private static class Polar {
-        public final float angle;
-        public final double distance;
 
-        public Polar (float angle, double distance) {
-            this.angle = angle;
-            this.distance = distance;
-        }
-    }
+    private record Polar(float angle, double distance) {}
 }

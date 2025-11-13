@@ -88,7 +88,7 @@ public class ActiveItemPower extends ActiveCooldownPower {
                     data.get("consume_condition"),
                     data.getInt("consume_amount"),
                     data.getBoolean("swing_arm"));
-                power.setKey((Active.Key)data.get(Powers.KEY));
+                power.setKey(data.get(Powers.KEY));
                 return power;
         }).allowCondition();
     }

@@ -106,7 +106,7 @@
                                     "conditions": [
                                         {
                                             "type": "origins:in_tag",
-                                            "tag": "proviorigins:decaykraken/soul_fire_lit_state"
+                                            "tag": "proviorigins:decaykraken/soul_fires_lit_state"
                                         },
                                         {
                                             "type": "origins:block_state",
@@ -120,7 +120,7 @@
                                     "conditions": [
                                         {
                                             "type": "origins:in_tag",
-                                            "tag": "proviorigins:decaykraken/soul_fire_fire_state"
+                                            "tag": "proviorigins:decaykraken/soul_fires_fire_state"
                                         },
                                         {
                                             "type": "origins:block_state",

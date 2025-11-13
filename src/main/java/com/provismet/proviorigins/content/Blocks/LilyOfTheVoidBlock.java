@@ -49,6 +49,7 @@ public class LilyOfTheVoidBlock extends FlowerBlock {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void onEntityCollision (BlockState state, World world, BlockPos pos, Entity entity) {
         if (world.isClient || world.getDifficulty() == Difficulty.PEACEFUL) return;

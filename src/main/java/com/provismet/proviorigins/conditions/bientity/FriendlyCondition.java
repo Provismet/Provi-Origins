@@ -29,7 +29,7 @@ public class FriendlyCondition {
             if (actor.getAttacker() == target || actor.getAttacking() == target || target.getAttacker() == actor || target.getAttacking() == actor) return false; // In combat with each other.
             if (TeammateCondition.condition(data, pair)) return true;
             if ((actor instanceof HostileEntity) != (target instanceof HostileEntity)) return false; // Only one is hostile.
-            if (actor.getScoreboardTeam() == null && target.getScoreboardTeam() == null) return true; // Neither is on a team.
+            return actor.getScoreboardTeam() == null && target.getScoreboardTeam() == null; // Neither is on a team.
         }
         return false;
     }

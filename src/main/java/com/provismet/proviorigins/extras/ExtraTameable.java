@@ -9,10 +9,10 @@ import net.minecraft.entity.Tameable;
 
 public interface ExtraTameable extends Tameable {
     @Nullable
-    public void setOwnerUUID (UUID uuid);
+    void setOwnerUUID (UUID uuid);
 
     @Nullable
-    default public void setOwner (LivingEntity owner) {
+    default void setOwner (LivingEntity owner) {
         if (owner == null) {
             this.setOwnerUUID(null);
         }
@@ -22,5 +22,5 @@ public interface ExtraTameable extends Tameable {
         }
     }
 
-    public boolean isOwned ();
+    boolean isOwned ();
 }

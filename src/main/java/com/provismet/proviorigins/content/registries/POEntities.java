@@ -17,8 +17,8 @@ public class POEntities {
     public static final EntityType<CloneEntity> CLONE = Registry.register(
         Registries.ENTITY_TYPE,
         ProviOriginsMain.identifier("player_clone"),
-        FabricEntityTypeBuilder.create(SpawnGroup.MISC, CloneEntity::new)
-            .dimensions(PlayerEntity.STANDING_DIMENSIONS)
+        EntityType.Builder.create(CloneEntity::new, SpawnGroup.MISC)
+            .setDimensions(PlayerEntity.STANDING_DIMENSIONS.width, PlayerEntity.STANDING_DIMENSIONS.height)
             .disableSummon()
             .build()
     );
@@ -26,8 +26,8 @@ public class POEntities {
     public static final EntityType<MinionEntity> MINION = Registry.register(
         Registries.ENTITY_TYPE,
         ProviOriginsMain.identifier("minion"),
-        FabricEntityTypeBuilder.create(SpawnGroup.MISC, MinionEntity::new)
-            .dimensions(new EntityDimensions(0.5f, 0.5f, false))
+        EntityType.Builder.create(MinionEntity::new, SpawnGroup.MISC)
+            .setDimensions(0.5f, 0.5f)
             .disableSummon()
             .build()
     );
