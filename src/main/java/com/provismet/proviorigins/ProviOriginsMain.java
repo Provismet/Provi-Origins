@@ -24,7 +24,7 @@ public class ProviOriginsMain implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("Provi's Origins");
 
     public static Identifier identifier (String path) {
-        return new Identifier(MODID, path);
+        return Identifier.of(MODID, path);
     }
 
     @Override

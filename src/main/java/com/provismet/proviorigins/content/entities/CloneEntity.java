@@ -4,6 +4,7 @@ import java.util.EnumSet;
 import java.util.Optional;
 import java.util.UUID;
 
+import net.minecraft.scoreboard.AbstractTeam;
 import net.minecraft.server.world.ServerWorld;
 import org.jetbrains.annotations.Nullable;
 
@@ -88,8 +89,10 @@ public class CloneEntity extends HostileEntity implements ExtraTameable, Crossbo
         this.setCanPickUpLoot(false);
 
         if (this.getWorld() instanceof ServerWorld serverWorld && this.getScoreboardTeam() == null && this.getOwner() != null && this.getOwner().getScoreboardTeam() != null) {
-            Team team = this.getOwner().getScoreboardTeam();
-            serverWorld.getScoreboard().addScoreHolderToTeam(this.getNameForScoreboard(), team);
+            AbstractTeam team = this.getOwner().getScoreboardTeam();
+            if (team instanceof Team implementedTeam) {
+                serverWorld.getScoreboard().addPlayerToTeam(this.getUuidAsString(), implementedTeam);
+            }
         }
 
         return data;
